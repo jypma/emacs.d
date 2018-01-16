@@ -18,6 +18,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (misterioso)))
+ '(fill-column 110)
  '(global-whitespace-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -52,7 +53,7 @@
      (tab-mark 9
                [187 9]
                [92 9]))))
- '(whitespace-line-column 120))
+ '(whitespace-line-column 110))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
