@@ -59,6 +59,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(markdown-code-face ((t (:inherit (fixed-pitch font-lock-constant-face) :background "#333e4c"))))
+ '(markdown-pre-face ((t (:inherit fixed-pitch :background "#333e4c"))))
  '(whitespace-space ((t nil))))
 
 (projectile-global-mode)
