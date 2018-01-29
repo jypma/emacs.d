@@ -95,3 +95,13 @@
   kept-new-versions 6
   kept-old-versions 2
   version-control t)
+
+(require 'protobuf-mode)
+
+(defconst my-protobuf-style
+  '((c-basic-offset . 4)
+    (indent-tabs-mode . nil)))
+
+(add-hook 'protobuf-mode-hook
+  (lambda () (c-add-style "my-style" my-protobuf-style t)))
+
