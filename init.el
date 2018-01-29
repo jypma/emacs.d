@@ -106,3 +106,4 @@
 (add-hook 'protobuf-mode-hook
   (lambda () (c-add-style "my-style" my-protobuf-style t)))
 
+(electric-pair-mode 1)
