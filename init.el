@@ -107,3 +107,5 @@
   (lambda () (c-add-style "my-style" my-protobuf-style t)))
 
 (electric-pair-mode 1)
+
+(global-set-key (kbd "C-x g") 'magit-status)
