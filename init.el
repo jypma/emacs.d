@@ -43,7 +43,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.01)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -82,10 +82,62 @@
   :pin melpa)
 
 (use-package sbt-mode
+  :ensure t
   :pin melpa)
 
 (use-package scala-mode
+  :ensure t
   :pin melpa)
+
+(use-package company
+  :ensure t
+  :init (global-company-mode)
+  :config (progn
+            (setq company-idle-delay 0.2
+                  company-minimum-prefix-length 1)
+            (add-hook 'after-init-hook 'global-company-mode)))
+
+;; Completions + lots of IDE features with RTags
+(use-package rtags
+  :ensure t
+  :config (progn
+            (setq rtags-use-ivy t
+                  rtags-completions-enabled t)
+            (push 'company-rtags company-backends)))
+(rtags-enable-standard-keybindings)
+
+;; Error checking with flycheck-rtags as a backend
+(use-package flycheck
+  :ensure t
+  :config (progn
+            (add-hook 'c++-mode-hook 'flycheck-mode)
+            (add-hook 'c-mode-hook 'flycheck-mode)))
+
+(use-package flycheck-rtags :ensure t)
+
+(defun my-flycheck-rtags-setup ()
+  (flycheck-select-checker 'rtags)
+  (setq-local flycheck-highlighting-mode nil)
+  (setq-local flycheck-check-syntax-automatically nil))
+(add-hook 'c-mode-hook #'my-flycheck-rtags-setup)
+(add-hook 'c++-mode-hook #'my-flycheck-rtags-setup)
+
+;; Format files consistently
+(use-package clang-format
+  :ensure t)
+
+(use-package auto-dim-other-buffers
+  :ensure t)
+(add-hook 'after-init-hook (lambda ()
+  (when (fboundp 'auto-dim-other-buffers-mode)
+    (auto-dim-other-buffers-mode t))))
+
+(use-package which-key
+  :ensure t)
+(which-key-mode)
+
+;; How much I like my files indented
+(setq c-basic-offset 2)
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
