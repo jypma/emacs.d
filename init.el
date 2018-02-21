@@ -178,3 +178,13 @@
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 (run-at-time nil (* 5 60) 'recentf-save-list)
+
+;; Auto-set git column to 72 for M-q
+(use-package git-commit
+  :ensure nil
+  :preface
+  (defun me/git-commit-set-fill-column ()
+    (setq-local comment-auto-fill-only-comments nil)
+    (setq fill-column 72))
+  :config
+  (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column))
