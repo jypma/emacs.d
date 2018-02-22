@@ -61,7 +61,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-dim-other-buffers-face ((t (:background "gray20"))))
- '(highlight ((t (:background "gray23"))))
+ '(hl-line ((t (:background "gray23"))))
  '(markdown-code-face ((t (:inherit (fixed-pitch font-lock-constant-face) :background "#333e4c"))))
  '(markdown-pre-face ((t (:inherit fixed-pitch :background "#333e4c"))))
  '(whitespace-space ((t nil))))
@@ -188,3 +188,5 @@
     (setq fill-column 72))
   :config
   (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column))
+
+(global-hl-line-mode 1)
