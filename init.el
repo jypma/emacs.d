@@ -1,5 +1,5 @@
 (require 'package)
-
+(setq package-enable-at-startup nil)
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives
@@ -55,6 +55,7 @@
                [187 9]
                [92 9]))))
  '(whitespace-line-column 110))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -66,16 +67,13 @@
  '(markdown-pre-face ((t (:inherit fixed-pitch :background "#333e4c"))))
  '(whitespace-space ((t nil))))
 
-(projectile-global-mode)
-
-;;(when (not package-archive-contents)
-;;  (package-refresh-contents)
-;;  (package-install 'use-package))
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
+(use-package projectile
+  :ensure t
+  :init (projectile-global-mode))
 
 (use-package ensime
   :ensure t
