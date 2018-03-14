@@ -188,3 +188,20 @@
   (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column))
 
 (global-hl-line-mode 1)
+
+;; run bash for ansi-term
+(defadvice ansi-term (before force-bash)
+  (interactive (list "/bin/bash")))
+(ad-activate 'ansi-term)
+
+;; confirm with y instead of yes
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; scroll only new lines into view as needed, instead of a whole page at once
+(setq scroll-conservatively 100)
+
+;; don't make sounds, like, ever.
+(setq ring-bell-function 'ignore)
+
+;; cursor as visible as possible
+(set-cursor-color "#ffffff")
