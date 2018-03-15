@@ -136,6 +136,10 @@
   :ensure t)
 (which-key-mode)
 
+(use-package eshell-bookmark
+  :ensure t
+  :config
+  (add-hook 'eshell-mode-hook 'eshell-bookmark-setup))
 ;; How much I like my files indented
 (setq c-basic-offset 2)
 
