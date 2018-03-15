@@ -93,6 +93,8 @@
   :config (progn
             (setq company-idle-delay 0.2
                   company-minimum-prefix-length 1)
+            ;; Don't use company mode in eshell (since tramp gets really slow)
+            (setq company-global-modes '(not eshell-mode))
             (add-hook 'after-init-hook 'global-company-mode)))
 
 ;; Completions + lots of IDE features with RTags
