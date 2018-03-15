@@ -140,6 +140,17 @@
   :ensure t
   :config
   (add-hook 'eshell-mode-hook 'eshell-bookmark-setup))
+
+;; Ctrl+A in eshell moves to beginning of command, then to real beginning of line
+(defun eshell-maybe-bol ()
+  (interactive)
+  (let ((p (point)))
+    (eshell-bol)
+    (if (= p (point))
+        (beginning-of-line))))
+(add-hook 'eshell-mode-hook
+          '(lambda () (define-key eshell-mode-map "\C-a" 'eshell-maybe-bol)))
+
 ;; How much I like my files indented
 (setq c-basic-offset 2)
 
