@@ -43,7 +43,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.01)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -192,7 +192,6 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
-(run-at-time nil (* 5 60) 'recentf-save-list)
 
 ;; Auto-set git column to 72 for M-q
 (use-package git-commit
