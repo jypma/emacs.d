@@ -44,7 +44,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.01)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -142,6 +142,14 @@
   :config
   (add-hook 'eshell-mode-hook 'eshell-bookmark-setup))
 
+(use-package ido-vertical-mode
+  :ensure t
+  :init (ido-vertical-mode 1))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :init (rainbow-delimiters-mode 1))
+
 ;; Ctrl+A in eshell moves to beginning of command, then to real beginning of line
 (defun eshell-maybe-bol ()
   (interactive)
@@ -193,6 +201,9 @@
   (lambda () (c-add-style "my-style" my-protobuf-style t)))
 
 (electric-pair-mode 1)
+
+(global-set-key (kbd "C-x b") 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
