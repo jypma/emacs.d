@@ -5,3 +5,5 @@
 /session.*
 meghanada
 eshell
+auto-save-list
+ensime
