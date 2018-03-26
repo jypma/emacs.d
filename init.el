@@ -220,6 +220,9 @@
 (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
+;; dired: automatically move/copy to "other" pane's directory
+(setq dired-dwim-target t)
+
 ;; Remember recently opened files
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
