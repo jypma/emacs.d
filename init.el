@@ -177,6 +177,11 @@
 
 ;; How much I like my files indented
 (setq c-basic-offset 2)
+(defconst my-cc-style
+  '("cc-mode"
+    (c-offsets-alist . ((innamespace . [0])))))
+(c-add-style "my-cc-mode" my-cc-style)
+(c-set-offset 'innamespace 0)
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
