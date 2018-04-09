@@ -171,9 +171,9 @@
   :ensure t
   :config
   (dashboard-setup-startup-hook)
-  (setq dashboard-items '((recents  . 5)
+  (setq dashboard-items '((recents  . 25)
                           (bookmarks . 5)
-                          (projects . 5))))
+                          (projects . 25))))
 
 ;; How much I like my files indented
 (setq c-basic-offset 2)
