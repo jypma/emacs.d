@@ -269,4 +269,4 @@
 ;; cursor as visible as possible
 (set-cursor-color "#ffffff")
 
-(server-start)
+(unless (server-running-p) (server-start))
