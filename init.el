@@ -235,7 +235,7 @@
 
 ;; Auto-set git column to 72 for M-q
 (use-package git-commit
-  :ensure nil
+  :ensure t
   :preface
   (defun me/git-commit-set-fill-column ()
     (setq-local comment-auto-fill-only-comments nil)
