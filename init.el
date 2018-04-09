@@ -175,6 +175,16 @@
                           (bookmarks . 5)
                           (projects . 25))))
 
+(use-package flx-ido
+  :ensure t
+  :config 
+  (ido-mode 1)
+  (ido-everywhere 1)
+  (flx-ido-mode 1)
+  (setq ido-enable-flex-matching t)
+  (setq ido-use-faces nil) ;; to see flx highlights
+)
+
 ;; How much I like my files indented
 (setq c-basic-offset 2)
 (defconst my-cc-style
@@ -183,9 +193,6 @@
 (c-add-style "my-cc-mode" my-cc-style)
 (c-set-offset 'innamespace 0)
 
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
 (global-auto-revert-mode t)
 (global-smart-shift-mode 1)
 (setq column-number-mode t)
