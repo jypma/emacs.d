@@ -44,7 +44,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.01)
  '(show-paren-mode t)
  '(whitespace-display-mappings
