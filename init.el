@@ -277,3 +277,6 @@
 ;; load additional nXML schemas
 (require `nxml-mode)
 (add-to-list `rng-schema-locating-files "~/.emacs.d/schemas/schemas.xml")
+
+;; activate dired-jump
+(require 'dired-x)
