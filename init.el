@@ -271,6 +271,9 @@
 
 (unless (server-running-p) (server-start))
 
+;; map some more files to nXML
+(setq auto-mode-alist (cons '("\\.stx$" . nxml-mode) auto-mode-alist))
+
 ;; load additional nXML schemas
 (require `nxml-mode)
 (add-to-list `rng-schema-locating-files "~/.emacs.d/schemas/schemas.xml")
