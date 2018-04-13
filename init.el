@@ -44,7 +44,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.01)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -149,6 +149,10 @@
 (use-package rainbow-delimiters
   :ensure t
   :init (rainbow-delimiters-mode 1))
+
+;; show usage in dired: C-x M-r, toggle display with C-x C-h
+(use-package dired-du
+  :ensure t)
 
 ;; Ctrl+A in eshell moves to beginning of command, then to real beginning of line
 (defun eshell-maybe-bol ()
