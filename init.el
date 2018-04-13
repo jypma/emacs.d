@@ -12,6 +12,8 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+(require 'whitespace)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -284,3 +286,12 @@
 
 ;; activate dired-jump
 (require 'dired-x)
+
+;; no whitespace mode for readonly files
+(defun my/read-only-whitespace ()
+  (if buffer-read-only
+    (whitespace-mode -1)
+    (whitespace-mode nil)))
+(add-hook 'find-file-hook 'my/read-only-whitespace)
+(add-hook 'read-only-mode-hook 'my/read-only-whitespace)
+(add-hook 'post-command-hook 'my/read-only-whitespace)
