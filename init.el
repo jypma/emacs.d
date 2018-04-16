@@ -70,6 +70,8 @@
  '(markdown-pre-face ((t (:inherit fixed-pitch :background "#333e4c"))))
  '(whitespace-space ((t nil))))
 
+(tool-bar-mode -1)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
