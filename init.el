@@ -46,7 +46,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.01)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -157,6 +157,20 @@
 ;; show usage in dired: C-x M-r, toggle display with C-x C-h
 (use-package dired-du
   :ensure t)
+
+;; load mu4e (comes with installation of mu)
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+(autoload 'mu4e "mu4e" "Launch mu4e and show the main window" t)
+;; use mu4e as email client in emacs
+(setq mail-user-agent 'mu4e-user-agent)
+;; don't keep message buffers around
+(setq message-kill-buffer-on-exit t)
+(load "~/.emacs.d/mu4e.el")
+(use-package mu4e-alert
+  :ensure t
+  :after mu4e
+  :init
+  (mu4e-alert-enable-mode-line-display))
 
 ;; Ctrl+A in eshell moves to beginning of command, then to real beginning of line
 (defun eshell-maybe-bol ()
