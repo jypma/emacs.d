@@ -215,7 +215,12 @@
 (c-add-style "my-cc-mode" my-cc-style)
 (c-set-offset 'innamespace 0)
 
+;; Auto refresh buffers if modified externally
 (global-auto-revert-mode t)
+;; Also auto refresh dired, but be quiet about it
+(setq global-auto-revert-non-file-buffers t)
+(setq auto-revert-verbose nil)
+
 (global-smart-shift-mode 1)
 (setq column-number-mode t)
 (setq backup-directory-alist `(("." . "~/.saves")))
