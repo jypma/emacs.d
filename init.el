@@ -170,7 +170,9 @@
   :ensure t
   :after mu4e
   :init
-  (mu4e-alert-enable-mode-line-display))
+  (mu4e-alert-enable-mode-line-display)
+  (mu4e-alert-set-default-style 'libnotify)
+  (mu4e-alert-enable-notifications))
 
 ;; Ctrl+A in eshell moves to beginning of command, then to real beginning of line
 (defun eshell-maybe-bol ()
