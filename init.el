@@ -47,7 +47,7 @@
  '(package-selected-packages
    (quote
     (mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
- '(show-paren-delay 0.01)
+ '(show-paren-delay 0.1)
  '(show-paren-mode t)
  '(whitespace-display-mappings
    (quote
