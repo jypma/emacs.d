@@ -216,6 +216,7 @@
     (c-offsets-alist . ((innamespace . [0])))))
 (c-add-style "my-cc-mode" my-cc-style)
 (c-set-offset 'innamespace 0)
+(c-set-offset 'case-label '+)
 
 ;; Auto refresh buffers if modified externally
 (global-auto-revert-mode t)
