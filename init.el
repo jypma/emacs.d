@@ -316,7 +316,7 @@
     (whitespace-mode nil)))
 (add-hook 'find-file-hook 'my/read-only-whitespace)
 (add-hook 'read-only-mode-hook 'my/read-only-whitespace)
-(add-hook 'post-command-hook 'my/read-only-whitespace)
+;; (add-hook 'post-command-hook 'my/read-only-whitespace) ;; <-- too slow, can't navigate C++
 
 ;; save the clipboard into the kill ring before killing
 (setq save-interprogram-paste-before-kill t)
