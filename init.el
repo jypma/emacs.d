@@ -169,6 +169,8 @@
 (setq mail-user-agent 'mu4e-user-agent)
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
+;; hide indexer progress so it's not so distracting
+(setq mu4e-hide-index-messages t)
 (load "~/.emacs.d/mu4e.el")
 (use-package mu4e-alert
   :ensure t
