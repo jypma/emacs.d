@@ -162,23 +162,24 @@
   :ensure t
   :bind ("C-=" . er/expand-region))
 
-;; load mu4e (comes with installation of mu)
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
-(autoload 'mu4e "mu4e" "Launch mu4e and show the main window" t)
-;; use mu4e as email client in emacs
-(setq mail-user-agent 'mu4e-user-agent)
-;; don't keep message buffers around
-(setq message-kill-buffer-on-exit t)
-;; hide indexer progress so it's not so distracting
-(setq mu4e-hide-index-messages t)
-(load "~/.emacs.d/mu4e.el")
-(use-package mu4e-alert
-  :ensure t
-  :after mu4e
-  :init
-  (mu4e-alert-enable-mode-line-display)
-  (mu4e-alert-set-default-style 'libnotify)
-  (mu4e-alert-enable-notifications))
+(when (file-exists-p "~/.emacs.d/mu4e.el")
+  ;; load mu4e (comes with installation of mu)
+  (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+  (autoload 'mu4e "mu4e" "Launch mu4e and show the main window" t)
+  ;; use mu4e as email client in emacs
+  (setq mail-user-agent 'mu4e-user-agent)
+  ;; don't keep message buffers around
+  (setq message-kill-buffer-on-exit t)
+  ;; hide indexer progress so it's not so distracting
+  (setq mu4e-hide-index-messages t)
+  (load "~/.emacs.d/mu4e.el")
+  (use-package mu4e-alert
+    :ensure t
+    :after mu4e
+    :init
+    (mu4e-alert-enable-mode-line-display)
+    (mu4e-alert-set-default-style 'libnotify)
+    (mu4e-alert-enable-notifications)))
 
 ;; Ctrl+A in eshell moves to beginning of command, then to real beginning of line
 (defun eshell-maybe-bol ()
