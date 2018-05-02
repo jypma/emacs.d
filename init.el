@@ -46,7 +46,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (ace-window framemove elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -405,3 +405,19 @@ See `elfeed-play-with-mpv'."
 
 ;; save the clipboard into the kill ring before killing
 (setq save-interprogram-paste-before-kill t)
+
+;; use postgresql with babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((sql . t)
+   (sh . t)))
+
+;; fontify inside org mode
+(setq org-src-fontify-natively t)
+(use-package htmlize :ensure t)
+
+;; https://emacs.stackexchange.com/questions/19344/why-does-xdg-open-not-work-in-eshell
+(setq process-connection-type nil)
+
+;; Unbind Ctrl-Z to not minimize emacs in UI mode
+(global-unset-key [(control z)])
