@@ -224,6 +224,7 @@
   (setq ido-use-faces nil) ;; to see flx highlights
 )
 
+;; Better window switching with M-o (also across frames)
 (use-package ace-window
   :ensure t
   :bind ("M-o" . ace-window))
