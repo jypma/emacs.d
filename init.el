@@ -158,6 +158,14 @@
 (use-package dired-du
   :ensure t)
 
+;; open file in dired into desktop, mpv, etc.
+(defun dired-open-file ()
+  "In dired, open the file named on this line."
+  (interactive)
+  (let* ((file (dired-get-filename nil t)))
+    (call-process "xdg-open" nil 0 nil file)))
+(define-key dired-mode-map (kbd "C-c o") 'dired-open-file)
+
 (use-package expand-region
   :ensure t
   :bind ("C-=" . er/expand-region))
