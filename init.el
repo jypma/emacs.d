@@ -229,6 +229,15 @@
   :ensure t
   :bind ("M-o" . ace-window))
 
+(when (file-exists-p "~/.emacs.d/jira.el")
+  (use-package org-jira
+    :ensure t
+    :config
+    (load "~/.emacs.d/jira.el")))
+;; https://github.com/ahungry/org-jira#authorization-workaround-not-secure
+;; (defconst jiralib-token
+;;   `("Cookie" . ,(format "__atl_path=...; studio.crowd.tokenkey=...")))
+
 (use-package elfeed
   :ensure t
   :bind ("C-x w" . elfeed)
