@@ -343,7 +343,7 @@ See `elfeed-play-with-mpv'."
 (global-set-key (kbd "C-x C-p") 'git-gutter:previous-hunk)
 (global-set-key (kbd "C-x C-n") 'git-gutter:next-hunk)
 (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
-(global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
+(global-set-key (kbd "C-x v k") 'git-gutter:revert-hunk)
 
 ;; dired: automatically move/copy to "other" pane's directory
 (setq dired-dwim-target t)
