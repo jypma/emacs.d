@@ -46,7 +46,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key auto-dim-other-buffers clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -130,12 +130,6 @@
 ;; Format files consistently
 (use-package clang-format
   :ensure t)
-
-(use-package auto-dim-other-buffers
-  :ensure t)
-(add-hook 'after-init-hook (lambda ()
-  (when (fboundp 'auto-dim-other-buffers-mode)
-    (auto-dim-other-buffers-mode t))))
 
 (use-package which-key
   :ensure t)
