@@ -75,6 +75,14 @@
 
 (tool-bar-mode -1)
 
+;; Use pretty symbols everywhere
+(global-prettify-symbols-mode 1)
+
+;; Use pretty symbols in scala
+(add-hook 'scala-mode-hook (lambda ()
+                             (setq prettify-symbols-alist scala-prettify-symbols-alist)
+                             (prettify-symbols-mode)))
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
