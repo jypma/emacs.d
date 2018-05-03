@@ -46,7 +46,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -64,10 +64,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(auto-dim-other-buffers-face ((t (:background "gray20"))))
- '(hl-line ((t (:background "gray23"))))
+ '(hl-line ((t (:background "#3d3708"))))
+ '(magit-section-highlight ((t (:background "#1c1c1c"))))
  '(markdown-code-face ((t (:inherit (fixed-pitch font-lock-constant-face) :background "#333e4c"))))
  '(markdown-pre-face ((t (:inherit fixed-pitch :background "#333e4c"))))
+ '(mode-line ((t (:background "#333333" :foreground "gold3" :box (:line-width -1 :color "gold4")))))
+ '(mode-line-inactive ((t (:background "black" :foreground "dark gray" :box (:line-width -1 :color "LightSteelBlue4")))))
+ '(region ((t (:background "#5b3636"))))
  '(whitespace-space ((t nil))))
 
 (tool-bar-mode -1)
@@ -126,6 +129,13 @@
   (setq-local flycheck-check-syntax-automatically nil))
 (add-hook 'c-mode-hook #'my-flycheck-rtags-setup)
 (add-hook 'c++-mode-hook #'my-flycheck-rtags-setup)
+
+(use-package cyberpunk-theme
+  :ensure t
+  :config
+  (load-theme 'cyberpunk t)
+  (set-face-attribute 'region nil :foreground 'unspecified)
+  (set-face-attribute 'whitespace-line nil :background 'unspecified))
 
 ;; Format files consistently
 (use-package clang-format
