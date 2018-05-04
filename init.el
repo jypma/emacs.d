@@ -343,8 +343,8 @@ See `elfeed-play-with-mpv'."
 (require 'meghanada)
 (add-hook 'java-mode-hook
           (lambda ()
-            ;; meghanada-mode on
-            (meghanada-mode t)
+            ;; Uncomment to auto-start meghanada when opening java file
+            ;; (meghanada-mode t) 
             (setq c-basic-offset 4)))
 
 (require 'protobuf-mode)
