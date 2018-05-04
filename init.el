@@ -142,6 +142,7 @@
   :ensure t
   :config
   (load-theme 'cyberpunk t)
+  (set-cursor-color "#ffffff") ;; somehow not all frames have superwhite cursor by default
   (set-face-attribute 'region nil :foreground 'unspecified)
   (set-face-attribute 'whitespace-line nil :background 'unspecified))
 
