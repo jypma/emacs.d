@@ -444,3 +444,11 @@ See `elfeed-play-with-mpv'."
 ;; Unbind Ctrl-Z to not minimize emacs in UI mode
 (global-unset-key [(control z)])
 (global-unset-key [(control x)(control z)])
+
+;; UTF-8 support
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
