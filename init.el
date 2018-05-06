@@ -83,6 +83,9 @@
                              (setq prettify-symbols-alist scala-prettify-symbols-alist)
                              (prettify-symbols-mode)))
 
+;; Winner: use C-c left, right to cycle previous window layouts
+(winner-mode 1)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
