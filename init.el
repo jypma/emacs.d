@@ -46,7 +46,7 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
    (quote
-    (undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -462,3 +462,10 @@ See `elfeed-play-with-mpv'."
   :config
   (global-undo-tree-mode 1))
 
+(use-package evil-numbers
+  :ensure t
+  :bind
+  ("C-c =" . evil-numbers/inc-at-pt)
+  ("<kp-add>" . evil-numbers/inc-at-pt)
+  ("C-c -" . evil-numbers/dec-at-pt)
+  ("<kp-subtract>" . evil-numbers/dec-at-pt))
