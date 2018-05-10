@@ -448,6 +448,9 @@ See `elfeed-play-with-mpv'."
 ;; https://emacs.stackexchange.com/questions/19344/why-does-xdg-open-not-work-in-eshell
 (setq process-connection-type nil)
 
+;; Hide leading stars
+(setq org-startup-indented t org-hide-leading-stars t)
+
 ;; Unbind Ctrl-Z to not minimize emacs in UI mode
 (global-unset-key [(control z)])
 (global-unset-key [(control x)(control z)])
