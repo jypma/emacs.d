@@ -12,3 +12,4 @@ var/pcache
 /jira.el
 /mu4e.el
 /network-security.data
+/places

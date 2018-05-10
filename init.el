@@ -86,6 +86,9 @@
 ;; Winner: use C-c left, right to cycle previous window layouts
 (winner-mode 1)
 
+;; Remember locations in files
+(save-place-mode 1)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
