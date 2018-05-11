@@ -44,6 +44,7 @@
      ("xml" . xml-mode))))
  '(markdown-fontify-code-blocks-natively t)
  '(nxml-slash-auto-complete-flag t)
+ '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
     (evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
