@@ -20,6 +20,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (misterioso)))
+ '(dired-listing-switches "-al --quoting-style=literal")
  '(fill-column 110)
  '(git-gutter:update-interval 1)
  '(global-subword-mode t)
