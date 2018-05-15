@@ -48,7 +48,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -66,6 +66,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ensime-implicit-highlight ((t (:underline "dim gray"))))
  '(hl-line ((t (:background "#3d3708"))))
  '(magit-section-highlight ((t (:background "#1c1c1c"))))
  '(markdown-code-face ((t (:inherit (fixed-pitch font-lock-constant-face) :background "#333e4c"))))
@@ -224,6 +225,23 @@
         (beginning-of-line))))
 (add-hook 'eshell-mode-hook
           '(lambda () (define-key eshell-mode-map "\C-a" 'eshell-maybe-bol)))
+
+;; enable spell checking in documentation
+(dolist (mode '(emacs-lisp-mode-hook
+                inferior-lisp-mode-hook
+                c++-mode-hook
+                scala-mode-hook
+                java-mode-hook))
+  (add-hook mode
+            '(lambda ()
+               (flyspell-prog-mode))))
+
+;; use popup menu for completions instead of strange top-of-buffer selector
+(use-package flyspell-popup
+  :ensure t
+  :config
+  (add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode)
+  (define-key flyspell-mode-map (kbd "C-;") #'flyspell-popup-correct))
 
 (use-package git-gutter
   :ensure t
