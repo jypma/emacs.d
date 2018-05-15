@@ -47,7 +47,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -103,7 +103,9 @@
 
 (use-package ensime
   :ensure t
-  :pin melpa)
+  :pin melpa-stable
+  :config
+  (setq ensime-startup-notification nil))
 
 (use-package sbt-mode
   :ensure t
