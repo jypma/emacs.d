@@ -90,6 +90,9 @@
 ;; Remember locations in files
 (save-place-mode 1)
 
+;; Ctrl-x k always kills current buffer
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
