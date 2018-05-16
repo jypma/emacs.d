@@ -48,7 +48,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
  '(whitespace-display-mappings
@@ -69,7 +69,7 @@
  '(ensime-implicit-highlight ((t (:underline "dim gray"))))
  '(hl-line ((t (:background "#3d3708"))))
  '(magit-section-highlight ((t (:background "#1c1c1c"))))
- '(markdown-code-face ((t (:inherit (fixed-pitch font-lock-constant-face) :background "#1b2129"))))
+ '(markdown-code-face ((t (:inherit (fixed-pitch font-lock-constant-face) :background "#333e4c"))))
  '(markdown-pre-face ((t (:inherit fixed-pitch :background "#1b2129"))))
  '(mode-line ((t (:background "#333333" :foreground "gold3" :box (:line-width -1 :color "gold4")))))
  '(mode-line-inactive ((t (:background "black" :foreground "dark gray" :box (:line-width -1 :color "LightSteelBlue4")))))
@@ -94,6 +94,20 @@
 
 ;; Ctrl-x k always kills current buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
+
+;; highlight #ffffff etc as actual colors
+(use-package rainbow-mode
+  :ensure t
+  :config
+  (add-hook 'scala-mode-hook #'rainbow-mode)
+  (add-hook 'markdown-mode-hook #'rainbow-mode)
+  (add-hook 'web-mode-hook #'rainbow-mode)
+  (add-hook 'help-mode-hook #'rainbow-mode)
+  (add-hook 'html-mode-hook #'rainbow-mode)
+  (add-hook 'css-mode-hook #'rainbow-mode)
+  (add-hook 'js-mode-hook #'rainbow-mode)
+  (add-hook 'js-jsx-mode-hook #'rainbow-mode)
+)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
