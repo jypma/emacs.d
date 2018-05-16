@@ -5,6 +5,7 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (setq package-archive-prioritities '(("melpa-stable" . 1)))
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -95,7 +96,11 @@
 ;; Ctrl-x k always kills current buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
-;; highlight #ffffff etc as actual colors
+;; color picker
+(require 'colorpicker)
+(global-set-key (kbd "C-x c") 'colorpicker)
+
+;; highlight #ff etc as actual colors
 (use-package rainbow-mode
   :ensure t
   :config
@@ -107,6 +112,7 @@
   (add-hook 'css-mode-hook #'rainbow-mode)
   (add-hook 'js-mode-hook #'rainbow-mode)
   (add-hook 'js-jsx-mode-hook #'rainbow-mode)
+  (add-hook 'emacs-lisp-mode-hook #'rainbow-mode)
 )
 
 (unless (package-installed-p 'use-package)
