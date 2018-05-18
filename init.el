@@ -239,6 +239,8 @@
   ;; hide indexer progress so it's not so distracting
   (setq mu4e-hide-index-messages t)
   (load "~/.emacs.d/mu4e.el")
+  (bind-keys :package mu4e ("<f9>" . mu4e))
+  (setq mu4e-confirm-quit nil) ;; yes I'm sure
   (use-package mu4e-alert
     :ensure t
     :after mu4e
