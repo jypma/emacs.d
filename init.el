@@ -122,7 +122,17 @@
 
 (use-package projectile
   :ensure t
-  :init (projectile-global-mode))
+  :init (projectile-global-mode)
+  :config
+  (defadvice projectile-on (around exlude-tramp activate)
+  "This should disable projectile when visiting a remote file"
+  (unless  (--any? (and it (file-remote-p it))
+                   (list
+                    (buffer-file-name)
+                    list-buffers-directory
+                    default-directory
+                    dired-directory))
+    ad-do-it)))
 
 (use-package ensime
   :ensure t
