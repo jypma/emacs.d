@@ -38,3 +38,37 @@
                     (or directory "")
                     (tramp-file-name-hop v))))
     (eshell/cd directory)))
+
+(defun eshell/lsu ()
+  "Become root through sudo on the current TRAMP remote host or local"
+  (let*
+      ((sudo (/= (call-process "sudo" nil nil "-n true") 0))
+       (newdir
+        (if (tramp-tramp-file-p default-directory)
+            (with-parsed-tramp-file-name default-directory parsed
+              (if (string= "sudo" parsed-method)
+                  ;;remove sudo, remove leading "|" from hop
+                  (concat "/" (substring parsed-hop 0 -1) ":" parsed-localname)
+                ;; add sudo
+                (tramp-make-tramp-file-name
+                 (if sudo "sudo" "su")
+                 "root"
+                 parsed-host
+                 parsed-localname
+                 (let ((tramp-postfix-host-format "|")
+                       (tramp-prefix-format))
+                   (tramp-make-tramp-file-name
+                    parsed-method
+                    parsed-user
+                    parsed-host
+                    ""
+                    parsed-hop)))
+                )
+
+              )
+          (concat (if sudo
+                      "/sudo::"
+                    "/su::")
+                  default-directory))))
+    (message "cd %s" newdir)
+    (eshell/cd newdir)))
