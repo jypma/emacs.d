@@ -255,6 +255,8 @@
     (mu4e-alert-set-default-style 'libnotify)
     (mu4e-alert-enable-notifications)))
 
+(load "~/.emacs.d/eshell_ext.el")
+
 ;; Ctrl+A in eshell moves to beginning of command, then to real beginning of line
 (defun eshell-maybe-bol ()
   (interactive)
@@ -543,3 +545,15 @@ See `elfeed-play-with-mpv'."
 ;; auto-commit used for org todo list sync
 (use-package git-auto-commit-mode
   :ensure t)
+
+;; use extra config files for tramp ssh host completion
+(require 'tramp)
+(tramp-set-completion-function "ssh"
+                                  '((tramp-parse-sconfig "/etc/ssh_config")
+                                    (tramp-parse-sconfig "~/.ssh/config")
+                                    (tramp-parse-sconfig "~/.ssh/config.jyp")
+                                    (tramp-parse-sconfig "~/.ssh/config.production")
+                                    (tramp-parse-sconfig "~/.ssh/config.sandbox")
+                                    (tramp-parse-sconfig "~/.ssh/config.smoketests")
+                                    (tramp-parse-sconfig "~/.ssh/config.staging")
+                                    ))
