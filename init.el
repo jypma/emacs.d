@@ -238,6 +238,12 @@
   (setq message-kill-buffer-on-exit t)
   ;; hide indexer progress so it's not so distracting
   (setq mu4e-hide-index-messages t)
+  ;; fix the hideous rendering of html
+  (require 'mu4e-contrib)
+  (setq mu4e-html2text-command 'mu4e-shr2text)
+  (setq shr-color-visible-luminance-min 80)
+  (setq shr-color-visible-distance-min 5)
+
   (load "~/.emacs.d/mu4e.el")
   (bind-keys :package mu4e ("<f9>" . mu4e))
   (setq mu4e-confirm-quit nil) ;; yes I'm sure
