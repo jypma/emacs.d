@@ -14,6 +14,7 @@
 (package-initialize)
 
 (require 'whitespace)
+(add-hook 'prog-mode-hook #'whitespace-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -25,7 +26,7 @@
  '(fill-column 110)
  '(git-gutter:update-interval 1)
  '(global-subword-mode t)
- '(global-whitespace-mode t)
+ '(global-whitespace-mode nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(markdown-code-lang-modes
@@ -118,6 +119,7 @@
   (add-hook 'js-mode-hook #'rainbow-mode)
   (add-hook 'js-jsx-mode-hook #'rainbow-mode)
   (add-hook 'emacs-lisp-mode-hook #'rainbow-mode)
+  (add-hook 'prog-mode-hook #'rainbow-mode)
 )
 
 (unless (package-installed-p 'use-package)
@@ -495,12 +497,9 @@ See `elfeed-play-with-mpv'."
 
 ;; no whitespace mode for readonly files
 (defun my/read-only-whitespace ()
-  (if buffer-read-only
-    (whitespace-mode -1)
-    (whitespace-mode nil)))
+  (when buffer-read-only
+    (whitespace-mode -1)))
 (add-hook 'find-file-hook 'my/read-only-whitespace)
-(add-hook 'read-only-mode-hook 'my/read-only-whitespace)
-;; (add-hook 'post-command-hook 'my/read-only-whitespace) ;; <-- too slow, can't navigate C++
 
 ;; save the clipboard into the kill ring before killing
 (setq save-interprogram-paste-before-kill t)
