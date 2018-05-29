@@ -76,7 +76,8 @@
  '(mode-line ((t (:background "#333333" :foreground "gold3" :box (:line-width -1 :color "gold4")))))
  '(mode-line-inactive ((t (:background "black" :foreground "dark gray" :box (:line-width -1 :color "LightSteelBlue4")))))
  '(region ((t (:background "#5b3636"))))
- '(whitespace-space ((t nil))))
+ '(whitespace-space ((t nil)))
+ '(whitespace-trailing ((t (:background "dark red")))))
 
 (tool-bar-mode -1)
 
