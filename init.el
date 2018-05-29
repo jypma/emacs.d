@@ -97,6 +97,9 @@
 ;; Ctrl-x k always kills current buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
+(require 'backup-walker)
+(global-set-key (kbd "C-x v w") 'backup-walker-start)
+
 ;; color picker
 (require 'colorpicker)
 (global-set-key (kbd "C-x c") 'colorpicker)
