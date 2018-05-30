@@ -100,6 +100,19 @@
 ;; Ctrl-x k always kills current buffer
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
+;; Don't save duplicates if the head of kill ring is the same
+(setq kill-do-not-save-duplicates t)
+;; ... but we also don't want duplicates further down the kill ring:
+(defun my/remove-existing-kill (args)
+  (let ((string (car args))
+        (replace (cdr args)))
+    (when (member string kill-ring)
+      (setq kill-ring (delete string kill-ring)))
+    (list string replace)))
+
+(advice-add 'kill-new :filter-args #'my/remove-existing-kill)
+
+;; easy diff of local history
 (require 'backup-walker)
 (global-set-key (kbd "C-x v w") 'backup-walker-start)
 
