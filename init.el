@@ -83,6 +83,9 @@
 
 (tool-bar-mode -1)
 
+;; magit default to origin/master instead of just master
+(setq magic-prefer-remote-upstream 1)
+
 ;; Use pretty symbols everywhere
 (global-prettify-symbols-mode 1)
 
