@@ -577,3 +577,4 @@ See `elfeed-play-with-mpv'."
                                     (tramp-parse-sconfig "~/.ssh/config.smoketests")
                                     (tramp-parse-sconfig "~/.ssh/config.staging")
                                     ))
+(put 'downcase-region 'disabled nil)
