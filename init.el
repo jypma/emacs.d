@@ -26,7 +26,7 @@
  '(fill-column 110)
  '(git-gutter:update-interval 1)
  '(global-subword-mode t)
- '(global-whitespace-mode nil)
+ '(global-whitespace-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(markdown-code-lang-modes
@@ -76,6 +76,10 @@
  '(markdown-pre-face ((t (:inherit fixed-pitch :background "#1b2129"))))
  '(mode-line ((t (:background "#333333" :foreground "gold3" :box (:line-width -1 :color "gold4")))))
  '(mode-line-inactive ((t (:background "black" :foreground "dark gray" :box (:line-width -1 :color "LightSteelBlue4")))))
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "#FF5555"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "#02B602"))))
+ '(rainbow-delimiters-depth-6-face ((t (:foreground "#79C8E1"))))
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "#998EDB"))))
  '(region ((t (:background "#5b3636"))))
  '(shadow ((t (:foreground "grey70"))))
  '(whitespace-space ((t nil)))
@@ -233,7 +237,10 @@
 
 (use-package rainbow-delimiters
   :ensure t
-  :init (rainbow-delimiters-mode 1))
+  :config
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+)
 
 ;; show usage in dired: C-x M-r, toggle display with C-x C-h
 (use-package dired-du
