@@ -180,6 +180,7 @@
   :init (global-company-mode)
   :config (progn
             (setq company-idle-delay 0.2
+
                   company-minimum-prefix-length 1)
             ;; Don't use company mode in eshell (since tramp gets really slow)
             (setq company-global-modes '(not eshell-mode))
@@ -532,7 +533,7 @@ See `elfeed-play-with-mpv'."
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((sql . t)
-   (sh . t)))
+   (shell . t)))
 
 ;; fontify inside org mode
 (setq org-src-fontify-natively t)
