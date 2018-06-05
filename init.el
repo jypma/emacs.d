@@ -318,7 +318,7 @@
 (use-package flyspell-popup
   :ensure t
   :config
-  (add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode)
+;;  (add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode) ;; don't like it after all
   (define-key flyspell-mode-map (kbd "C-;") #'flyspell-popup-correct))
 
 (use-package git-gutter
