@@ -72,3 +72,45 @@
                   default-directory))))
     (message "cd %s" newdir)
     (eshell/cd newdir)))
+
+(require 'cl-lib)
+(defun my/similar-buffers ()
+  "Returns similar buffers to the current one, e.g. living on different remote servers."
+  (if (tramp-tramp-file-p buffer-file-name)
+      (let* ((current-localname (with-parsed-tramp-file-name buffer-file-name parsed
+                                  parsed-localname)))
+        (cl-remove-if-not
+         (lambda (buf)
+           (let ((otherfile (buffer-file-name buf)))
+             (cond ((string= otherfile buffer-file-name) nil)
+                   ((not (tramp-tramp-file-p otherfile)) nil)
+                   (t (with-parsed-tramp-file-name otherfile parsed
+                        (string= parsed-localname current-localname)))
+                   )
+             )
+           )
+         (buffer-list))
+        )
+    ()))
+
+(defun my/copy-to-similar-buffers ()
+  "Copies the current buffer's contents to similar buffers"
+  (interactive)
+  (let ((source (current-buffer)))
+    (mapc (lambda (buf)
+            (with-current-buffer buf (let ((p (point)))
+                                       (progn
+                                         ;; TODO use replace-buffer-contents on 26.1+
+                                          (erase-buffer)
+                                          (insert-buffer-substring source)
+                                          (goto-char p)))))
+          (my/similar-buffers))))
+
+(defun my/copy-to-similar-buffers-and-save ()
+  "Copies the current buffer's contents to similar buffers, and saves all of them"
+  (interactive)
+  (my/copy-to-similar-buffers)
+  (save-buffer)
+  (mapc (lambda (buf)
+          (with-current-buffer buf (save-buffer)))
+        (my/similar-buffers)))
