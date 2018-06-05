@@ -13,6 +13,12 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Prefer packages from git/ over ones in elpa/
+(let ((emacs-git "~/.emacs.d/git/"))
+  (mapc (lambda (x)
+          (add-to-list 'load-path (expand-file-name x emacs-git)))
+        (delete ".." (directory-files emacs-git))))
+
 (require 'whitespace)
 (add-hook 'prog-mode-hook #'whitespace-mode)
 
