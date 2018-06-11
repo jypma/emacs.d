@@ -87,6 +87,7 @@
  '(rainbow-delimiters-depth-2-face ((t (:foreground "#02B602"))))
  '(rainbow-delimiters-depth-6-face ((t (:foreground "#79C8E1"))))
  '(rainbow-delimiters-depth-8-face ((t (:foreground "#998EDB"))))
+ '(rainbow-delimiters-unmatched-face ((t (:inherit rainbow-delimiters-base-face :background "#88090B"))))
  '(region ((t (:background "#5b3636"))))
  '(shadow ((t (:foreground "grey70"))))
  '(whitespace-space ((t nil)))
