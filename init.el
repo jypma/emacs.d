@@ -52,6 +52,7 @@
      ("bash" . sh-mode)
      ("xml" . xml-mode))))
  '(markdown-fontify-code-blocks-natively t)
+ '(meghanada-debug t)
  '(nxml-slash-auto-complete-flag t)
  '(org-log-into-drawer t)
  '(package-selected-packages
