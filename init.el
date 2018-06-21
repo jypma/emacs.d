@@ -57,7 +57,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
@@ -599,4 +599,13 @@ See `elfeed-play-with-mpv'."
                                     (tramp-parse-sconfig "~/.ssh/config.smoketests")
                                     (tramp-parse-sconfig "~/.ssh/config.staging")
                                     ))
+
+;; we do use downcase-region
 (put 'downcase-region 'disabled nil)
+
+(use-package smex
+  :ensure t
+  :bind
+  ("M-x" . smex)
+  ("M-X" . smex-major-mode-commands)
+  ("C-c C-o M-x" . execute-extended-command))
