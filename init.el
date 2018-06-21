@@ -57,10 +57,11 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit meghanada json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
+ '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
  '(whitespace-display-mappings
    (quote
     ((space-mark 160
@@ -577,6 +578,9 @@ See `elfeed-play-with-mpv'."
   ("<kp-add>" . evil-numbers/inc-at-pt)
   ("C-c -" . evil-numbers/dec-at-pt)
   ("<kp-subtract>" . evil-numbers/dec-at-pt))
+
+(use-package docker-tramp
+  :ensure t)
 
 ;; auto-commit used for org todo list sync
 (use-package git-auto-commit-mode
