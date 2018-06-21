@@ -77,6 +77,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 89)) (:foreground "#d3d3d3" :background "#000000"))))
  '(ensime-implicit-highlight ((t (:underline "dim gray"))))
  '(hl-line ((t (:background "#3d3708"))))
  '(magit-section-highlight ((t (:background "#1c1c1c"))))
@@ -106,6 +107,7 @@
 (add-hook 'scala-mode-hook (lambda ()
                              (setq prettify-symbols-alist scala-prettify-symbols-alist)
                              (prettify-symbols-mode)))
+(setq prettify-symbols-unprettify-at-point 'right-edge)
 
 ;; Winner: use C-c left, right to cycle previous window layouts
 (winner-mode 1)
@@ -189,7 +191,6 @@
   :init (global-company-mode)
   :config (progn
             (setq company-idle-delay 0.2
-
                   company-minimum-prefix-length 1)
             ;; Don't use company mode in eshell (since tramp gets really slow)
             (setq company-global-modes '(not eshell-mode))
