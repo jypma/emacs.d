@@ -32,7 +32,7 @@
  '(fill-column 110)
  '(git-gutter:update-interval 1)
  '(global-subword-mode t)
- '(global-whitespace-mode t)
+ '(global-whitespace-mode nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(markdown-code-lang-modes
@@ -555,6 +555,10 @@ See `elfeed-play-with-mpv'."
 
 ;; Hide leading stars
 (setq org-startup-indented t org-hide-leading-stars t)
+
+;; No whitespace mode for org mode (miscolours links and such)
+(add-hook 'org-mode-hook '(lambda () (whitespace-mode -1)))
+
 
 ;; Unbind Ctrl-Z to not minimize emacs in UI mode
 (global-unset-key [(control z)])
