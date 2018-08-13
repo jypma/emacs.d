@@ -4,3 +4,6 @@
 [submodule "git/meghanada-emacs"]
 	path = git/meghanada-emacs
 	url = https://github.com/mopemope/meghanada-emacs
+[submodule "git/hide-lines"]
+	path = git/hide-lines
+	url = https://github.com/vapniks/hide-lines.git
