@@ -610,3 +610,7 @@ See `elfeed-play-with-mpv'."
   ("M-x" . smex)
   ("M-X" . smex-major-mode-commands)
   ("C-c C-o M-x" . execute-extended-command))
+
+(require 'hide-lines)
+(autoload 'hide-lines "hide-lines" "Hide lines based on a regexp" t)
+(global-set-key "\C-ch" 'hide-lines)
