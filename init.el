@@ -4,7 +4,7 @@
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
-(setq package-archive-prioritities '(("melpa-stable" . 1)))
+(setq package-archive-ties '(("melpa-stable" . 1)))
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; Added by Package.el.  This must come before configurations of
