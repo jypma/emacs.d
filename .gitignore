@@ -13,3 +13,4 @@ var/pcache
 /mu4e.el
 /network-security.data
 /places
+/smex-items
