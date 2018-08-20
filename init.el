@@ -499,7 +499,9 @@ See `elfeed-play-with-mpv'."
     (setq-local comment-auto-fill-only-comments nil)
     (setq fill-column 72))
   :config
-  (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column))
+  (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column)
+  (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
+  )
 
 (global-hl-line-mode 1)
 
