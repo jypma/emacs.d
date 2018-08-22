@@ -130,6 +130,9 @@
 
 (advice-add 'kill-new :filter-args #'my/remove-existing-kill)
 
+;; don't show subword mode in modeline
+(delight 'subword-mode nil t)
+
 ;; easy diff of local history
 (require 'backup-walker)
 (global-set-key (kbd "C-x v w") 'backup-walker-start)
@@ -152,7 +155,7 @@
   (add-hook 'js-jsx-mode-hook #'rainbow-mode)
   (add-hook 'emacs-lisp-mode-hook #'rainbow-mode)
   (add-hook 'prog-mode-hook #'rainbow-mode)
-)
+  :delight)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -234,8 +237,10 @@
   :ensure t)
 
 (use-package which-key
-  :ensure t)
-(which-key-mode)
+  :ensure t
+  :config
+  (which-key-mode)
+  :delight which-key-mode)
 
 (use-package eshell-bookmark
   :ensure t
@@ -331,7 +336,8 @@
   :config
   (global-git-gutter-mode +1)
   (custom-set-variables
-   '(git-gutter:update-interval 1)))
+   '(git-gutter:update-interval 1))
+  :delight)
 
 (use-package dashboard
   :ensure t
@@ -447,6 +453,7 @@ See `elfeed-play-with-mpv'."
 ;; Also auto refresh dired, but be quiet about it
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
+(delight 'auto-revert-mode nil t)
 
 (global-smart-shift-mode 1)
 (setq column-number-mode t)
