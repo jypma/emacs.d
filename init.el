@@ -336,6 +336,7 @@
 (use-package dashboard
   :ensure t
   :config
+  (global-set-key (kbd "<f5>") (lambda () (interactive) (switch-to-buffer "*dashboard*")))
   (dashboard-setup-startup-hook)
   (setq dashboard-items '((recents  . 25)
                           (bookmarks . 5)
