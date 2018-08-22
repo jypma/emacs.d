@@ -138,6 +138,14 @@
   :ensure t)
 ;; run all-the-icons-install-fonts on first run on a machine.
 
+(delight 'emacs-lisp-mode "" :major)
+(delight 'eldoc-mode nil t)
+(delight 'groovy-mode (all-the-icons-fileicon "groovy" :height 1.2) :major)
+
+;; customize git modeline display
+(setcdr (assq 'vc-mode mode-line-format)
+        '((:eval (replace-regexp-in-string "^ Git" "" vc-mode))))
+
 ;; easy diff of local history
 (require 'backup-walker)
 (global-set-key (kbd "C-x v w") 'backup-walker-start)
@@ -178,7 +186,8 @@
                     list-buffers-directory
                     default-directory
                     dired-directory))
-    ad-do-it)))
+    ad-do-it))
+  :delight '(:eval (concat " " (projectile-project-name) "  ")))
 
 (use-package ensime
   :ensure t
@@ -202,7 +211,8 @@
                   company-minimum-prefix-length 1)
             ;; Don't use company mode in eshell (since tramp gets really slow)
             (setq company-global-modes '(not eshell-mode))
-            (add-hook 'after-init-hook 'global-company-mode)))
+            (add-hook 'after-init-hook 'global-company-mode))
+  :delight company-mode "  ")
 
 ;; Completions + lots of IDE features with RTags
 (use-package rtags
@@ -218,7 +228,8 @@
   :ensure t
   :config (progn
             (add-hook 'c++-mode-hook 'flycheck-mode)
-            (add-hook 'c-mode-hook 'flycheck-mode)))
+            (add-hook 'c-mode-hook 'flycheck-mode))
+  :delight flycheck-mode "  ")
 
 (use-package flycheck-rtags :ensure t)
 
@@ -335,6 +346,9 @@
   :config
 ;;  (add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode) ;; don't like it after all
   (define-key flyspell-mode-map (kbd "C-;") #'flyspell-popup-correct))
+
+;; customize minor mode display for flyspell-mode
+(delight 'flyspell-mode "   " t)
 
 (use-package git-gutter
   :ensure t
@@ -552,6 +566,9 @@ See `elfeed-play-with-mpv'."
   (when buffer-read-only
     (whitespace-mode -1)))
 (add-hook 'find-file-hook 'my/read-only-whitespace)
+
+;; customize whitespace mode display
+(delight 'whitespace-mode "" t)
 
 ;; save the clipboard into the kill ring before killing
 (setq save-interprogram-paste-before-kill t)
