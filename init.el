@@ -138,9 +138,11 @@
   :ensure t)
 ;; run all-the-icons-install-fonts on first run on a machine.
 
-(delight 'emacs-lisp-mode "" :major)
+(delight 'emacs-lisp-mode (all-the-icons-fileicon "emacs" :height 0.7) :major)
 (delight 'eldoc-mode nil t)
 (delight 'groovy-mode (all-the-icons-fileicon "groovy" :height 1.2) :major)
+(delight 'java-mode "J" :major) ;; (the-icons-alltheicon "java") ""
+(delight 'sh-mode '(:eval (format "%s" (sh-shell))))
 
 ;; customize git modeline display
 (setcdr (assq 'vc-mode mode-line-format)
