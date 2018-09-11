@@ -15,3 +15,5 @@ var/pcache
 /places
 /smex-items
 /projectile.cache
+url/cache
+url/cookies
