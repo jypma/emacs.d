@@ -191,6 +191,15 @@
     ad-do-it))
   :delight '(:eval (concat " " (projectile-project-name) "  ")))
 
+(use-package goto-addr
+  :ensure t
+  :hook ((compilation-mode . goto-address-mode)
+         (prog-mode . goto-address-prog-mode)
+         (eshell-mode . goto-address-mode)
+         (shell-mode . goto-address-mode))
+  :commands (goto-address-prog-mode
+             goto-address-mode))
+
 (use-package ensime
   :ensure t
   :pin melpa-stable
