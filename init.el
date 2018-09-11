@@ -580,7 +580,7 @@ See `elfeed-play-with-mpv'."
 (add-hook 'find-file-hook 'my/read-only-whitespace)
 
 ;; customize whitespace mode display
-(delight 'whitespace-mode "" t)
+(delight 'whitespace-mode (all-the-icons-material "space_bar") t)
 
 ;; save the clipboard into the kill ring before killing
 (setq save-interprogram-paste-before-kill t)
