@@ -674,3 +674,8 @@ See `elfeed-play-with-mpv'."
   :config
   (focus-autosave-mode)
   :delight)
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1))
