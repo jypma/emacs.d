@@ -189,6 +189,7 @@
                     default-directory
                     dired-directory))
     ad-do-it))
+  (setq projectile-switch-project-action #'projectile-dired)
   :delight '(:eval (concat " " (projectile-project-name) "  ")))
 
 (use-package goto-addr
@@ -350,6 +351,7 @@
             '(lambda ()
                (flyspell-prog-mode))))
 (add-hook 'markdown-mode-hook (lambda () (flyspell-mode)))
+(add-hook 'java-mode-hook (lambda () (flyspell-prog-mode)))
 
 ;; use popup menu for completions instead of strange top-of-buffer selector
 (use-package flyspell-popup
@@ -498,7 +500,9 @@ See `elfeed-play-with-mpv'."
 (add-hook 'java-mode-hook
           (lambda ()
             ;; Uncomment to auto-start meghanada when opening java file
-            ;; (meghanada-mode t) 
+            ;; (meghanada-mode t)
+            (abbrev-mode nil)
+            (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
             (setq c-basic-offset 4)))
 
 (require 'protobuf-mode)
