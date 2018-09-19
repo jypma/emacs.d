@@ -57,7 +57,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (meghanada focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (highlight-symbol meghanada focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
@@ -496,6 +496,13 @@ See `elfeed-play-with-mpv'."
   kept-old-versions 2
   version-control t)
 
+
+(use-package highlight-symbol
+  :ensure t
+  :config
+  (setq highlight-symbol-idle-delay 0.3)
+  )
+
 (require 'meghanada)
 (add-hook 'java-mode-hook
           (lambda ()
@@ -503,6 +510,7 @@ See `elfeed-play-with-mpv'."
             ;; (meghanada-mode t)
             (abbrev-mode 0)
             (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
+            (highlight-symbol-mode)
             (setq c-basic-offset 4)))
 
 (require 'protobuf-mode)
@@ -679,3 +687,9 @@ See `elfeed-play-with-mpv'."
   :ensure t
   :config
   (yas-global-mode 1))
+
+(use-package highlight-symbol
+  :ensure t
+  :config
+  (setq highlight-symbol-idle-delay 0.3)
+  )
