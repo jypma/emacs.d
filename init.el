@@ -501,7 +501,7 @@ See `elfeed-play-with-mpv'."
           (lambda ()
             ;; Uncomment to auto-start meghanada when opening java file
             ;; (meghanada-mode t)
-            (abbrev-mode nil)
+            (abbrev-mode 0)
             (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
             (setq c-basic-offset 4)))
 
