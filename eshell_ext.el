@@ -1,5 +1,5 @@
 ;; https://emacs.stackexchange.com/questions/12235/edit-file-as-root-over-when-already-using-tramp
-(defun my-edit-file-as-root ()
+(defun my/edit-file-as-root ()
   "Open the current file as root"
   (interactive)
   (let*
@@ -115,7 +115,7 @@
           (with-current-buffer buf (save-buffer)))
         (my/similar-buffers)))
 
-(defun aj-toggle-fold ()
+(defun my/toggle-fold ()
   "Toggle fold all lines larger than indentation on current line"
   (interactive)
   (let ((col 1))
@@ -124,3 +124,18 @@
       (setq col (+ 1 (current-column)))
       (set-selective-display
        (if selective-display nil (or col 1))))))
+
+(defun my/java-toggle-spec ()
+  "Switches between a *.java file and its *Spec.java test"
+  (interactive)
+  (let (
+        (idx (string-match "src/main/java" buffer-file-name)))
+    (if (and idx (string-match "\\.java" buffer-file-name))
+        (find-file (concat
+                    (substring buffer-file-name 0 idx)
+                    "src/test/java"
+                    (substring buffer-file-name (+ idx 13) -5)
+                    "Spec.java"))
+        )
+    )
+  )
