@@ -236,8 +236,10 @@
   :config (progn
             (setq rtags-use-ivy t
                   rtags-completions-enabled t)
-            (push 'company-rtags company-backends)))
-(rtags-enable-standard-keybindings)
+            (push 'company-rtags company-backends))
+  (rtags-enable-standard-keybindings)
+  (define-key c-mode-base-map (kbd "M-.") 'rtags-find-symbol-at-point)
+  (define-key c-mode-base-map (kbd "M-,") 'rtags-location-stack-back) )
 
 ;; Error checking with flycheck-rtags as a backend
 (use-package flycheck
@@ -518,6 +520,8 @@ See `elfeed-play-with-mpv'."
             (highlight-symbol-mode)
             (setq c-basic-offset 4)))
 
+(add-hook 'c++-mode-hook (lambda()
+                           (abbrev-mode 0))
 (require 'protobuf-mode)
 
 (defconst my-protobuf-style
