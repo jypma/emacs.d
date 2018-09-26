@@ -1,3 +1,4 @@
+
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
@@ -521,7 +522,8 @@ See `elfeed-play-with-mpv'."
             (setq c-basic-offset 4)))
 
 (add-hook 'c++-mode-hook (lambda()
-                           (abbrev-mode 0))
+                           (abbrev-mode 0)))
+
 (require 'protobuf-mode)
 
 (defconst my-protobuf-style
