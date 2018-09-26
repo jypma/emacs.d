@@ -57,7 +57,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (highlight-symbol meghanada focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (kubernetes highlight-symbol meghanada focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
@@ -206,6 +206,10 @@
   :pin melpa-stable
   :config
   (setq ensime-startup-notification nil))
+
+(use-package magit
+  :ensure t
+  :pin melpa-stable)
 
 (use-package sbt-mode
   :ensure t
@@ -694,3 +698,8 @@ See `elfeed-play-with-mpv'."
   :config
   (setq highlight-symbol-idle-delay 0.3)
   )
+
+(use-package kubernetes
+  :ensure t
+  :commands (kubernetes-overview))
+
