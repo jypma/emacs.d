@@ -518,12 +518,25 @@ See `elfeed-play-with-mpv'."
   (setq highlight-symbol-idle-delay 0.3)
   )
 
+
+;; Only indent inline lambdas one level
+(defun my-java-indent-lambda (orig-fun &rest args)
+  (let ((symbols (car args)))
+       (if (and (eq 2 (length symbols))
+                (eq 'arglist-cont-nonempty (car (nth 0 symbols)))
+                )
+           (apply orig-fun (list (cdr symbols)))
+         (apply orig-fun args))))
+
+(advice-add 'c-get-syntactic-indentation :around 'my-java-indent-lambda)
+
 (require 'meghanada)
 (add-hook 'java-mode-hook
           (lambda ()
             ;; Uncomment to auto-start meghanada when opening java file
             ;; (meghanada-mode t)
             (abbrev-mode 0)
+            (c-set-offset 'arglist-intro '+)         ;; only 1 indent for multi-line args lists
             (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
             (highlight-symbol-mode)
             (setq c-basic-offset 4)))
