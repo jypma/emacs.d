@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 public class ${1:`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`} {
     {
         describe("${2:`(substring (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) 0 -4)`}", () -> {
-            it("${3:works as intended}", () {
+            it("${3:works as intended}", () -> {
                 $0
             });
         });
