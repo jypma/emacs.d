@@ -101,13 +101,6 @@
 ;; magit default to origin/master instead of just master
 (setq magic-prefer-remote-upstream 1)
 
-;; Hide "Recent Commits"
-;; https://github.com/magit/magit/issues/3230
-(magit-add-section-hook 'magit-status-sections-hook
-                        'magit-insert-unpushed-to-upstream
-                        'magit-insert-unpushed-to-upstream-or-recent
-                        'replace)
-
 ;; Use pretty symbols everywhere
 (global-prettify-symbols-mode 1)
 
@@ -217,7 +210,14 @@
 
 (use-package magit
   :ensure t
-  :pin melpa-stable)
+  :pin melpa-stable
+  :config
+  ;; Hide "Recent Commits"
+  ;; https://github.com/magit/magit/issues/3230
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-unpushed-to-upstream
+                          'magit-insert-unpushed-to-upstream-or-recent
+                          'replace))
 
 (use-package sbt-mode
   :ensure t
@@ -717,13 +717,14 @@ See `elfeed-play-with-mpv'."
 (use-package yasnippet
   :ensure t
   :config
-  (yas-global-mode 1))
+  (yas-global-mode 1)
+  :delight yas-minor-mode)
 
 (use-package highlight-symbol
   :ensure t
   :config
   (setq highlight-symbol-idle-delay 0.3)
-  )
+  :delight )
 
 (use-package kubernetes
   :ensure t
