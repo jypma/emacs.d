@@ -212,6 +212,7 @@
   :ensure t
   :pin melpa-stable
   :config
+  (setq magit-list-refs-sortby "-creatordate")
   ;; Hide "Recent Commits"
   ;; https://github.com/magit/magit/issues/3230
   (magit-add-section-hook 'magit-status-sections-hook
