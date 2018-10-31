@@ -557,6 +557,10 @@ See `elfeed-play-with-mpv'."
 (electric-pair-mode 1)
 
 (global-set-key (kbd "C-x b") 'ibuffer)
+
+;; Include recentf list in ido buffer switcher
+(setq ido-use-virtual-buffers t)
+
 (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 
 (global-set-key (kbd "C-x g") 'magit-status)
