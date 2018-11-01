@@ -419,6 +419,16 @@
 ;; (defconst jiralib-token
 ;;   `("Cookie" . ,(format "__atl_path=...; studio.crowd.tokenkey=...")))
 
+(defun android-browse-url (url)
+  "Opens the given url through an android intent, assuming we're running in Termux on Android."
+  (start-process-shell-command "open-url" nil
+                                             (concat "am start -a android.intent.action.VIEW -d " url))
+  )
+
+(defun android-check-p ()
+  "Returns whether we're currently running in Termux on Android."
+  (string-match-p (regexp-quote "Android") (shell-command-to-string "uname -o")))
+
 (use-package elfeed
   :ensure t
   :bind ("C-x w" . elfeed)
@@ -482,12 +492,20 @@ See `elfeed-play-with-mpv'."
       (while (and patterns (not (string-match (car elfeed-mpv-patterns) (elfeed-entry-link entry))))
         (setq patterns (cdr patterns)))
       (if patterns
-          (elfeed-play-with-mpv)
+          (if (android-check-p)
+              (android-browse-url (elfeed-entry-link entry))
+              (elfeed-play-with-mpv))
         (if (eq major-mode 'elfeed-search-mode)
             (elfeed-search-browse-url)
           (elfeed-show-visit)))))
 
   (define-key elfeed-search-mode-map (kbd "RET") 'elfeed-visit-or-play-with-mpv))
+
+;; On android, open urls with android intents
+(when (android-check-p)
+  (advice-add 'browse-url-default-browser :override
+              (lambda (url &rest args)
+                (android-browse-url url))))
 
 ;; How much I like my files indented
 (setq c-basic-offset 2)
