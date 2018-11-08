@@ -36,6 +36,14 @@
  '(global-whitespace-mode nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(lsp-java-save-action-organize-imports nil)
+ '(lsp-ui-flycheck-list-position (quote right))
+ '(lsp-ui-peek-enable t)
+ '(lsp-ui-sideline-enable t)
+ '(lsp-ui-sideline-ignore-duplicate t)
+ '(lsp-ui-sideline-show-code-actions t)
+ '(lsp-ui-sideline-show-hover nil)
+ '(lsp-ui-sideline-show-symbol nil)
  '(markdown-code-lang-modes
    (quote
     (("ocaml" . tuareg-mode)
@@ -53,12 +61,11 @@
      ("bash" . sh-mode)
      ("xml" . xml-mode))))
  '(markdown-fontify-code-blocks-natively t)
- '(meghanada-debug t)
  '(nxml-slash-auto-complete-flag t)
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (kubernetes highlight-symbol meghanada focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
@@ -81,6 +88,8 @@
  '(default ((((class color) (min-colors 89)) (:foreground "#d3d3d3" :background "#000000"))))
  '(ensime-implicit-highlight ((t (:underline "dim gray"))))
  '(hl-line ((t (:background "#3d3708"))))
+ '(lsp-ui-sideline-code-action ((t (:foreground "#808346"))))
+ '(lsp-ui-sideline-global ((t (:foreground "burlywood"))))
  '(magit-section-highlight ((t (:background "#1c1c1c"))))
  '(markdown-code-face ((t (:inherit (fixed-pitch font-lock-constant-face) :background "#1b2129"))))
  '(markdown-pre-face ((t (:inherit fixed-pitch :background "#1b2129"))))
@@ -247,8 +256,8 @@
                   rtags-completions-enabled t)
             (push 'company-rtags company-backends))
   (rtags-enable-standard-keybindings)
-  (define-key c-mode-base-map (kbd "M-.") 'rtags-find-symbol-at-point)
-  (define-key c-mode-base-map (kbd "M-,") 'rtags-location-stack-back) )
+  (define-key c++-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
+  (define-key c++-mode-map (kbd "M-,") 'rtags-location-stack-back) )
 
 ;; Error checking with flycheck-rtags as a backend
 (use-package flycheck
@@ -293,6 +302,10 @@
 (use-package ido-vertical-mode
   :ensure t
   :init (ido-vertical-mode 1))
+
+(use-package ido-completing-read+
+  :ensure t
+  :init (ido-ubiquitous-mode 1))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -550,11 +563,8 @@ See `elfeed-play-with-mpv'."
 
 (advice-add 'c-get-syntactic-indentation :around 'my-java-indent-lambda)
 
-(require 'meghanada)
 (add-hook 'java-mode-hook
           (lambda ()
-            ;; Uncomment to auto-start meghanada when opening java file
-            ;; (meghanada-mode t)
             (abbrev-mode 0)
             (c-set-offset 'arglist-intro '+)         ;; only 1 indent for multi-line args lists
             (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
@@ -754,3 +764,55 @@ See `elfeed-play-with-mpv'."
   :ensure t
   :commands (kubernetes-overview))
 
+
+(use-package treemacs
+  :ensure t)
+
+(use-package lsp-mode
+  :ensure t
+  :init (setq lsp-eldoc-render-all nil
+              lsp-highlight-symbol-at-point nil
+              lsp-inhibit-message t)
+  )
+
+(use-package company-lsp
+  :after  company
+  :ensure t
+  :config
+  (setq company-lsp-cache-candidates t
+        company-lsp-async t))
+
+(use-package lsp-ui
+  :ensure t
+  :config
+  (setq lsp-ui-sideline-update-mode 'point)
+  :bind (
+         :map lsp-ui-mode-map
+              ("C-c SPC" . lsp-execute-code-action)
+              )
+   )
+
+(use-package lsp-java
+  :ensure t
+  :config
+  (add-hook 'java-mode-hook
+            (lambda ()
+              (setq-local company-backends (list 'company-lsp))))
+
+  (add-hook 'java-mode-hook 'lsp-java-enable)
+  (add-hook 'java-mode-hook 'flycheck-mode)
+  (add-hook 'java-mode-hook 'company-mode)
+  (add-hook 'java-mode-hook 'lsp-ui-mode))
+
+(use-package dap-mode
+  :ensure t
+  :after lsp-mode
+  :config
+  (dap-mode t)
+  (dap-ui-mode t))
+
+(use-package dap-java
+  :after (lsp-java))
+
+(use-package lsp-java-treemacs
+  :after (treemacs))
