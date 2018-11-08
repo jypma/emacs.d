@@ -17,3 +17,6 @@ var/pcache
 /projectile.cache
 url/cache
 url/cookies
+.cache
+eclipse.jdt.ls
+workspace
