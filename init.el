@@ -36,6 +36,7 @@
  '(global-whitespace-mode nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(lsp-java-format-settings-url "/home/jan/eclipse-format-jan.xml")
  '(lsp-java-save-action-organize-imports nil)
  '(lsp-ui-flycheck-list-position (quote right))
  '(lsp-ui-peek-enable t)
