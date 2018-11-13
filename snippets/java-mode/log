@@ -1,0 +1,5 @@
+# -*- mode: java-mode -*-
+# name: log
+# key: log
+# --
+private static final Logger log = LoggerFactory.getLogger(${1:`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`}.class);
