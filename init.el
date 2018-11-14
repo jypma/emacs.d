@@ -381,6 +381,7 @@
                (flyspell-prog-mode))))
 (add-hook 'markdown-mode-hook (lambda () (flyspell-mode)))
 (add-hook 'java-mode-hook (lambda () (flyspell-prog-mode)))
+(add-hook 'protobuf-mode-hook (lambda () (flyspell-prog-mode)))
 
 ;; use popup menu for completions instead of strange top-of-buffer selector
 (use-package flyspell-popup
