@@ -36,6 +36,9 @@
  '(global-whitespace-mode nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(lsp-java-favorite-static-members
+   (quote
+    ("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*")))
  '(lsp-java-format-settings-url "/home/jan/eclipse-format-jan.xml")
  '(lsp-java-save-action-organize-imports nil)
  '(lsp-ui-flycheck-list-position (quote right))
@@ -88,6 +91,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#d3d3d3" :background "#000000"))))
  '(ensime-implicit-highlight ((t (:underline "dim gray"))))
+ '(font-lock-type-face ((t (:foreground "#BBE273"))))
  '(hl-line ((t (:background "#3d3708"))))
  '(lsp-ui-sideline-code-action ((t (:foreground "#808346"))))
  '(lsp-ui-sideline-global ((t (:foreground "burlywood"))))
@@ -571,7 +575,10 @@ See `elfeed-play-with-mpv'."
             (abbrev-mode 0)
             (c-set-offset 'arglist-intro '+)         ;; only 1 indent for multi-line args lists
             (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
+            (c-set-offset 'arglist-close '0)         ;; Single closing paren on a line should line up
             (highlight-symbol-mode)
+            (setq fill-column 130)                   ;; yes, looks worse on github, but, java.
+            (setq whitespace-line-column 130)
             (setq c-basic-offset 4)))
 
 (add-hook 'c++-mode-hook (lambda()
