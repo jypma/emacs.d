@@ -831,3 +831,6 @@ See `elfeed-play-with-mpv'."
   :ensure t
   :init
   (eyebrowse-mode t))
+
+(use-package scad-mode
+  :ensure t)
