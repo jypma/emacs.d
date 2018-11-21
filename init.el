@@ -171,6 +171,8 @@
 (require 'colorpicker)
 (global-set-key (kbd "C-x c") 'colorpicker)
 
+(require 'uuidgen)
+
 ;; highlight #ff etc as actual colors
 (use-package rainbow-mode
   :ensure t
@@ -798,7 +800,7 @@ See `elfeed-play-with-mpv'."
   (setq lsp-ui-sideline-update-mode 'point)
   :bind (
          :map lsp-ui-mode-map
-              ("C-c SPC" . lsp-execute-code-action)
+              ("C-c C-SPC" . lsp-execute-code-action)
               )
    )
 
