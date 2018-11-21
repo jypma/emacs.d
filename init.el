@@ -69,7 +69,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
@@ -575,6 +575,9 @@ See `elfeed-play-with-mpv'."
 (add-hook 'java-mode-hook
           (lambda ()
             (abbrev-mode 0)
+            (visual-line-mode)
+            (adaptive-wrap-prefix-mode)
+            (setq adaptive-wrap-extra-indent 4)
             (c-set-offset 'arglist-intro '+)         ;; only 1 indent for multi-line args lists
             (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
             (c-set-offset 'arglist-close '0)         ;; Single closing paren on a line should line up
@@ -835,4 +838,7 @@ See `elfeed-play-with-mpv'."
   (eyebrowse-mode t))
 
 (use-package scad-mode
+  :ensure t)
+
+(use-package adaptive-wrap
   :ensure t)
