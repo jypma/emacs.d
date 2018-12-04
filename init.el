@@ -82,7 +82,10 @@
      (tab-mark 9
                [187 9]
                [92 9]))))
- '(whitespace-line-column 110))
+ '(whitespace-line-column 110)
+ '(whitespace-style
+   (quote
+    (face trailing tabs spaces lines-tail newline empty indentation space-after-tab space-before-tab space-mark tab-mark newline-mark))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
