@@ -139,3 +139,16 @@
         )
     )
   )
+
+(defun my/complete-ssh-host (prefix)
+  "Finds any ssh host that starts with prefix"
+  (let* ((parsed (append
+                  (tramp-parse-sconfig "~/.ssh/config.production")
+                  (tramp-parse-sconfig "~/.ssh/config.sandbox")
+                  (tramp-parse-sconfig "~/.ssh/config.smoketests")
+                  (tramp-parse-sconfig "~/.ssh/config.jyp")))
+         (filtered (seq-map 'cadr parsed)))
+    (seq-find (lambda (host) (string-prefix-p prefix host)) filtered))
+  )
+
+(defun ts/tramp-host (prefix) (format "/ssh:%s:/" (my/complete-ssh-host prefix)))
