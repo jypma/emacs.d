@@ -69,7 +69,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
@@ -93,6 +93,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#d3d3d3" :background "#000000"))))
+ '(diff-hl-change ((t (:background "#FFA060" :foreground "#000000"))))
+ '(diff-hl-dired-unknown ((t (:inherit dired-ignored :background "#3CD681" :foreground "#000000"))))
  '(ensime-implicit-highlight ((t (:underline "dim gray"))))
  '(font-lock-type-face ((t (:foreground "#BBE273"))))
  '(hl-line ((t (:background "#3d3708"))))
@@ -408,6 +410,12 @@
   (custom-set-variables
    '(git-gutter:update-interval 1))
   :delight)
+
+(use-package diff-hl
+  :ensure t
+  ;; only for dired, we use git-gutter for normal files
+  :config
+  (add-hook 'dired-mode-hook #'diff-hl-dired-mode-unless-remote))
 
 (use-package dashboard
   :ensure t
