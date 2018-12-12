@@ -36,6 +36,8 @@
  '(global-whitespace-mode nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(js-indent-level 2)
+ '(json-reformat:indent-width 2)
  '(lsp-java-favorite-static-members
    (quote
     ("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*")))
@@ -112,6 +114,7 @@
  '(rainbow-delimiters-unmatched-face ((t (:inherit rainbow-delimiters-base-face :background "#88090B"))))
  '(region ((t (:background "#5b3636"))))
  '(shadow ((t (:foreground "grey70"))))
+ '(whitespace-line ((t (:background "#40002A"))))
  '(whitespace-space ((t nil)))
  '(whitespace-trailing ((t (:background "dark red")))))
 
@@ -294,7 +297,7 @@
   (load-theme 'cyberpunk t)
   (set-cursor-color "#ffffff") ;; somehow not all frames have superwhite cursor by default
   (set-face-attribute 'region nil :foreground 'unspecified)
-  (set-face-attribute 'whitespace-line nil :background 'unspecified))
+  (set-face-attribute 'whitespace-line nil :background "#40002A" :foreground 'unspecified))
 
 ;; Format files consistently
 (use-package clang-format
@@ -391,7 +394,10 @@
   (add-hook mode #'flyspell-prog-mode)
   (add-hook mode #'ws-butler-mode))
 
-(add-hook 'markdown-mode-hook (lambda () (flyspell-mode)))
+(add-hook 'markdown-mode-hook (lambda ()
+                                (ws-butler-mode)
+                                (visual-line-mode)
+                                (flyspell-mode)))
 
 ;; use popup menu for completions instead of strange top-of-buffer selector
 (use-package flyspell-popup
@@ -585,7 +591,6 @@ See `elfeed-play-with-mpv'."
 (add-hook 'java-mode-hook
           (lambda ()
             (abbrev-mode 0)
-            (visual-line-mode)
             (adaptive-wrap-prefix-mode)
             (setq adaptive-wrap-extra-indent 4)
             (c-set-offset 'arglist-intro '+)         ;; only 1 indent for multi-line args lists
@@ -594,7 +599,9 @@ See `elfeed-play-with-mpv'."
             (highlight-symbol-mode)
             (setq fill-column 130)                   ;; yes, looks worse on github, but, java.
             (setq whitespace-line-column 130)
-            (setq c-basic-offset 4)))
+            (setq c-basic-offset 4)
+            (visual-line-mode)))
+
 
 (add-hook 'c++-mode-hook (lambda()
                            (abbrev-mode 0)))
