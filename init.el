@@ -108,7 +108,7 @@
  '(mode-line ((t (:background "#333333" :foreground "gold3" :box (:line-width -1 :color "gold4")))))
  '(mode-line-inactive ((t (:background "black" :foreground "dark gray" :box (:line-width -1 :color "LightSteelBlue4")))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#FF5555"))))
- '(rainbow-delimiters-depth-2-face ((t (:foreground "#02B602"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "#02B692"))))
  '(rainbow-delimiters-depth-5-face ((t (:foreground "#00FFC7"))))
  '(rainbow-delimiters-depth-6-face ((t (:foreground "#79C8E1"))))
  '(rainbow-delimiters-depth-8-face ((t (:foreground "#998EDB"))))
@@ -261,6 +261,9 @@
                   company-minimum-prefix-length 1)
             ;; Don't use company mode in eshell (since tramp gets really slow)
             (setq company-global-modes '(not eshell-mode))
+
+            ;; Don't autocomplete numbers
+            (setq company-dabbrev-char-regexp "[A-z:-]")
             (add-hook 'after-init-hook 'global-company-mode))
   :delight company-mode "  ")
 
@@ -700,6 +703,11 @@ See `elfeed-play-with-mpv'."
  'org-babel-load-languages
  '((sql . t)
    (shell . t)))
+
+;; use python with babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
 
 ;; fontify inside org mode
 (setq org-src-fontify-natively t)
