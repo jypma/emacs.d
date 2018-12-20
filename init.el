@@ -98,6 +98,7 @@
  '(diff-hl-change ((t (:background "#FFA060" :foreground "#000000"))))
  '(diff-hl-dired-unknown ((t (:inherit dired-ignored :background "#3CD681" :foreground "#000000"))))
  '(ensime-implicit-highlight ((t (:underline "dim gray"))))
+ '(flymake-error ((t (:background "#450000" :box (:line-width 1 :color "#450000" :style released-button) :underline nil))))
  '(font-lock-type-face ((t (:foreground "#BBE273"))))
  '(hl-line ((t (:background "#3d3708"))))
  '(lsp-ui-sideline-code-action ((t (:foreground "#808346"))))
