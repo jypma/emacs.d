@@ -608,6 +608,7 @@ See `elfeed-play-with-mpv'."
 
 
 (add-hook 'c++-mode-hook (lambda()
+                           (c-set-offset 'substatement-open 0)
                            (abbrev-mode 0)))
 
 (require 'protobuf-mode)
