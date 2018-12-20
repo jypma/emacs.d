@@ -73,13 +73,22 @@
 (cl-defstruct ob-http-request method url headers body)
 (cl-defstruct ob-http-response headers body headers-map)
 
+(defun ob-http-urlencode-if-needed (url)
+  "URL-encodes any characters in the given url that don't exist in US-ASCII"
+  (concat
+   (mapcar (lambda (char)
+             (if (> char 127)
+                 (url-hexify-string char)
+               char))
+           (append url nil))))
+
 (defun ob-http-parse-request (input)
   (let* ((headers-body (ob-http-split-header-body input))
          (headers (s-split-up-to "\\(\r\n\\|[\n\r]\\)" (car headers-body) 1))
          (method-url (split-string (car headers) " ")))
     (make-ob-http-request
      :method (car method-url)
-     :url (cadr method-url)
+     :url (url-encode-url (cadr method-url))
      :headers (if (cadr headers) (s-lines (cadr headers)))
      :body (cadr headers-body))))
 
