@@ -71,7 +71,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (dash lsp-mode cquery ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
@@ -97,7 +97,7 @@
  '(default ((((class color) (min-colors 89)) (:foreground "#d3d3d3" :background "#000000"))))
  '(diff-hl-change ((t (:background "#FFA060" :foreground "#000000"))))
  '(diff-hl-dired-unknown ((t (:inherit dired-ignored :background "#3CD681" :foreground "#000000"))))
- '(flymake-error ((t (:background "#450000" :box (:line-width 1 :color "#450000" :style released-button) :underline nil))))
+ '(ensime-implicit-highlight ((t (:underline "dim gray"))))
  '(font-lock-type-face ((t (:foreground "#BBE273"))))
  '(hl-line ((t (:background "#3d3708"))))
  '(lsp-ui-sideline-code-action ((t (:foreground "#808346"))))
@@ -227,6 +227,12 @@
   :commands (goto-address-prog-mode
              goto-address-mode))
 
+(use-package ensime
+  :ensure t
+  :pin melpa-stable
+  :config
+  (setq ensime-startup-notification nil))
+
 (use-package magit
   :ensure t
   :pin melpa-stable
@@ -245,15 +251,7 @@
 
 (use-package scala-mode
   :ensure t
-  :pin melpa
-  :commands sbt-start sbt-command
-  :config
-  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
-  ;; allows using SPACE when in the minibuffer
-  (substitute-key-definition
-   'minibuffer-complete-word
-   'self-insert-command
-   minibuffer-local-completion-map))
+  :pin melpa)
 
 (use-package company
   :ensure t
@@ -269,33 +267,9 @@
             (add-hook 'after-init-hook 'global-company-mode))
   :delight company-mode "  ")
 
-;; Completions + lots of IDE features with RTags
-(use-package rtags
-  :ensure t
-  :config (progn
-            (setq rtags-use-ivy t
-                  rtags-completions-enabled t)
-            (push 'company-rtags company-backends))
-  (rtags-enable-standard-keybindings)
-  (define-key c++-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
-  (define-key c++-mode-map (kbd "M-,") 'rtags-location-stack-back) )
-
-;; Error checking with flycheck-rtags as a backend
 (use-package flycheck
   :ensure t
-  :config (progn
-            (add-hook 'c++-mode-hook 'flycheck-mode)
-            (add-hook 'c-mode-hook 'flycheck-mode))
   :delight flycheck-mode "  ")
-
-(use-package flycheck-rtags :ensure t)
-
-(defun my-flycheck-rtags-setup ()
-  (flycheck-select-checker 'rtags)
-  (setq-local flycheck-highlighting-mode nil)
-  (setq-local flycheck-check-syntax-automatically nil))
-(add-hook 'c-mode-hook #'my-flycheck-rtags-setup)
-(add-hook 'c++-mode-hook #'my-flycheck-rtags-setup)
 
 (use-package cyberpunk-theme
   :ensure t
@@ -396,6 +370,7 @@
                 c++-mode-hook
                 scala-mode-hook
                 protobuf-mode-hook
+                js-mode-hook
                 java-mode-hook))
   (add-hook mode #'flyspell-prog-mode)
   (add-hook mode #'ws-butler-mode))
@@ -848,13 +823,6 @@ See `elfeed-play-with-mpv'."
   (add-hook 'java-mode-hook 'company-mode)
   (add-hook 'java-mode-hook 'lsp-ui-mode))
 
-(use-package lsp-scala
-  :load-path "~/.emacs.d/git/lsp-scala"
-  :hook
-  (scala-mode . lsp-scala-enable)
-  (scala-mode . flycheck-mode)
-  (scala-mode . lsp-ui-mode))
-
 (use-package dap-mode
   :ensure t
   :after lsp-mode
@@ -892,3 +860,14 @@ See `elfeed-play-with-mpv'."
    'org-babel-load-languages
    '((emacs-lisp . t)
      (http . t))))
+
+(defun cquery//enable ()
+  (lsp)
+  )
+
+(use-package cquery
+  :ensure t
+  :config
+  (add-hook 'c-mode-hook #'cquery//enable)
+  (add-hook 'c++-mode-hook #'cquery//enable)
+  (setq cquery-executable "/usr/bin/cquery"))

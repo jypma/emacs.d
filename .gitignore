@@ -21,3 +21,5 @@ url/cookies
 eclipse.jdt.ls
 workspace
 /.org-id-locations
+/.#recentf
+/.lsp-session-v1
