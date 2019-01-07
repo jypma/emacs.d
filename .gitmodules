@@ -7,3 +7,6 @@
 [submodule "git/hide-lines"]
 	path = git/hide-lines
 	url = https://github.com/vapniks/hide-lines.git
+[submodule "git/lsp-scala"]
+	path = git/lsp-scala
+	url = https://github.com/rossabaker/lsp-scala.git
