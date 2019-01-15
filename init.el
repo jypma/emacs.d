@@ -30,6 +30,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (misterioso)))
  '(dired-listing-switches "-al --quoting-style=literal")
+ '(eyebrowse-new-workspace "*dashboard*")
  '(fill-column 110)
  '(git-gutter:update-interval 1)
  '(global-subword-mode t)
@@ -98,6 +99,7 @@
  '(diff-hl-change ((t (:background "#FFA060" :foreground "#000000"))))
  '(diff-hl-dired-unknown ((t (:inherit dired-ignored :background "#3CD681" :foreground "#000000"))))
  '(ensime-implicit-highlight ((t (:underline "dim gray"))))
+ '(eyebrowse-mode-line-active ((t (:inherit mode-line-emphasis :underline t))))
  '(flymake-error ((t (:background "#450000" :box (:line-width 1 :color "#450000" :style released-button) :underline nil))))
  '(font-lock-type-face ((t (:foreground "#BBE273"))))
  '(hl-line ((t (:background "#3d3708"))))
