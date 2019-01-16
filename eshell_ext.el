@@ -26,6 +26,22 @@
             buffer-file-name))))
     (find-alternate-file file-name)))  
 
+;; https://emacs.stackexchange.com/questions/37019/use-sudo-while-editing-over-ssh
+(defun my--reopen-remote-file-as-root ()
+  "Reopen a remote file as root over tramp."
+  (find-alternate-file (let* ((parts (s-split ":" buffer-file-name))
+            (hostname (nth 1 parts))
+            (filepath (car (last parts))))
+           (concat "/ssh" ":" hostname "|" "sudo" ":" hostname ":" filepath))))
+
+(defun my/reopen-file-as-root ()
+  "Reopen a local or remote file as root."
+  (interactive)
+  (if (file-remote-p default-directory)
+      (progn
+    (my--reopen-remote-file-as-root)))
+  (crux-reopen-as-root))
+
 ;; https://www.reddit.com/r/emacs/comments/5pziif/cd_to_home_directory_of_server_when_using_eshell/
 (defun eshell/lcd (&optional directory)
   "Change directory relative to the current TRAMP remote host"
