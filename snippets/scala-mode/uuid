@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: uuid
+# key: uuid
+# --
+val ${1:myId} = UUID.fromString("`(uuidgen-4)`")
