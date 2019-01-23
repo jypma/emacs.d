@@ -20,6 +20,7 @@
           (add-to-list 'load-path (expand-file-name x emacs-git)))
         (delete ".." (directory-files emacs-git))))
 
+(require 'fira-code-mode)
 (require 'whitespace)
 (add-hook 'prog-mode-hook #'whitespace-mode)
 
@@ -124,17 +125,13 @@
 
 (tool-bar-mode -1)
 
+(set-frame-font "Fira Code 10" nil t)
+
 ;; magit default to origin/master instead of just master
 (setq magic-prefer-remote-upstream 1)
 
 ;; Use pretty symbols everywhere
 (global-prettify-symbols-mode 1)
-
-;; Use pretty symbols in scala
-(add-hook 'scala-mode-hook (lambda ()
-                             (setq prettify-symbols-alist scala-prettify-symbols-alist)
-                             (prettify-symbols-mode)))
-(setq prettify-symbols-unprettify-at-point 'right-edge)
 
 ;; Winner: use C-c left, right to cycle previous window layouts
 (winner-mode 1)
@@ -397,7 +394,10 @@
                 c++-mode-hook
                 scala-mode-hook
                 protobuf-mode-hook
+                javascript-mode-hook
+                groovy-mode-hook
                 java-mode-hook))
+  (add-hook mode #'fira-code-mode)
   (add-hook mode #'flyspell-prog-mode)
   (add-hook mode #'ws-butler-mode))
 
@@ -889,3 +889,4 @@ See `elfeed-play-with-mpv'."
 
 ;; Easily search through the content of files marked in a dired buffer using occur mode
 (use-package noccur :ensure t)
+
