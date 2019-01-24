@@ -403,6 +403,7 @@
 
 (add-hook 'markdown-mode-hook (lambda ()
                                 (ws-butler-mode)
+                                (fira-code-mode)
                                 (visual-line-mode)
                                 (flyspell-mode)))
 
@@ -415,6 +416,9 @@
 
 ;; customize minor mode display for flyspell-mode
 (delight 'flyspell-mode "   " t)
+
+;; don't show the fira-code-mode
+(delight 'fira-code-mode)
 
 (use-package git-gutter
   :ensure t
