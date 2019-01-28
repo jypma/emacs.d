@@ -420,6 +420,9 @@
 ;; don't show the fira-code-mode
 (delight 'fira-code-mode)
 
+;; don't create lock files, nobody else is editing on my machine. Plus, we've got autorevert.
+(setq create-lockfiles nil)
+
 (use-package git-gutter
   :ensure t
   :config
