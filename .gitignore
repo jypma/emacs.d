@@ -21,3 +21,4 @@ url/cookies
 eclipse.jdt.ls
 workspace
 /.org-id-locations
+/request/curl-cookie-jar
