@@ -617,6 +617,11 @@ See `elfeed-play-with-mpv'."
             (setq c-basic-offset 4)
             (visual-line-mode)))
 
+(add-hook 'scala-mode-hook
+          (lambda ()
+            (adaptive-wrap-prefix-mode)
+            (setq adaptive-wrap-extra-indent 2)
+            (visual-line-mode)))
 
 (add-hook 'c++-mode-hook (lambda()
                            (c-set-offset 'substatement-open 0)
