@@ -121,7 +121,7 @@
  '(region ((t (:background "#5b3636"))))
  '(shadow ((t (:foreground "grey70"))))
  '(whitespace-line ((t (:background "#40002A"))))
- '(whitespace-space ((t nil)))
+ '(whitespace-space ((t (:background "#000000" :foreground "#66CACC"))))
  '(whitespace-trailing ((t (:background "dark red")))))
 
 (tool-bar-mode -1)
