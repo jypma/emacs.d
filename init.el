@@ -923,3 +923,26 @@ See `elfeed-play-with-mpv'."
   :bind
   ("C-c r" . 'vr/replace)
   ("C-c q" . 'vr/query-replace))
+
+;; Colorize compile buffer if process sends escape codes
+;; https://stackoverflow.com/questions/13397737/ansi-coloring-in-compilation-mode
+(ignore-errors
+  (require 'ansi-color)
+  (defun my-colorize-compilation-buffer ()
+    (when (eq major-mode 'compilation-mode)
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
+  (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
+
+(defun my-compilation-prettify-symbols-predicate (start end match)
+  (message "Match: %s" match)
+  t)
+
+(defun my-compilation-mode-prettify ()
+  "Enable prettify symbols and replace current directory with house symbol."
+  (setq prettify-symbols-alist
+        `((,(expand-file-name (directory-file-name default-directory)) . ?⌂)
+          (,(expand-file-name "~") . ?~)))
+  (setq prettify-symbols-compose-predicate 'my-compilation-prettify-symbols-predicate)
+  (prettify-symbols-mode t))
+
+(add-hook 'compilation-mode-hook 'my-compilation-mode-prettify)
