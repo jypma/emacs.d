@@ -1,10 +1,12 @@
 ;;; sbt-mode-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
+
+(add-to-list 'load-path (directory-file-name
+                         (or (file-name-directory #$) (car load-path))))
+
 
-;;;### (autoloads nil "sbt-mode" "sbt-mode.el" (22976 51483 428992
-;;;;;;  688000))
+;;;### (autoloads nil "sbt-mode" "sbt-mode.el" (0 0 0 0))
 ;;; Generated autoloads from sbt-mode.el
 
 (autoload 'sbt-start "sbt-mode" "\
@@ -40,10 +42,12 @@ sbt:default-command, if no other command has yet been run).
 
 \(fn)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sbt-mode" '("sbt")))
+
 ;;;***
 
-;;;### (autoloads nil "sbt-mode-buffer" "sbt-mode-buffer.el" (22976
-;;;;;;  51483 242325 664000))
+;;;### (autoloads nil "sbt-mode-buffer" "sbt-mode-buffer.el" (0 0
+;;;;;;  0 0))
 ;;; Generated autoloads from sbt-mode-buffer.el
 
 (autoload 'sbt-switch-to-active-sbt-buffer "sbt-mode-buffer" "\
@@ -56,10 +60,20 @@ When run in buffer with no scala project then based on number of sbt buffers thi
 
 \(fn)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sbt-mode-buffer" '("sbt:")))
+
 ;;;***
 
-;;;### (autoloads nil "sbt-mode-hydra" "sbt-mode-hydra.el" (22976
-;;;;;;  51483 562326 278000))
+;;;### (autoloads nil "sbt-mode-comint" "sbt-mode-comint.el" (0 0
+;;;;;;  0 0))
+;;; Generated autoloads from sbt-mode-comint.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sbt-mode-comint" '("sbt:")))
+
+;;;***
+
+;;;### (autoloads nil "sbt-mode-hydra" "sbt-mode-hydra.el" (0 0 0
+;;;;;;  0))
 ;;; Generated autoloads from sbt-mode-hydra.el
 
 (autoload 'sbt-hydra "sbt-mode-hydra" "\
@@ -68,10 +82,20 @@ Sbt project it will create one.
 
 \(fn)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sbt-mode-hydra" '("sbt-")))
+
 ;;;***
 
-;;;### (autoloads nil "sbt-mode-rgrep" "sbt-mode-rgrep.el" (22976
-;;;;;;  51483 512326 181000))
+;;;### (autoloads nil "sbt-mode-project" "sbt-mode-project.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from sbt-mode-project.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sbt-mode-project" '("sbt:")))
+
+;;;***
+
+;;;### (autoloads nil "sbt-mode-rgrep" "sbt-mode-rgrep.el" (0 0 0
+;;;;;;  0))
 ;;; Generated autoloads from sbt-mode-rgrep.el
 
 (autoload 'sbt-grep "sbt-mode-rgrep" "\
@@ -89,11 +113,18 @@ Recursively grep for definition of ID in scala files in the directory tree roote
 
 \(fn ID &optional CONFIRM)" t nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sbt-mode-rgrep" '("sbt:")))
+
 ;;;***
 
-;;;### (autoloads nil nil ("sbt-mode-comint.el" "sbt-mode-pkg.el"
-;;;;;;  "sbt-mode-project.el" "sbt-mode-vars.el") (22976 51483 645659
-;;;;;;  771000))
+;;;### (autoloads nil "sbt-mode-vars" "sbt-mode-vars.el" (0 0 0 0))
+;;; Generated autoloads from sbt-mode-vars.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sbt-mode-vars" '("sbt:")))
+
+;;;***
+
+;;;### (autoloads nil nil ("sbt-mode-pkg.el") (0 0 0 0))
 
 ;;;***
 
@@ -101,5 +132,6 @@ Recursively grep for definition of ID in scala files in the directory tree roote
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
+;; coding: utf-8
 ;; End:
 ;;; sbt-mode-autoloads.el ends here

@@ -15,6 +15,13 @@
   (defvar sbt:submode)
   (defun sbt-command (c)))
 
+(defvar ansi-color-regexp)
+(when (not (boundp 'ansi-color-regexp))
+  ;; `ansi-color-regexp' removed from ansi-color.el and replaced by
+  ;; `ansi-color-control-seq-regexp'
+  ;; commit 35ed01dfb3f811a997e26d843e9971eb6b81b125
+  (setq ansi-color-regexp ansi-color-control-seq-regexp))
+
 (defcustom sbt:sbt-history-file "target/.history"
   "The .history file written by sbt. Relative to the sbt project
 root. This will be loaded as the comint-input-ring on start-up"
@@ -27,12 +34,12 @@ as the comint-input-ring on console start-up"
   :type 'string
   :group 'sbt)
 
-(defcustom sbt:sbt-prompt-regexp "^\\(\\[[^\]]*\\] \\)?[>$][ ]*"
+(defcustom sbt:sbt-prompt-regexp "^\\(sbt:[^>]+\\)?>[ ]+"
   "A regular expression to match sbt REPL prompt"
   :type 'string
   :group 'sbt)
 
-(defcustom sbt:console-prompt-regexp "^scala>[ ]*"
+(defcustom sbt:console-prompt-regexp "^scala>[ ]+"
   "A regular expression to match scala REPL prompt"
   :type 'string
   :group 'sbt)
@@ -42,8 +49,8 @@ as the comint-input-ring on console start-up"
   :type 'string
   :group 'sbt)
 
-(defcustom sbt:prompt-regexp "^\\(\\(scala\\|\\[[^\]]*\\] \\)?[>$]\\|[ ]+|\\)[ ]*"
-  "A regular expression to match sbt and scala console prompts"
+(defcustom sbt:prompt-regexp "^\\(\\(sbt:[^>]+\\)?\\|scala\\)>[ ]+"
+  "A regular expression to match sbt and scala console prompts. The prompt MUST NOT match \"^[completions].*\"."
   :type 'string
   :group 'sbt)
 
@@ -70,7 +77,7 @@ line of output buffer."
   (sbt:require-buffer)
   (when (derived-mode-p 'comint-mode)
 
-    (setq comint-process-echoes t)
+    (setq comint-process-echoes nil)
     (setq comint-scroll-to-bottom-on-output sbt:scroll-to-bottom-on-output)
     (setq comint-prompt-regexp sbt:prompt-regexp)
     (setq-local comint-use-prompt-regexp t)
@@ -185,56 +192,33 @@ what `sbt:move-marker-before-prompt-filter` did."
 (defun sbt:scala-escape-string (str)
   (mapconcat 'sbt:scala-escape-char str ""))
 
-(defconst sbt:completions-regex "^\\[completions\\] \\(.*\\)?$")
-(defconst sbt:repl-completions-string
-  ;; waiting for better times... maybe some day we will have a completions command in
-  ;; the scala-console
-  (concat "{ val input = \"$1\"; "
-          "val completer = new scala.tools.nsc.interpreter.JLineCompletion($intp).completer; "
-          "val completions = completer.complete(input, input.length); "
-          "val prefix = input.substring(0, completions.cursor); "
-          "completions.candidates.foreach(c => println(\"[completions] \" + c))} // completions")
-  "A command to send to scala console to get completions for $1 (an escaped string).")
+(defconst sbt:completions-regex "^\\[completions\\] \\(.*?\\)?$")
 
-(defun sbt:get-sbt-completions (input)
+(defun sbt:get-completions (input)
    (sbt:require-buffer)
    (when (not (comint-check-proc (current-buffer)))
-     (error "sbt is not running in buffer %s" (current-buffer)))
-   (when (save-excursion
-           (comint-goto-process-mark)
-           (beginning-of-line)
-           (not (looking-at-p sbt:sbt-prompt-regexp)))
-     (error "sbt is not ready (no prompt found)"))
-   (message "Querying sbt for completions for %s..." input)
+     (error "process not running in buffer %s" (current-buffer)))
    (when (or (null input) (string-match "^\\s *$" input))
      (setq input ""))
-   (setq input (concat "completions \""
-                       (sbt:scala-escape-string input)
-                       "\""))
-   (prog1
-       (comint-redirect-results-list input
-                                     sbt:completions-regex
-                                     1)
-     (message nil)))
-
-(defun sbt:get-console-completions (input)
-   (sbt:require-buffer)
-   (when (not (comint-check-proc (current-buffer)))
-     (error "sbt is not running in buffer %s" (current-buffer)))
-   (when (save-excursion
-           (comint-goto-process-mark)
-           (beginning-of-line)
-           (not (looking-at-p sbt:console-prompt-regexp)))
-     (error "scala console is not ready (no prompt found)"))
-   (message "Querying scala console for completions for %s..." input)
-   (setq input (replace-regexp-in-string "\\$1"
-                                         (sbt:scala-escape-string input)
-                                         sbt:repl-completions-string t t))
-   (prog1
-       (comint-redirect-results-list input
-                                     sbt:completions-regex
-                                     1)
-     (message nil)))
+   (let ((submode
+          (save-excursion
+            (comint-goto-process-mark)
+            (beginning-of-line)
+            (cond ((looking-at sbt:sbt-prompt-regexp) 'sbt)
+                  ((looking-at sbt:console-prompt-regexp) 'console)
+                  ('t (error "process not ready (no prompt found)"))))))
+     (message "Querying completions for %s..." input)
+     (setq input
+           (cond ((eq submode 'sbt) (concat "completions \""
+                                            (sbt:scala-escape-string input)
+                                            "\""))
+                 ((eq submode 'console) (concat ":completions " input))))
+     (message input)
+     (prog1
+         (comint-redirect-results-list input
+                                       sbt:completions-regex
+                                       1)
+       (message nil))))
 
 (defun sbt:completion-at-point ()
   (sbt:require-buffer)
@@ -250,23 +234,11 @@ what `sbt:move-marker-before-prompt-filter` did."
     (beginning-of-line)
     (if (> beg end)
         (comint-goto-process-mark)
-      (cond ((looking-at-p sbt:sbt-prompt-regexp)
+      (cond ((or (looking-at-p sbt:sbt-prompt-regexp)
+                 (looking-at-p sbt:console-prompt-regexp))
              (goto-char point)
-             (let ((completions (sbt:get-sbt-completions (buffer-substring beg end))))
+             (let ((completions (sbt:get-completions (buffer-substring beg end))))
                (completion-in-region beg end completions `(lambda (s) (> (string-width s) 0)))))
-            ((looking-at-p sbt:console-prompt-regexp)
-             (goto-char point)
-             (save-excursion
-               (goto-char end)
-               ;; find mid point (point respective to which the completions are given
-               (unless (or (= (point) beg) (looking-back "[.,;]" (1- (point))))
-                 (backward-sexp))
-               (setq mid (max beg (point)))
-               ;; find beg point (point respective to which completions are requested
-               (ignore-errors (while (> (point) beg) (backward-sexp)))
-               (setq beg (max beg (point))))
-             (let ((completions (sbt:get-console-completions (buffer-substring beg end))))
-               (completion-in-region mid end completions `(lambda (s) (> (string-width s) 0)))))
             (t
              (goto-char point)
              "No sbt or scala prompt found before process mark")))))
