@@ -948,3 +948,11 @@ See `elfeed-play-with-mpv'."
   (prettify-symbols-mode t))
 
 (add-hook 'compilation-mode-hook 'my-compilation-mode-prettify)
+
+;; bloop parse support for compilation mode
+(add-to-list 'compilation-error-regexp-alist-alist
+             '(bloop
+               "\\[.+\\] \\([^\n:]+\\):\\([0-9]+\\):\\([0-9]+\\)"
+               1 2 3))
+
+(add-to-list 'compilation-error-regexp-alist 'bloop)
