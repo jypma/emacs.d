@@ -22,3 +22,4 @@ eclipse.jdt.ls
 workspace
 /.org-id-locations
 /request/curl-cookie-jar
+/.lsp-session-v1
