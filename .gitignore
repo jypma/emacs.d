@@ -23,3 +23,5 @@ workspace
 /.org-id-locations
 /request/curl-cookie-jar
 /.lsp-session-v1
+ido.last~
+recentf~
