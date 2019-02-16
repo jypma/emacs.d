@@ -770,6 +770,10 @@ See `elfeed-play-with-mpv'."
 (use-package docker-tramp
   :ensure t)
 
+;; enable re-use of ssh connections
+;; https://emacs.stackexchange.com/questions/22306/working-with-tramp-mode-on-slow-connection-emacs-does-network-trip-when-i-start
+(setq tramp-ssh-controlmaster-options "")
+
 ;; auto-commit used for org todo list sync
 (use-package git-auto-commit-mode
   :ensure t)
