@@ -953,3 +953,6 @@ See `elfeed-play-with-mpv'."
   (setq cquery-executable "/usr/bin/cquery")
   (add-hook 'c++-mode-hook 'lsp)
   (add-hook 'c-mode-hook 'lsp))
+
+(use-package yaml-mode
+  :ensure t)
