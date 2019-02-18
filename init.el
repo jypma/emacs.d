@@ -73,7 +73,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(password-cache-expiry 600)
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
@@ -273,33 +273,11 @@
             (add-hook 'after-init-hook 'global-company-mode))
   :delight company-mode "  ")
 
-;; Completions + lots of IDE features with RTags
-(use-package rtags
-  :ensure t
-  :config (progn
-            (setq rtags-use-ivy t
-                  rtags-completions-enabled t)
-            (push 'company-rtags company-backends))
-  (rtags-enable-standard-keybindings)
-  (define-key c++-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
-  (define-key c++-mode-map (kbd "M-,") 'rtags-location-stack-back) )
 
 ;; Error checking with flycheck-rtags as a backend
 (use-package flycheck
   :ensure t
-  :config (progn
-            (add-hook 'c++-mode-hook 'flycheck-mode)
-            (add-hook 'c-mode-hook 'flycheck-mode))
   :delight flycheck-mode "  ")
-
-(use-package flycheck-rtags :ensure t)
-
-(defun my-flycheck-rtags-setup ()
-  (flycheck-select-checker 'rtags)
-  (setq-local flycheck-highlighting-mode nil)
-  (setq-local flycheck-check-syntax-automatically nil))
-(add-hook 'c-mode-hook #'my-flycheck-rtags-setup)
-(add-hook 'c++-mode-hook #'my-flycheck-rtags-setup)
 
 (use-package cyberpunk-theme
   :ensure t
@@ -871,7 +849,7 @@ See `elfeed-play-with-mpv'."
             (lambda ()
               (setq-local company-backends (list 'company-lsp))))
 
-;;  (add-hook 'java-mode-hook 'lsp)
+  (add-hook 'java-mode-hook 'lsp)
   (add-hook 'java-mode-hook 'flycheck-mode)
   (add-hook 'java-mode-hook 'company-mode)
   (add-hook 'java-mode-hook 'lsp-ui-mode))
@@ -968,3 +946,10 @@ See `elfeed-play-with-mpv'."
                1 2 3))
 
 (add-to-list 'compilation-error-regexp-alist 'bloop)
+
+(use-package cquery
+  :ensure t
+  :config
+  (setq cquery-executable "/usr/bin/cquery")
+  (add-hook 'c++-mode-hook 'lsp)
+  (add-hook 'c-mode-hook 'lsp))
