@@ -140,6 +140,21 @@
     )
   )
 
+(defun my/scala-toggle-spec ()
+  "Switches between a *.scala file and its *Spec.scala test"
+  (interactive)
+  (let (
+        (idx (string-match "src/main/scala" buffer-file-name)))
+    (if (and idx (string-match "\\.scala" buffer-file-name))
+        (find-file (concat
+                    (substring buffer-file-name 0 idx)
+                    "src/test/scala"
+                    (substring buffer-file-name (+ idx 14) -6)
+                    "Spec.scala"))
+        )
+    )
+  )
+
 (defun my/complete-ssh-host (prefix)
   "Finds any ssh host that starts with prefix"
   (let* ((parsed (append
