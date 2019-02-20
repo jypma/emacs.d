@@ -121,6 +121,7 @@
  '(rainbow-delimiters-unmatched-face ((t (:inherit rainbow-delimiters-base-face :background "#88090B"))))
  '(region ((t (:background "#5b3636"))))
  '(shadow ((t (:foreground "grey70"))))
+ '(term-color-red ((t (:background "#8c5353" :foreground "#FF0000"))))
  '(whitespace-line ((t (:background "#40002A"))))
  '(whitespace-space ((t (:background "#000000" :foreground "#66CACC"))))
  '(whitespace-trailing ((t (:background "dark red")))))
