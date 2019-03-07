@@ -29,11 +29,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-idle-delay 1)
+ '(company-idle-delay nil)
+ '(company-lsp-enable-recompletion nil)
  '(custom-enabled-themes (quote (misterioso)))
  '(dired-listing-switches "-al --quoting-style=literal")
  '(eyebrowse-new-workspace "*dashboard*")
  '(fill-column 110)
+ '(flymake-no-changes-timeout 60)
  '(git-gutter:update-interval 1)
  '(global-subword-mode t)
  '(global-whitespace-mode nil)
@@ -46,6 +48,9 @@
     ("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*")))
  '(lsp-java-format-settings-url "/home/jan/eclipse-format-jan.xml")
  '(lsp-java-save-action-organize-imports nil)
+ '(lsp-java-vmargs
+   (quote
+    ("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-Djavax.net.ssl.keyStore=/home/jan/.ssh/jyp.p12" "-Djavax.net.ssl.keyStoreType=pkcs12" "-Djavax.net.ssl.keyStorePassword=csvfiles")))
  '(lsp-ui-flycheck-list-position (quote right))
  '(lsp-ui-peek-enable t)
  '(lsp-ui-sideline-enable t)
@@ -104,7 +109,7 @@
  '(diff-hl-dired-unknown ((t (:inherit dired-ignored :background "#3CD681" :foreground "#000000"))))
  '(ensime-implicit-highlight ((t (:underline "dim gray"))))
  '(eyebrowse-mode-line-active ((t (:inherit mode-line-emphasis :underline t))))
- '(flymake-error ((t (:background "#450000" :box (:line-width 1 :color "#450000" :style released-button) :underline nil))))
+ '(flymake-error ((t (:foreground "#8b0000" :box (:line-width 1 :color "#450000" :style released-button) :underline (:color "#5F0000" :style wave) :weight bold))))
  '(font-lock-type-face ((t (:foreground "#BBE273"))))
  '(hl-line ((t (:background "#3d3708"))))
  '(lsp-ui-sideline-code-action ((t (:foreground "#808346"))))
@@ -273,6 +278,7 @@
             ;; Don't autocomplete numbers
             (setq company-dabbrev-char-regexp "[A-z:-]")
             (add-hook 'after-init-hook 'global-company-mode))
+  :bind ("C-<tab>" . 'company-complete)
   :delight company-mode "  ")
 
 
