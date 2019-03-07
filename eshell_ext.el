@@ -167,3 +167,42 @@
   )
 
 (defun ts/tramp-host (prefix) (format "/ssh:%s:/" (my/complete-ssh-host prefix)))
+
+(defun my/replace-or-delete-pair (open)
+  "Replace pair at point by OPEN and its corresponding closing character.
+The closing character is lookup in the syntax table or asked to
+the user if not found."
+  (interactive
+   (list
+    (read-char
+     (format "Replacing pair %c%c by (or hit RET to delete pair):"
+             (char-after)
+             (save-excursion
+               (forward-sexp 1)
+               (char-before))))))
+  (if (memq open '(?\n ?\r))
+      (delete-pair)
+    (let ((close (cdr (aref (syntax-table) open))))
+      (when (not close)
+        (setq close
+              (read-char
+               (format "Don't know how to close character %s (#%d) ; please provide a closing character: "
+                       (single-key-description open 'no-angles)
+                       open))))
+      (my/replace-pair open close))))
+
+(defun my/replace-pair (open close)
+  "Replace pair at point by respective chars OPEN and CLOSE.
+If CLOSE is nil, lookup the syntax table. If that fails, signal
+an error."
+  (let ((close (or close
+                   (cdr-safe (aref (syntax-table) open))
+                   (error "No matching closing char for character %s (#%d)"
+                          (single-key-description open t)
+                          open)))
+        (parens-require-spaces))
+    (insert-pair 1 open close))
+  (delete-pair)
+  (backward-char 1))
+
+(global-set-key "\333" (quote my/replace-or-delete-pair)) ;; Meta-[
