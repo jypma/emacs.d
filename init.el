@@ -742,6 +742,9 @@ See `elfeed-play-with-mpv'."
 (global-unset-key [(control z)])
 (global-unset-key [(control x)(control z)])
 
+;; Unbind Ctrl-T since it's annoying (swaps last two characters)
+(global-unset-key [(control t)])
+
 ;; UTF-8 support
 (prefer-coding-system       'utf-8)
 (set-default-coding-systems 'utf-8)
