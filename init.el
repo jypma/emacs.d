@@ -114,6 +114,7 @@
  '(hl-line ((t (:background "#3d3708"))))
  '(lsp-ui-sideline-code-action ((t (:foreground "#808346"))))
  '(lsp-ui-sideline-global ((t (:foreground "burlywood"))))
+ '(magit-mode-line-process ((t (:foreground "#74E815" :weight bold))))
  '(magit-section-highlight ((t (:background "#1c1c1c"))))
  '(markdown-code-face ((t (:inherit (fixed-pitch font-lock-constant-face) :background "#1b2129"))))
  '(markdown-pre-face ((t (:inherit fixed-pitch :background "#1b2129"))))
