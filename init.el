@@ -630,7 +630,9 @@ See `elfeed-play-with-mpv'."
     (indent-tabs-mode . nil)))
 
 (add-hook 'protobuf-mode-hook
-  (lambda () (c-add-style "my-style" my-protobuf-style t)))
+          (lambda () (c-add-style "my-style" my-protobuf-style t)))
+
+(add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode))
 
 (electric-pair-mode 1)
 
