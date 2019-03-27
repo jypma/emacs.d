@@ -79,7 +79,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode smart-shift groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(password-cache-expiry 600)
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
@@ -568,11 +568,6 @@ See `elfeed-play-with-mpv'."
 (setq auto-revert-verbose nil)
 (delight 'auto-revert-mode nil t)
 
-(use-package smart-shift
-  :ensure t
-  :config
-  (global-smart-shift-mode 1))
-
 (setq column-number-mode t)
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq delete-old-versions t
@@ -970,3 +965,8 @@ See `elfeed-play-with-mpv'."
 
 (use-package yaml-mode
   :ensure t)
+
+(use-package smartparens
+  :ensure t
+  :config
+  (require 'smartparens-config))

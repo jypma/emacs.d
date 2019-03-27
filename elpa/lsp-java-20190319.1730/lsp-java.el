@@ -52,7 +52,7 @@ The slash is expected at the end."
   :type 'string)
 
 (defvar lsp-java-progress-string ""
-  "Path of the java executable.")
+  "Java progress status as reported by the language server.")
 
 (defface lsp-java-progress-face
   '((t (:inherit 'success)))
@@ -157,11 +157,6 @@ A package or type name prefix (e.g. 'org.eclipse') is a valid entry. An import i
           (const "off")
           (const "messages")
           (const "verbose")))
-
-(defcustom lsp-java-enable-file-watch nil
-  "Defines whether the client will monitor the files for changes."
-  :group 'lsp-java
-  :type 'boolean)
 
 (defcustom lsp-java-format-enabled t
   "Specifies whether or not formatting is enabled on the language server."
@@ -431,7 +426,7 @@ PARAMS the parameters for language status notifications."
   "Callback for java/applyWorkspaceEdit.
 
 ACTION is the action to execute."
-  (lsp--apply-workspace-edit (car (gethash "arguments" action))))
+  (lsp--apply-workspace-edit (seq-first (gethash "arguments" action))))
 
 (defun lsp-java--actionable-notification-callback (_workspace params)
   "Handler for actionable notifications.
@@ -445,7 +440,7 @@ PARAMS the parameters for actionable notifications."
 
 PARAMS progress report notification data."
   (-let [(&hash "status" "complete") params]
-    (setq lsp-java-progress-string (propertize (s-replace "%" "%%" status) 'face 'lsp-java-progress-face))
+    (setq lsp-java-progress-string (propertize status 'face 'lsp-java-progress-face))
     (when complete
       (run-with-idle-timer 0.8 nil (lambda ()
                                      (setq lsp-java-progress-string nil))))))
@@ -903,7 +898,17 @@ PROJECT-URI uri of the item."
                                                            (buffer-string))))))
   :initialized-fn (lambda (workspace)
                     (with-lsp-workspace workspace
-                      (lsp-java-update-user-settings)))))
+                      (lsp-java-update-user-settings)
+                      (lsp--server-register-capability
+                       (ht ("id" "test-id")
+                           ("method" "workspace/didChangeWatchedFiles")
+                           ("registerOptions" (ht ("watchers"
+                                                   (vector (ht ("globPattern" "**/*.java"))
+                                                           (ht ("globPattern" "**/pom.xml"))
+                                                           (ht ("globPattern" "**/*.gradle"))
+                                                           (ht ("globPattern" "**/.project"))
+                                                           (ht ("globPattern" "**/.classpath"))
+                                                           (ht ("globPattern" "**/settings/*.prefs"))))))))))))
 
 (defun lsp-java-spring-initializr ()
   "Emacs frontend for https://start.spring.io/."
