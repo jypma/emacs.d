@@ -1,7 +1,10 @@
 # -*- mode: snippet -*-
-# name: clss
+# name: Java class template for a Cuppa spec
 # key: clss
 # --
+
+package `(mapconcat 'identity (split-string (replace-regexp-in-string ".*src\\(/\\(main\\|test\\)\\)?\\(/java\\)?" "" default-directory) "/" t) ".")`;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.forgerock.cuppa.Cuppa.beforeEach;
 import static org.forgerock.cuppa.Cuppa.describe;
@@ -15,7 +18,7 @@ import org.forgerock.cuppa.junit.CuppaRunner;
 import org.junit.runner.RunWith;
 
 @RunWith(CuppaRunner.class)
-public class ${1:`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`} {
+public class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` {
     {
         describe("${2:`(substring (file-name-nondirectory (file-name-sans-extension (buffer-file-name))) 0 -4)`}", () -> {
             it("${3:works as intended}", () -> {

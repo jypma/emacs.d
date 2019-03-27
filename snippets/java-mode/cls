@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Java class template for a class
+# key: cls
+# --
+
+package `(mapconcat 'identity (split-string (replace-regexp-in-string ".*src\\(/\\(main\\|test\\)\\)?\\(/java\\)?" "" default-directory) "/" t) ".")`;
+
+public class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` {
+    $0
+}
