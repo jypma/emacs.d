@@ -84,6 +84,7 @@
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
+ '(tramp-connection-timeout 8 nil (tramp))
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
  '(vr/match-separator-use-custom-face t)
  '(whitespace-display-mappings
