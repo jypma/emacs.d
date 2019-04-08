@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Mockito field in a test
+# key: mock
+# --
+
+private final ${1:$(my/capitalize-first-char yas-text)} ${1:myMock} = mock(${1:$(my/capitalize-first-char yas-text)}.class);

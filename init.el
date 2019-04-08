@@ -31,6 +31,9 @@
  ;; If there is more than one, they won't work right.
  '(company-idle-delay nil)
  '(company-lsp-enable-recompletion nil)
+ '(compilation-ask-about-save nil)
+ '(compilation-auto-jump-to-first-error nil)
+ '(compilation-scroll-output t)
  '(custom-enabled-themes (quote (misterioso)))
  '(dired-listing-switches "-al --quoting-style=literal")
  '(eyebrowse-new-workspace "*dashboard*")
@@ -79,12 +82,14 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(password-cache-expiry 600)
- '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
+ '(safe-local-variable-values
+   (quote
+    ((org-confirm-babel-evaluate)
+     (eval setq gac-automatically-push-p 1))))
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
- '(tramp-connection-timeout 8 nil (tramp))
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
  '(vr/match-separator-use-custom-face t)
  '(whitespace-display-mappings
@@ -108,6 +113,7 @@
  '(default ((((class color) (min-colors 89)) (:foreground "#d3d3d3" :background "#000000" :family "Fira Code" :foundry "CTDB" :slant normal :weight normal :height 98 :width normal))))
  '(diff-hl-change ((t (:background "#FFA060" :foreground "#000000"))))
  '(diff-hl-dired-unknown ((t (:inherit dired-ignored :background "#3CD681" :foreground "#000000"))))
+ '(dired-rainbow-directory-face ((t (:foreground "#EB6C88" :weight bold))))
  '(ensime-implicit-highlight ((t (:underline "dim gray"))))
  '(eyebrowse-mode-line-active ((t (:inherit mode-line-emphasis :underline t))))
  '(flymake-error ((t (:foreground "#8b0000" :box (:line-width 1 :color "#450000" :style released-button) :underline (:color "#5F0000" :style wave) :weight bold))))
@@ -330,6 +336,37 @@
 ;; show usage in dired: C-x M-r, toggle display with C-x C-h
 (use-package dired-du
   :ensure t)
+
+;; auto-collapse directories in dired
+(use-package dired-collapse
+  :ensure t
+  :config
+  (add-hook 'dired-mode-hook 'dired-collapse-mode))
+
+;; more colors in dired
+(use-package dired-rainbow
+  :ensure t
+  :config
+  (dired-rainbow-define-chmod directory "#FF6978" "d.*")
+  (dired-rainbow-define html "#eb5286" ("css" "less" "sass" "scss" "htm" "html" "jhtm" "mht" "eml" "mustache" "xhtml"))
+  (dired-rainbow-define xml "#f2d024" ("xml" "xsd" "xsl" "xslt" "wsdl" "bib" "json" "msg" "pgn" "rss" "yaml" "yml" "rdata"))
+  (dired-rainbow-define document "#9561e2" ("docm" "doc" "docx" "odb" "odt" "pdb" "pdf" "ps" "rtf" "djvu" "epub" "odp" "ppt" "pptx"))
+  (dired-rainbow-define markdown "#ffed4a" ("org" "etx" "info" "markdown" "md" "mkd" "nfo" "pod" "rst" "tex" "textfile" "txt"))
+  (dired-rainbow-define database "#6574cd" ("xlsx" "xls" "csv" "accdb" "db" "mdb" "sqlite" "nc"))
+  (dired-rainbow-define media "#de751f" ("mp3" "mp4" "MP3" "MP4" "avi" "mpeg" "mpg" "flv" "ogg" "mov" "mid" "midi" "wav" "aiff" "flac"))
+  (dired-rainbow-define image "#f66d9b" ("tiff" "tif" "cdr" "gif" "ico" "jpeg" "jpg" "png" "psd" "eps" "svg"))
+  (dired-rainbow-define log "#c17d11" ("log"))
+  (dired-rainbow-define shell "#f6993f" ("awk" "bash" "bat" "sed" "sh" "zsh" "vim"))
+  (dired-rainbow-define interpreted "#38c172" ("py" "ipynb" "rb" "pl" "t" "msql" "mysql" "pgsql" "sql" "r" "clj" "cljs" "scala" "js"))
+  (dired-rainbow-define compiled "#4dc0b5" ("asm" "cl" "lisp" "el" "c" "h" "c++" "h++" "hpp" "hxx" "m" "cc" "cs" "cp" "cpp" "go" "f" "for" "ftn" "f90" "f95" "f03" "f08" "s" "rs" "hi" "hs" "pyc" ".java"))
+  (dired-rainbow-define executable "#8cc4ff" ("exe" "msi"))
+  (dired-rainbow-define compressed "#51d88a" ("7z" "zip" "bz2" "tgz" "txz" "gz" "xz" "z" "Z" "jar" "war" "ear" "rar" "sar" "xpi" "apk" "xz" "tar"))
+  (dired-rainbow-define packaged "#faad63" ("deb" "rpm" "apk" "jad" "jar" "cab" "pak" "pk3" "vdf" "vpk" "bsp"))
+  (dired-rainbow-define encrypted "#ffed4a" ("gpg" "pgp" "asc" "bfe" "enc" "signature" "sig" "p12" "pem"))
+  (dired-rainbow-define fonts "#6cb2eb" ("afm" "fon" "fnt" "pfb" "pfm" "ttf" "otf"))
+  (dired-rainbow-define partition "#e3342f" ("dmg" "iso" "bin" "nrg" "qcow" "toast" "vcd" "vmdk" "bak"))
+  (dired-rainbow-define vc "#0074d9" ("git" "gitignore" "gitattributes" "gitmodules"))
+  (dired-rainbow-define-chmod executable-unix "#38c172" "-.*x.*"))
 
 ;; open file in dired into desktop, mpv, etc.
 (defun dired-open-file ()
@@ -819,6 +856,14 @@ See `elfeed-play-with-mpv'."
   (define-key yas-minor-mode-map (kbd "C-t") #'yas-expand)
   :delight yas-minor-mode)
 
+;; for snippets
+(defun my/capitalize-first-char (&optional string)
+  "Capitalize only the first character of the input STRING."
+  (when (and string (> (length string) 0))
+    (let ((first-char (substring string nil 1))
+          (rest-str   (substring string 1)))
+      (concat (capitalize first-char) rest-str))))
+
 (use-package highlight-symbol
   :ensure t
   :config
@@ -976,3 +1021,18 @@ See `elfeed-play-with-mpv'."
   :ensure t
   :config
   (require 'smartparens-config))
+
+;; Open compile buffer in the same window
+(add-to-list 'same-window-buffer-names "*compilation*")
+
+;; Open compile results in the same window
+(defun my-compile-goto-error-same-window ()
+  (interactive)
+  (let ((display-buffer-overriding-action
+         '(display-buffer-reuse-mode-window)))
+    (call-interactively #'compile-goto-error)))
+
+(defun my-compilation-mode-hook ()
+  (local-set-key (kbd "o") #'my-compile-goto-error-same-window))
+
+(add-hook 'compilation-mode-hook #'my-compilation-mode-hook)
