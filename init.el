@@ -54,9 +54,11 @@
  '(lsp-java-vmargs
    (quote
     ("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-Djavax.net.ssl.keyStore=/home/jan/.ssh/jyp.p12" "-Djavax.net.ssl.keyStoreType=pkcs12" "-Djavax.net.ssl.keyStorePassword=csvfiles")))
+ '(lsp-keep-workspace-alive nil)
+ '(lsp-ui-doc-enable nil)
  '(lsp-ui-flycheck-list-position (quote right))
  '(lsp-ui-peek-enable t)
- '(lsp-ui-sideline-enable t)
+ '(lsp-ui-sideline-enable nil)
  '(lsp-ui-sideline-ignore-duplicate t)
  '(lsp-ui-sideline-show-code-actions t)
  '(lsp-ui-sideline-show-hover nil)
@@ -82,7 +84,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (bicycle dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(password-cache-expiry 600)
  '(safe-local-variable-values
    (quote
@@ -450,6 +452,9 @@
 
 ;; don't show the fira-code-mode
 (delight 'fira-code-mode)
+
+;; don't show visual-line-mode
+(delight 'visual-line-mode "" t)
 
 ;; don't create lock files, nobody else is editing on my machine. Plus, we've got autorevert.
 (setq create-lockfiles nil)
@@ -939,7 +944,8 @@ See `elfeed-play-with-mpv'."
   :ensure t)
 
 (use-package ws-butler
-  :ensure t)
+  :ensure t
+  :delight)
 
 (use-package dockerfile-mode
   :ensure t)
@@ -1036,3 +1042,18 @@ See `elfeed-play-with-mpv'."
   (local-set-key (kbd "o") #'my-compile-goto-error-same-window))
 
 (add-hook 'compilation-mode-hook #'my-compilation-mode-hook)
+
+;; Awesome indent-based folding of any file with Shift-Tab and Ctrl-Shift-Tab
+(use-package bicycle
+  :ensure t
+  :after outline
+  :bind (:map outline-minor-mode-map
+              ([backtab] . bicycle-cycle)
+              ([C-iso-lefttab] . bicycle-cycle-global)))
+
+(use-package prog-mode
+  :config
+  (delight 'outline-minor-mode)
+  (delight 'hs-minor-mode "" t)
+  (add-hook 'prog-mode-hook 'outline-minor-mode)
+  (add-hook 'prog-mode-hook 'hs-minor-mode))
