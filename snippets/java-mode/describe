@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: 'describe' section for a cuppa test
+# key: describe
+# --
+describe("${1:the thing}", () -> {
+    $0
+});

@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: it
+# name: 'it' section for a cuppa test
 # key: it
 # --
 it("${1:works}", () -> {
