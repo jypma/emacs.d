@@ -95,6 +95,9 @@
    (quote
     ((org-confirm-babel-evaluate)
      (eval setq gac-automatically-push-p 1))))
+ '(scroll-error-top-bottom t)
+ '(scroll-margin 7)
+ '(scroll-preserve-screen-position t)
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
  '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
