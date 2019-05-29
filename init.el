@@ -84,7 +84,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (bicycle dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+    (transient magithub lsp-scala bicycle dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode puppet-mode use-package projectile)))
  '(password-cache-expiry 600)
  '(safe-local-variable-values
    (quote
@@ -260,6 +260,9 @@
   :ensure t
   :pin melpa-stable
   :config
+  ;; See https://github.com/magit/ghub/issues/81, this is needed for github integration
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
   (setq magit-list-refs-sortby "-creatordate")
   ;; Hide "Recent Commits"
   ;; https://github.com/magit/magit/issues/3230
@@ -267,6 +270,14 @@
                           'magit-insert-unpushed-to-upstream
                           'magit-insert-unpushed-to-upstream-or-recent
                           'replace))
+
+(use-package magithub
+  :ensure t
+  :after magit
+  :after transient
+  :config
+  (magithub-feature-autoinject t)
+  (setq magithub-clone-default-directory "~/workspace"))
 
 (use-package sbt-mode
   :ensure t
