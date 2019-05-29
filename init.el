@@ -29,7 +29,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-idle-delay nil)
+ '(company-auto-complete (quote (quote company-explicit-action-p)))
+ '(company-auto-complete-chars (quote (32 95 40 41 46)))
+ '(company-idle-delay 1.0)
  '(company-lsp-enable-recompletion nil)
  '(compilation-ask-about-save nil)
  '(compilation-auto-jump-to-first-error nil)
@@ -55,7 +57,10 @@
    (quote
     ("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-Djavax.net.ssl.keyStore=/home/jan/.ssh/jyp.p12" "-Djavax.net.ssl.keyStoreType=pkcs12" "-Djavax.net.ssl.keyStorePassword=csvfiles")))
  '(lsp-keep-workspace-alive nil)
- '(lsp-ui-doc-enable nil)
+ '(lsp-ui-doc-enable t)
+ '(lsp-ui-doc-include-signature t)
+ '(lsp-ui-doc-position (quote top))
+ '(lsp-ui-flycheck-enable t)
  '(lsp-ui-flycheck-list-position (quote right))
  '(lsp-ui-peek-enable t)
  '(lsp-ui-sideline-enable nil)
@@ -121,6 +126,7 @@
  '(flymake-error ((t (:foreground "#8b0000" :box (:line-width 1 :color "#450000" :style released-button) :underline (:color "#5F0000" :style wave) :weight bold))))
  '(font-lock-type-face ((t (:foreground "#BBE273"))))
  '(hl-line ((t (:background "#3d3708"))))
+ '(lsp-ui-doc-header ((t (:background "#5D5FB1" :foreground "black"))))
  '(lsp-ui-sideline-code-action ((t (:foreground "#808346"))))
  '(lsp-ui-sideline-global ((t (:foreground "burlywood"))))
  '(magit-mode-line-process ((t (:foreground "#74E815" :weight bold))))
@@ -250,12 +256,6 @@
   :commands (goto-address-prog-mode
              goto-address-mode))
 
-(use-package ensime
-  :ensure t
-  :pin melpa-stable
-  :config
-  (setq ensime-startup-notification nil))
-
 (use-package magit
   :ensure t
   :pin melpa-stable
@@ -281,18 +281,29 @@
 
 (use-package sbt-mode
   :ensure t
-  :pin melpa)
+  :pin melpa
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+  ;; allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map))
 
 (use-package scala-mode
   :ensure t
   :pin melpa)
+
+(use-package company-emoji
+  :ensure t)
 
 (use-package company
   :ensure t
   :init (global-company-mode)
   :config (progn
             (setq company-idle-delay 1
-                  company-minimum-prefix-length 1)
+                  company-minimum-prefix-length 0)
             ;; Don't use company mode in eshell (since tramp gets really slow)
             (setq company-global-modes '(not eshell-mode))
 
@@ -898,6 +909,7 @@ See `elfeed-play-with-mpv'."
   :ensure t
   :init (setq lsp-eldoc-render-all nil
               lsp-highlight-symbol-at-point nil
+              lsp-prefer-flymake nil ;; for lsp-scala
               lsp-inhibit-message t)
   )
 
@@ -921,6 +933,12 @@ See `elfeed-play-with-mpv'."
 (use-package lsp-java
   :ensure t
   :config
+  ;; Allow M-? to work , see https://github.com/emacs-lsp/lsp-java/issues/122
+  (setq xref-prompt-for-identifier '(not xref-find-definitions
+                                            xref-find-definitions-other-window
+                                            xref-find-definitions-other-frame
+                                            xref-find-references))
+
   (add-hook 'java-mode-hook
             (lambda ()
               (setq-local company-backends (list 'company-lsp))))
@@ -929,6 +947,14 @@ See `elfeed-play-with-mpv'."
   (add-hook 'java-mode-hook 'flycheck-mode)
   (add-hook 'java-mode-hook 'company-mode)
   (add-hook 'java-mode-hook 'lsp-ui-mode))
+
+
+(use-package lsp-scala
+  :ensure t
+  :after scala-mode
+  :demand t
+  ;; Optional - enable lsp-scala automatically in scala files
+  :hook (scala-mode . lsp))
 
 (use-package dap-mode
   :ensure t
