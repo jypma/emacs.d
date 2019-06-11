@@ -31,8 +31,10 @@
  ;; If there is more than one, they won't work right.
  '(company-auto-complete (quote (quote company-explicit-action-p)))
  '(company-auto-complete-chars (quote (32 95 40 41 46)))
- '(company-idle-delay 1.0)
+ '(company-idle-delay 0.3)
  '(company-lsp-enable-recompletion nil)
+ '(company-show-numbers t)
+ '(company-tooltip-align-annotations t)
  '(compilation-ask-about-save nil)
  '(compilation-auto-jump-to-first-error nil)
  '(compilation-scroll-output t)
@@ -304,15 +306,53 @@
 (use-package company
   :ensure t
   :init (global-company-mode)
-  :config (progn
-            (setq company-idle-delay 1
-                  company-minimum-prefix-length 0)
-            ;; Don't use company mode in eshell (since tramp gets really slow)
-            (setq company-global-modes '(not eshell-mode))
+  :config
+  (setq company-minimum-prefix-length 0)
+  ;; Don't use company mode in eshell (since tramp gets really slow)
+  (setq company-global-modes '(not eshell-mode))
 
-            ;; Don't autocomplete numbers
-            (setq company-dabbrev-char-regexp "[A-z:-]")
-            (add-hook 'after-init-hook 'global-company-mode))
+  ;; Don't autocomplete numbers
+  (setq company-dabbrev-char-regexp "[A-z:-]")
+  (setq company-dabbrev-ignore-case nil)
+  (setq company-dabbrev-downcase nil)
+
+  (add-hook 'after-init-hook 'global-company-mode)
+
+  ;;; Prevent suggestions from being triggered automatically. In particular,
+  ;;; this makes it so that:
+  ;;; - TAB will always complete the current selection.
+  ;;; - RET will only complete the current selection if the user has explicitly
+  ;;;   interacted with Company.
+  ;;; - SPC will never complete the current selection.
+  ;;;
+  ;;; Based on:
+  ;;; - https://github.com/company-mode/company-mode/issues/530#issuecomment-226566961
+  ;;; - https://emacs.stackexchange.com/a/13290/12534
+  ;;; - http://stackoverflow.com/a/22863701/3538165
+  ;;;
+  ;;; See also:
+  ;;; - https://emacs.stackexchange.com/a/24800/12534
+  ;;; - https://emacs.stackexchange.com/q/27459/12534
+
+  ;; <return> is for windowed Emacs; RET is for terminal Emacs
+  (dolist (key '("<return>" "RET"))
+    ;; Here we are using an advanced feature of define-key that lets
+    ;; us pass an "extended menu item" instead of an interactive
+    ;; function. Doing this allows RET to regain its usual
+    ;; functionality when the user has not explicitly interacted with
+    ;; Company.
+    (define-key company-active-map (kbd key)
+      `(menu-item nil company-complete
+                  :filter ,(lambda (cmd)
+                             (when (company-explicit-action-p)
+                               cmd)))))
+  (define-key company-active-map (kbd "TAB") #'company-complete-selection)
+  (define-key company-active-map (kbd "SPC") nil)
+
+  ;; Company appears to override the above keymap based on company-auto-complete-chars.
+  ;; Turning it off ensures we have full control.
+  (setq company-auto-complete-chars nil)
+
   :bind ("C-<tab>" . 'company-complete)
   :delight company-mode "  ")
 
@@ -716,6 +756,7 @@ See `elfeed-play-with-mpv'."
 (global-set-key (kbd "C-x C-n") 'git-gutter:next-hunk)
 (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
 (global-set-key (kbd "C-x v k") 'git-gutter:revert-hunk)
+
 
 ;; dired: automatically move/copy to "other" pane's directory
 (setq dired-dwim-target t)
