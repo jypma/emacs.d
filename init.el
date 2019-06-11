@@ -703,6 +703,8 @@ See `elfeed-play-with-mpv'."
 
 (global-set-key (kbd "C-x b") 'ibuffer)
 
+(global-set-key (kbd "C-c d") 'my/duplicate-line)
+
 ;; Include recentf list in ido buffer switcher
 (setq ido-use-virtual-buffers t)
 
