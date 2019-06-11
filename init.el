@@ -1018,7 +1018,8 @@ See `elfeed-play-with-mpv'."
 (use-package eyebrowse
   :ensure t
   :init
-  (eyebrowse-mode t))
+  (eyebrowse-mode t)
+  (eyebrowse-setup-opinionated-keys))
 
 (use-package scad-mode
   :ensure t)
