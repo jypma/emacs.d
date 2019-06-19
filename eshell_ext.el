@@ -73,6 +73,32 @@
     (message "cd %s" newdir)
     (eshell/cd newdir)))
 
+;; http://www.howardism.org/Technical/Emacs/eshell-present.html
+(defun eshell/-buffer-as-args (buffer separator command)
+  "Takes the contents of BUFFER, and splits it on SEPARATOR, and
+runs the COMMAND with the contents as arguments. Use an argument
+`%' to substitute the contents at a particular point, otherwise,
+they are appended."
+  (let* ((lines (with-current-buffer buffer
+                  (split-string
+                   (buffer-substring-no-properties (point-min) (point-max))
+                   separator)))
+         (subcmd (if (-contains? command "%")
+                     (-flatten (-replace "%" lines command))
+                   (-concat command lines)))
+         (cmd-str  (string-join subcmd " ")))
+    (message cmd-str)
+    (eshell-command-result cmd-str)))
+
+(defun eshell/bargs (buffer &rest command)
+  "Passes the lines from BUFFER as arguments to COMMAND."
+  (eshell/-buffer-as-args buffer "\n" command))
+
+(defun eshell/sargs (buffer &rest command)
+  "Passes the words from BUFFER as arguments to COMMAND."
+  (eshell/-buffer-as-args buffer nil command))
+
+
 (require 'cl-lib)
 (defun my/similar-buffers ()
   "Returns similar buffers to the current one, e.g. living on different remote servers."
