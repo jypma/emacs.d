@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: beforeEach stanza for cuppa
+# key: bfe
+# --
+beforeEach(() -> {
+    $0
+});
