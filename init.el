@@ -585,7 +585,9 @@
 
 (defun android-check-p ()
   "Returns whether we're currently running in Termux on Android."
-  (string-match-p (regexp-quote "Android") (shell-command-to-string "uname -o")))
+  (or
+   (string-match-p (regexp-quote "Android") (shell-command-to-string "uname -o"))
+   (string-match-p (regexp-quote "lineageOS") (shell-command-to-string "uname -a"))))
 
 (use-package elfeed
   :ensure t
@@ -624,6 +626,7 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCS-SFei6NFRuGN8CKtAsYrA" ;; toms 0ad
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCqeg5vkTkH-DYxmOO9FJOHA" ;; Ardour
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCkqe4BYsllmcxo2dsF-rFQw" ;; Bruce Williams Photography
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCr-cm90DwFJC0W3f9jBs5jA" ;; EEVBlog channel 2
       "http://nullprogram.com/feed/"
       "http://planet.emacsen.org/atom.xml"))
   
@@ -732,6 +735,7 @@ See `elfeed-play-with-mpv'."
 
 (add-hook 'c++-mode-hook (lambda()
                            (c-set-offset 'substatement-open 0)
+                           (c-set-offset 'brace-list-intro '+)
                            (abbrev-mode 0)))
 
 (require 'protobuf-mode)
