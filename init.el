@@ -388,6 +388,9 @@
   :config
   (add-hook 'eshell-mode-hook 'eshell-bookmark-setup))
 
+;; auto-save bookmarks
+(setq bookmark-save-flag 1)
+
 (use-package ido-vertical-mode
   :ensure t
   :init (ido-vertical-mode 1))
