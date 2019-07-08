@@ -8,6 +8,14 @@
 (setq package-archive-ties '(("melpa-stable" . 1)))
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
+;; Fix for oauth2.el warnings
+(defvar url-http-method)
+(defvar url-http-data)
+(defvar url-http-extra-headersurl-http-extra-headers)
+(defvar oauth--token-data)
+(defvar url-callback-function)
+(defvar url-callback-arguments)
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -266,7 +274,6 @@
 
 (use-package magit
   :ensure t
-  :pin melpa-stable
   :config
   ;; See https://github.com/magit/ghub/issues/81, this is needed for github integration
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
