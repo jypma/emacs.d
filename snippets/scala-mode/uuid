@@ -2,4 +2,7 @@
 # name: uuid
 # key: uuid
 # --
-val ${1:myId} = UUID.fromString("`(uuidgen-4)`")
+val ${1:myId} = UUID.fromString("`
+  (replace-regexp-in-string "\n$" ""
+    (shell-command-to-string "/usr/bin/uuidgen"))
+`")
