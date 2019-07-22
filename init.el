@@ -1024,7 +1024,11 @@ See `elfeed-play-with-mpv'."
      (http . t))))
 
 ;; Easily search through the content of files marked in a dired buffer using occur mode
-(use-package noccur :ensure t)
+(use-package noccur
+  :ensure t
+  :after projectile
+  :bind
+  ("C-c o" . 'noccur-project))
 
 (use-package company-emoji
   :ensure t)
