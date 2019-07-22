@@ -38,7 +38,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-auto-complete nil)
- '(company-auto-complete-chars (quote (32 95 40 41 46)))
+ '(company-auto-complete-chars '(32 95 40 41 46))
  '(company-idle-delay 0.3)
  '(company-lsp-enable-recompletion nil)
  '(company-show-numbers t)
@@ -46,7 +46,7 @@
  '(compilation-ask-about-save nil)
  '(compilation-auto-jump-to-first-error nil)
  '(compilation-scroll-output t)
- '(custom-enabled-themes (quote (misterioso)))
+ '(custom-enabled-themes '(misterioso))
  '(dired-listing-switches "-al --quoting-style=literal")
  '(eyebrowse-new-workspace "*dashboard*")
  '(fill-column 110)
@@ -59,19 +59,17 @@
  '(js-indent-level 2)
  '(json-reformat:indent-width 2)
  '(lsp-java-favorite-static-members
-   (quote
-    ("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*")))
+   '("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*"))
  '(lsp-java-format-settings-url "/home/jan/eclipse-format-jan.xml")
  '(lsp-java-save-action-organize-imports nil)
  '(lsp-java-vmargs
-   (quote
-    ("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-Djavax.net.ssl.keyStore=/home/jan/.ssh/jyp.p12" "-Djavax.net.ssl.keyStoreType=pkcs12" "-Djavax.net.ssl.keyStorePassword=csvfiles")))
+   '("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-Djavax.net.ssl.keyStore=/home/jan/.ssh/jyp.p12" "-Djavax.net.ssl.keyStoreType=pkcs12" "-Djavax.net.ssl.keyStorePassword=csvfiles"))
  '(lsp-keep-workspace-alive nil)
  '(lsp-ui-doc-enable t)
  '(lsp-ui-doc-include-signature t)
- '(lsp-ui-doc-position (quote top))
+ '(lsp-ui-doc-position 'top)
  '(lsp-ui-flycheck-enable t)
- '(lsp-ui-flycheck-list-position (quote right))
+ '(lsp-ui-flycheck-list-position 'right)
  '(lsp-ui-peek-enable t)
  '(lsp-ui-sideline-enable nil)
  '(lsp-ui-sideline-ignore-duplicate t)
@@ -79,8 +77,7 @@
  '(lsp-ui-sideline-show-hover nil)
  '(lsp-ui-sideline-show-symbol nil)
  '(markdown-code-lang-modes
-   (quote
-    (("ocaml" . tuareg-mode)
+   '(("ocaml" . tuareg-mode)
      ("elisp" . emacs-lisp-mode)
      ("ditaa" . artist-mode)
      ("asymptote" . asy-mode)
@@ -93,37 +90,27 @@
      ("screen" . shell-script-mode)
      ("shell" . sh-mode)
      ("bash" . sh-mode)
-     ("xml" . xml-mode))))
+     ("xml" . xml-mode)))
  '(markdown-fontify-code-blocks-natively t)
  '(nxml-slash-auto-complete-flag t)
  '(org-log-into-drawer t)
  '(package-selected-packages
-   (quote
-    (dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode puppet-mode use-package projectile)))
+   '(deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode puppet-mode use-package projectile))
  '(password-cache-expiry 600)
  '(safe-local-variable-values
-   (quote
-    ((org-confirm-babel-evaluate)
-     (eval setq gac-automatically-push-p 1))))
+   '((org-confirm-babel-evaluate)
+     (eval setq gac-automatically-push-p 1)))
  '(scroll-error-top-bottom t)
  '(scroll-margin 7)
  '(scroll-preserve-screen-position t)
  '(show-paren-delay 0.1)
  '(show-paren-mode t)
- '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
+ '(visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
  '(vr/match-separator-use-custom-face t)
- '(whitespace-display-mappings
-   (quote
-    ((space-mark 160
-                 [164]
-                 [95])
-     (tab-mark 9
-               [187 9]
-               [92 9]))))
+ '(whitespace-display-mappings '((space-mark 160 [164] [95]) (tab-mark 9 [187 9] [92 9])))
  '(whitespace-line-column 110)
  '(whitespace-style
-   (quote
-    (face trailing tabs spaces lines-tail newline empty indentation space-after-tab space-before-tab space-mark tab-mark newline-mark))))
+   '(face trailing tabs spaces lines-tail newline empty indentation space-after-tab space-before-tab space-mark tab-mark newline-mark)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
