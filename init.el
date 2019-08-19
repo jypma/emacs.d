@@ -28,9 +28,10 @@
           (add-to-list 'load-path (expand-file-name x emacs-git)))
         (delete ".." (directory-files emacs-git))))
 
-(require 'fira-code-mode)
 (require 'whitespace)
 (add-hook 'prog-mode-hook #'whitespace-mode)
+
+(load "~/.emacs.d/setup-ligatures.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -173,7 +174,7 @@
 
 (tool-bar-mode -1)
 
-(set-frame-font "Fira Code 10" nil t)
+(set-frame-font "Iosevka-10" nil t)
 
 ;; magit default to origin/master instead of just master
 (setq magic-prefer-remote-upstream 1)
@@ -492,13 +493,11 @@
                 javascript-mode-hook
                 groovy-mode-hook
                 java-mode-hook))
-  (add-hook mode #'fira-code-mode)
   (add-hook mode #'flyspell-prog-mode)
   (add-hook mode #'ws-butler-mode))
 
 (add-hook 'markdown-mode-hook (lambda ()
                                 (ws-butler-mode)
-                                (fira-code-mode)
                                 (visual-line-mode)
                                 (flyspell-mode)))
 
@@ -511,9 +510,6 @@
 
 ;; customize minor mode display for flyspell-mode
 (delight 'flyspell-mode "   " t)
-
-;; don't show the fira-code-mode
-(delight 'fira-code-mode)
 
 ;; don't show visual-line-mode
 (delight 'visual-line-mode "" t)
