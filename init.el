@@ -499,6 +499,7 @@
   (add-hook mode #'ws-butler-mode))
 
 (add-hook 'markdown-mode-hook (lambda ()
+                                (setq company-idle-delay 1.0)
                                 (ws-butler-mode)
                                 (visual-line-mode)
                                 (flyspell-mode)))
@@ -720,6 +721,7 @@ See `elfeed-play-with-mpv'."
           (lambda ()
             (adaptive-wrap-prefix-mode)
             (setq adaptive-wrap-extra-indent 2)
+            (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\).*\\({\\|=>\\)$")
             (visual-line-mode)))
 
 (add-hook 'c++-mode-hook (lambda()
