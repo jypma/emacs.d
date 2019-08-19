@@ -262,17 +262,15 @@
   :ensure t
   :init (projectile-global-mode)
   :bind-keymap (("C-c p" . projectile-command-map))
+
   :config
-  (defadvice projectile-on (around exlude-tramp activate)
-  "This should disable projectile when visiting a remote file"
-  (unless  (--any? (and it (file-remote-p it))
-                   (list
-                    (buffer-file-name)
-                    list-buffers-directory
-                    default-directory
-                    dired-directory))
-    ad-do-it))
   (setq projectile-switch-project-action #'projectile-dired)
+
+  (advice-add 'projectile-project-root :around (lambda (orig-fun &optional dir)
+                                                 (let ((dir (file-truename (or dir default-directory))))
+                                                   (unless (file-remote-p dir)
+                                                     (funcall orig-fun dir)))))
+
   :delight '(:eval (concat " " (projectile-project-name) "  ")))
 
 (use-package goto-addr
