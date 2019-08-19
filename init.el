@@ -39,7 +39,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-auto-complete nil)
- '(company-auto-complete-chars '(32 95 40 41 46))
+ '(company-auto-complete-chars (quote (32 95 40 41 46)))
  '(company-idle-delay 0.3)
  '(company-lsp-enable-recompletion nil)
  '(company-show-numbers t)
@@ -47,7 +47,7 @@
  '(compilation-ask-about-save nil)
  '(compilation-auto-jump-to-first-error nil)
  '(compilation-scroll-output t)
- '(custom-enabled-themes '(misterioso))
+ '(custom-enabled-themes (quote (misterioso)))
  '(dired-listing-switches "-al --quoting-style=literal")
  '(eyebrowse-new-workspace "*dashboard*")
  '(fill-column 110)
@@ -64,25 +64,29 @@
  '(kubernetes-poll-frequency 5)
  '(kubernetes-redraw-frequency 5)
  '(lsp-java-favorite-static-members
-   '("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*"))
+   (quote
+    ("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*")))
  '(lsp-java-format-settings-url "/home/jan/eclipse-format-jan.xml")
  '(lsp-java-save-action-organize-imports nil)
  '(lsp-java-vmargs
-   '("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-Djavax.net.ssl.keyStore=/home/jan/.ssh/jyp.p12" "-Djavax.net.ssl.keyStoreType=pkcs12" "-Djavax.net.ssl.keyStorePassword=csvfiles"))
+   (quote
+    ("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-Djavax.net.ssl.keyStore=/home/jan/.ssh/jyp.p12" "-Djavax.net.ssl.keyStoreType=pkcs12" "-Djavax.net.ssl.keyStorePassword=csvfiles")))
  '(lsp-keep-workspace-alive nil)
  '(lsp-ui-doc-enable t)
  '(lsp-ui-doc-include-signature t)
- '(lsp-ui-doc-position 'top)
+ '(lsp-ui-doc-position (quote top))
  '(lsp-ui-flycheck-enable t)
- '(lsp-ui-flycheck-list-position 'right)
+ '(lsp-ui-flycheck-list-position (quote right))
  '(lsp-ui-peek-enable t)
  '(lsp-ui-sideline-enable nil)
  '(lsp-ui-sideline-ignore-duplicate t)
  '(lsp-ui-sideline-show-code-actions t)
  '(lsp-ui-sideline-show-hover nil)
  '(lsp-ui-sideline-show-symbol nil)
+ '(magithub-issue-sort-function (quote magithub-issue-sort-descending))
  '(markdown-code-lang-modes
-   '(("ocaml" . tuareg-mode)
+   (quote
+    (("ocaml" . tuareg-mode)
      ("elisp" . emacs-lisp-mode)
      ("ditaa" . artist-mode)
      ("asymptote" . asy-mode)
