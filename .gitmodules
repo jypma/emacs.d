@@ -7,3 +7,9 @@
 [submodule "git/hide-lines"]
 	path = git/hide-lines
 	url = https://github.com/vapniks/hide-lines.git
+[submodule "git/kubernetes-el"]
+	path = git/kubernetes-el
+	url = git@github.com:chrisbarrett/kubernetes-el.git
+[submodule "git/kubernetes-tramp"]
+	path = git/kubernetes-tramp
+	url = git@github.com:gruggiero/kubernetes-tramp.git

@@ -1,4 +1,4 @@
-(define-package "kubernetes" "20190328.44" "Magit-like porcelain for Kubernetes."
+(define-package "kubernetes" "20190605.134" "Magit-like porcelain for Kubernetes."
   '((emacs "25.1")
     (dash "2.12.0")
     (magit "2.8.0")
