@@ -948,6 +948,10 @@ See `elfeed-play-with-mpv'."
   :ensure t)
 ;;  :commands (kubernetes-overview))
 
+(require 'kubernetes-tramp)
+(kubernetes-tramp-define-method "sand" "sand" "default")
+(kubernetes-tramp-define-method "prod" "prod" "default")
+(kubernetes-tramp-define-method "smok" "smoketest" "smoketest")
 
 (use-package treemacs
   :ensure t)
