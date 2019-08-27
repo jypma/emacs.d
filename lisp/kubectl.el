@@ -9,11 +9,18 @@
 (defvar-local kubectl--pods-selector "" "Selector to filter pods on, or empty to show all pods")
 
 (defun kubectl--args (args)
-  "Builds a kubectl commandline that ends with [args]"
+  "Builds a string kubectl commandline that ends with [args]"
   (let ((ns (if (string= "" kubectl--namespace) "" (format "--namespace %s" kubectl--namespace) ))
         (ctx (if (string= "" kubectl--context) "" (format "--context %s" kubectl--context) )))
     (message "kubectl %s %s %s" ns ctx args)
     (format "kubectl %s %s %s" ns ctx args)))
+
+(defun kubectl--list-args (args)
+  "Builds a list of kubectl commandline arguments that ends with [args]"
+  (append
+   (if (string= "" kubectl--namespace) nil (list "--namespace" kubectl--namespace))
+   (if (string= "" kubectl--context) nil (list "--context" kubectl--context))
+   args))
 
 (defun kubectl--context-names ()
   "Invokes kubectl to get a list of contexts"
@@ -62,14 +69,33 @@
     (tabulated-list-print)
     (goto-char oldpos)))
 
-(defun kubectl--pods-get-log (podname)
-  "Loads the logs of a kubernetes pod into a new buffer"
-  (let ((bufname (format "*k8s logs:%s*" podname))
-        (process (format "*kubectl logs:%s" podname)))
+(define-transient-command kubectl--pods-log ()
+  "Show console log"
+  ["Arguments"
+   ("-f" "Follow" "-f")
+   ("-p" "Previous" "-p")
+   ("-n" "Tail" "--tail=")
+   ]
+  ["Actions"
+   ("l" "Log" kubectl--pods-get-log)])
+
+(defun kubectl--pods-get-log (&optional args)
+  "Loads the logs of the selected kubernetes pod into a new buffer, passing [args] to the kubectl command"
+  (interactive (list (transient-args 'kubectl--pods-log)))
+  (let* ((podname (tabulated-list-get-id))
+         (bufname (format "*k8s logs:%s*" podname))
+         (process (format "*kubectl logs:%s" podname)))
     (when (get-buffer bufname)
       (kill-buffer bufname))
-    (start-process process bufname "kubectl" "logs" podname)
-    (switch-to-buffer bufname)))
+    (apply #'start-process process bufname "kubectl" "logs" podname (kubectl--list-args args))
+    (switch-to-buffer bufname)
+    (read-only-mode)))
+
+(defun kubectl-pods-log ()
+  "Shows a transient popup to load the logs of the selected kubernetes pod."
+  (interactive)
+  (when (tabulated-list-get-id)
+    (call-interactively 'kubectl--pods-log)))
 
 (defun kubectl-pods-refresh ()
   "Refreshes the current kubernetes pods view"
@@ -84,6 +110,7 @@
     (define-key map (kbd "c") 'kubectl-choose-context)
     (define-key map (kbd "s") 'kubectl-choose-namespace)
     (define-key map (kbd "g") 'kubectl-pods-refresh)
+    (define-key map (kbd "l") 'kubectl-pods-log)
     map))
 
 (define-derived-mode kubectl-pods-mode tabulated-list-mode "Kubernetes pods"
