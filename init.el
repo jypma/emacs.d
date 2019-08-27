@@ -318,6 +318,7 @@
 
 (use-package scala-mode
   :ensure t
+  :mode "\\.s\\(cala\\|bt\\)$"
   :pin melpa)
 
 (use-package company-emoji
@@ -958,9 +959,10 @@ See `elfeed-play-with-mpv'."
 
 (use-package lsp-mode
   :ensure t
+  :hook (scala-mode . lsp)
   :init (setq lsp-eldoc-render-all nil
               lsp-highlight-symbol-at-point nil
-              lsp-prefer-flymake nil ;; for lsp-scala
+              lsp-prefer-flymake nil    ;; for metals, https://scalameta.org/metals/docs/editors/emacs.html
               lsp-inhibit-message t)
   )
 
@@ -999,13 +1001,6 @@ See `elfeed-play-with-mpv'."
   (add-hook 'java-mode-hook 'company-mode)
   (add-hook 'java-mode-hook 'lsp-ui-mode))
 
-
-(use-package lsp-scala
-  :ensure t
-  :after scala-mode
-  :demand t
-  ;; Optional - enable lsp-scala automatically in scala files
-  :hook (scala-mode . lsp))
 
 (use-package dap-mode
   :ensure t

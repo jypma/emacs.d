@@ -1,2 +1,0 @@
-;;; -*- no-byte-compile: t -*-
-(define-package "lsp-scala" "20190116.2132" "Scala support for lsp-mode" '((emacs "24.4") (lsp-mode "5.0") (sbt-mode "2.0")) :commit "2e46f60985640973baf9d3eb7f0433ef5eb49c89" :keywords '("languages" "tools" "scala" "lsp" "metals") :authors '(("Ross A. Baker" . "ross@rossabaker.com")) :maintainer '("Ross A. Baker" . "ross@rossabaker.com") :url "https://github.com/rossabaker/lsp-scala")
