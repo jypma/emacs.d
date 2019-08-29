@@ -2,18 +2,27 @@
 ;; uses json
 ;; uses transient
 
+;; TODO
+;; - Show JSON details for any resource
+;; - List ingresses
+;; - Integrate kube-tramp changes
+
 (defvar-local kubectl--namespace "" "Namespace to pass to kubectl, or empty to pass no namespace")
 
 (defvar-local kubectl--context "" "Context to pass to kubectl, or empty to pass no context")
 
 (defvar-local kubectl--pods-selector "" "Selector to filter pods on, or empty to show all pods")
 
+(defvar kubectl--shell "/bin/bash" "Shell to run when opening a term to a pod")
+
+(defvar kubectl--kubectl "/usr/bin/kubectl" "Path to kubectl to use")
+
 (defun kubectl--args (args)
   "Builds a string kubectl commandline that ends with [args]"
   (let ((ns (if (string= "" kubectl--namespace) "" (format "--namespace %s" kubectl--namespace) ))
         (ctx (if (string= "" kubectl--context) "" (format "--context %s" kubectl--context) )))
-    (message "kubectl %s %s %s" ns ctx args)
-    (format "kubectl %s %s %s" ns ctx args)))
+    (message "%s %s %s %s" kubectl--kubectl ns ctx args)
+    (format "%s %s %s %s" kubectl--kubectl ns ctx args)))
 
 (defun kubectl--list-args (args)
   "Builds a list of kubectl commandline arguments that ends with [args]"
@@ -24,7 +33,7 @@
 
 (defun kubectl--context-names ()
   "Invokes kubectl to get a list of contexts"
-  (split-string (shell-command-to-string "kubectl config get-contexts --no-headers=true -o name") "\n"))
+  (split-string (shell-command-to-string (format "%s config get-contexts --no-headers=true -o name" kubectl--kubectl)) "\n"))
 
 (defun kubectl-choose-context (context)
   "Select a new context interactively"
@@ -41,7 +50,7 @@
   "Select a new namespace interactively"
   (interactive (list (completing-read "Namespace: " (kubectl--namespace-names) nil t)))
   (setq kubectl--namespace namespace)
-  (call-interactively (local-key-binding "g")))
+  (call-interactively (cdr (car (minor-mode-key-binding "g")))))
 
 (defun kubectl--refresh (name args columns)
   "Refreshes the current view according to [args] as kubectl
@@ -87,15 +96,51 @@
          (process (format "*kubectl logs:%s" podname)))
     (when (get-buffer bufname)
       (kill-buffer bufname))
-    (apply #'start-process process bufname "kubectl" "logs" podname (kubectl--list-args args))
+    (apply #'start-process process bufname kubectl--kubectl "logs" podname (kubectl--list-args args))
     (switch-to-buffer bufname)
     (read-only-mode)))
 
-(defun kubectl-pods-log ()
-  "Shows a transient popup to load the logs of the selected kubernetes pod."
+(defun kubectl--pods-term ()
+  "Opens up a term for the currently selected pod"
   (interactive)
-  (when (tabulated-list-get-id)
-    (call-interactively 'kubectl--pods-log)))
+  (let* ((podname (tabulated-list-get-id))
+         (termbuf (apply 'make-term
+                         (format "*k8s term:%s*" podname)
+                         kubectl--kubectl
+                         nil
+                         (kubectl--list-args (list "exec" "-ti" podname kubectl--shell)))))
+    (set-buffer termbuf)
+    (term-mode)
+    (term-char-mode)
+    (switch-to-buffer termbuf)))
+
+(defun kubectl--pods-run (command)
+  "Runs [command] on the given pod, outputting its results asynchronously to a new buffer."
+  (interactive "M")
+  (let* ((podname (tabulated-list-get-id))
+         (bufname (format "*k8s exec %s:%s" podname command))
+         (process (format "*kubectl exec %s:%s" podname command))
+         (args (append (list "exec" podname) (split-string-and-unquote command))))
+    (when (get-buffer bufname)
+      (kill-buffer bufname))
+    (apply #'start-process process bufname kubectl--kubectl (kubectl--list-args args))
+    (switch-to-buffer bufname)
+    (read-only-mode)))
+
+(defun kubectl--pods-run-custom (&optional args)
+  (interactive)
+  (call-interactively 'kubectl--pods-run))
+
+(defun kubectl--pods-run-1 ()
+  (interactive)
+  (kubectl--pods-run "/usr/bin/jstack 1")) ;; we could do (thread-dump-start) after the process completes
+
+(define-transient-command kubectl-pods-run ()
+  "Execute a command"
+  []
+  ["Actions"
+   ("1" "Run jstack" kubectl--pods-run-1)
+   ("r" "Run custom command" kubectl--pods-run-custom)])
 
 (defun kubectl-pods-refresh ()
   "Refreshes the current kubernetes pods view"
@@ -105,17 +150,18 @@
                     (format "get pods --no-headers=true %s" sel)
                     [("Pod" 66) ("Ready" 10) ("Status" 24) ("Restarts" 11) ("Age" 10)])))
 
-(defvar kubectl-pods-mode-map
+(define-minor-mode kubectl-pods-mode
+  "A minor mode with a keymap for the kubernetes pod list"
+  :keymap
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "c") 'kubectl-choose-context)
     (define-key map (kbd "s") 'kubectl-choose-namespace)
     (define-key map (kbd "g") 'kubectl-pods-refresh)
-    (define-key map (kbd "l") 'kubectl-pods-log)
+    (define-key map (kbd "l") 'kubectl--pods-log)
+    (define-key map (kbd "t") 'kubectl--pods-term)
+    (define-key map (kbd "r") 'kubectl-pods-run)
+    (define-key map (kbd "d") 'kubectl--list-deployments)
     map))
-
-(define-derived-mode kubectl-pods-mode tabulated-list-mode "Kubernetes pods"
-  "Kubernetes mode to list pods"
-  (message "selector: %s" kubectl--pods-selector))
 
 (defun kubectl-deployments-refresh ()
   "Refreshes the current kubernetes deployments view"
@@ -129,7 +175,9 @@
   (interactive)
   (kubectl-open-deployment (tabulated-list-get-id)))
 
-(defvar kubectl-deployments-mode-map
+(define-minor-mode kubectl-deployments-mode
+  "A minor mode with a keymap for the kubernetes deployments list"
+  :keymap
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "c") 'kubectl-choose-context)
     (define-key map (kbd "s") 'kubectl-choose-namespace)
@@ -138,14 +186,19 @@
     (define-key map (kbd "RET") 'kubectl-deployments-open)
     map))
 
-(define-derived-mode kubectl-deployments-mode tabulated-list-mode "Kubernetes deployments"
-  "Kubernetes mode to list deployments"
-  (kubectl-deployments-refresh))
-
 (defun kubectl-deployments ()
+  "Select a context and namespace, and show its deployments"
   (interactive)
   (switch-to-buffer "*kubernetes*")
-  (kubectl-deployments-mode))
+  (tabulated-list-mode)
+  (kubectl-deployments-mode)
+  (call-interactively 'kubectl-choose-context))
+
+(defun kubectl--list-deployments ()
+  (switch-to-buffer "*kubernetes*")
+  (tabulated-list-mode)
+  (kubectl-deployments-mode)
+  (kubectl-deployments-refresh))
 
 (defun kubectl-open-deployment (name)
   (let* ((selflink (shell-command-to-string (kubectl--args (format "get deployment.apps %s -o jsonpath={.metadata.selfLink}" name))))
@@ -157,8 +210,11 @@
          (ns kubectl--namespace)
          (ctx kubectl--context))
     (switch-to-buffer "*kubernetes*")
+    (tabulated-list-mode)
     (kubectl-pods-mode)
     (setq kubectl--pods-selector selector)
     (setq kubectl--namespace ns)
     (setq kubectl--context ctx)
     (kubectl-pods-refresh)))
+
+(provide 'kubectl)
