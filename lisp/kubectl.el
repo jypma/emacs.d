@@ -3,7 +3,6 @@
 ;; uses transient
 
 ;; TODO
-;; - Show JSON details for any resource
 ;; - List ingresses
 ;; - Integrate kube-tramp changes
 
@@ -17,12 +16,13 @@
 
 (defvar kubectl--kubectl "/usr/bin/kubectl" "Path to kubectl to use")
 
-(defun kubectl--args (args)
-  "Builds a string kubectl commandline that ends with [args]"
-  (let ((ns (if (string= "" kubectl--namespace) "" (format "--namespace %s" kubectl--namespace) ))
+(defun kubectl--run (args)
+  "Builds a kubectl commandline that ends with [args], run it,
+and return the resulting output as a string"
+  (shell-command-to-string (let ((ns (if (string= "" kubectl--namespace) "" (format "--namespace %s" kubectl--namespace) ))
         (ctx (if (string= "" kubectl--context) "" (format "--context %s" kubectl--context) )))
     (message "%s %s %s %s" kubectl--kubectl ns ctx args)
-    (format "%s %s %s %s" kubectl--kubectl ns ctx args)))
+    (format "%s %s %s %s" kubectl--kubectl ns ctx args))))
 
 (defun kubectl--list-args (args)
   "Builds a list of kubectl commandline arguments that ends with [args]"
@@ -44,13 +44,26 @@
 (defun kubectl--namespace-names ()
   "Invokes kubectl to get a list of namespaces"
   ;; TODO handle failure gracefully, and allow user to just type a namespace then
-  (split-string (shell-command-to-string (kubectl--args "get namespaces --no-headers=true | awk '{print $1}'")) "\n"))
+  (let ((kubectl--namespace ""))
+    (split-string (kubectl--run "get namespaces --no-headers=true | awk '{print $1}'") "\n")))
 
 (defun kubectl-choose-namespace (namespace)
   "Select a new namespace interactively"
   (interactive (list (completing-read "Namespace: " (kubectl--namespace-names) nil t)))
   (setq kubectl--namespace namespace)
   (call-interactively (cdr (car (minor-mode-key-binding "g")))))
+
+(defun kubectl--show-yaml (bufname args)
+  "Runs kubectl with [args] and shows the resulting yaml, in a buffer called [bufname]"
+  (let* (
+         (all_args (append args (list "-o" "yaml"))))
+    (when (get-buffer bufname)
+      (kill-buffer bufname))
+    (apply #'call-process kubectl--kubectl nil bufname nil (kubectl--list-args all_args))
+    (switch-to-buffer bufname)
+    (yaml-mode)
+    (read-only-mode)
+    (goto-char 1)))
 
 (defun kubectl--refresh (name args columns)
   "Refreshes the current view according to [args] as kubectl
@@ -68,8 +81,7 @@
                         (let ((items (split-string line)))
                           (list (car items) (vconcat items))))
                       (seq-filter (lambda (line) (not (string= "" line)))
-                                  (split-string (shell-command-to-string
-                                                 (kubectl--args args)) "\n"))))
+                                  (split-string (kubectl--run args) "\n"))))
         (oldpos (point)))
     (setq tabulated-list-format columns)
     (setq tabulated-list-entries rows)
@@ -150,6 +162,13 @@
                     (format "get pods --no-headers=true %s" sel)
                     [("Pod" 66) ("Ready" 10) ("Status" 24) ("Restarts" 11) ("Age" 10)])))
 
+(defun kubectl--pods-inspect ()
+  "Shows detail about the currently selected pod"
+  (interactive)
+  (kubectl--show-yaml
+   (format "*k8s pod:%s" (tabulated-list-get-id))
+   (list "get" "pod" (tabulated-list-get-id))))
+
 (define-minor-mode kubectl-pods-mode
   "A minor mode with a keymap for the kubernetes pod list"
   :keymap
@@ -160,20 +179,28 @@
     (define-key map (kbd "l") 'kubectl--pods-log)
     (define-key map (kbd "t") 'kubectl--pods-term)
     (define-key map (kbd "r") 'kubectl-pods-run)
+    (define-key map (kbd "i") 'kubectl--pods-inspect)
     (define-key map (kbd "d") 'kubectl--list-deployments)
     map))
 
-(defun kubectl-deployments-refresh ()
+(defun kubectl--deployments-refresh ()
   "Refreshes the current kubernetes deployments view"
   (interactive)
   (kubectl--refresh "deployments"
                     "get deployments --no-headers=true"
                     [("Deployment" 66) ("Desired" 10) ("Current" 10) ("Up-to-date" 10) ("Age" 10)]))
 
-(defun kubectl-deployments-open ()
+(defun kubectl--deployments-open ()
   "Opens the deployment currently selected"
   (interactive)
   (kubectl-open-deployment (tabulated-list-get-id)))
+
+(defun kubectl--deployments-inspect ()
+  "Shows detail about the currently selected deployment"
+  (interactive)
+  (kubectl--show-yaml
+   (format "*k8s deployment:%s" (tabulated-list-get-id))
+   (list "get" "deployment" (tabulated-list-get-id))))
 
 (define-minor-mode kubectl-deployments-mode
   "A minor mode with a keymap for the kubernetes deployments list"
@@ -181,9 +208,10 @@
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "c") 'kubectl-choose-context)
     (define-key map (kbd "s") 'kubectl-choose-namespace)
-    (define-key map (kbd "g") 'kubectl-deployments-refresh)
-    (define-key map (kbd "o") 'kubectl-deployments-open)
-    (define-key map (kbd "RET") 'kubectl-deployments-open)
+    (define-key map (kbd "g") 'kubectl--deployments-refresh)
+    (define-key map (kbd "o") 'kubectl--deployments-open)
+    (define-key map (kbd "RET") 'kubectl--deployments-open)
+    (define-key map (kbd "i") 'kubectl--deployments-inspect)
     map))
 
 (defun kubectl-deployments ()
@@ -195,17 +223,19 @@
   (call-interactively 'kubectl-choose-context))
 
 (defun kubectl--list-deployments ()
+  "Switch to the deployment list for the current context and namespace"
+  (interactive)
   (switch-to-buffer "*kubernetes*")
   (tabulated-list-mode)
   (kubectl-deployments-mode)
   (kubectl-deployments-refresh))
 
 (defun kubectl-open-deployment (name)
-  (let* ((selflink (shell-command-to-string (kubectl--args (format "get deployment.apps %s -o jsonpath={.metadata.selfLink}" name))))
+  (let* ((selflink (kubectl--run (format "get deployment.apps %s -o jsonpath={.metadata.selfLink}" name)))
          (json-object-type 'hash-table)
          (json-array-type 'list)
          (json-key-type 'string)
-         (scale (json-read-from-string (shell-command-to-string (kubectl--args (format "get --raw %s/scale" selflink)))))
+         (scale (json-read-from-string (kubectl--run (format "get --raw %s/scale" selflink))))
          (selector (gethash "selector" (gethash "status" scale)))
          (ns kubectl--namespace)
          (ctx kubectl--context))
