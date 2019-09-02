@@ -33,6 +33,8 @@
 
 (load "~/.emacs.d/setup-ligatures.el")
 
+(require 'thread-dump)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -1160,3 +1162,5 @@ See `elfeed-play-with-mpv'."
 
 (use-package puppet-mode
   :ensure t)
+
+(require 'kubectl)
