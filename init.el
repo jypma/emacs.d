@@ -107,7 +107,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers undo-tree cyberpunk-theme ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile)))
+    (deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp slack company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile)))
  '(password-cache-expiry 600)
  '(safe-local-variable-values
    (quote
@@ -148,8 +148,13 @@
  '(eyebrowse-mode-line-active ((t (:inherit mode-line-emphasis :underline t))))
  '(fixed-pitch ((t (:family "Iosevka"))))
  '(flymake-error ((t (:foreground "#8b0000" :box (:line-width 1 :color "#450000" :style released-button) :underline (:color "#5F0000" :style wave) :weight bold))))
+ '(font-lock-comment-face ((t (:foreground "#888888" :slant italic))))
  '(font-lock-constant-face ((((class color) (min-colors 89)) (:foreground "#96CBFE"))))
- '(font-lock-type-face ((t (:foreground "#BBE273"))))
+ '(font-lock-doc-face ((t (:inherit font-lock-string-face :foreground "#FFF150"))))
+ '(font-lock-string-face ((t (:foreground "#e67128" :slant italic))))
+ '(font-lock-type-face ((t (:foreground "#75EE7B"))))
+ '(font-lock-variable-name-face ((t (:foreground "#EBEB81"))))
+ '(highlight ((t (:box (:line-width 1 :color "#03686D" :style released-button)))))
  '(hl-line ((t (:background "#3d3708"))))
  '(italic ((t (:slant italic))))
  '(kubernetes-progress-indicator ((t (:foreground "#40E974"))))
@@ -177,6 +182,9 @@
  '(whitespace-line ((t (:background "#40002A"))))
  '(whitespace-space ((t (:background "#000000" :foreground "#66CACC"))))
  '(whitespace-trailing ((t (:background "dark red")))))
+
+(set-face-attribute 'highlight nil :foreground 'unspecified)
+(set-face-attribute 'highlight nil :background 'unspecified)
 
 (tool-bar-mode -1)
 
@@ -356,14 +364,6 @@
 (use-package flycheck
   :ensure t
   :delight flycheck-mode "  ")
-
-(use-package cyberpunk-theme
-  :ensure t
-  :config
-  (load-theme 'cyberpunk t)
-  (set-cursor-color "#ffffff") ;; somehow not all frames have superwhite cursor by default
-  (set-face-attribute 'region nil :foreground 'unspecified)
-  (set-face-attribute 'whitespace-line nil :background "#40002A" :foreground 'unspecified))
 
 ;; Format files consistently
 (use-package clang-format
@@ -864,12 +864,6 @@ See `elfeed-play-with-mpv'."
 (set-keyboard-coding-system 'utf-8)
 
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
-
-(use-package undo-tree
-  :ensure t
-  :config
-  (global-undo-tree-mode 1)
-  :delight)
 
 (use-package evil-numbers
   :ensure t
