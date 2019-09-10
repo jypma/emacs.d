@@ -188,7 +188,19 @@
 
 (tool-bar-mode -1)
 
-(set-frame-font "Iosevka-10" nil t)
+(defun my/fontify-frame (frame)
+  (interactive)
+  (if window-system
+      (progn
+        (if (> (x-display-pixel-width) 2000)
+            (set-frame-parameter frame 'font "Iosevka 14") ;; HIDPI
+         (set-frame-parameter frame 'font "Iosevka 10")))))
+
+;; Fontify current frame
+(my/fontify-frame nil)
+
+;; Fontify any future frames
+(push 'my/fontify-frame after-make-frame-functions)
 
 ;; magit default to origin/master instead of just master
 (setq magic-prefer-remote-upstream 1)
