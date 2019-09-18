@@ -41,7 +41,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-auto-complete nil)
- '(company-auto-complete-chars (quote (32 95 40 41 46)))
+ '(company-auto-complete-chars (quote (119)))
  '(company-idle-delay 0.3)
  '(company-lsp-enable-recompletion nil)
  '(company-show-numbers t)
@@ -364,10 +364,6 @@
   (define-key company-active-map (kbd "TAB") #'company-complete-selection)
   (define-key company-active-map (kbd "SPC") nil)
 
-  ;; Company appears to override the above keymap based on company-auto-complete-chars.
-  ;; Turning it off ensures we have full control.
-  (setq company-auto-complete-chars nil)
-
   :bind ("C-<tab>" . 'company-complete)
   :delight company-mode "  ")
 
@@ -515,6 +511,7 @@
 
 (add-hook 'markdown-mode-hook (lambda ()
                                 (setq company-idle-delay 1.0)
+                                (setq company-minimum-prefix-length 0)
                                 (ws-butler-mode)
                                 (visual-line-mode)
                                 (flyspell-mode)))
@@ -1170,3 +1167,7 @@ See `elfeed-play-with-mpv'."
   :ensure t)
 
 (require 'kubectl)
+
+;; To edit code blacks in markdown
+(use-package edit-indirect
+  :ensure t)
