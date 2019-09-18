@@ -154,7 +154,7 @@
  '(font-lock-string-face ((t (:foreground "#e67128" :slant italic))))
  '(font-lock-type-face ((t (:foreground "#75EE7B"))))
  '(font-lock-variable-name-face ((t (:foreground "#EBEB81"))))
- '(highlight ((t (:box (:line-width 1 :color "#03686D" :style released-button)))))
+ '(highlight ((t (:background "#724F07"))))
  '(hl-line ((t (:background "#3d3708"))))
  '(italic ((t (:slant italic))))
  '(kubernetes-progress-indicator ((t (:foreground "#40E974"))))
@@ -178,13 +178,14 @@
  '(rainbow-delimiters-unmatched-face ((t (:inherit rainbow-delimiters-base-face :background "#88090B"))))
  '(region ((t (:background "#5b3636"))))
  '(shadow ((t (:foreground "grey70"))))
+ '(show-paren-match ((t (:background "#4C7E28"))))
  '(term-color-red ((t (:background "#8c5353" :foreground "#FF0000"))))
  '(whitespace-line ((t (:background "#40002A"))))
  '(whitespace-space ((t (:background "#000000" :foreground "#66CACC"))))
  '(whitespace-trailing ((t (:background "dark red")))))
 
 (set-face-attribute 'highlight nil :foreground 'unspecified)
-(set-face-attribute 'highlight nil :background 'unspecified)
+(set-face-attribute 'region nil :foreground 'unspecified)
 
 (tool-bar-mode -1)
 
@@ -509,9 +510,11 @@
   (add-hook mode #'flyspell-prog-mode)
   (add-hook mode #'ws-butler-mode))
 
-(add-hook 'markdown-mode-hook (lambda ()
+(add-hook 'text-mode-hook (lambda ()
                                 (setq company-idle-delay 1.0)
-                                (setq company-minimum-prefix-length 0)
+                                (setq company-minimum-prefix-length 3)))
+
+(add-hook 'markdown-mode-hook (lambda ()
                                 (ws-butler-mode)
                                 (visual-line-mode)
                                 (flyspell-mode)))
