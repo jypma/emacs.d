@@ -285,7 +285,7 @@
                 (cons (thread-dump-parse-thread-at-point thread-id) threads))
           (setq thread-id (+ thread-id 1)))
 
-        (sort threads '(lambda (t1 t2)
+        (sort threads (lambda (t1 t2)
                          (string< (downcase (thread-dump-get-thread-name t1))
                                   (downcase (thread-dump-get-thread-name t2)))))))))
 
