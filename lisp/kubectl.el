@@ -3,7 +3,6 @@
 ;; uses transient
 
 ;; TODO
-;; - List ingresses
 ;; - Integrate kube-tramp changes
 
 (defvar-local kubectl--namespace "" "Namespace to pass to kubectl, or empty to pass no namespace")
@@ -13,6 +12,11 @@
 (defvar-local kubectl--pods-selector "" "Selector to filter pods on, or empty to show all pods")
 
 (defvar kubectl--shell "/bin/bash" "Shell to run when opening a term to a pod")
+
+(defcustom kubectl--tramp-shell "/bin/sh"
+  "Shell to run when creating a TRAMP session to a pod"
+  :type 'string
+  :group 'kubectl)
 
 (defvar kubectl--kubectl "/usr/bin/kubectl" "Path to kubectl to use")
 
@@ -30,6 +34,51 @@ and return the resulting output as a string"
    (if (string= "" kubectl--namespace) nil (list "--namespace" kubectl--namespace))
    (if (string= "" kubectl--context) nil (list "--context" kubectl--context))
    args))
+
+(defun kubectl-tramp--running-pods-of (context namespace)
+  "Collect kubernetes running pods in given context and namespace.
+
+Return a list of pod names"
+  (let* ((kubectl--context context)
+         (kubectl--namespace namespace))
+    (split-string (kubectl--run "get pods --no-headers=true  | awk '{print $1}'") "\n")))
+
+(defun kubectl--tramp--parse-running-pods-of (&optional contextAndNamespace)
+  "Return a list of (user host) tuples. contextAndNamespace is
+expected to be a string with the k8s context, a pipe (|), and
+then the namespace."
+  (let* ((split (split-string contextAndNamespace "|"))
+         (context (nth 0 split))
+         (namespace (nth 1 split)))
+    (cl-loop for name in (kubectl-tramp--running-pods-of context namespace)
+             collect (list ""  name))))
+
+(defun kubectl--tramp-method ()
+  "Returns the name of the TRAMP method to reach kubernetes pods in the current context and namespace."
+  ;; TRAMP doesn't like "-" or "_" in its method names.
+  (format "kubectl%s%s" kubectl--context kubectl--namespace))
+
+(defun kubectl--tramp-register-method ()
+  "Defines a new TRAMP method that will use kubectl with the current context and namespace."
+  (eval-after-load 'tramp
+    '(progn
+       (let* ((context kubectl--context)
+              (namespace kubectl--namespace)
+              (method (kubectl--tramp-method))
+              (contextAndNamespace (format "%s|%s" kubectl--context kubectl--namespace)))
+         (message "Adding tramp method %s" method)
+         (add-to-list 'tramp-methods
+                    `(,method
+                      (tramp-login-program      ,kubectl--kubectl)
+                      (tramp-login-args         (nil ("--context" ,context) ("--namespace" ,namespace) ("exec" "-it") ("-u" "%u") ("%h") ("bash")))
+                      (tramp-remote-shell       ,kubectl--tramp-shell)
+                      (tramp-remote-shell-args  ("-i" "-c"))))
+         (setq completions `((kubernetes-tramp--parse-running-containers-of ,contextAndNamespace)))
+         (message "  completions: %s" completions)
+         ;;can't do the below, since it will check if files actually exist before adding to the list...
+         ;;(tramp-set-completion-function method completions)
+         (add-to-list 'tramp-completion-function-alist (cons method completions))
+         ))))
 
 (defun kubectl--context-names ()
   "Invokes kubectl to get a list of contexts"
@@ -169,6 +218,12 @@ and return the resulting output as a string"
    (format "*k8s pod:%s" (tabulated-list-get-id))
    (list "get" "pod" (tabulated-list-get-id))))
 
+(defun kubectl--pods-dired ()
+  "Opens dired in the currently selected pod over TRAMP"
+  (interactive)
+  (kubectl--tramp-register-method)
+  (find-file (format "/%s:%s:" (kubectl--tramp-method) (tabulated-list-get-id))))
+
 (define-minor-mode kubectl-pods-mode
   "A minor mode with a keymap for the kubernetes pod list"
   :keymap
@@ -180,7 +235,8 @@ and return the resulting output as a string"
     (define-key map (kbd "t") 'kubectl--pods-term)
     (define-key map (kbd "r") 'kubectl-pods-run)
     (define-key map (kbd "i") 'kubectl--pods-inspect)
-    (define-key map (kbd "d") 'kubectl--list-deployments)
+    (define-key map (kbd "q") 'kubectl--list-deployments)
+    (define-key map (kbd "d") 'kubectl--pods-dired)
     map))
 
 (defun kubectl--deployments-refresh ()
