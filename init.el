@@ -193,7 +193,7 @@
   (interactive)
   (if window-system
       (progn
-        (if (> (x-display-pixel-width) 2000)
+        (if (> (x-display-pixel-width) 2600)
             (set-frame-parameter frame 'font "Iosevka 14") ;; HIDPI
          (set-frame-parameter frame 'font "Iosevka 10")))))
 
