@@ -1097,7 +1097,8 @@ See `elfeed-play-with-mpv'."
         `((,(expand-file-name (directory-file-name default-directory)) . ?⌂)
           (,(expand-file-name "~") . ?~)))
   (setq prettify-symbols-compose-predicate 'my-compilation-prettify-symbols-predicate)
-  (prettify-symbols-mode t))
+  (prettify-symbols-mode t)
+  (visual-line-mode 1))
 
 (add-hook 'compilation-mode-hook 'my-compilation-mode-prettify)
 
