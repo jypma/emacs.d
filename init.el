@@ -743,6 +743,7 @@ See `elfeed-play-with-mpv'."
 
 (add-hook 'c++-mode-hook (lambda()
                            (c-set-offset 'substatement-open 0)
+                           (c-set-offset 'template-args-cont '+)
                            (c-set-offset 'brace-list-intro '+)
                            (abbrev-mode 0)))
 
