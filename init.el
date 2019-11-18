@@ -54,6 +54,7 @@
  '(eyebrowse-new-workspace "*dashboard*")
  '(fill-column 110)
  '(flymake-no-changes-timeout 60)
+ '(forge-topic-list-limit (quote (60 . 0)))
  '(git-gutter:update-interval 1)
  '(global-subword-mode t)
  '(global-whitespace-mode nil)
@@ -85,7 +86,6 @@
  '(lsp-ui-sideline-show-code-actions t)
  '(lsp-ui-sideline-show-hover nil)
  '(lsp-ui-sideline-show-symbol nil)
- '(magithub-issue-sort-function (quote magithub-issue-sort-descending))
  '(markdown-code-lang-modes
    (quote
     (("ocaml" . tuareg-mode)
@@ -107,7 +107,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile)))
+    (forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile)))
  '(password-cache-expiry 600)
  '(safe-local-variable-values
    (quote
@@ -321,13 +321,9 @@
                           'magit-insert-unpushed-to-upstream-or-recent
                           'replace))
 
-(use-package magithub
+(use-package forge
   :ensure t
-  :after magit
-  :after transient
-  :config
-  (magithub-feature-autoinject t)
-  (setq magithub-clone-default-directory "~/workspace"))
+  :after magit)
 
 (use-package sbt-mode
   :ensure t
@@ -1023,9 +1019,6 @@ See `elfeed-play-with-mpv'."
 
 (use-package dap-java
   :after (lsp-java))
-
-(use-package lsp-java-treemacs
-  :after (treemacs))
 
 (use-package eyebrowse
   :ensure t

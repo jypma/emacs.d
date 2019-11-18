@@ -29,3 +29,4 @@ recentf~
 /magithub/cache
 /transient/values.el
 /.dap-breakpoints
+forge-database.sqlite
