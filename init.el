@@ -66,6 +66,7 @@
  '(kubernetes-logs-arguments (quote ("--tail=50")))
  '(kubernetes-poll-frequency 5)
  '(kubernetes-redraw-frequency 5)
+ '(lsp-file-watch-threshold 10000)
  '(lsp-java-favorite-static-members
    (quote
     ("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*")))
@@ -141,6 +142,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#d3d3d3" :background "#000000" :family "Iosevka" :slant normal :weight normal :height 98 :width normal))))
+ '(company-preview ((t (:background "#292500"))))
+ '(company-tooltip ((t (:background "#2B2A00"))))
+ '(company-tooltip-selection ((t (:background "#1F1F00"))))
  '(diff-hl-change ((t (:background "#FFA060" :foreground "#000000"))))
  '(diff-hl-dired-unknown ((t (:inherit dired-ignored :background "#3CD681" :foreground "#000000"))))
  '(dired-rainbow-directory-face ((t (:foreground "#EB6C88" :weight bold))))
@@ -515,6 +519,7 @@
 (add-hook 'markdown-mode-hook (lambda ()
                                 (ws-butler-mode)
                                 (visual-line-mode)
+                                (adaptive-wrap-prefix-mode)
                                 (flyspell-mode)))
 
 ;; use popup menu for completions instead of strange top-of-buffer selector
