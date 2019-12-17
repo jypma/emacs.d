@@ -236,6 +236,9 @@
 
 (advice-add 'kill-new :filter-args #'my/remove-existing-kill)
 
+;; "Command attempted to use minibuffer while in minibuffer" gets old fast.
+(setq enable-recursive-minibuffers t)
+
 (use-package delight
   :ensure t)
 

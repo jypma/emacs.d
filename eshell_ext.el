@@ -181,6 +181,41 @@ they are appended."
     )
   )
 
+(defun my/java-run-test ()
+  "Runs the test for the current *.java or *.scala file (or the file itself, if it is a test)"
+  (interactive)
+  (let ((default-directory (projectile-project-root)))
+    (compile (format "bloop test %s --reporter scalac -o %s" (my/module-name-for-buffer) (my/test-name-for-buffer)))))
+
+(defun my/module-name-for-buffer ()
+  "Returns the sbt or maven module name for the current buffer"
+  (when (string-match "\\(.+\\)/src/[^/]+/\\(?:java\\|scala\\)/.*" buffer-file-name)
+    (let ((baseName (match-string 1 buffer-file-name)))
+      (if (file-exists-p (s-concat baseName "/build.sbt"))
+          "root" ;; this isn't a multi-module project, since our src folder is where build.sbt is.
+        (file-name-base baseName)))))
+
+(defun my/-module-name-or-parent (dir)
+  (if (file-exists-p (s-concat dir "/../build.sbt")))
+  )
+
+(defun my/test-name-for-buffer ()
+  "Returns the classname of the spec/test that would test the current buffer"
+  (cond
+   ((string-match "src/main/\\(?:java\\|scala\\)/\\(.*\\)/\\([^/]+\\)\\.\\(?:java\\|scala\\)" buffer-file-name)
+    (let* ((packageDir (match-string 1 buffer-file-name))
+           (name (match-string 2 buffer-file-name)))
+      (if (s-blank? packageDir)
+          name
+        (s-concat (s-replace "/" "." packageDir) "." name "Spec"))))
+   ((string-match "src/test/\\(?:java\\|scala\\)/\\(.*\\)/\\([^/]+\\)\\.\\(?:java\\|scala\\)" buffer-file-name)
+    (let* ((packageDir (match-string 1 buffer-file-name))
+           (name (match-string 2 buffer-file-name)))
+      (if (s-blank? packageDir)
+          name
+        (s-concat (s-replace "/" "." packageDir) "." name))))
+   ))
+
 (defun my/complete-ssh-host (prefix)
   "Finds any ssh host that starts with prefix"
   (let* ((parsed (append
