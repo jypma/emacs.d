@@ -28,6 +28,16 @@
           (add-to-list 'load-path (expand-file-name x emacs-git)))
         (delete ".." (directory-files emacs-git))))
 
+;; Always install use-package, so we can install packages using it
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile (require 'use-package))
+
+;; Always install (ensure) packages when we use-package them
+(setq use-package-always-ensure t)
+
 (require 'whitespace)
 (add-hook 'prog-mode-hook #'whitespace-mode)
 
@@ -87,15 +97,15 @@
 ;; "Command attempted to use minibuffer while in minibuffer" gets old fast.
 (setq enable-recursive-minibuffers t)
 
-(use-package delight
-  :ensure t)
+;; Hide certain packages from the modeline
+(use-package delight)
 
 ;; don't show subword mode in modeline
 (delight 'subword-mode nil t)
 
 ;; icons for major modes
-(use-package all-the-icons
-  :ensure t)
+(use-package all-the-icons)
+
 ;; run all-the-icons-install-fonts on first run on a machine.
 
 ;; (delight 'emacs-lisp-mode (all-the-icons-fileicon "emacs" :height 0.7) :major)
@@ -120,7 +130,6 @@
 
 ;; highlight #ff etc as actual colors
 (use-package rainbow-mode
-  :ensure t
   :config
   (add-hook 'scala-mode-hook #'rainbow-mode)
   (add-hook 'markdown-mode-hook #'rainbow-mode)
@@ -134,12 +143,7 @@
   (add-hook 'prog-mode-hook #'rainbow-mode)
   :delight)
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
 (use-package projectile
-  :ensure t
   :init (projectile-global-mode)
   :bind-keymap (("C-c p" . projectile-command-map))
 
@@ -154,7 +158,6 @@
   :delight '(:eval (concat " " (projectile-project-name) "  ")))
 
 (use-package goto-addr
-  :ensure t
   :hook ((compilation-mode . goto-address-mode)
          (prog-mode . goto-address-prog-mode)
          (eshell-mode . goto-address-mode)
@@ -163,7 +166,6 @@
              goto-address-mode))
 
 (use-package magit
-  :ensure t
   :config
   ;; See https://github.com/magit/ghub/issues/81, this is needed for github integration
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
@@ -177,11 +179,9 @@
                           'replace))
 
 (use-package forge
-  :ensure t
   :after magit)
 
 (use-package sbt-mode
-  :ensure t
   :pin melpa
   :commands sbt-start sbt-command
   :config
@@ -193,15 +193,12 @@
    minibuffer-local-completion-map))
 
 (use-package scala-mode
-  :ensure t
   :mode "\\.s\\(cala\\|bt\\)$"
   :pin melpa)
 
-(use-package company-emoji
-  :ensure t)
+(use-package company-emoji)
 
 (use-package company
-  :ensure t
   :init (global-company-mode)
   :config
   (setq company-minimum-prefix-length 0)
@@ -224,21 +221,17 @@
 
 ;; Error checking with flycheck-rtags as a backend
 (use-package flycheck
-  :ensure t
   :delight flycheck-mode "  ")
 
 ;; Format files consistently
-(use-package clang-format
-  :ensure t)
+(use-package clang-format)
 
 (use-package which-key
-  :ensure t
   :config
   (which-key-mode)
   :delight which-key-mode)
 
 (use-package eshell-bookmark
-  :ensure t
   :config
   (add-hook 'eshell-mode-hook 'eshell-bookmark-setup))
 
@@ -246,16 +239,12 @@
 (setq bookmark-save-flag 1)
 
 (use-package ido-vertical-mode
-  :ensure t
   :init (ido-vertical-mode 1))
 
 (use-package ido-completing-read+
-  :ensure t
   :init (ido-ubiquitous-mode 1))
 
 (use-package rainbow-delimiters
-  :ensure t
-  :config
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 )
@@ -266,18 +255,15 @@
   (define-key dired-mode-map ")" 'dired-git-info-mode))
 
 ;; show usage in dired: C-x M-r, toggle display with C-x C-h
-(use-package dired-du
-  :ensure t)
+(use-package dired-du)
 
 ;; auto-collapse directories in dired
 (use-package dired-collapse
-  :ensure t
   :config
   (add-hook 'dired-mode-hook 'dired-collapse-mode))
 
 ;; more colors in dired
 (use-package dired-rainbow
-  :ensure t
   :config
   (dired-rainbow-define-chmod directory "#FF6978" "d.*")
   (dired-rainbow-define html "#eb5286" ("css" "less" "sass" "scss" "htm" "html" "jhtm" "mht" "eml" "mustache" "xhtml"))
@@ -309,7 +295,6 @@
 (define-key dired-mode-map (kbd "C-c o") 'dired-open-file)
 
 (use-package expand-region
-  :ensure t
   :bind ("C-=" . er/expand-region))
 
 (when (file-exists-p "~/.emacs.d/mu4e.el")
@@ -332,7 +317,6 @@
   (bind-keys :package mu4e ("<f9>" . mu4e))
   (setq mu4e-confirm-quit nil) ;; yes I'm sure
   (use-package mu4e-alert
-    :ensure t
     :after mu4e
     :init
     (mu4e-alert-enable-mode-line-display)
@@ -375,7 +359,6 @@
 
 ;; use popup menu for completions instead of strange top-of-buffer selector
 (use-package flyspell-popup
-  :ensure t
   :config
 ;;  (add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode) ;; don't like it after all
   (define-key flyspell-mode-map (kbd "C-;") #'flyspell-popup-correct))
@@ -390,7 +373,6 @@
 (setq create-lockfiles nil)
 
 (use-package git-gutter
-  :ensure t
   :config
   (global-git-gutter-mode +1)
   (custom-set-variables
@@ -398,13 +380,11 @@
   :delight)
 
 (use-package diff-hl
-  :ensure t
   ;; only for dired, we use git-gutter for normal files
   :config
   (add-hook 'dired-mode-hook #'diff-hl-dired-mode-unless-remote))
 
 (use-package dashboard
-  :ensure t
   :config
   (global-set-key (kbd "<f5>") (lambda () (interactive) (switch-to-buffer "*dashboard*")))
   (dashboard-setup-startup-hook)
@@ -413,8 +393,7 @@
                           (projects . 25))))
 
 (use-package flx-ido
-  :ensure t
-  :config 
+  :config
   (ido-mode 1)
   (ido-everywhere 1)
   (flx-ido-mode 1)
@@ -424,12 +403,10 @@
 
 ;; Better window switching with M-o (also across frames)
 (use-package ace-window
-  :ensure t
   :bind ("M-o" . ace-window))
 
 (when (file-exists-p "~/.emacs.d/jira.el")
   (use-package org-jira
-    :ensure t
     :config
     (load "~/.emacs.d/jira.el")))
 ;; https://github.com/ahungry/org-jira#authorization-workaround-not-secure
@@ -449,7 +426,6 @@
    (string-match-p (regexp-quote "lineageOS") (shell-command-to-string "uname -a"))))
 
 (use-package elfeed
-  :ensure t
   :bind ("C-x w" . elfeed)
   :config
   (setq elfeed-feeds
@@ -555,7 +531,6 @@ See `elfeed-play-with-mpv'."
 
 
 (use-package highlight-symbol
-  :ensure t
   :config
   (setq highlight-symbol-idle-delay 0.3)
   )
@@ -639,7 +614,6 @@ See `elfeed-play-with-mpv'."
 
 ;; Auto-set git column to 72 for M-q
 (use-package git-commit
-  :ensure t
   :preface
   (defun me/git-commit-set-fill-column ()
     (setq-local comment-auto-fill-only-comments nil)
@@ -705,7 +679,7 @@ See `elfeed-play-with-mpv'."
 
 ;; fontify inside org mode
 (setq org-src-fontify-natively t)
-(use-package htmlize :ensure t)
+(use-package htmlize)
 
 ;; https://emacs.stackexchange.com/questions/19344/why-does-xdg-open-not-work-in-eshell
 (setq process-connection-type nil)
@@ -733,23 +707,20 @@ See `elfeed-play-with-mpv'."
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 (use-package evil-numbers
-  :ensure t
   :bind
   ("C-c =" . evil-numbers/inc-at-pt)
   ("<kp-add>" . evil-numbers/inc-at-pt)
   ("C-c -" . evil-numbers/dec-at-pt)
   ("<kp-subtract>" . evil-numbers/dec-at-pt))
 
-(use-package docker-tramp
-  :ensure t)
+(use-package docker-tramp)
 
 ;; enable re-use of ssh connections
 ;; https://emacs.stackexchange.com/questions/22306/working-with-tramp-mode-on-slow-connection-emacs-does-network-trip-when-i-start
 (setq tramp-ssh-controlmaster-options "")
 
 ;; auto-commit used for org todo list sync
-(use-package git-auto-commit-mode
-  :ensure t)
+(use-package git-auto-commit-mode)
 
 ;; use extra config files for tramp ssh host completion
 (require 'tramp)
@@ -768,7 +739,6 @@ See `elfeed-play-with-mpv'."
 (put 'downcase-region 'disabled nil)
 
 (use-package smex
-  :ensure t
   :bind
   ("M-x" . smex)
   ("M-X" . smex-major-mode-commands)
@@ -779,14 +749,12 @@ See `elfeed-play-with-mpv'."
 (global-set-key "\C-ch" 'hide-lines)
 
 (use-package super-save
-  :ensure t
   :config
   (super-save-mode 1)
   (setq super-save-remote-files nil)
   :delight)
 
 (use-package yasnippet
-  :ensure t
   :config
   (yas-global-mode 1)
   (define-key yas-minor-mode-map (kbd "<tab>") nil)
@@ -803,26 +771,13 @@ See `elfeed-play-with-mpv'."
       (concat (capitalize first-char) rest-str))))
 
 (use-package highlight-symbol
-  :ensure t
   :config
   (setq highlight-symbol-idle-delay 0.3)
   :delight )
 
-(use-package kubernetes
-  :ensure t)
-;;  :commands (kubernetes-overview))
-
-(require 'kubernetes-tramp)
-(kubernetes-tramp-define-method "sand" "sand" "default")
-(kubernetes-tramp-define-method "prod" "prod" "default")
-(kubernetes-tramp-define-method "smok" "smoketest" "smoketest")
-;;(let* ((kubectl--context "smoketest") (kubectl--namespace "smoketest")) (kubectl--tramp-register-method))
-
-(use-package treemacs
-  :ensure t)
+(use-package treemacs)
 
 (use-package lsp-mode
-  :ensure t
   :hook (scala-mode . lsp)
   :init (setq lsp-eldoc-render-all nil
               lsp-highlight-symbol-at-point nil
@@ -832,13 +787,11 @@ See `elfeed-play-with-mpv'."
 
 (use-package company-lsp
   :after  company
-  :ensure t
   :config
   (setq company-lsp-cache-candidates t
         company-lsp-async t))
 
 (use-package lsp-ui
-  :ensure t
   :config
   (setq lsp-ui-sideline-update-mode 'point)
   :bind (
@@ -848,7 +801,6 @@ See `elfeed-play-with-mpv'."
    )
 
 (use-package lsp-java
-  :ensure t
   :config
   ;; Allow M-? to work , see https://github.com/emacs-lsp/lsp-java/issues/122
   (setq xref-prompt-for-identifier '(not xref-find-definitions
@@ -867,36 +819,26 @@ See `elfeed-play-with-mpv'."
 
 
 (use-package dap-mode
-  :ensure t
   :after lsp-mode
   :config
   (dap-mode t)
   (dap-ui-mode t))
 
-(use-package dap-java
-  :after (lsp-java))
-
 (use-package eyebrowse
-  :ensure t
   :init
   (eyebrowse-mode t)
   (eyebrowse-setup-opinionated-keys))
 
-(use-package scad-mode
-  :ensure t)
+(use-package scad-mode)
 
-(use-package adaptive-wrap
-  :ensure t)
+(use-package adaptive-wrap)
 
 (use-package ws-butler
-  :ensure t
   :delight)
 
-(use-package dockerfile-mode
-  :ensure t)
+(use-package dockerfile-mode)
 
 (use-package ob-http
-  :ensure t
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -905,22 +847,18 @@ See `elfeed-play-with-mpv'."
 
 ;; Easily search through the content of files marked in a dired buffer using occur mode
 (use-package noccur
-  :ensure t
   :after projectile
   :bind
   ("C-c o" . 'noccur-project))
 
-(use-package company-emoji
-  :ensure t)
+(use-package company-emoji)
 
 (use-package alert
-  :ensure t
   :commands (alert)
   :init
   (setq alert-default-style 'notifier))
 
 (use-package visual-regexp
-  :ensure t
   :bind
   ("C-c r" . 'vr/replace)
   ("C-c q" . 'vr/query-replace))
@@ -958,17 +896,14 @@ See `elfeed-play-with-mpv'."
 (add-to-list 'compilation-error-regexp-alist 'bloop)
 
 (use-package cquery
-  :ensure t
   :config
   (setq cquery-executable "/usr/bin/cquery")
   (add-hook 'c++-mode-hook 'lsp)
   (add-hook 'c-mode-hook 'lsp))
 
-(use-package yaml-mode
-  :ensure t)
+(use-package yaml-mode)
 
 (use-package smartparens
-  :ensure t
   :config
   (require 'smartparens-config))
 
@@ -989,21 +924,18 @@ See `elfeed-play-with-mpv'."
 
 ;; Awesome indent-based folding of any file with Shift-Tab and Ctrl-Shift-Tab
 (use-package bicycle
-  :ensure t
   :after outline
   :bind (:map outline-minor-mode-map
               ([backtab] . bicycle-cycle)
               ([C-iso-lefttab] . bicycle-cycle-global)))
 
-(use-package prog-mode
-  :config
-  (delight 'outline-minor-mode)
-  (delight 'hs-minor-mode "" t)
-  (add-hook 'prog-mode-hook 'outline-minor-mode)
-  (add-hook 'prog-mode-hook 'hs-minor-mode))
+;; Prog-mode defaults
+(delight 'outline-minor-mode)
+(delight 'hs-minor-mode "" t)
+(add-hook 'prog-mode-hook 'outline-minor-mode)
+(add-hook 'prog-mode-hook 'hs-minor-mode)
 
 (use-package pdf-tools
-  :ensure t
   :config
   ;; initialise
   (pdf-tools-install)
@@ -1014,11 +946,9 @@ See `elfeed-play-with-mpv'."
   ;; use normal isearch
   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward))
 
-(use-package puppet-mode
-  :ensure t)
+(use-package puppet-mode)
 
 (require 'kubectl)
 
 ;; To edit code blacks in markdown
-(use-package edit-indirect
-  :ensure t)
+(use-package edit-indirect)
