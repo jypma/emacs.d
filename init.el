@@ -946,7 +946,8 @@ See `elfeed-play-with-mpv'."
   ;; use normal isearch
   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward))
 
-(use-package puppet-mode)
+(use-package puppet-mode
+  :pin melpa)
 
 (require 'kubectl)
 
