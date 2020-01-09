@@ -103,6 +103,21 @@
 ;; don't show subword mode in modeline
 (delight 'subword-mode nil t)
 
+;; Allow tree-semantics for undo operations.
+;; Execute (undo-tree-visualize) then navigate along the tree to witness
+;; changes being made to your file live!
+(use-package undo-tree
+  :diminish                       ;; Don't show an icon in the modeline
+  :config
+  ;; Always have it on
+  (global-undo-tree-mode)
+
+  ;; Each node in the undo tree should have a timestamp.
+  (setq undo-tree-visualizer-timestamps t)
+
+  ;; Show a diff window displaying changes between undo nodes.
+  (setq undo-tree-visualizer-diff t))
+
 ;; icons for major modes
 (use-package all-the-icons)
 
