@@ -30,3 +30,4 @@ recentf~
 /transient/values.el
 /.dap-breakpoints
 forge-database.sqlite
+/elpa/gnupg/tofu.db
