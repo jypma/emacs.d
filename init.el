@@ -58,8 +58,8 @@
   (if window-system
       (progn
         (if (> (x-display-pixel-width) 2600)
-            (set-frame-parameter frame 'font "Iosevka 14") ;; HIDPI
-         (set-frame-parameter frame 'font "Iosevka 10")))))
+            (set-frame-font "Iosevka 14" nil t) ;; HIDPI
+         (set-frame-font "Iosevka 10" nil t)))))
 
 ;; Fontify current frame
 (my/fontify-frame nil)
