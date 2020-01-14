@@ -107,7 +107,7 @@
 ;; Execute (undo-tree-visualize) then navigate along the tree to witness
 ;; changes being made to your file live!
 (use-package undo-tree
-  :diminish                       ;; Don't show an icon in the modeline
+  :delight                       ;; Don't show an icon in the modeline
   :config
   ;; Always have it on
   (global-undo-tree-mode)
@@ -945,7 +945,7 @@ See `elfeed-play-with-mpv'."
               ([C-iso-lefttab] . bicycle-cycle-global)))
 
 ;; Prog-mode defaults
-(delight 'outline-minor-mode)
+(delight 'outline-minor-mode "" t)
 (delight 'hs-minor-mode "" t)
 (add-hook 'prog-mode-hook 'outline-minor-mode)
 (add-hook 'prog-mode-hook 'hs-minor-mode)
