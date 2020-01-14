@@ -149,6 +149,18 @@ then the namespace."
   ["Actions"
    ("l" "Log" kubectl--pods-get-log)])
 
+(defun kubectl--log-kill-process ()
+  "Kills the process associated with this buffer"
+  (interactive)
+  (delete-process (buffer-name)))
+
+(define-minor-mode kubectl-log-mode
+  "Minor mode to view log files (potentially while following them)"
+  :keymap (let ((map (make-sparse-keymap)))
+            (define-key map (kbd "k") 'kubectl--log-kill-process)
+            (define-key map (kbd "q") 'kill-this-buffer)
+            map))
+
 (defun kubectl--pods-get-log (&optional args)
   "Loads the logs of the selected kubernetes pod into a new buffer, passing [args] to the kubectl command"
   (interactive (list (transient-args 'kubectl--pods-log)))
@@ -159,7 +171,8 @@ then the namespace."
       (kill-buffer bufname))
     (apply #'start-process process bufname kubectl--kubectl "logs" podname (kubectl--list-args args))
     (switch-to-buffer bufname)
-    (read-only-mode)))
+    (read-only-mode)
+    (kubectl-log-mode)))
 
 (defun kubectl--pods-term ()
   "Opens up a term for the currently selected pod"
