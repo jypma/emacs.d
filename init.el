@@ -968,3 +968,6 @@ See `elfeed-play-with-mpv'."
 
 ;; To edit code blacks in markdown
 (use-package edit-indirect)
+
+(use-package logview
+  :pin melpa)

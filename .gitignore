@@ -31,3 +31,4 @@ recentf~
 /.dap-breakpoints
 forge-database.sqlite
 /elpa/gnupg/tofu.db
+/logview-cache.extmap

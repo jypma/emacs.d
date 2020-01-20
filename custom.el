@@ -29,6 +29,14 @@
  '(kubernetes-logs-arguments (quote ("--tail=50")))
  '(kubernetes-poll-frequency 5)
  '(kubernetes-redraw-frequency 5)
+ '(logview-additional-submodes
+   (quote
+    (("Akka logs"
+      (format . "TIMESTAMP LEVEL [NAME]")
+      (levels . "SLF4J")
+      (timestamp "ISO 8601 datetime + millis")
+      (aliases)))))
+ '(logview-additional-timestamp-formats nil)
  '(lsp-file-watch-threshold 10000)
  '(lsp-java-favorite-static-members
    (quote
@@ -71,7 +79,7 @@
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
-    (undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile)))
+    (logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile)))
  '(password-cache-expiry 600)
  '(safe-local-variable-values
    (quote
@@ -125,6 +133,9 @@
  '(hl-line ((t (:background "#3d3708"))))
  '(italic ((t (:slant italic))))
  '(kubernetes-progress-indicator ((t (:foreground "#40E974"))))
+ '(logview-information-entry ((t (:background "#022502"))))
+ '(logview-timestamp ((t (:inherit font-lock-builtin-face :overline t :underline nil))))
+ '(logview-warning-entry ((t (:background "#221900"))))
  '(lsp-ui-doc-header ((t (:background "#5D5FB1" :foreground "black"))))
  '(lsp-ui-sideline-code-action ((t (:foreground "#808346"))))
  '(lsp-ui-sideline-global ((t (:foreground "burlywood"))))
