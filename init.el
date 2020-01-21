@@ -538,12 +538,20 @@ See `elfeed-play-with-mpv'."
 (delight 'auto-revert-mode nil t)
 
 (setq column-number-mode t)
+
+;; Backup settings
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq delete-old-versions t
   kept-new-versions 6
-  kept-old-versions 2
+  kept-old-versions 1000
+  vc-make-backup-files t ;; even backup version-controlled files
   version-control t)
 
+;; Make Emacs backup everytime I save
+(defun my/force-backup-of-buffer ()
+  "Lie to Emacs, telling it the curent buffer has yet to be backed up."
+  (setq buffer-backed-up nil))
+(add-hook 'before-save-hook  'my/force-backup-of-buffer)
 
 (use-package highlight-symbol
   :config
