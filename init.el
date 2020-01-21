@@ -653,6 +653,11 @@ See `elfeed-play-with-mpv'."
   (interactive (list "/bin/bash")))
 (ad-activate 'ansi-term)
 
+;; add yank shortcut to term raw mode
+;; (this defaults to shift-insert which isn't very nice.)
+(eval-after-load "term"
+  '(define-key term-raw-map (kbd "C-c C-y") 'term-paste))
+
 ;; confirm with y instead of yes
 (defalias 'yes-or-no-p 'y-or-n-p)
 
