@@ -149,6 +149,7 @@
  '(mode-line ((t (:background "#333333" :foreground "gold3" :box (:line-width -1 :color "gold4")))))
  '(mode-line-inactive ((t (:background "black" :foreground "dark gray" :box (:line-width -1 :color "LightSteelBlue4")))))
  '(org-block ((t (:inherit shadow :background "#1b2129"))))
+ '(outline-4 ((t (:foreground "#D987D8"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#FF5555"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "#02B692"))))
  '(rainbow-delimiters-depth-3-face ((t (:inherit rainbow-delimiters-base-face :foreground "#F0BA6D"))))
