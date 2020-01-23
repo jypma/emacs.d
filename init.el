@@ -718,6 +718,8 @@ See `elfeed-play-with-mpv'."
 ;; No whitespace mode for org mode (miscolours links and such)
 (add-hook 'org-mode-hook '(lambda () (whitespace-mode -1)))
 
+;; Smart beginning and end of line for org mode
+(setq org-special-ctrl-a/e t)
 
 ;; Unbind Ctrl-Z to not minimize emacs in UI mode
 (global-unset-key [(control z)])
