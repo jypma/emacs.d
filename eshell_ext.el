@@ -303,3 +303,22 @@ an error."
 
   ;; put the point in the lowest line and return
   (next-line arg))
+
+(defun my/grab-number-quick-calc ()
+  "Grab the current number into quick-calc"
+  (interactive)
+  (save-excursion
+    (skip-chars-backward "0123456789")
+    (skip-chars-backward "-")
+    (if (looking-at "-?\\([0-9]+\\)")
+        (progn
+          (set-mark (point))
+          (activate-mark)
+          (re-search-forward "-?\\([0-9]+\\)")
+          (let ((num (buffer-substring (mark) (point))))
+            (calc)
+            (calc-eval num 'push)
+            ))
+      (calc))))
+
+(global-set-key (kbd "<f8>") 'my/grab-number-quick-calc)
