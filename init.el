@@ -705,6 +705,8 @@ See `elfeed-play-with-mpv'."
  'org-babel-load-languages
  '((python . t)))
 
+(require 'org-expiry)
+
 ;; fontify inside org mode
 (setq org-src-fontify-natively t)
 (use-package htmlize)
