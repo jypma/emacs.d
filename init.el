@@ -981,6 +981,7 @@ See `elfeed-play-with-mpv'."
 (use-package puppet-mode
   :pin melpa)
 
+(add-to-list 'load-path "~/.emacs.d/kubectl/")
 (require 'kubectl)
 
 ;; To edit code blacks in markdown
