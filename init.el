@@ -595,7 +595,8 @@ See `elfeed-play-with-mpv'."
                            (c-set-offset 'substatement-open 0)
                            (c-set-offset 'template-args-cont '+)
                            (c-set-offset 'brace-list-intro '+)
-                           (abbrev-mode 0)))
+                           (abbrev-mode 0)
+                           (lsp)))
 
 (require 'protobuf-mode)
 
@@ -926,12 +927,6 @@ See `elfeed-play-with-mpv'."
                1 2 3))
 
 (add-to-list 'compilation-error-regexp-alist 'bloop)
-
-(use-package cquery
-  :config
-  (setq cquery-executable "/usr/bin/cquery")
-  (add-hook 'c++-mode-hook 'lsp)
-  (add-hook 'c-mode-hook 'lsp))
 
 (use-package yaml-mode)
 
