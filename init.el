@@ -984,3 +984,7 @@ See `elfeed-play-with-mpv'."
 
 (use-package logview
   :pin melpa)
+
+(use-package telega
+  :commands (telega)
+  :defer t)
