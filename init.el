@@ -336,7 +336,13 @@
     :init
     (mu4e-alert-enable-mode-line-display)
     (mu4e-alert-set-default-style 'libnotify)
-    (mu4e-alert-enable-notifications)))
+    (mu4e-alert-enable-notifications))
+
+;; spell check
+  (add-hook 'mu4e-compose-mode-hook
+            (defun my/do-compose-stuff ()
+              "My settings for message composition."
+              (flyspell-mode))))
 
 (load "~/.emacs.d/eshell_ext.el")
 
