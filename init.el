@@ -994,3 +994,34 @@ See `elfeed-play-with-mpv'."
 (use-package telega
   :commands (telega)
   :defer t)
+
+(use-package plantuml-mode
+  :config
+  ;; plantuml is in standard arch repositories
+  (setq plantuml-default-exec-mode 'executable)
+  (setq plantuml-executable-path "plantuml")
+  (setq plantuml-jar-path "~/.emacs.d/plantuml.jar")
+
+  ;; Enable plantuml-mode for PlantUML files
+  (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
+
+  ;; Allow plantuml in org files
+  (add-to-list
+   'org-src-lang-modes '("plantuml" . plantuml)))
+
+;; Allow execute of plantuml from org
+(require 'ob-plantuml)
+(setq org-plantuml-jar-path "~/.emacs.d/plantuml.jar")
+
+;; Allow images to be zoomed in and out
+(defun scale-image ()
+  "Scale the image by the same factor specified by the text scaling."
+  (image-transform-set-scale
+   (expt text-scale-mode-step
+         text-scale-mode-amount)))
+
+(defun scale-image-register-hook ()
+  "Register the image scaling hook."
+  (add-hook 'text-scale-mode-hook 'scale-image))
+
+(add-hook 'image-mode-hook 'scale-image-register-hook)
