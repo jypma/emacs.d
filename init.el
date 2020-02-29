@@ -143,6 +143,8 @@
 
 (require 'uuidgen)
 
+(require 'ordbog)
+
 ;; highlight #ff etc as actual colors
 (use-package rainbow-mode
   :config

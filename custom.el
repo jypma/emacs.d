@@ -76,6 +76,7 @@
      ("xml" . xml-mode))))
  '(markdown-fontify-code-blocks-natively t)
  '(nxml-slash-auto-complete-flag t)
+ '(ordbog-ddocli-path "/home/jan/bin/ddo-cli/ddo.py")
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
