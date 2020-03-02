@@ -1,5 +1,6 @@
 (defcustom ordbog-ddocli-path "ddo.py"
-  "The full path to ddo-cli's ddo.py script (downloadable from github)"
+  "The full path to ddo-cli's ddo.py script (downloadable from github
+  at https://github.com/thomasboevith/ddo-cli)"
   :type '(string)
   :group 'ordbog)
 
