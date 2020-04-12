@@ -789,10 +789,15 @@ See `elfeed-play-with-mpv'."
 (setq process-connection-type nil)
 
 ;; Hide leading stars
-(setq org-startup-indented t org-hide-leading-stars t)
+(setq org-startup-indented nil
+      org-hide-leading-stars t)
+
+(use-package org-bullets)
 
 ;; No whitespace mode for org mode (miscolours links and such)
-(add-hook 'org-mode-hook '(lambda () (whitespace-mode -1)))
+(add-hook 'org-mode-hook '(lambda ()
+                            (whitespace-mode -1)
+                            (org-bullets-mode)))
 
 ;; Smart beginning and end of line for org mode
 (setq org-special-ctrl-a/e t)
