@@ -365,9 +365,11 @@
 (dolist (mode '(emacs-lisp-mode-hook
                 inferior-lisp-mode-hook
                 c++-mode-hook
+                c-mode-hook
                 scala-mode-hook
                 protobuf-mode-hook
                 javascript-mode-hook
+                js-mode-hook
                 groovy-mode-hook
                 java-mode-hook))
   (add-hook mode #'flyspell-prog-mode)
