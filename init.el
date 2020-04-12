@@ -610,6 +610,8 @@ See `elfeed-play-with-mpv'."
             (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\).*\\({\\|=>\\)$")
             (visual-line-mode)))
 
+(require 'c-block-info-inline-mode)
+
 (add-hook 'c++-mode-hook (lambda()
                            (c-set-offset 'substatement-open 0)
                            (c-set-offset 'template-args-cont '+)
