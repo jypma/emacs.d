@@ -715,6 +715,44 @@ See `elfeed-play-with-mpv'."
 (require `nxml-mode)
 (add-to-list `rng-schema-locating-files "~/.emacs.d/schemas/schemas.xml")
 
+;; folding for nxml-mode
+(add-to-list 'hs-special-modes-alist
+             '(nxml-mode
+               "<!--\\|<[^/>]*[^/]>"
+               "-->\\|</[^/>]*[^/]>"
+
+               "<!--"
+               sgml-skip-tag-forward
+               nil))
+(add-hook 'nxml-mode-hook 'hs-minor-mode)
+(define-key nxml-mode-map (kbd "<backtab>") 'hs-toggle-hiding)
+
+;; customize hideshow ellipsis
+(set-display-table-slot standard-display-table
+                         'selective-display
+                         (string-to-vector "…"))
+
+;; also do the same when in whitespace-mode
+(defun whitespace-change-ellipsis ()
+  "Change ellipsis when used with `whitespace-mode'."
+  (when buffer-display-table
+    (set-display-table-slot buffer-display-table
+                            'selective-display
+                            (string-to-vector "…"))))
+(add-hook 'whitespace-mode-hook #'whitespace-change-ellipsis)
+
+;; customize the face as well
+(defface hs-ellipsis
+  '((((class color) (background light)) (:underline t))
+    (((class color) (background dark)) (:underline t))
+    (t (:underline t)))
+  "Face for ellipsis in hideshow mode.")
+(set-display-table-slot
+ standard-display-table
+ 'selective-display
+ (let ((face-offset (* (face-id 'hs-ellipsis) (lsh 1 22))))
+   (vconcat (mapcar (lambda (c) (+ face-offset c)) " … "))))
+
 ;; activate dired-jump
 (require 'dired-x)
 
