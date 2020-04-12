@@ -1111,3 +1111,11 @@ See `elfeed-play-with-mpv'."
    '((restclient . t))))
 
 
+(use-package platformio-mode
+  )
+
+(use-package string-inflection
+  :bind
+  ;; Toggle string capitalization style (camel, caps, snake, etc.)
+  ("C-c C-i" . 'string-inflection-all-cycle))
+
