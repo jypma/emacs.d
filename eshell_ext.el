@@ -321,4 +321,14 @@ an error."
             ))
       (calc))))
 
+(defun my/message-auto-ispell-language ()
+  "Auto-detect ispell language for composing e-mails"
+  (interactive)
+  (let ((receivers (format "%s %s" (message-fetch-field "cc") (message-fetch-field "to"))))
+    (when (string-match-p "\\.dk" receivers)
+      (ispell-change-dictionary "da")
+      )))
+
+(add-hook 'mu4e-compose-mode-hook 'my/message-auto-ispell-language)
+
 (global-set-key (kbd "<f8>") 'my/grab-number-quick-calc)
