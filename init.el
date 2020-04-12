@@ -1100,3 +1100,14 @@ See `elfeed-play-with-mpv'."
   (add-hook 'text-scale-mode-hook 'scale-image))
 
 (add-hook 'image-mode-hook 'scale-image-register-hook)
+
+;; From https://github.com/alf/ob-restclient.el
+(require 'ob-restclient)
+
+(use-package restclient
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((restclient . t))))
+
+
