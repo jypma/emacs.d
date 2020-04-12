@@ -1001,7 +1001,10 @@ See `elfeed-play-with-mpv'."
 
 (add-to-list 'compilation-error-regexp-alist 'bloop)
 
-(use-package yaml-mode)
+(use-package yaml-mode
+  :bind
+  (:map yaml-mode-map
+        ("C-." . find-file-at-point)))
 
 (use-package smartparens
   :config
