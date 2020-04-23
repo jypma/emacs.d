@@ -1033,7 +1033,9 @@ See `elfeed-play-with-mpv'."
 (use-package yaml-mode
   :bind
   (:map yaml-mode-map
-        ("C-." . find-file-at-point)))
+        ("C-." . find-file-at-point))
+  :hook ((yaml-mode . adaptive-wrap-prefix-mode)
+         (yaml-mode . visual-line-mode)))
 
 (use-package smartparens
   :config
