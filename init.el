@@ -214,7 +214,19 @@
 
 (use-package scala-mode
   :mode "\\.s\\(cala\\|bt\\)$"
-  :pin melpa)
+  :pin melpa
+  :config
+  (add-hook 'scala-mode-hook
+          (lambda ()
+            (adaptive-wrap-prefix-mode)
+            (setq adaptive-wrap-extra-indent 2)
+            (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\|trait\\|abstract class\\).*$")
+            (visual-line-mode)))
+  (add-to-list 'hs-special-modes-alist
+             '(scala-mode "{" "}" "/[*/]"
+               nil
+               nil))
+  (define-key scala-mode-map (kbd "<backtab>") 'hs-toggle-hiding))
 
 (use-package company-emoji)
 
@@ -601,13 +613,7 @@ See `elfeed-play-with-mpv'."
             (setq fill-column 130)                   ;; yes, looks worse on github, but, java.
             (setq whitespace-line-column 130)
             (setq c-basic-offset 4)
-            (visual-line-mode)))
-
-(add-hook 'scala-mode-hook
-          (lambda ()
-            (adaptive-wrap-prefix-mode)
-            (setq adaptive-wrap-extra-indent 2)
-            (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\).*\\({\\|=>\\)$")
+            (outline-minor-mode)
             (visual-line-mode)))
 
 (require 'c-block-info-inline-mode)
@@ -720,26 +726,15 @@ See `elfeed-play-with-mpv'."
              '(nxml-mode
                "<!--\\|<[^/>]*[^/]>"
                "-->\\|</[^/>]*[^/]>"
-
                "<!--"
                sgml-skip-tag-forward
                nil))
 (add-hook 'nxml-mode-hook 'hs-minor-mode)
 (define-key nxml-mode-map (kbd "<backtab>") 'hs-toggle-hiding)
 
-;; customize hideshow ellipsis
-(set-display-table-slot standard-display-table
-                         'selective-display
-                         (string-to-vector "…"))
-
-;; also do the same when in whitespace-mode
-(defun whitespace-change-ellipsis ()
-  "Change ellipsis when used with `whitespace-mode'."
-  (when buffer-display-table
-    (set-display-table-slot buffer-display-table
-                            'selective-display
-                            (string-to-vector "…"))))
-(add-hook 'whitespace-mode-hook #'whitespace-change-ellipsis)
+;; (set-display-table-slot standard-display-table
+;;                          'selective-display
+;;                          (string-to-vector "…"))
 
 ;; customize the face as well
 (defface hs-ellipsis
@@ -747,6 +742,20 @@ See `elfeed-play-with-mpv'."
     (((class color) (background dark)) (:underline t))
     (t (:underline t)))
   "Face for ellipsis in hideshow mode.")
+
+;; Use this in whitespace-mode
+(defun whitespace-change-ellipsis ()
+  "Change ellipsis when used with `whitespace-mode'."
+  (when buffer-display-table
+    (set-display-table-slot buffer-display-table
+                            'selective-display
+                            ;;(string-to-vector " … ")
+                            (let ((face-offset (* (face-id 'hs-ellipsis) (lsh 1 22))))
+                              (vconcat (mapcar (lambda (c) (+ face-offset c)) " … ")))
+                            )))
+(add-hook 'whitespace-mode-hook #'whitespace-change-ellipsis)
+
+;; Use this in non-whitespace modes
 (set-display-table-slot
  standard-display-table
  'selective-display
@@ -794,9 +803,23 @@ See `elfeed-play-with-mpv'."
 
 (use-package org-bullets)
 
-;; No whitespace mode for org mode (miscolours links and such)
 (add-hook 'org-mode-hook '(lambda ()
                             (whitespace-mode -1)
+
+                            ;; Auto-wrap lines
+                            (visual-line-mode)
+                            (adaptive-wrap-prefix-mode)
+                            (setq adaptive-wrap-extra-indent 2)
+
+                            (variable-pitch-mode)
+                            ;; from https://lepisma.xyz/2017/10/28/ricing-org-mode/
+                            ;; A little bit of spacing between lines:
+                            (setq line-spacing 0.1)
+                            ;; A little bit of space in the left/right margins:
+                            (setq left-margin-width 2)
+                            (setq right-margin-width 2)
+                            (set-window-buffer nil (current-buffer))
+
                             (org-bullets-mode)))
 
 ;; Smart beginning and end of line for org mode
@@ -1040,7 +1063,6 @@ See `elfeed-play-with-mpv'."
 ;; Prog-mode defaults
 (delight 'outline-minor-mode "" t)
 (delight 'hs-minor-mode "" t)
-(add-hook 'prog-mode-hook 'outline-minor-mode)
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
 (use-package pdf-tools
