@@ -395,6 +395,7 @@
                                 (ws-butler-mode)
                                 (visual-line-mode)
                                 (adaptive-wrap-prefix-mode)
+                                (variable-pitch-mode)
                                 (flyspell-mode)))
 
 ;; use popup menu for completions instead of strange top-of-buffer selector
