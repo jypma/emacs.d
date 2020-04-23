@@ -187,12 +187,21 @@ they are appended."
   (let ((default-directory (projectile-project-root)))
     (compile (format "bloop test %s --reporter scalac -o %s" (my/module-name-for-buffer) (my/test-name-for-buffer)))))
 
+(defun my/root-project-name-from-buildsbt (dir)
+  "Returns the name of the root project defined in build.sbt in directory [dir]"
+  (let ((build (f-read-text (format "%s/build.sbt" dir))))
+    (cond
+     ((string-match "val `\\(.+\\)` = (project in file(\".\"))" build) (match-string 1 build))
+     (t "root"))
+  ))
+
 (defun my/module-name-for-buffer ()
   "Returns the sbt or maven module name for the current buffer"
   (when (string-match "\\(.+\\)/src/[^/]+/\\(?:java\\|scala\\)/.*" buffer-file-name)
     (let ((baseName (match-string 1 buffer-file-name)))
       (if (file-exists-p (s-concat baseName "/build.sbt"))
-          "root" ;; this isn't a multi-module project, since our src folder is where build.sbt is.
+          ;; this isn't a multi-module project, since our src folder is where build.sbt is.
+          (my/root-project-name-from-buildsbt baseName)
         (file-name-base baseName)))))
 
 (defun my/-module-name-or-parent (dir)
@@ -332,3 +341,16 @@ an error."
 (add-hook 'mu4e-compose-mode-hook 'my/message-auto-ispell-language)
 
 (global-set-key (kbd "<f8>") 'my/grab-number-quick-calc)
+
+(defun my/pretty-print-xml-region (begin end)
+  "Pretty format XML markup in region. You need to have nxml-mode
+http://www.emacswiki.org/cgi-bin/wiki/NxmlMode installed to do
+this.  The function inserts linebreaks to separate tags that have
+nothing but whitespace between them.  It then indents the markup
+by using nxml's indentation rules."
+  (interactive "r")
+  (save-excursion
+    (goto-char begin)
+    (while (search-forward-regexp "\>[ \\t]*\<" nil t)
+      (backward-char) (insert "\n"))
+    (indent-region begin end)))
