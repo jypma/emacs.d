@@ -73,9 +73,6 @@
 ;; Use pretty symbols everywhere
 (global-prettify-symbols-mode 1)
 
-;; Winner: use C-c left, right to cycle previous window layouts
-(winner-mode 1)
-
 ;; Remember locations in files
 (save-place-mode 1)
 
@@ -193,10 +190,21 @@
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-unpushed-to-upstream
                           'magit-insert-unpushed-to-upstream-or-recent
-                          'replace))
+                          'replace)
+
+  ;; magit default to origin/master instead of just master
+  (setq magic-prefer-remote-upstream 1)
+
+  (global-set-key (kbd "C-x g") 'magit-status))
 
 (use-package forge
   :after magit)
+
+(use-package hl-todo)
+
+(use-package magit-todos
+  :init
+  (magit-todos-mode))
 
 (use-package sbt-mode
   :pin melpa
@@ -662,7 +670,6 @@ See `elfeed-play-with-mpv'."
 
 (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 
-(global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
 (global-set-key (kbd "C-x C-p") 'git-gutter:previous-hunk)
 (global-set-key (kbd "C-x C-n") 'git-gutter:next-hunk)
