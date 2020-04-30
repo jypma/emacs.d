@@ -822,13 +822,27 @@ See `elfeed-play-with-mpv'."
                             (variable-pitch-mode)
                             ;; from https://lepisma.xyz/2017/10/28/ricing-org-mode/
                             ;; A little bit of spacing between lines:
-                            (setq line-spacing 0.1)
+                            (setq line-spacing 0.0) ;; doesn't look good on tables.
                             ;; A little bit of space in the left/right margins:
                             (setq left-margin-width 2)
                             (setq right-margin-width 2)
                             (set-window-buffer nil (current-buffer))
 
                             (org-bullets-mode)))
+
+;; https://emacs.stackexchange.com/questions/32347/how-to-have-wrapped-text-when-exporting-from-org-to-latex
+(add-to-list 'org-latex-packages-alist '("" "tabularx"))
+
+;; http://endlessparentheses.com/better-time-stamps-in-org-export.html
+(defun my/filter-timestamp (trans back _comm)
+  "Remove <> around time-stamps."
+  (pcase back
+    ((or `jekyll `html)
+     (replace-regexp-in-string "&[lg]t;" "" trans))
+    (`latex
+     (replace-regexp-in-string "[<>]" "" trans))))
+(add-to-list 'org-export-filter-timestamp-functions
+             #'my/filter-timestamp)
 
 ;; Smart beginning and end of line for org mode
 (setq org-special-ctrl-a/e t)

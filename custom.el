@@ -61,6 +61,7 @@
  '(lsp-ui-sideline-show-symbol nil)
  '(magit-todos-branch-list nil)
  '(magit-todos-scanner nil)
+ '(markdown-asymmetric-header t)
  '(markdown-code-lang-modes
    (quote
     (("ocaml" . tuareg-mode)
@@ -84,6 +85,8 @@
  '(ordbog-ddocli-path "/home/jan/bin/ddo-cli/ddo.py")
  '(org-bullets-bullet-list (quote ("∙" "∙" "∙" "∙")))
  '(org-edit-src-content-indentation 0)
+ '(org-latex-active-timestamp-format "%s")
+ '(org-latex-inactive-timestamp-format "%s")
  '(org-log-into-drawer t)
  '(package-selected-packages
    (quote
