@@ -834,6 +834,7 @@ See `elfeed-play-with-mpv'."
 (add-to-list 'org-latex-packages-alist '("" "tabularx"))
 
 ;; http://endlessparentheses.com/better-time-stamps-in-org-export.html
+(require 'ox)
 (defun my/filter-timestamp (trans back _comm)
   "Remove <> around time-stamps."
   (pcase back
