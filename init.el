@@ -229,7 +229,11 @@
             (adaptive-wrap-prefix-mode)
             (setq adaptive-wrap-extra-indent 2)
             (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\|trait\\|abstract class\\).*$")
-            (visual-line-mode)))
+            (visual-line-mode)
+            (lsp)
+            ;; disable lsp-format-region, since it doesn't work with metals.
+            (setq-local indent-region-function nil)
+            ))
   (add-to-list 'hs-special-modes-alist
              '(scala-mode "{" "}" "/[*/]"
                nil
@@ -935,7 +939,6 @@ See `elfeed-play-with-mpv'."
 (use-package treemacs)
 
 (use-package lsp-mode
-  :hook (scala-mode . lsp)
   :init (setq lsp-eldoc-render-all nil
               lsp-highlight-symbol-at-point nil
               lsp-prefer-flymake nil    ;; for metals, https://scalameta.org/metals/docs/editors/emacs.html
