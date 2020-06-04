@@ -522,6 +522,8 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCV5vCi3jPJdURZwAOO_FNfQ" ;; Thought Emporium
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCGhzS1GbX-yxyBrUJtnUMoA" ;; DIY guitar pedals
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCtpB66XKjAtFZfZyzmC-_Cg" ;; Hexi Base
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UC-GiI_5U-WkPIKqsq056wvg" ;; Brandon Acker
+      "https://www.youtube.com/feeds/videos.xml?channel_idFZfZyzmC-_Cg" ;; Hexi Base
       "http://nullprogram.com/feed/"
       "http://planet.emacsen.org/atom.xml"))
   
