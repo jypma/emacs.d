@@ -81,6 +81,15 @@
  '(markdown-fontify-code-blocks-natively t)
  '(markdown-marginalize-headers nil)
  '(mu4e-compose-dont-reply-to-self t)
+ '(mu4e-headers-fields
+   (quote
+    ((:human-date . 12)
+     (:flags . 6)
+     (:mailing-list . 10)
+     (:from . 22)
+     (:size . 8)
+     (:subject))))
+ '(mu4e-use-fancy-chars t)
  '(nxml-slash-auto-complete-flag t)
  '(ordbog-ddocli-path "/home/jan/bin/ddo-cli/ddo.py")
  '(org-bullets-bullet-list (quote ("∙" "∙" "∙" "∙")))
@@ -174,6 +183,7 @@
  '(org-done ((t (:foreground "#005617" :weight bold))))
  '(org-table ((t (:inherit fixed-pitch :foreground "LightSkyBlue"))))
  '(org-todo ((t (:foreground "#DD3794" :weight bold))))
+ '(org-verbatim ((t (:inherit markdown-code-face))))
  '(outline-1 ((t (:foreground "#00ede1" :weight bold :height 1.3))))
  '(outline-2 ((t (:foreground "#D7FF4B" :weight bold :height 1.2))))
  '(outline-3 ((t (:foreground "lemon chiffon" :weight bold :height 1.0))))
