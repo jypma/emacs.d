@@ -230,9 +230,10 @@
             (setq adaptive-wrap-extra-indent 2)
             (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\|trait\\|abstract class\\).*$")
             (visual-line-mode)
-            (lsp)
             ;; disable lsp-format-region, since it doesn't work with metals.
-            (setq-local indent-region-function nil)
+            (setq lsp-enable-indentation nil)
+            (setq indent-region-function nil)
+            (lsp)
             ))
   (add-to-list 'hs-special-modes-alist
              '(scala-mode "{" "}" "/[*/]"
