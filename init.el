@@ -359,6 +359,8 @@
   (setq mu4e-html2text-command 'mu4e-shr2text)
   (setq shr-color-visible-luminance-min 80)
   (setq shr-color-visible-distance-min 5)
+  (setq mu4e-headers-unread-mark '("u" . " "))
+  (setq mu4e-headers-new-mark '("N" . " "))
 
   (load "~/.emacs.d/mu4e.el")
   (bind-keys :package mu4e ("<f9>" . mu4e))
