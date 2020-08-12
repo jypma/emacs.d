@@ -888,7 +888,15 @@ See `elfeed-play-with-mpv'."
 
 ;; enable re-use of ssh connections
 ;; https://emacs.stackexchange.com/questions/22306/working-with-tramp-mode-on-slow-connection-emacs-does-network-trip-when-i-start
-(setq tramp-ssh-controlmaster-options "")
+;; https://www.reddit.com/r/emacs/comments/gxhomh/help_tramp_connections_make_emacs_unresponsive_on/
+(setq
+ tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=10"
+;; Disable version control to avoid delays:
+;;vc-ignore-dir-regexp (format "\\(%s\\)\\|\\(%s\\)"
+;;vc-ignore-dir-regexp tramp-file-name-regexp)
+ tramp-copy-size-limit nil
+ tramp-default-method "scpx"
+ tramp-completion-reread-directory-timeout t)
 
 ;; auto-commit used for org todo list sync
 (use-package git-auto-commit-mode)
