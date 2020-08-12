@@ -1187,3 +1187,7 @@ See `elfeed-play-with-mpv'."
   ;; Toggle string capitalization style (camel, caps, snake, etc.)
   ("C-c C-i" . 'string-inflection-all-cycle))
 
+(use-package highlight-indent-guides
+  :config
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
+
