@@ -527,7 +527,9 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCGhzS1GbX-yxyBrUJtnUMoA" ;; DIY guitar pedals
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCtpB66XKjAtFZfZyzmC-_Cg" ;; Hexi Base
       "https://www.youtube.com/feeds/videos.xml?channel_id=UC-GiI_5U-WkPIKqsq056wvg" ;; Brandon Acker
-      "https://www.youtube.com/feeds/videos.xml?channel_idFZfZyzmC-_Cg" ;; Hexi Base
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCEQXp_fcqwPcqrzNtWJ1w9w" ;; Logos by Nick
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCyRhIGDUKdIOw07Pd8pHxCw" ;; Shut up and sit down
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCsaGKqPZnGp_7N80hcHySGQ" ;; Tasting history
       "http://nullprogram.com/feed/"
       "http://planet.emacsen.org/atom.xml"))
   
