@@ -810,6 +810,7 @@ See `elfeed-play-with-mpv'."
  '((python . t)))
 
 (require 'org-expiry)
+(require 'ox-md nil t)
 
 ;; fontify inside org mode
 (setq org-src-fontify-natively t)
