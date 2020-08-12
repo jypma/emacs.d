@@ -1191,3 +1191,4 @@ See `elfeed-play-with-mpv'."
   :config
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
+(use-package csv-mode)
