@@ -200,6 +200,8 @@
 (use-package forge
   :after magit)
 
+(use-package git-timemachine)
+
 (use-package hl-todo)
 
 (use-package magit-todos
