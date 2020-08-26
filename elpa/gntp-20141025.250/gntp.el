@@ -3,6 +3,7 @@
 ;; Author: Engelke Eschner <tekai@gmx.li>
 ;; Version: 0.1
 ;; Package-Version: 20141025.250
+;; Package-Commit: 767571135e2c0985944017dc59b0be79af222ef5
 ;; Created: 2013-03-21
 
 ;; LICENSE

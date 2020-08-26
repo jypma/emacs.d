@@ -5,6 +5,7 @@
 ;; Author: Iqbal Ansari <iqbalansari02@yahoo.com>
 ;; URL: https://github.com/iqbalansari/mu4e-alert
 ;; Package-Version: 20190418.558
+;; Package-Commit: 91f0657c5b245a9de57aa38391221fb5d141d9bd
 ;; Keywords: mail, convenience
 ;; Version: 1.0
 ;; Package-Requires: ((alert "1.2") (s "1.10.0") (ht "2.0") (emacs "24.3"))

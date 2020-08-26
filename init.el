@@ -963,11 +963,7 @@ See `elfeed-play-with-mpv'."
               lsp-inhibit-message t)
   )
 
-(use-package company-lsp
-  :after  company
-  :config
-  (setq company-lsp-cache-candidates t
-        company-lsp-async t))
+(use-package lsp-metals)
 
 (use-package lsp-ui
   :config
@@ -1169,15 +1165,14 @@ See `elfeed-play-with-mpv'."
 
 (add-hook 'image-mode-hook 'scale-image-register-hook)
 
-;; From https://github.com/alf/ob-restclient.el
-(require 'ob-restclient)
-
 (use-package restclient
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((restclient . t))))
 
+;; From https://github.com/alf/ob-restclient.el
+(require 'ob-restclient)
 
 (use-package platformio-mode
   )

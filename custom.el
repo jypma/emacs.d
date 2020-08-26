@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-auto-complete nil)
- '(company-auto-complete-chars (quote (119)))
+ '(company-auto-complete-chars '(119))
  '(company-idle-delay 0.3)
  '(company-lsp-enable-recompletion nil)
  '(company-show-numbers t)
@@ -12,51 +12,50 @@
  '(compilation-ask-about-save nil)
  '(compilation-auto-jump-to-first-error nil)
  '(compilation-scroll-output t)
+ '(csv-align-max-width 20)
  '(csv-comment-start-default nil)
- '(custom-enabled-themes (quote (misterioso)))
+ '(csv-header-lines 1)
+ '(custom-enabled-themes '(misterioso))
  '(dired-listing-switches "-al --quoting-style=literal")
  '(eyebrowse-new-workspace "*dashboard*")
  '(fill-column 110)
  '(flymake-no-changes-timeout 60)
- '(forge-topic-list-limit (quote (60 . 0)))
+ '(forge-topic-list-limit '(60 . 0))
  '(git-gutter:modified-sign "❚")
  '(git-gutter:update-interval 1)
  '(global-subword-mode t)
  '(global-whitespace-mode nil)
  '(highlight-indent-guides-auto-enabled nil)
- '(highlight-indent-guides-method (quote bitmap))
- '(highlight-indent-guides-responsive (quote top))
+ '(highlight-indent-guides-method 'bitmap)
+ '(highlight-indent-guides-responsive 'top)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
  '(json-reformat:indent-width 2)
  '(kubernetes-clean-up-interactive-exec-buffers nil)
- '(kubernetes-logs-arguments (quote ("--tail=50")))
+ '(kubernetes-logs-arguments '("--tail=50"))
  '(kubernetes-poll-frequency 5)
  '(kubernetes-redraw-frequency 5)
  '(logview-additional-submodes
-   (quote
-    (("Akka logs"
+   '(("Akka logs"
       (format . "TIMESTAMP LEVEL [NAME]")
       (levels . "SLF4J")
       (timestamp "ISO 8601 datetime + millis")
-      (aliases)))))
+      (aliases))))
  '(logview-additional-timestamp-formats nil)
  '(lsp-file-watch-threshold 10000)
  '(lsp-java-favorite-static-members
-   (quote
-    ("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*")))
+   '("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*"))
  '(lsp-java-format-settings-url "/home/jan/eclipse-format-jan.xml")
  '(lsp-java-save-action-organize-imports nil)
  '(lsp-java-vmargs
-   (quote
-    ("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-Djavax.net.ssl.keyStore=/home/jan/.ssh/jyp.p12" "-Djavax.net.ssl.keyStoreType=pkcs12" "-Djavax.net.ssl.keyStorePassword=csvfiles")))
+   '("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-Djavax.net.ssl.keyStore=/home/jan/.ssh/jyp.p12" "-Djavax.net.ssl.keyStoreType=pkcs12" "-Djavax.net.ssl.keyStorePassword=csvfiles"))
  '(lsp-keep-workspace-alive nil)
  '(lsp-ui-doc-enable t)
  '(lsp-ui-doc-include-signature t)
- '(lsp-ui-doc-position (quote top))
+ '(lsp-ui-doc-position 'top)
  '(lsp-ui-flycheck-enable t)
- '(lsp-ui-flycheck-list-position (quote right))
+ '(lsp-ui-flycheck-list-position 'right)
  '(lsp-ui-peek-enable t)
  '(lsp-ui-sideline-enable nil)
  '(lsp-ui-sideline-ignore-duplicate t)
@@ -67,8 +66,7 @@
  '(magit-todos-scanner nil)
  '(markdown-asymmetric-header t)
  '(markdown-code-lang-modes
-   (quote
-    (("ocaml" . tuareg-mode)
+   '(("ocaml" . tuareg-mode)
      ("elisp" . emacs-lisp-mode)
      ("ditaa" . artist-mode)
      ("asymptote" . asy-mode)
@@ -81,40 +79,37 @@
      ("screen" . shell-script-mode)
      ("shell" . sh-mode)
      ("bash" . sh-mode)
-     ("xml" . xml-mode))))
+     ("xml" . xml-mode)))
  '(markdown-fontify-code-blocks-natively t)
  '(markdown-marginalize-headers nil)
  '(mu4e-compose-dont-reply-to-self t)
  '(mu4e-headers-fields
-   (quote
-    ((:human-date . 12)
+   '((:human-date . 12)
      (:flags . 6)
      (:mailing-list . 10)
      (:from . 22)
      (:size . 8)
-     (:subject))))
+     (:subject)))
  '(mu4e-use-fancy-chars t)
  '(nxml-slash-auto-complete-flag t)
  '(ordbog-ddocli-path "/home/jan/bin/ddo-cli/ddo.py")
- '(org-bullets-bullet-list (quote ("∙" "∙" "∙" "∙")))
+ '(org-bullets-bullet-list '("∙" "∙" "∙" "∙"))
  '(org-edit-src-content-indentation 0)
  '(org-hide-block-startup t)
  '(org-latex-active-timestamp-format "%s")
  '(org-latex-inactive-timestamp-format "%s")
  '(org-log-into-drawer t)
  '(package-selected-packages
-   (quote
-    (emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient org-bullets plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile)))
+   '(lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient org-bullets plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
  '(password-cache-expiry 600)
  '(plantuml-indent-level 2)
  '(safe-local-variable-values
-   (quote
-    ((magit-todos-exclude-globs "elpa")
+   '((magit-todos-exclude-globs "elpa")
      (magit-todos-exclude-globs "navbi" "environment" "aks-common" "deployments" "p2p-coupa-ubl")
      (magit-todos-exclude-globs "navbi" "environment")
      (magit-todos-exclude-globs "navbi")
      (org-confirm-babel-evaluate)
-     (eval setq gac-automatically-push-p 1))))
+     (eval setq gac-automatically-push-p 1)))
  '(scroll-error-top-bottom t)
  '(scroll-margin 7)
  '(scroll-preserve-screen-position t)
@@ -122,20 +117,12 @@
  '(show-paren-mode t)
  '(tramp-histfile-override nil)
  '(tramp-remote-shell-executable "/bin/sh")
- '(visual-line-fringe-indicators (quote (left-curly-arrow right-curly-arrow)))
+ '(visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
  '(vr/match-separator-use-custom-face t)
- '(whitespace-display-mappings
-   (quote
-    ((space-mark 160
-                 [164]
-                 [95])
-     (tab-mark 9
-               [187 9]
-               [92 9]))))
+ '(whitespace-display-mappings '((space-mark 160 [164] [95]) (tab-mark 9 [187 9] [92 9])))
  '(whitespace-line-column 110)
  '(whitespace-style
-   (quote
-    (face trailing tabs spaces lines-tail newline empty indentation space-after-tab space-before-tab space-mark tab-mark newline-mark))))
+   '(face trailing tabs spaces lines-tail newline empty indentation space-after-tab space-before-tab space-mark tab-mark newline-mark)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -176,6 +163,7 @@
  '(lsp-ui-sideline-global ((t (:foreground "burlywood"))))
  '(magit-mode-line-process ((t (:foreground "#74E815" :weight bold))))
  '(magit-section-highlight ((t (:background "#1c1c1c"))))
+ '(markdown-bold-face ((t (:inherit bold :foreground "#ffffff"))))
  '(markdown-code-face ((t (:inherit (fixed-pitch font-lock-constant-face) :background "#1b2129"))))
  '(markdown-header-face-1 ((t (:inherit outline-1 :overline t))))
  '(markdown-header-face-2 ((t (:inherit outline-2 :overline t))))
