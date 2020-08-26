@@ -530,6 +530,9 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCEQXp_fcqwPcqrzNtWJ1w9w" ;; Logos by Nick
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCyRhIGDUKdIOw07Pd8pHxCw" ;; Shut up and sit down
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCsaGKqPZnGp_7N80hcHySGQ" ;; Tasting history
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCRwIF4NhKQf6tQpnYDcSC5A" ;; MusicTheoryForGuitar
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UC1_uAIS3r8Vu6JjXWvastJg" ;; Mathologer
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UC42d7zFnWU0dYVk_M0JED6w" ;; Kevin Darrah
       "http://nullprogram.com/feed/"
       "http://planet.emacsen.org/atom.xml"))
   
