@@ -51,6 +51,7 @@
  '(lsp-java-vmargs
    '("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication" "-Djavax.net.ssl.keyStore=/home/jan/.ssh/jyp.p12" "-Djavax.net.ssl.keyStoreType=pkcs12" "-Djavax.net.ssl.keyStorePassword=csvfiles"))
  '(lsp-keep-workspace-alive nil)
+ '(lsp-metals-java-home "/usr/lib/jvm/java-8-openjdk")
  '(lsp-ui-doc-enable t)
  '(lsp-ui-doc-include-signature t)
  '(lsp-ui-doc-position 'top)

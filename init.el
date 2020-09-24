@@ -358,9 +358,12 @@
   (setq mu4e-hide-index-messages t)
   ;; fix the hideous rendering of html
   (require 'mu4e-contrib)
+
+  ;; (setq mu4e-html2text-command "w3m -T text/html")
   (setq mu4e-html2text-command 'mu4e-shr2text)
   (setq shr-color-visible-luminance-min 80)
-  (setq shr-color-visible-distance-min 5)
+  (setq shr-color-visible-distance-min 40)
+
   (setq mu4e-headers-unread-mark '("u" . " "))
   (setq mu4e-headers-new-mark '("N" . " "))
 
@@ -535,6 +538,7 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCRwIF4NhKQf6tQpnYDcSC5A" ;; MusicTheoryForGuitar
       "https://www.youtube.com/feeds/videos.xml?channel_id=UC1_uAIS3r8Vu6JjXWvastJg" ;; Mathologer
       "https://www.youtube.com/feeds/videos.xml?channel_id=UC42d7zFnWU0dYVk_M0JED6w" ;; Kevin Darrah
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCm9K6rby98W8JigLoZOh6FQ" ;; Lock picking lowyer
       "http://nullprogram.com/feed/"
       "http://planet.emacsen.org/atom.xml"))
   
