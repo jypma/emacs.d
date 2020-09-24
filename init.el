@@ -40,6 +40,8 @@
 
 (require 'whitespace)
 (add-hook 'prog-mode-hook #'whitespace-mode)
+(add-hook 'conf-mode-hook #'whitespace-mode)
+(add-hook 'conf-mode-hook #'ws-butler-mode)
 
 (load "~/.emacs.d/setup-ligatures.el")
 
