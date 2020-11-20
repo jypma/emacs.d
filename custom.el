@@ -3,6 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-auto-commit nil)
+ '(company-auto-commit-chars '(119))
  '(company-auto-complete nil)
  '(company-auto-complete-chars '(119))
  '(company-idle-delay 0.3)
@@ -26,12 +28,14 @@
  '(global-subword-mode t)
  '(global-whitespace-mode nil)
  '(highlight-indent-guides-auto-enabled nil)
- '(highlight-indent-guides-method 'character)
+ '(highlight-indent-guides-method 'bitmap)
  '(highlight-indent-guides-responsive 'top)
+ '(ibuffer-projectile-prefix " ")
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
  '(json-reformat:indent-width 2)
+ '(kubectl--known-namespaces '(("ISSGi-platform-prdev-cluster" "p2p-dev" "common")))
  '(kubernetes-clean-up-interactive-exec-buffers nil)
  '(kubernetes-logs-arguments '("--tail=50"))
  '(kubernetes-poll-frequency 5)
@@ -101,9 +105,19 @@
  '(org-latex-inactive-timestamp-format "%s")
  '(org-log-into-drawer t)
  '(package-selected-packages
-   '(lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient org-bullets plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
+   '(ibuffer-projectile lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient org-bullets plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
  '(password-cache-expiry 600)
  '(plantuml-indent-level 2)
+ '(restclient-content-type-modes
+   '(("text/xml" . sgml-mode)
+     ("text/plain" . text-mode)
+     ("application/xml" . xml-mode)
+     ("application/json" . js-mode)
+     ("image/png" . image-mode)
+     ("image/jpeg" . image-mode)
+     ("image/jpg" . image-mode)
+     ("image/gif" . image-mode)
+     ("text/html" . html-mode)))
  '(safe-local-variable-values
    '((magit-todos-exclude-globs "elpa")
      (magit-todos-exclude-globs "navbi" "environment" "aks-common" "deployments" "p2p-coupa-ubl")
@@ -153,6 +167,7 @@
  '(git-gutter:modified ((t (:inherit default :foreground "#629CE4" :weight bold))))
  '(highlight ((t (:background "#724F07"))))
  '(highlight-indent-guides-character-face ((t (:foreground "#3F3F3F"))))
+ '(highlight-indent-guides-stack-character-face ((t (:foreground "#3F3F3F"))))
  '(highlight-indent-guides-top-character-face ((t (:foreground "#9D9A71"))))
  '(hl-line ((t (:background "#3d3708"))))
  '(hs-ellipsis ((t (:background "#00215D" :box (:line-width 1 :color "#6A85ED" :style pressed-button)))))
