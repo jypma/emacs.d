@@ -175,6 +175,24 @@
 
   :delight '(:eval (concat " " (projectile-project-name) "  ")))
 
+(use-package ibuffer-projectile
+  :config
+
+  (add-hook 'ibuffer-hook
+            (lambda ()
+              (ibuffer-projectile-set-filter-groups)
+              (unless (eq ibuffer-sorting-mode 'alphabetic)
+                (ibuffer-do-sort-by-alphabetic))))
+  (setq ibuffer-formats
+        '((mark modified read-only " "
+                (name 18 18 :left :elide)
+                " "
+                (size 9 -1 :right)
+                " "
+                (mode 16 16 :left :elide)
+                " "
+                project-relative-file))))
+
 (use-package goto-addr
   :hook ((compilation-mode . goto-address-mode)
          (prog-mode . goto-address-prog-mode)
