@@ -133,6 +133,8 @@
         '((:eval (replace-regexp-in-string "^ Git" "" vc-mode))))
 
 ;; easy diff of local history
+;; backup-walker uses cl instead of the newer cl-lib. Disable the Emacs 27 warning on this.
+(setq byte-compile-warnings '(cl-functions))
 (require 'backup-walker)
 (global-set-key (kbd "C-x v w") 'backup-walker-start)
 
