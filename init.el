@@ -429,6 +429,9 @@
   (add-hook mode #'flyspell-prog-mode)
   (add-hook mode #'ws-butler-mode))
 
+(require 'js)
+(define-key js-mode-map (kbd "<backtab>") 'hs-toggle-hiding)
+
 (add-hook 'text-mode-hook (lambda ()
                                 (setq company-idle-delay 1.0)
                                 (setq company-minimum-prefix-length 3)))
@@ -780,7 +783,9 @@ See `elfeed-play-with-mpv'."
                sgml-skip-tag-forward
                nil))
 (add-hook 'nxml-mode-hook 'hs-minor-mode)
+(add-hook 'sgml-mode-hook 'hs-minor-mode)
 (define-key nxml-mode-map (kbd "<backtab>") 'hs-toggle-hiding)
+(define-key sgml-mode-map (kbd "<backtab>") 'hs-toggle-hiding)
 
 ;; (set-display-table-slot standard-display-table
 ;;                          'selective-display
