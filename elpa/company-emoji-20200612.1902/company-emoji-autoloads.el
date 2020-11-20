@@ -22,9 +22,7 @@ is a single candidate, as when COMMAND is 'annotation' or
 \(fn COMMAND &optional ARG &rest IGNORED)" nil nil)
 
 (autoload 'company-emoji-init "company-emoji" "\
-Add emoji to the company backends.
-
-\(fn)" t nil)
+Add emoji to the company backends." t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "company-emoji" '("company-emoji")))
 

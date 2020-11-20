@@ -12,12 +12,16 @@
 
 (autoload 'flyspell-popup-correct "flyspell-popup" "\
 Use popup for flyspell correction.
-Adapted from `flyspell-correct-word-before-point'.
-
-\(fn)" t nil)
+Adapted from `flyspell-correct-word-before-point'." t nil)
 
 (autoload 'flyspell-popup-auto-correct-mode "flyspell-popup" "\
 Minor mode for automatically correcting word at point.
+
+If called interactively, enable Flyspell-Popup-Auto-Correct mode
+if ARG is positive, and disable it if ARG is zero or negative.
+If called from Lisp, also enable the mode if ARG is omitted or
+nil, and toggle it if ARG is `toggle'; disable the mode
+otherwise.
 
 \(fn &optional ARG)" t nil)
 

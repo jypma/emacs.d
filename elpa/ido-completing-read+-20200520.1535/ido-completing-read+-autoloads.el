@@ -80,13 +80,18 @@ or call the function `ido-ubiquitous-mode'.")
 (autoload 'ido-ubiquitous-mode "ido-completing-read+" "\
 Use ido completion instead of standard completion almost everywhere.
 
+If called interactively, enable Ido-Ubiquitous mode if ARG is
+positive, and disable it if ARG is zero or negative.  If called
+from Lisp, also enable the mode if ARG is omitted or nil, and
+toggle it if ARG is `toggle'; disable the mode otherwise.
+
 If this mode causes problems for a function, you can customize
 when ido completion is or is not used by customizing
 `ido-cr+-function-blacklist'.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ido-completing-read+" '("ido-" "minibuf-eldef-update-minibuffer@ido-cr+-compat" "define-ido-internal-var")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ido-completing-read+" '("define-ido-internal-var" "ido-" "minibuf-eldef-update-minibuffer@ido-cr+-compat")))
 
 ;;;***
 

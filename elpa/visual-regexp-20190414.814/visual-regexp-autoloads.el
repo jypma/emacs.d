@@ -24,7 +24,7 @@ Use vr/query-replace like you would use query-replace-regexp.
 
 \(fn REGEXP REPLACE START END)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "visual-regexp" '("vr/" "vr--")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "visual-regexp" '("vr--" "vr/")))
 
 ;;;***
 

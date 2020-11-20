@@ -56,7 +56,7 @@ Major mode for editing files of tab-separated value type.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "csv-mode" '("tsv-" "csv-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "csv-mode" '("csv-" "tsv-")))
 
 ;;;***
 

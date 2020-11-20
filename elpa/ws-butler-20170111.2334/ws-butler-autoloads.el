@@ -12,10 +12,17 @@
 (autoload 'ws-butler-mode "ws-butler" "\
 White space cleanup, without obtrusive white space removal.
 
+If called interactively, enable Ws-Butler mode if ARG is
+positive, and disable it if ARG is zero or negative.  If called
+from Lisp, also enable the mode if ARG is omitted or nil, and
+toggle it if ARG is `toggle'; disable the mode otherwise.
+
 Whitespaces at EOL and EOF are trimmed upon file save, and only
 for lines modified by you.
 
 \(fn &optional ARG)" t nil)
+
+(put 'ws-butler-global-mode 'globalized-minor-mode t)
 
 (defvar ws-butler-global-mode nil "\
 Non-nil if Ws-Butler-Global mode is enabled.
@@ -34,7 +41,7 @@ otherwise, disable it.  If called from Lisp, enable the mode if
 ARG is omitted or nil.
 
 Ws-Butler mode is enabled in all buffers where
-`(lambda nil (unless (apply (function derived-mode-p) ws-butler-global-exempt-modes) (ws-butler-mode)))' would do it.
+`(lambda nil (unless (apply #'derived-mode-p ws-butler-global-exempt-modes) (ws-butler-mode)))' would do it.
 See `ws-butler-mode' for more information on Ws-Butler mode.
 
 \(fn &optional ARG)" t nil)

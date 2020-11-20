@@ -9,7 +9,7 @@
 ;;;### (autoloads nil "ob-http" "ob-http.el" (0 0 0 0))
 ;;; Generated autoloads from ob-http.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ob-http" '("org-babel-" "ob-http")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ob-http" '("ob-http" "org-babel-")))
 
 ;;;***
 

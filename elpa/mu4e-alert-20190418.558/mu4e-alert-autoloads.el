@@ -17,14 +17,10 @@ VALUE is the value to be used as the default style.
 \(fn VALUE)" nil nil)
 
 (autoload 'mu4e-alert-enable-mode-line-display "mu4e-alert" "\
-Enable display of unread emails in mode-line.
-
-\(fn)" t nil)
+Enable display of unread emails in mode-line." t nil)
 
 (autoload 'mu4e-alert-enable-notifications "mu4e-alert" "\
-Enable desktop notifications for unread emails.
-
-\(fn)" t nil)
+Enable desktop notifications for unread emails." t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mu4e-alert" '("mu4e-alert-")))
 

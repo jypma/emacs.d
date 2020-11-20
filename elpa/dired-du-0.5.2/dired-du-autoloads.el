@@ -16,6 +16,11 @@ A positive prefix argument enables the mode, any other prefix
 argument disables it.  From Lisp, argument omitted or nil enables
 the mode, `toggle' toggles the state.
 
+If called interactively, enable Dired-Du mode if ARG is positive,
+and disable it if ARG is zero or negative.  If called from Lisp,
+also enable the mode if ARG is omitted or nil, and toggle it if
+ARG is `toggle'; disable the mode otherwise.
+
 Show the recursive size of directories in Dired buffers.
 Once this mode is enabled, every new Dired buffer displays
 recursive dir sizes.
@@ -50,9 +55,7 @@ their recursive size.
 \(fn MARK &optional ALL-MARKS INCLUDE-DIRS)" t nil)
 
 (autoload 'dired-du-insert-marked-dirs "dired-du" "\
-Insert all marked subdirectories.
-
-\(fn)" t nil)
+Insert all marked subdirectories." t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "dired-du" '("dired-du-")))
 

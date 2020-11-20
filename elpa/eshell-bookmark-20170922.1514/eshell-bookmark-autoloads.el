@@ -11,9 +11,7 @@
 ;;; Generated autoloads from eshell-bookmark.el
 
 (autoload 'eshell-bookmark-setup "eshell-bookmark" "\
-Setup eshell-bookmark.
-
-\(fn)" nil nil)
+Setup eshell-bookmark." nil nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "eshell-bookmark" '("eshell-bookmark--")))
 

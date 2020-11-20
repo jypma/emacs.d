@@ -14,6 +14,11 @@
 Minor mode that highlights the symbol under point throughout the buffer.
 Highlighting takes place after `highlight-symbol-idle-delay'.
 
+If called interactively, enable Highlight-Symbol mode if ARG is
+positive, and disable it if ARG is zero or negative.  If called
+from Lisp, also enable the mode if ARG is omitted or nil, and
+toggle it if ARG is `toggle'; disable the mode otherwise.
+
 \(fn &optional ARG)" t nil)
 
 (defalias 'highlight-symbol-at-point 'highlight-symbol)
@@ -26,14 +31,10 @@ element in of `highlight-symbol-faces'.
 \(fn &optional SYMBOL)" t nil)
 
 (autoload 'highlight-symbol-remove-all "highlight-symbol" "\
-Remove symbol highlighting in buffer.
-
-\(fn)" t nil)
+Remove symbol highlighting in buffer." t nil)
 
 (autoload 'highlight-symbol-list-all "highlight-symbol" "\
-List all symbols highlighted in the buffer.
-
-\(fn)" t nil)
+List all symbols highlighted in the buffer." t nil)
 
 (autoload 'highlight-symbol-count "highlight-symbol" "\
 Print the number of occurrences of symbol at point.
@@ -41,24 +42,16 @@ Print the number of occurrences of symbol at point.
 \(fn &optional SYMBOL MESSAGE-P)" t nil)
 
 (autoload 'highlight-symbol-next "highlight-symbol" "\
-Jump to the next location of the symbol at point within the buffer.
-
-\(fn)" t nil)
+Jump to the next location of the symbol at point within the buffer." t nil)
 
 (autoload 'highlight-symbol-prev "highlight-symbol" "\
-Jump to the previous location of the symbol at point within the buffer.
-
-\(fn)" t nil)
+Jump to the previous location of the symbol at point within the buffer." t nil)
 
 (autoload 'highlight-symbol-next-in-defun "highlight-symbol" "\
-Jump to the next location of the symbol at point within the defun.
-
-\(fn)" t nil)
+Jump to the next location of the symbol at point within the defun." t nil)
 
 (autoload 'highlight-symbol-prev-in-defun "highlight-symbol" "\
-Jump to the previous location of the symbol at point within the defun.
-
-\(fn)" t nil)
+Jump to the previous location of the symbol at point within the defun." t nil)
 
 (autoload 'highlight-symbol-nav-mode "highlight-symbol" "\
 Navigate occurrences of the symbol at point.

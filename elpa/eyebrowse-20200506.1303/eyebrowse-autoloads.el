@@ -11,9 +11,7 @@
 
 (autoload 'eyebrowse-setup-evil-keys "eyebrowse" "\
 Set up key bindings specific to Evil.
-Currently only gt, gT, gc and zx are supported.
-
-\(fn)" nil nil)
+Currently only gt, gT, gc and zx are supported." nil nil)
 
 (autoload 'eyebrowse-setup-opinionated-keys "eyebrowse" "\
 Set up more opinionated key bindings for using eyebrowse.
@@ -39,6 +37,11 @@ Toggle `eyebrowse-mode'.
 This global minor mode provides a set of keybindings for
 switching window configurations.  It tries mimicking the tab
 behaviour of `ranger`, a file manager.
+
+If called interactively, enable Eyebrowse mode if ARG is
+positive, and disable it if ARG is zero or negative.  If called
+from Lisp, also enable the mode if ARG is omitted or nil, and
+toggle it if ARG is `toggle'; disable the mode otherwise.
 
 \(fn &optional ARG)" t nil)
 

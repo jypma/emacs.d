@@ -22,6 +22,11 @@ or call the function `pcre-mode'.")
 (autoload 'pcre-mode "pcre2el" "\
 Use emulated PCRE syntax for regexps wherever possible.
 
+If called interactively, enable PCRE mode if ARG is positive, and
+disable it if ARG is zero or negative.  If called from Lisp, also
+enable the mode if ARG is omitted or nil, and toggle it if ARG is
+`toggle'; disable the mode otherwise.
+
 Advises the `interactive' specs of `read-regexp' and the
 following other functions so that they read PCRE syntax and
 translate to its Emacs equivalent:
@@ -39,9 +44,7 @@ Also alters the behavior of `isearch-mode' when searching by regexp.
 (autoload 'pcre-query-replace-regexp "pcre2el" "\
 Perform `query-replace-regexp' using PCRE syntax.
 
-Consider using `pcre-mode' instead of this function.
-
-\(fn)" t nil)
+Consider using `pcre-mode' instead of this function." t nil)
 
 (autoload 'rxt-elisp-to-pcre "pcre2el" "\
 Translate REGEXP, a regexp in Emacs Lisp syntax, to Perl-compatible syntax.
@@ -85,9 +88,7 @@ Throws an error if REGEXP contains any infinite quantifiers.
 \(fn REGEXP)" t nil)
 
 (autoload 'rxt-toggle-elisp-rx "pcre2el" "\
-Toggle the regexp near point between Elisp string and rx syntax.
-
-\(fn)" t nil)
+Toggle the regexp near point between Elisp string and rx syntax." t nil)
 
 (autoload 'rxt-pcre-to-elisp "pcre2el" "\
 Translate PCRE, a regexp in Perl-compatible syntax, to Emacs Lisp.
@@ -151,9 +152,7 @@ Pop up a buffer with pretty-printed `rx' syntax for the regex at point.
 
 Chooses regex syntax to read based on current major mode, calling
 `rxt-explain-elisp' if buffer is in `emacs-lisp-mode' or
-`lisp-interaction-mode', or `rxt-explain-pcre' otherwise.
-
-\(fn)" t nil)
+`lisp-interaction-mode', or `rxt-explain-pcre' otherwise." t nil)
 
 (autoload 'rxt-convert-syntax "pcre2el" "\
 Convert regex at point to other kind of syntax, depending on major mode.
@@ -163,29 +162,28 @@ calls `rxt-elisp-to-pcre' to convert to PCRE syntax. Otherwise,
 calls `rxt-pcre-to-elisp' to convert to Emacs syntax.
 
 The converted syntax is displayed in the echo area and copied to
-the kill ring; see the two functions named above for details.
-
-\(fn)" t nil)
+the kill ring; see the two functions named above for details." t nil)
 
 (autoload 'rxt-convert-to-rx "pcre2el" "\
-Convert regex at point to RX syntax. Chooses Emacs or PCRE syntax by major mode.
-
-\(fn)" t nil)
+Convert regex at point to RX syntax. Chooses Emacs or PCRE syntax by major mode." t nil)
 
 (autoload 'rxt-convert-to-strings "pcre2el" "\
-Convert regex at point to RX syntax. Chooses Emacs or PCRE syntax by major mode.
-
-\(fn)" t nil)
+Convert regex at point to RX syntax. Chooses Emacs or PCRE syntax by major mode." t nil)
 
 (autoload 'rxt-mode "pcre2el" "\
 Regex translation utilities.
 
+If called interactively, enable Rxt mode if ARG is positive, and
+disable it if ARG is zero or negative.  If called from Lisp, also
+enable the mode if ARG is omitted or nil, and toggle it if ARG is
+`toggle'; disable the mode otherwise.
+
 \(fn &optional ARG)" t nil)
 
 (autoload 'turn-on-rxt-mode "pcre2el" "\
-Turn on `rxt-mode' in the current buffer.
+Turn on `rxt-mode' in the current buffer." t nil)
 
-\(fn)" t nil)
+(put 'rxt-global-mode 'globalized-minor-mode t)
 
 (defvar rxt-global-mode nil "\
 Non-nil if Rxt-Global mode is enabled.
@@ -209,7 +207,7 @@ See `rxt-mode' for more information on Rxt mode.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pcre2el" '("rxt-" "pcre-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "pcre2el" '("pcre-" "rxt-")))
 
 ;;;***
 

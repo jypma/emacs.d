@@ -10,16 +10,12 @@
 ;;; Generated autoloads from sbt-mode.el
 
 (autoload 'sbt-start "sbt-mode" "\
-Start sbt
-
-\(fn)" t nil)
+Start sbt" t nil)
 
 (autoload 'run-scala "sbt-mode" "\
 Pop up Scala REPL buffer.
 
-If the sbt buffer is not in REPL mode, it will switch to REPL mode (console).
-
-\(fn)" t nil)
+If the sbt buffer is not in REPL mode, it will switch to REPL mode (console)." t nil)
 
 (autoload 'sbt-command "sbt-mode" "\
 Send a command to the sbt process of the current buffer's sbt project.
@@ -38,9 +34,7 @@ that outputs errors.
 
 (autoload 'sbt-run-previous-command "sbt-mode" "\
 Repeat the command that was previously executed (or run the
-sbt:default-command, if no other command has yet been run).
-
-\(fn)" t nil)
+sbt:default-command, if no other command has yet been run)." t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sbt-mode" '("sbt")))
 
@@ -56,9 +50,7 @@ If run in buffer in scala project then it switch to that project sbt buffer (if 
 When run in buffer with no scala project then based on number of sbt buffers this happen:
   no sbt buffer exists - do nothing
   one sbt buffer exists - switch to that buffer
-  more than one sbt buffer exist - let user choose which buffer to switch to
-
-\(fn)" t nil)
+  more than one sbt buffer exist - let user choose which buffer to switch to" t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sbt-mode-buffer" '("sbt:")))
 
@@ -78,9 +70,7 @@ When run in buffer with no scala project then based on number of sbt buffers thi
 
 (autoload 'sbt-hydra "sbt-mode-hydra" "\
 Show Sbt hydra for current Sbt project. If there is no hydra defined for current
-Sbt project it will create one.
-
-\(fn)" t nil)
+Sbt project it will create one." t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sbt-mode-hydra" '("sbt-")))
 

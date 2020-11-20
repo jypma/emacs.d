@@ -10,14 +10,10 @@
 ;;; Generated autoloads from scala-mode.el
 
 (autoload 'scala-mode:set-scala-syntax-mode "scala-mode" "\
-Sets the syntax-table and other related variables for the current buffer to those of scala-mode. Can be used to make some other major mode (such as sbt-mode) use scala syntax-table.
-
-\(fn)" nil nil)
+Sets the syntax-table and other related variables for the current buffer to those of scala-mode. Can be used to make some other major mode (such as sbt-mode) use scala syntax-table." nil nil)
 
 (autoload 'scala-mode:goto-start-of-code "scala-mode" "\
-Go to the start of the real code in the file: object, class or trait.
-
-\(fn)" t nil)
+Go to the start of the real code in the file: object, class or trait." t nil)
 
 (autoload 'scala-mode "scala-mode" "\
 Major mode for editing scala code.
