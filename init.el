@@ -1222,3 +1222,17 @@ See `elfeed-play-with-mpv'."
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
 (use-package csv-mode)
+
+;; Rust stuff starts here
+;; from https://www.reddit.com/r/rust/comments/a3da5g/my_entire_emacs_config_for_rust_in_fewer_than_20/
+(use-package toml-mode)
+
+(use-package rust-mode
+  :hook (rust-mode . lsp))
+
+;; Add keybindings for interacting with Cargo
+(use-package cargo
+  :hook (rust-mode . cargo-minor-mode))
+
+(use-package flycheck-rust
+  :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
