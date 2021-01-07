@@ -1160,6 +1160,9 @@ See `elfeed-play-with-mpv'."
 (add-to-list 'load-path "~/.emacs.d/kubectl/")
 (require 'kubectl)
 
+(add-to-list 'load-path "~/.emacs.d/platformio/")
+(require 'platformio)
+
 ;; To edit code blacks in markdown
 (use-package edit-indirect)
 
@@ -1210,9 +1213,6 @@ See `elfeed-play-with-mpv'."
 ;; From https://github.com/alf/ob-restclient.el
 (require 'ob-restclient)
 
-(use-package platformio-mode
-  )
-
 (use-package string-inflection
   :bind
   ;; Toggle string capitalization style (camel, caps, snake, etc.)
@@ -1237,3 +1237,6 @@ See `elfeed-play-with-mpv'."
 
 (use-package flycheck-rust
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+(use-package daemons)
+
