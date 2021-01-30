@@ -865,6 +865,16 @@ See `elfeed-play-with-mpv'."
 (add-hook 'org-mode-hook '(lambda ()
                             (whitespace-mode -1)
 
+                            ;; Shorten some text
+                            (setq prettify-symbols-alist
+                                  (map-merge 'list prettify-symbols-alist
+                                             `(
+                                               ("#+BEGIN_SRC" . "➤")
+                                               ("#+END_SRC" . "⏹")
+                                               )))
+                            (prettify-symbols-mode 0)
+                            (prettify-symbols-mode)
+
                             ;; Auto-wrap lines
                             (visual-line-mode)
                             (adaptive-wrap-prefix-mode)
@@ -1241,3 +1251,26 @@ See `elfeed-play-with-mpv'."
 
 (use-package daemons)
 
+(defun my/presentation-setup ()
+  (setq text-scale-mode-amount 3)
+  (org-display-inline-images)
+  (text-scale-mode 1)
+  (setq org-hide-emphasis-markers t)
+  (font-lock-flush)
+  (font-lock-ensure))
+
+(defun my/presentation-end ()
+  (text-scale-mode 0)
+  (setq org-hide-emphasis-markers nil)
+  (font-lock-flush)
+  (font-lock-ensure))
+
+(use-package org-tree-slide
+  :hook
+  ((org-tree-slide-play . my/presentation-setup)
+   (org-tree-slide-stop . my/presentation-end))
+  :bind
+  (:map org-mode-map
+        ("<f6>" . org-tree-slide-mode))
+  :custom
+  (org-image-actual-width nil))
