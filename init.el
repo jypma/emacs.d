@@ -1130,7 +1130,9 @@ See `elfeed-play-with-mpv'."
   (:map yaml-mode-map
         ("C-." . find-file-at-point))
   :hook ((yaml-mode . adaptive-wrap-prefix-mode)
-         (yaml-mode . visual-line-mode)))
+         (yaml-mode . visual-line-mode)
+         (yaml-mode . ws-butler-mode)
+         (yaml-mode . whitespace-mode)))
 
 (use-package smartparens
   :config
@@ -1240,7 +1242,8 @@ See `elfeed-play-with-mpv'."
 
 (use-package highlight-indent-guides
   :config
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode))
 
 (use-package csv-mode)
 
