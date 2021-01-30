@@ -632,12 +632,17 @@ See `elfeed-play-with-mpv'."
 (setq column-number-mode t)
 
 ;; Backup settings
-(setq backup-directory-alist `(("." . "~/.saves")))
+(setq backup-directory-alist `(("." . "~/.cache/emacs-backup")))
 (setq delete-old-versions t
   kept-new-versions 6
   kept-old-versions 1000
   vc-make-backup-files t ;; even backup version-controlled files
   version-control t)
+
+;; Autosave settings
+(make-directory "~/.cache/emacs-autosave" t)
+(setq auto-save-list-file-prefix "~/.cache/emacs-autosave/sessions/"
+      auto-save-file-name-transforms `((".*" "~/.cache/emacs-autosave/" t)))
 
 ;; Make Emacs backup everytime I save
 (defun my/force-backup-of-buffer ()
