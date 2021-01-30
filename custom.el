@@ -99,7 +99,6 @@
  '(mu4e-use-fancy-chars t)
  '(nxml-slash-auto-complete-flag t)
  '(ordbog-ddocli-path "/home/jan/bin/ddo-cli/ddo.py")
- '(org-bullets-bullet-list '("∙" "∙" "∙" "∙"))
  '(org-edit-src-content-indentation 0)
  '(org-hide-block-startup t)
  '(org-latex-active-timestamp-format "%s")
@@ -110,7 +109,7 @@
  '(org-tree-slide-fold-subtrees-skipped nil)
  '(org-tree-slide-heading-emphasis t)
  '(package-selected-packages
-   '(org-tree-slide emacs-scroll-on-jump daemons flycheck-rust cargo rust-mode toml-mode ibuffer-projectile lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient org-bullets plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
+   '(org-superstar org-superstar-mode org-tree-slide emacs-scroll-on-jump daemons flycheck-rust cargo rust-mode toml-mode ibuffer-projectile lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
  '(password-cache-expiry 600)
  '(plantuml-indent-level 2)
  '(restclient-content-type-modes
@@ -212,8 +211,8 @@
  '(org-tree-slide-heading-level-1 ((t (:inherit outline-1))))
  '(org-tree-slide-heading-level-2 ((t (:inherit outline-2))))
  '(org-verbatim ((t (:inherit markdown-code-face))))
- '(outline-1 ((t (:foreground "#00ede1" :weight bold :height 1.3))))
- '(outline-2 ((t (:foreground "#D7FF4B" :weight bold :height 1.2))))
+ '(outline-1 ((t (:foreground "#00ede1" :weight bold :height 1.5))))
+ '(outline-2 ((t (:foreground "#D7FF4B" :weight bold :height 1.4))))
  '(outline-3 ((t (:foreground "lemon chiffon" :weight bold :height 1.0))))
  '(outline-4 ((t (:foreground "#D987D8" :weight bold :height 1.0))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#FF5555"))))

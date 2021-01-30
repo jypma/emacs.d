@@ -869,7 +869,7 @@ See `elfeed-play-with-mpv'."
 (setq org-startup-indented nil
       org-hide-leading-stars t)
 
-(use-package org-bullets)
+(use-package org-superstar)
 
 (add-hook 'org-mode-hook '(lambda ()
                             (whitespace-mode -1)
@@ -898,7 +898,8 @@ See `elfeed-play-with-mpv'."
                             (setq right-margin-width 2)
                             (set-window-buffer nil (current-buffer))
 
-                            (org-bullets-mode)))
+                            (org-superstar-mode 1)
+                            ))
 
 ;; https://emacs.stackexchange.com/questions/32347/how-to-have-wrapped-text-when-exporting-from-org-to-latex
 (add-to-list 'org-latex-packages-alist '("" "tabularx"))
@@ -1278,6 +1279,8 @@ See `elfeed-play-with-mpv'."
   (font-lock-ensure))
 
 (use-package org-tree-slide
+  ;; Load immediately, since it messes with org-mode faces
+  :demand
   :hook
   ((org-tree-slide-play . my/presentation-setup)
    (org-tree-slide-stop . my/presentation-end))
@@ -1285,4 +1288,5 @@ See `elfeed-play-with-mpv'."
   (:map org-mode-map
         ("<f6>" . org-tree-slide-mode))
   :custom
-  (org-image-actual-width nil))
+  (org-image-actual-width nil)
+  )
