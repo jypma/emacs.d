@@ -142,6 +142,9 @@
 (require 'colorpicker)
 (global-set-key (kbd "C-x c") 'colorpicker)
 
+;; change spelling dictionary
+(global-set-key (kbd "<f7>") 'ispell-change-dictionary)
+
 (require 'uuidgen)
 
 (require 'ordbog)
@@ -386,6 +389,7 @@
 
   (setq mu4e-headers-unread-mark '("u" . " "))
   (setq mu4e-headers-new-mark '("N" . " "))
+  (setq mu4e-compose-format-flowed t)
 
   (load "~/.emacs.d/mu4e.el")
   (bind-keys :package mu4e ("<f9>" . mu4e))
