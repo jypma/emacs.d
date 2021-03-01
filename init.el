@@ -1,3 +1,8 @@
+;; Limit garbage collection during startup.
+(setq gc-cons-threshold (* 100 1000 1000))
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 2 1000 1000))))
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -35,13 +40,23 @@
 
 (eval-when-compile (require 'use-package))
 
+(setq use-package-verbose t)
+
+;; Use a hook so the message doesn't get clobbered by other messages.
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Emacs ready in %s with %d garbage collections."
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+
 ;; Always install (ensure) packages when we use-package them
 (setq use-package-always-ensure t)
 
 (require 'whitespace)
 (add-hook 'prog-mode-hook #'whitespace-mode)
 (add-hook 'conf-mode-hook #'whitespace-mode)
-(add-hook 'conf-mode-hook #'ws-butler-mode)
 
 (load "~/.emacs.d/setup-ligatures.el")
 
@@ -69,9 +84,6 @@
 ;; Fontify any future frames
 (push 'my/fontify-frame after-make-frame-functions)
 
-;; magit default to origin/master instead of just master
-(setq magic-prefer-remote-upstream 1)
-
 ;; Use pretty symbols everywhere
 (global-prettify-symbols-mode 1)
 
@@ -96,17 +108,18 @@
 ;; "Command attempted to use minibuffer while in minibuffer" gets old fast.
 (setq enable-recursive-minibuffers t)
 
-;; Hide certain packages from the modeline
-(use-package delight)
+;; icons for major modes
+(use-package all-the-icons
+  :demand)
 
-;; don't show subword mode in modeline
-(delight 'subword-mode nil t)
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
 
 ;; Allow tree-semantics for undo operations.
 ;; Execute (undo-tree-visualize) then navigate along the tree to witness
 ;; changes being made to your file live!
 (use-package undo-tree
-  :delight                       ;; Don't show an icon in the modeline
   :config
   ;; Always have it on
   (global-undo-tree-mode)
@@ -117,16 +130,8 @@
   ;; Show a diff window displaying changes between undo nodes.
   (setq undo-tree-visualizer-diff t))
 
-;; icons for major modes
-(use-package all-the-icons)
-
 ;; run all-the-icons-install-fonts on first run on a machine.
 
-;; (delight 'emacs-lisp-mode (all-the-icons-fileicon "emacs" :height 0.7) :major)
-(delight 'eldoc-mode nil t)
-;; (delight 'groovy-mode (all-the-icons-fileicon "groovy" :height 1.2) :major)
-;; (delight 'java-mode "J" :major) ;; (the-icons-alltheicon "java") ""
-(delight 'sh-mode '(:eval (format "%s" (sh-shell))))
 
 ;; customize git modeline display
 (setcdr (assq 'vc-mode mode-line-format)
@@ -151,18 +156,7 @@
 
 ;; highlight #ff etc as actual colors
 (use-package rainbow-mode
-  :config
-  (add-hook 'scala-mode-hook #'rainbow-mode)
-  (add-hook 'markdown-mode-hook #'rainbow-mode)
-  (add-hook 'web-mode-hook #'rainbow-mode)
-  (add-hook 'help-mode-hook #'rainbow-mode)
-  (add-hook 'html-mode-hook #'rainbow-mode)
-  (add-hook 'css-mode-hook #'rainbow-mode)
-  (add-hook 'js-mode-hook #'rainbow-mode)
-  (add-hook 'js-jsx-mode-hook #'rainbow-mode)
-  (add-hook 'emacs-lisp-mode-hook #'rainbow-mode)
-  (add-hook 'prog-mode-hook #'rainbow-mode)
-  :delight)
+  :hook (markdown-mode web-mode help-mode html-mode css-mode js-mode js-jsx-mode emacs-lisp-mode prog-mode))
 
 (use-package projectile
   :init (projectile-global-mode)
@@ -174,9 +168,7 @@
   (advice-add 'projectile-project-root :around (lambda (orig-fun &optional dir)
                                                  (let ((dir (file-truename (or dir default-directory))))
                                                    (unless (file-remote-p dir)
-                                                     (funcall orig-fun dir)))))
-
-  :delight '(:eval (concat " " (projectile-project-name) "  ")))
+                                                     (funcall orig-fun dir))))))
 
 (use-package ibuffer-projectile
   :config
@@ -204,34 +196,37 @@
   :commands (goto-address-prog-mode
              goto-address-mode))
 
+(use-package transient)
+
 (use-package magit
+  :commands (magit-status)
   :config
   ;; See https://github.com/magit/ghub/issues/81, this is needed for github integration
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-
+  ;;  magit default to origin/master instead of just master
+  (setq magic-prefer-remote-upstream 1)
   (setq magit-list-refs-sortby "-creatordate")
-  ;; Hide "Recent Commits"
-  ;; https://github.com/magit/magit/issues/3230
+  ;;  Hide "Recent Commits"
+  ;;  https://github.com/magit/magit/issues/3230
   (magit-add-section-hook 'magit-status-sections-hook
-                          'magit-insert-unpushed-to-upstream
+                          'magit-insert-unpushed-to-upstream;
                           'magit-insert-unpushed-to-upstream-or-recent
                           'replace)
 
-  ;; magit default to origin/master instead of just master
-  (setq magic-prefer-remote-upstream 1)
-
-  (global-set-key (kbd "C-x g") 'magit-status))
+  :bind ("C-x g" . magit-status))
 
 (use-package forge
-  :after magit)
+ :after magit)
 
-(use-package git-timemachine)
+(use-package git-timemachine
+  :commands (git-timemachine))
 
 (use-package hl-todo)
 
 (use-package magit-todos
-  :init
-  (magit-todos-mode))
+ :after magit
+ :init
+ (magit-todos-mode))
 
 (use-package sbt-mode
   :pin melpa
@@ -253,7 +248,6 @@
   :config
   (add-hook 'scala-mode-hook
           (lambda ()
-            (adaptive-wrap-prefix-mode)
             (setq adaptive-wrap-extra-indent 2)
             (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\|trait\\|abstract class\\).*$")
             (visual-line-mode)
@@ -268,10 +262,11 @@
                nil))
   (define-key scala-mode-map (kbd "<backtab>") 'hs-toggle-hiding))
 
-(use-package company-emoji)
+(use-package company-emoji
+  :after company)
 
 (use-package company
-  :init (global-company-mode)
+  :defer t
   :config
   (setq company-minimum-prefix-length 0)
   ;; Don't use company mode in eshell (since tramp gets really slow)
@@ -282,30 +277,26 @@
   (setq company-dabbrev-ignore-case nil)
   (setq company-dabbrev-downcase nil)
 
-  (add-hook 'after-init-hook 'global-company-mode)
+  (global-company-mode)
 
   (define-key company-active-map (kbd "TAB") #'company-complete-selection)
   (define-key company-active-map (kbd "SPC") nil)
 
-  :bind ("C-<tab>" . 'company-complete)
-  :delight company-mode "  ")
-
+  :bind ("C-<tab>" . 'company-complete))
 
 ;; Error checking with flycheck-rtags as a backend
 (use-package flycheck
-  :delight flycheck-mode "  ")
+  :after lsp)
 
 ;; Format files consistently
-(use-package clang-format)
+;; (use-package clang-format)
 
 (use-package which-key
   :config
-  (which-key-mode)
-  :delight which-key-mode)
+  (which-key-mode))
 
 (use-package eshell-bookmark
-  :config
-  (add-hook 'eshell-mode-hook 'eshell-bookmark-setup))
+  :hook (eshell-mode . eshell-bookmark-setup))
 
 ;; auto-save bookmarks
 (setq bookmark-save-flag 1)
@@ -317,9 +308,7 @@
   :init (ido-ubiquitous-mode 1))
 
 (use-package rainbow-delimiters
-  :config
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-)
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; Press ) in dired will show git annotations for each dir + file
 (package-install-file "~/.emacs.d/lisp/dired-git-info.el")
@@ -327,12 +316,12 @@
   (define-key dired-mode-map ")" 'dired-git-info-mode))
 
 ;; show usage in dired: C-x M-r, toggle display with C-x C-h
-(use-package dired-du)
+(use-package dired-du
+  :after dired)
 
 ;; auto-collapse directories in dired
 (use-package dired-collapse
-  :config
-  (add-hook 'dired-mode-hook 'dired-collapse-mode))
+  :hook (dired-mode . dired-collapse-mode))
 
 ;; more colors in dired
 (use-package dired-rainbow
@@ -373,6 +362,7 @@
   ;; load mu4e (comes with installation of mu)
   (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
   (autoload 'mu4e "mu4e" "Launch mu4e and show the main window" t)
+  (require 'mu4e-main)
   ;; use mu4e as email client in emacs
   (setq mail-user-agent 'mu4e-user-agent)
   ;; don't keep message buffers around
@@ -430,8 +420,7 @@
                 js-mode-hook
                 groovy-mode-hook
                 java-mode-hook))
-  (add-hook mode #'flyspell-prog-mode)
-  (add-hook mode #'ws-butler-mode))
+  (add-hook mode #'flyspell-prog-mode))
 
 (require 'js)
 (define-key js-mode-map (kbd "<backtab>") 'hs-toggle-hiding)
@@ -441,9 +430,7 @@
                                 (setq company-minimum-prefix-length 3)))
 
 (add-hook 'markdown-mode-hook (lambda ()
-                                (ws-butler-mode)
                                 (visual-line-mode)
-                                (adaptive-wrap-prefix-mode)
                                 (variable-pitch-mode)
                                 (flyspell-mode)))
 
@@ -453,12 +440,6 @@
 ;;  (add-hook 'flyspell-mode-hook #'flyspell-popup-auto-correct-mode) ;; don't like it after all
   (define-key flyspell-mode-map (kbd "C-;") #'flyspell-popup-correct))
 
-;; customize minor mode display for flyspell-mode
-(delight 'flyspell-mode "   " t)
-
-;; don't show visual-line-mode
-(delight 'visual-line-mode "" t)
-
 ;; don't create lock files, nobody else is editing on my machine. Plus, we've got autorevert.
 (setq create-lockfiles nil)
 
@@ -466,13 +447,11 @@
   :config
   (global-git-gutter-mode +1)
   (custom-set-variables
-   '(git-gutter:update-interval 1))
-  :delight)
+   '(git-gutter:update-interval 1)))
 
 (use-package diff-hl
   ;; only for dired, we use git-gutter for normal files
-  :config
-  (add-hook 'dired-mode-hook #'diff-hl-dired-mode-unless-remote))
+  :hook (dired-mode . diff-hl-dired-mode-unless-remote))
 
 (use-package dashboard
   :config
@@ -569,9 +548,12 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCp1orOGJwZvjLAvckyxC4Nw" ;; Bosnian Bill
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCwlnFJ4_SlJbVNQ0iye8CqQ" ;; Lucas Brar guitar
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCnkp4xDOwqqJD7sSM3xdUiQ" ;; Adam Neely
-      "http://nullprogram.com/feed/"
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCnjQCcLxBqelGn0sForpAqA" ;; Jonny May
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCu1yiKjTRetsoZ-OSeOMmzg" ;; JAZZ TUTORIAL (Julian Bradley)
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ" ;; System Crafters
+
       "http://planet.emacsen.org/atom.xml"))
-  
+
   (defun elfeed-play-with-mpv ()
     "Play entry link with mpv."
     (interactive)
@@ -627,7 +609,6 @@ See `elfeed-play-with-mpv'."
 ;; Also auto refresh dired, but be quiet about it
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
-(delight 'auto-revert-mode nil t)
 
 (setq column-number-mode t)
 
@@ -651,10 +632,9 @@ See `elfeed-play-with-mpv'."
 (add-hook 'before-save-hook  'my/force-backup-of-buffer)
 
 (use-package highlight-symbol
+  :hook (java-mode . highlight-symbol-mode)
   :config
-  (setq highlight-symbol-idle-delay 0.3)
-  )
-
+  (setq highlight-symbol-idle-delay 0.3))
 
 ;; Only indent inline lambdas one level
 (defun my-java-indent-lambda (orig-fun &rest args)
@@ -670,12 +650,10 @@ See `elfeed-play-with-mpv'."
 (add-hook 'java-mode-hook
           (lambda ()
             (abbrev-mode 0)
-            (adaptive-wrap-prefix-mode)
             (setq adaptive-wrap-extra-indent 4)
             (c-set-offset 'arglist-intro '+)         ;; only 1 indent for multi-line args lists
             (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
             (c-set-offset 'arglist-close '0)         ;; Single closing paren on a line should line up
-            (highlight-symbol-mode)
             (setq fill-column 130)                   ;; yes, looks worse on github, but, java.
             (setq whitespace-line-column 130)
             (setq c-basic-offset 4)
@@ -689,7 +667,6 @@ See `elfeed-play-with-mpv'."
                            (c-set-offset 'template-args-cont '+)
                            (c-set-offset 'brace-list-intro '+)
                            (abbrev-mode 0)
-                           (adaptive-wrap-prefix-mode)
                            (setq adaptive-wrap-extra-indent 2)
                            (c-block-info-inline-mode)
                            (visual-line-mode)
@@ -699,7 +676,6 @@ See `elfeed-play-with-mpv'."
                            (c-set-offset 'template-args-cont '+)
                            (c-set-offset 'brace-list-intro '+)
                            (abbrev-mode 0)
-                           (adaptive-wrap-prefix-mode)
                            (setq adaptive-wrap-extra-indent 2)
                            (c-block-info-inline-mode)
                            (visual-line-mode)
@@ -744,14 +720,14 @@ See `elfeed-play-with-mpv'."
 
 ;; Auto-set git column to 72 for M-q
 (use-package git-commit
+  :demand
+  :hook (git-commit-setup . git-commit-turn-on-flyspell)
   :preface
   (defun me/git-commit-set-fill-column ()
     (setq-local comment-auto-fill-only-comments nil)
     (setq fill-column 72))
   :config
-  (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column)
-  (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
-  )
+  (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column))
 
 (global-hl-line-mode 1)
 
@@ -777,8 +753,6 @@ See `elfeed-play-with-mpv'."
 ;; cursor as visible as possible
 (set-cursor-color "#ffffff")
 
-(unless (server-running-p) (server-start))
-
 ;; map some more files to nXML
 (setq auto-mode-alist (cons '("\\.stx$" . nxml-mode) auto-mode-alist))
 
@@ -795,6 +769,7 @@ See `elfeed-play-with-mpv'."
                sgml-skip-tag-forward
                nil))
 (add-hook 'nxml-mode-hook 'hs-minor-mode)
+(add-hook 'nxml-mode-hook 'visual-line-mode)
 (add-hook 'sgml-mode-hook 'hs-minor-mode)
 (define-key nxml-mode-map (kbd "<backtab>") 'hs-toggle-hiding)
 (define-key sgml-mode-map (kbd "<backtab>") 'hs-toggle-hiding)
@@ -838,9 +813,6 @@ See `elfeed-play-with-mpv'."
     (whitespace-mode -1)))
 (add-hook 'find-file-hook 'my/read-only-whitespace)
 
-;; customize whitespace mode display
-(delight 'whitespace-mode (all-the-icons-material "space_bar") t)
-
 ;; save the clipboard into the kill ring before killing
 (setq save-interprogram-paste-before-kill t)
 
@@ -860,16 +832,17 @@ See `elfeed-play-with-mpv'."
 
 ;; fontify inside org mode
 (setq org-src-fontify-natively t)
-(use-package htmlize)
+(use-package htmlize
+  :commands (htmlize-buffer htmlize-region htmlize-file))
 
 ;; https://emacs.stackexchange.com/questions/19344/why-does-xdg-open-not-work-in-eshell
 (setq process-connection-type nil)
 
-;; Hide leading stars
-(setq org-startup-indented nil
-      org-hide-leading-stars t)
+;; Don't indent org documents
+(setq org-startup-indented nil)
 
-(use-package org-superstar)
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode))
 
 (add-hook 'org-mode-hook '(lambda ()
                             (whitespace-mode -1)
@@ -886,7 +859,6 @@ See `elfeed-play-with-mpv'."
 
                             ;; Auto-wrap lines
                             (visual-line-mode)
-                            (adaptive-wrap-prefix-mode)
                             (setq adaptive-wrap-extra-indent 2)
 
                             (variable-pitch-mode)
@@ -897,8 +869,6 @@ See `elfeed-play-with-mpv'."
                             (setq left-margin-width 2)
                             (setq right-margin-width 2)
                             (set-window-buffer nil (current-buffer))
-
-                            (org-superstar-mode 1)
                             ))
 
 ;; https://emacs.stackexchange.com/questions/32347/how-to-have-wrapped-text-when-exporting-from-org-to-latex
@@ -941,7 +911,8 @@ See `elfeed-play-with-mpv'."
   ("C-c -" . evil-numbers/dec-at-pt)
   ("<kp-subtract>" . evil-numbers/dec-at-pt))
 
-(use-package docker-tramp)
+(use-package docker-tramp
+  :defer t)
 
 ;; enable re-use of ssh connections
 ;; https://emacs.stackexchange.com/questions/22306/working-with-tramp-mode-on-slow-connection-emacs-does-network-trip-when-i-start
@@ -985,18 +956,18 @@ See `elfeed-play-with-mpv'."
 (global-set-key "\C-ch" 'hide-lines)
 
 (use-package super-save
+  :defer t
   :config
   (super-save-mode 1)
-  (setq super-save-remote-files nil)
-  :delight)
+  (setq super-save-remote-files nil))
 
 (use-package yasnippet
+  :defer t
   :config
   (yas-global-mode 1)
   (define-key yas-minor-mode-map (kbd "<tab>") nil)
   (define-key yas-minor-mode-map (kbd "TAB") nil)
-  (define-key yas-minor-mode-map (kbd "C-t") #'yas-expand)
-  :delight yas-minor-mode)
+  (define-key yas-minor-mode-map (kbd "C-t") #'yas-expand))
 
 ;; for snippets
 (defun my/capitalize-first-char (&optional string)
@@ -1006,23 +977,21 @@ See `elfeed-play-with-mpv'."
           (rest-str   (substring string 1)))
       (concat (capitalize first-char) rest-str))))
 
-(use-package highlight-symbol
-  :config
-  (setq highlight-symbol-idle-delay 0.3)
-  :delight )
-
-(use-package treemacs)
+;; (use-package treemacs)
 
 (use-package lsp-mode
+  :commands (lsp)
   :init (setq lsp-eldoc-render-all nil
               lsp-highlight-symbol-at-point nil
               lsp-prefer-flymake nil    ;; for metals, https://scalameta.org/metals/docs/editors/emacs.html
               lsp-inhibit-message t)
   )
 
-(use-package lsp-metals)
+(use-package lsp-metals
+  :after lsp-mode)
 
 (use-package lsp-ui
+  :after lsp-mode
   :config
   (setq lsp-ui-sideline-update-mode 'point)
   :bind (
@@ -1032,6 +1001,7 @@ See `elfeed-play-with-mpv'."
    )
 
 (use-package lsp-java
+  :after lsp-mode
   :config
   ;; Allow M-? to work , see https://github.com/emacs-lsp/lsp-java/issues/122
   (setq xref-prompt-for-identifier '(not xref-find-definitions
@@ -1056,18 +1026,22 @@ See `elfeed-play-with-mpv'."
   (dap-ui-mode t))
 
 (use-package eyebrowse
+  :defer t
   :init
   (eyebrowse-mode t)
   (eyebrowse-setup-opinionated-keys))
 
-(use-package scad-mode)
+(use-package scad-mode
+  :mode "\\.scad\\'")
 
-(use-package adaptive-wrap)
+(use-package adaptive-wrap
+  :hook ((scala-mode java-mode c-mode c++-mode yaml-mode markdown-mode org-mode) . adaptive-wrap-prefix-mode))
 
 (use-package ws-butler
-  :delight)
+  :hook ((yaml-mode conf-mode prog-mode protobuf-mode markdown-mode) . ws-butler-mode))
 
-(use-package dockerfile-mode)
+(use-package dockerfile-mode
+  :mode "\\Dockerfile\\'")
 
 (use-package ob-http
   :config
@@ -1081,8 +1055,6 @@ See `elfeed-play-with-mpv'."
   :after projectile
   :bind
   ("C-c o" . 'noccur-project))
-
-(use-package company-emoji)
 
 (use-package alert
   :commands (alert)
@@ -1130,14 +1102,12 @@ See `elfeed-play-with-mpv'."
   :bind
   (:map yaml-mode-map
         ("C-." . find-file-at-point))
-  :hook ((yaml-mode . adaptive-wrap-prefix-mode)
-         (yaml-mode . visual-line-mode)
-         (yaml-mode . ws-butler-mode)
+  :hook ((yaml-mode . visual-line-mode)
          (yaml-mode . whitespace-mode)))
 
-(use-package smartparens
-  :config
-  (require 'smartparens-config))
+;;(use-package smartparens
+;;  :config
+;;  (require 'smartparens-config))
 
 ;; Open compile buffer in the same window
 (add-to-list 'same-window-buffer-names "*compilation*")
@@ -1161,15 +1131,23 @@ See `elfeed-play-with-mpv'."
               ([backtab] . bicycle-cycle)
               ([C-iso-lefttab] . bicycle-cycle-global)))
 
-;; Prog-mode defaults
-(delight 'outline-minor-mode "" t)
-(delight 'hs-minor-mode "" t)
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 
 (use-package pdf-tools
+  :mode  ("\\.pdf\\'" . pdf-view-mode)
   :config
   ;; initialise
-  (pdf-tools-install)
+  (require 'pdf-tools)
+  (require 'pdf-view)
+  (require 'pdf-misc)
+  (require 'pdf-occur)
+  (require 'pdf-util)
+  (require 'pdf-annot)
+  (require 'pdf-info)
+  (require 'pdf-isearch)
+  (require 'pdf-history)
+  (require 'pdf-links)
+  (pdf-tools-install :no-query)
   ;; open pdfs scaled to fit page
   (setq-default pdf-view-display-size 'fit-page)
   ;; automatically annotate highlights
@@ -1178,18 +1156,24 @@ See `elfeed-play-with-mpv'."
   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward))
 
 (use-package puppet-mode
+  :mode "\\.pp\\'"
   :pin melpa)
 
-(add-to-list 'load-path "~/.emacs.d/kubectl/")
-(require 'kubectl)
+(use-package kubectl
+  :ensure nil
+  :load-path "~/.emacs.d/kubectl/"
+  :commands (kubectl-deployments kubectl-statefulsets))
 
-(add-to-list 'load-path "~/.emacs.d/platformio/")
-(require 'platformio)
+(use-package platformio
+  :ensure nil
+  :load-path "~/.emacs.d/platformio/"
+  :commands (platformio-running))
 
 ;; To edit code blacks in markdown
 (use-package edit-indirect)
 
 (use-package logview
+  :mode "\\.log\\(?:\\.[0-9]+\\)?\\'"
   :pin melpa)
 
 (use-package telega
@@ -1197,6 +1181,7 @@ See `elfeed-play-with-mpv'."
   :defer t)
 
 (use-package plantuml-mode
+  :mode "\\.\\(plantuml\\|pum\\|plu\\)\\'"
   :config
   ;; plantuml is in standard arch repositories
   (setq plantuml-default-exec-mode 'executable)
@@ -1239,18 +1224,18 @@ See `elfeed-play-with-mpv'."
 (use-package string-inflection
   :bind
   ;; Toggle string capitalization style (camel, caps, snake, etc.)
-  ("C-c C-i" . 'string-inflection-all-cycle))
+  ("C-c C-i" . string-inflection-all-cycle))
 
 (use-package highlight-indent-guides
-  :config
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-  (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode))
+  :hook ((prog-mode yaml-mode) . highlight-indent-guides-mode))
 
-(use-package csv-mode)
+(use-package csv-mode
+  :mode "\\.[Cc][Ss][Vv]\\'")
 
 ;; Rust stuff starts here
 ;; from https://www.reddit.com/r/rust/comments/a3da5g/my_entire_emacs_config_for_rust_in_fewer_than_20/
-(use-package toml-mode)
+(use-package toml-mode
+  :mode "\\.toml\\'")
 
 (use-package rust-mode
   :hook (rust-mode . lsp))
@@ -1260,7 +1245,8 @@ See `elfeed-play-with-mpv'."
   :hook (rust-mode . cargo-minor-mode))
 
 (use-package flycheck-rust
-  :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  :after flycheck
+  :hook (flycheck-mode . flycheck-rust-setup))
 
 (use-package daemons)
 
@@ -1290,3 +1276,7 @@ See `elfeed-play-with-mpv'."
   :custom
   (org-image-actual-width nil)
   )
+
+;; Enable emacsclient to connect to this emacs (needed for mail trigger)
+(require 'server)
+(unless (server-running-p) (server-start))

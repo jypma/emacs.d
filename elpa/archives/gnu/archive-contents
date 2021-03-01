@@ -424,7 +424,7 @@
 	   ("Gary D. Foster" . "Gary.Foster@Corp.Sun.COM"))
 	  (:maintainer "Luke Lee" . "luke.yx.lee@gmail.com"))])
  (csv-mode .
-	   [(1 14)
+	   [(1 15)
 	    ((emacs
 	      (24 1))
 	     (cl-lib
@@ -434,7 +434,7 @@
 	     (:authors
 	      ("\"Francis J. Wright\"" . "F.J.Wright@qmul.ac.uk"))
 	     (:keywords "convenience")
-	     (:url . "http://elpa.gnu.org/packages/csv-mode.html"))])
+	     (:url . "https://elpa.gnu.org/packages/csv-mode.html"))])
  (cycle-quotes .
 	       [(0 1)
 		nil "Cycle between quote styles" tar
@@ -454,13 +454,15 @@
 	      ("João Távora" . "joaotavora@gmail.com"))
 	     (:maintainer "João Távora" . "joaotavora@gmail.com"))])
  (dash .
-       [(2 12 0)
-	nil "A modern list library for Emacs" tar
-	((:maintainer "Magnar Sveen" . "magnars@gmail.com")
+       [(2 18 1)
+	((emacs
+	  (24)))
+	"A modern list library for Emacs" tar
+	((:url . "https://github.com/magnars/dash.el")
+	 (:maintainer "Magnar Sveen" . "magnars@gmail.com")
 	 (:authors
 	  ("Magnar Sveen" . "magnars@gmail.com"))
-	 (:keywords "lists")
-	 (:url . "http://elpa.gnu.org/packages/dash.html"))])
+	 (:keywords "extensions" "lisp"))])
  (dbus-codegen .
 	       [(0 1)
 		((cl-lib
@@ -608,7 +610,7 @@
 	       ("Leo Liu" . "sdl.web@gmail.com"))
 	      (:keywords "killing" "convenience"))])
  (ebdb .
-       [(0 6 21)
+       [(0 6 22)
 	((emacs
 	  (25 1))
 	 (cl-lib
@@ -1028,6 +1030,16 @@
 	  ("Toby Cubitt" . "toby-predictive@dr-qubit.org"))
 	 (:maintainer "Toby Cubitt" . "toby-predictive@dr-qubit.org")
 	 (:url . "http://www.dr-qubit.org/emacs.php"))])
+ (hiddenquote .
+	      [(1 1)
+	       ((emacs
+		 (25 1)))
+	       "Major mode for doing hidden quote puzzles" tar
+	       ((:url . "http://mauroaranda.com/puzzles/hidden-quote-puzzle/")
+		(:maintainer "Mauro Aranda" . "maurooaranda@gmail.com")
+		(:authors
+		 ("Mauro Aranda" . "maurooaranda@gmail.com"))
+		(:keywords "games"))])
  (highlight-escape-sequences .
 			     [(0 4)
 			      nil "Highlight escape sequences" single
@@ -1505,17 +1517,17 @@
 	       ("Felix Lee <felix8a@gmail.com>, Michal Nazarewicz" . "mina86@mina86.com"))
 	      (:maintainer "Michal Nazarewicz" . "mina86@mina86.com"))])
  (oauth2 .
-	 [(0 15)
+	 [(0 16)
 	  ((cl-lib
 	    (0 5))
 	   (nadvice
 	    (0 3)))
-	  "OAuth 2.0 Authorization Protocol" single
-	  ((:url . "http://elpa.gnu.org/packages/oauth2.html")
-	   (:keywords "comm")
+	  "OAuth 2.0 Authorization Protocol" tar
+	  ((:maintainer "Julien Danjou" . "julien@danjou.info")
 	   (:authors
 	    ("Julien Danjou" . "julien@danjou.info"))
-	   (:maintainer "Julien Danjou" . "julien@danjou.info"))])
+	   (:keywords "comm")
+	   (:url . "https://elpa.gnu.org/packages/oauth2.html"))])
  (objed .
 	[(0 8 3)
 	 ((emacs
@@ -1689,7 +1701,7 @@
 	   ("Mario Lang" . "mlang@delysid.org"))
 	  (:maintainer "Mario Lang" . "mlang@delysid.org"))])
  (posframe .
-	   [(0 8 4)
+	   [(0 8 5)
 	    ((emacs
 	      (26)))
 	    "Pop a posframe (just a frame) at point" tar
@@ -1723,6 +1735,21 @@
 	      (:authors
 	       ("Scott Andrew Borton" . "scott@pp.htv.fi"))
 	      (:maintainer "John Darrington" . "john@darrington.wattle.id.au"))])
+ (pyim .
+       [(3 2)
+	((emacs
+	  (24 4))
+	 (async
+	  (1 6))
+	 (xr
+	  (1 13)))
+	"A Chinese input method support quanpin, shuangpin, wubi and cangjie." tar
+	((:url . "https://github.com/tumashu/pyim")
+	 (:maintainer "Feng Shu" . "tumashu@163.com")
+	 (:authors
+	  ("Ye Wenbin" . "wenbinye@163.com")
+	  ("Feng Shu" . "tumashu@163.com"))
+	 (:keywords "convenience" "chinese" "pinyin" "input-method"))])
  (python .
 	 [(0 27 1)
 	  ((emacs
@@ -1769,15 +1796,15 @@
 	  ("Stefan Monnier" . "monnier@iro.umontreal.ca"))
 	 (:maintainer "Stefan Monnier" . "monnier@iro.umontreal.ca"))])
  (rcirc-color .
-	      [(0 4 1)
+	      [(0 4 2)
 	       ((emacs
 		 (24 4)))
-	       "color nicks" single
-	       ((:url . "http://elpa.gnu.org/packages/rcirc-color.html")
-		(:keywords "comm")
+	       "color nicks" tar
+	       ((:maintainer "Alex Schroeder" . "alex@gnu.org")
 		(:authors
 		 ("Alex Schroeder" . "alex@gnu.org"))
-		(:maintainer "Alex Schroeder" . "alex@gnu.org"))])
+		(:keywords "comm")
+		(:url . "https://elpa.gnu.org/packages/rcirc-color.html"))])
  (rcirc-menu .
 	     [(1 1)
 	      nil "A menu of all your rcirc connections" single
@@ -1946,7 +1973,7 @@
 	      ("Stefan Monnier" . "monnier@iro.umontreal.ca"))
 	     (:maintainer "Stefan Monnier" . "monnier@iro.umontreal.ca"))])
  (rt-liberation .
-		[(2 1)
+		[(2 2)
 		 nil "Emacs interface to RT" tar
 		 ((:url . "http://www.nongnu.org/rtliber/")
 		  (:maintainer "Yoni Rabkin" . "yrk@gnu.org")
@@ -2272,7 +2299,7 @@
 	  ("Oleh Krehel" . "ohwoeowho@gmail.com"))
 	 (:keywords "convenience"))])
  (tramp .
-	[(2 5 0 1)
+	[(2 5 0 2)
 	 ((emacs
 	   (25 1)))
 	 "Transparent Remote Access, Multiple Protocol" tar
@@ -2298,6 +2325,16 @@
 	       (:authors
 		("David Gonzalez Gandara" . "dggandara@member.fsf.org"))
 	       (:maintainer "David Gonzalez Gandara" . "dggandara@member.fsf.org"))])
+ (transient .
+	    [(0 3 0)
+	     ((emacs
+	       (25 1)))
+	     "Transient commands" tar
+	     ((:url . "https://github.com/magit/transient")
+	      (:maintainer "Jonas Bernoulli" . "jonas@bernoul.li")
+	      (:authors
+	       ("Jonas Bernoulli" . "jonas@bernoul.li"))
+	      (:keywords "bindings"))])
  (trie .
        [(0 5)
 	((tNFA
@@ -2577,7 +2614,7 @@
 	 ("Thien-Thi Nguyen" . "ttn@gnu.org"))
 	(:keywords "multimedia" "xpm"))])
  (xr .
-     [(1 20)
+     [(1 21)
       ((emacs
 	(26 1)))
       "Convert string regexp to rx notation" tar
