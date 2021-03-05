@@ -844,32 +844,54 @@ See `elfeed-play-with-mpv'."
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
-(add-hook 'org-mode-hook '(lambda ()
-                            (whitespace-mode -1)
+(require 'markdown-mode) ;; We customize org faces to depend on markdown faces
 
-                            ;; Shorten some text
-                            (setq prettify-symbols-alist
-                                  (map-merge 'list prettify-symbols-alist
-                                             `(
-                                               ("#+BEGIN_SRC" . "➤")
-                                               ("#+END_SRC" . "⏹")
-                                               )))
-                            (prettify-symbols-mode 0)
-                            (prettify-symbols-mode)
+;;https://www.reddit.com/r/orgmode/comments/43uuck/temporarily_show_emphasis_markers_when_the_cursor/
+;; (adapted to also show verbatim markers)
+(defun my/org-show-emphasis-markers-at-point ()
+  (save-match-data
+    (if (and (or (org-in-regexp org-emph-re 2) (org-in-regexp org-verbatim-re 2))
+	     (>= (point) (match-beginning 3))
+	     (<= (point) (match-end 4))
+	     (member (match-string 3) (mapcar 'car org-emphasis-alist)))
+	(with-silent-modifications
+	  (remove-text-properties
+	   (match-beginning 3) (match-beginning 5)
+	   '(invisible org-link)))
+      (apply 'font-lock-flush (list (match-beginning 3) (match-beginning 5))))))
 
-                            ;; Auto-wrap lines
-                            (visual-line-mode)
-                            (setq adaptive-wrap-extra-indent 2)
+(defun my/org-mode-setup ()
+  (whitespace-mode -1)
 
-                            (variable-pitch-mode)
-                            ;; from https://lepisma.xyz/2017/10/28/ricing-org-mode/
-                            ;; A little bit of spacing between lines:
-                            (setq line-spacing 0.0) ;; doesn't look good on tables.
-                            ;; A little bit of space in the left/right margins:
-                            (setq left-margin-width 2)
-                            (setq right-margin-width 2)
-                            (set-window-buffer nil (current-buffer))
-                            ))
+  ;; Shorten some text
+  (setq prettify-symbols-alist
+        (map-merge 'list prettify-symbols-alist
+                   `(
+                     ("#+name:" . "✎")
+                     ("#+BEGIN_SRC" . "➤")
+                     ("#+END_SRC" . "⏹")
+                     ("#+RESULTS:" . "🠋")
+                     )))
+  (prettify-symbols-mode 0)
+  (prettify-symbols-mode)
+
+  ;; Auto-wrap lines
+  (visual-line-mode)
+  (setq adaptive-wrap-extra-indent 2)
+
+  (variable-pitch-mode)
+  ;; from https://lepisma.xyz/2017/10/28/ricing-org-mode/
+  ;; A little bit of spacing between lines:
+  (setq line-spacing 0.0) ;; doesn't look good on tables.
+  ;; A little bit of space in the left/right margins:
+  (setq left-margin-width 2)
+  (setq right-margin-width 2)
+  (set-window-buffer nil (current-buffer))
+
+  (add-hook 'post-command-hook
+	    'my/org-show-emphasis-markers-at-point nil t))
+
+(add-hook 'org-mode-hook 'my/org-mode-setup)
 
 ;; https://emacs.stackexchange.com/questions/32347/how-to-have-wrapped-text-when-exporting-from-org-to-latex
 (add-to-list 'org-latex-packages-alist '("" "tabularx"))
