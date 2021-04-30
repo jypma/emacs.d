@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: org-babel-elisp
+# key: #e
+# --
+#+BEGIN_SRC elisp
+$0
+
+#+END_SRC

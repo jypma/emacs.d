@@ -198,11 +198,14 @@
 
 (use-package transient)
 
+
+;; See https://github.com/magit/ghub/issues/81, this is needed for github integration
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+
 (use-package magit
   :commands (magit-status)
   :config
-  ;; See https://github.com/magit/ghub/issues/81, this is needed for github integration
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
   ;;  magit default to origin/master instead of just master
   (setq magic-prefer-remote-upstream 1)
   (setq magit-list-refs-sortby "-creatordate")
@@ -551,6 +554,8 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCnjQCcLxBqelGn0sForpAqA" ;; Jonny May
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCu1yiKjTRetsoZ-OSeOMmzg" ;; JAZZ TUTORIAL (Julian Bradley)
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ" ;; System Crafters
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA" ;; Veritasium
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCRS4DvO9X7qaqVYUW2_dwOw" ;; Rock the JVM
 
       "http://planet.emacsen.org/atom.xml"))
 
@@ -855,19 +860,46 @@ See `elfeed-play-with-mpv'."
 	     (<= (point) (match-end 4))
 	     (member (match-string 3) (mapcar 'car org-emphasis-alist)))
 	(with-silent-modifications
+          (setq my/org-show-emphasis-hidden t)
 	  (remove-text-properties
 	   (match-beginning 3) (match-beginning 5)
 	   '(invisible org-link)))
-      (apply 'font-lock-flush (list (match-beginning 3) (match-beginning 5))))))
+      (if my/org-show-emphasis-hidden
+          (progn
+            (apply 'font-lock-flush (list (match-beginning 3) (match-beginning 5)))
+            (setq my/org-show-emphasis-hidden nil))))))
+
+
+;; https://emacs.stackexchange.com/questions/44914/choose-individual-startup-visibility-of-org-modes-source-blocks
+(defun individual-visibility-source-blocks ()
+  "Fold some blocks in the current buffer that are marked with :hidden."
+  (interactive)
+  (org-show-block-all)
+  (org-block-map
+   (lambda ()
+     (let ((case-fold-search t))
+       (when (and
+              (save-excursion
+                (beginning-of-line 1)
+                (looking-at org-block-regexp))
+              (cl-assoc
+               ':hidden
+               (cl-third
+                (org-babel-get-src-block-info))))
+         (org-hide-block-toggle))))))
 
 (defun my/org-mode-setup ()
   (whitespace-mode -1)
+
+  ;; https://orgmode.org/list/87pn8huuq2.fsf@iki.fi/t/
+  (electric-indent-local-mode -1)
 
   ;; Shorten some text
   (setq prettify-symbols-alist
         (map-merge 'list prettify-symbols-alist
                    `(
                      ("#+name:" . "✎")
+                     ("#+NAME:" . "✎")
                      ("#+BEGIN_SRC" . "➤")
                      ("#+END_SRC" . "⏹")
                      ("#+RESULTS:" . "🠋")
@@ -888,6 +920,7 @@ See `elfeed-play-with-mpv'."
   (setq right-margin-width 2)
   (set-window-buffer nil (current-buffer))
 
+  (defvar-local my/org-show-emphasis-hidden nil)
   (add-hook 'post-command-hook
 	    'my/org-show-emphasis-markers-at-point nil t))
 
@@ -895,6 +928,19 @@ See `elfeed-play-with-mpv'."
 
 ;; https://emacs.stackexchange.com/questions/32347/how-to-have-wrapped-text-when-exporting-from-org-to-latex
 (add-to-list 'org-latex-packages-alist '("" "tabularx"))
+
+;; https://emacs.stackexchange.com/questions/7996/is-there-a-way-to-resize-margins-when-exporting-pdf-in-org-mode
+(add-to-list 'org-latex-packages-alist '("margin=2cm" "geometry" nil))
+
+;; https://emacs.stackexchange.com/questions/33010/how-to-word-wrap-within-code-blocks
+;; https://emacs.stackexchange.com/questions/27982/export-code-blocks-in-org-mode-with-minted-environment
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-listings 'minted)
+(setq org-latex-pdf-process '("%latex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                              "%latex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                              "%latex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+(setq org-latex-minted-options '(("breaklines" "true")
+                                 ("breakanywhere" "true")))
 
 ;; http://endlessparentheses.com/better-time-stamps-in-org-export.html
 (require 'ox)
@@ -978,13 +1024,13 @@ See `elfeed-play-with-mpv'."
 (global-set-key "\C-ch" 'hide-lines)
 
 (use-package super-save
-  :defer t
+  :demand ;; defer doesn't actually load and activate this
   :config
   (super-save-mode 1)
   (setq super-save-remote-files nil))
 
 (use-package yasnippet
-  :defer t
+  :demand ;; doesn't work in org-mode otherwise
   :config
   (yas-global-mode 1)
   (define-key yas-minor-mode-map (kbd "<tab>") nil)
@@ -1004,6 +1050,7 @@ See `elfeed-play-with-mpv'."
 (use-package lsp-mode
   :commands (lsp)
   :init (setq lsp-eldoc-render-all nil
+              lsp-keymap-prefix "C-c l"
               lsp-highlight-symbol-at-point nil
               lsp-prefer-flymake nil    ;; for metals, https://scalameta.org/metals/docs/editors/emacs.html
               lsp-inhibit-message t)
@@ -1023,23 +1070,19 @@ See `elfeed-play-with-mpv'."
    )
 
 (use-package lsp-java
-  :after lsp-mode
+;;  :after lsp-mode
   :config
   ;; Allow M-? to work , see https://github.com/emacs-lsp/lsp-java/issues/122
-  (setq xref-prompt-for-identifier '(not xref-find-definitions
-                                            xref-find-definitions-other-window
-                                            xref-find-definitions-other-frame
-                                            xref-find-references))
+;;  (setq xref-prompt-for-identifier '(not xref-find-definitions
+;;                                            xref-find-definitions-other-window
+;;                                            xref-find-definitions-other-frame
+;;                                            xref-find-references))
 
-  (add-hook 'java-mode-hook
-            (lambda ()
-              (setq-local company-backends (list 'company-lsp))))
+;;  (add-hook 'java-mode-hook
+;;            (lambda ()
+;;              (setq-local company-backends (list 'company-lsp))))
 
-  (add-hook 'java-mode-hook 'lsp)
-  (add-hook 'java-mode-hook 'flycheck-mode)
-  (add-hook 'java-mode-hook 'company-mode)
-  (add-hook 'java-mode-hook 'lsp-ui-mode))
-
+  (add-hook 'java-mode-hook #'lsp))
 
 (use-package dap-mode
   :after lsp-mode
@@ -1060,7 +1103,7 @@ See `elfeed-play-with-mpv'."
   :hook ((scala-mode java-mode c-mode c++-mode yaml-mode markdown-mode org-mode) . adaptive-wrap-prefix-mode))
 
 (use-package ws-butler
-  :hook ((yaml-mode conf-mode prog-mode protobuf-mode markdown-mode) . ws-butler-mode))
+  :hook ((yaml-mode conf-mode prog-mode protobuf-mode markdown-mode nxml-mode sgml-mode) . ws-butler-mode))
 
 (use-package dockerfile-mode
   :mode "\\Dockerfile\\'")
@@ -1276,13 +1319,11 @@ See `elfeed-play-with-mpv'."
   (setq text-scale-mode-amount 3)
   (org-display-inline-images)
   (text-scale-mode 1)
-  (setq org-hide-emphasis-markers t)
   (font-lock-flush)
   (font-lock-ensure))
 
 (defun my/presentation-end ()
   (text-scale-mode 0)
-  (setq org-hide-emphasis-markers nil)
   (font-lock-flush)
   (font-lock-ensure))
 

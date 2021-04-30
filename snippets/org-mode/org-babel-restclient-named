@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: org-babel-restclient-named
+# key: #rn
+# --
+#+NAME: $1
+#+BEGIN_SRC restclient
+GET https://$0
+
+#+END_SRC
