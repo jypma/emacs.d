@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: org-babel-plantuml
+# key: #u
+# --
+#+BEGIN_SRC plantuml :file $1.png :hidden
+skinparam dpi :dpi
+$0
+#+END_SRC

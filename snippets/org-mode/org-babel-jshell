@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: org-babel-jshell
+# key: #js
+# --
+#+BEGIN_SRC jshell
+$0
+#+END_SRC
