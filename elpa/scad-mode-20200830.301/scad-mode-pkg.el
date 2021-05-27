@@ -1,2 +1,2 @@
-;;; Generated package description from /home/jan/.emacs.d/elpa/scad-mode-20200830.301/scad-mode.el  -*- no-byte-compile: t -*-
-(define-package "scad-mode" "20200830.301" "A major mode for editing OpenSCAD code" 'nil :commit "cacada6203a860236aff831f6a863c92dbe2b878" :authors '(("Len Trigg, Łukasz Stelmach")) :maintainer '("Len Trigg" . "lenbok@gmail.com") :keywords '("languages") :url "https://raw.github.com/openscad/openscad/master/contrib/scad-mode.el")
+;;; Generated package description from scad-mode.el  -*- no-byte-compile: t -*-
+(define-package "scad-mode" "20200830.301" "A major mode for editing OpenSCAD code" 'nil :commit "19cca81f8a881301634a582211744d6bfd3fc776" :authors '(("Len Trigg, Łukasz Stelmach")) :maintainer '("Len Trigg" . "lenbok@gmail.com") :keywords '("languages") :url "https://raw.github.com/openscad/openscad/master/contrib/scad-mode.el")

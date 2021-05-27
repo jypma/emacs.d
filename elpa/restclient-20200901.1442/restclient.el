@@ -7,7 +7,7 @@
 ;; Created: 01 Apr 2012
 ;; Keywords: http
 ;; Package-Version: 20200901.1442
-;; Package-Commit: abc307b965bf6720bc466281f2e204cd5ce37dc3
+;; Package-Commit: a97dcc486a54d947aa15eeaedaccb3481f14fd85
 
 ;; This file is not part of GNU Emacs.
 ;; This file is public domain software. Do what you want.
