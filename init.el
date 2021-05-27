@@ -313,7 +313,8 @@
   :init (ido-ubiquitous-mode 1))
 
 (use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode)
+  :hook (conf-mode . rainbow-delimiters-mode))
 
 ;; Press ) in dired will show git annotations for each dir + file
 (package-install-file "~/.emacs.d/lisp/dired-git-info.el")
@@ -368,6 +369,24 @@
   (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
   (autoload 'mu4e "mu4e" "Launch mu4e and show the main window" t)
   (require 'mu4e-main)
+
+  (setq org-agenda-archives-mode nil)
+  (setq org-agenda-skip-comment-trees nil)
+  (setq org-agenda-skip-function nil)
+  ;; from mu4e-icalendar.el:
+  (require 'mu4e-icalendar)
+  (require 'gnus-icalendar)
+  (setq gnus-icalendar-org-capture-file "~/org/notes.org")
+  (setq gnus-icalendar-org-capture-headline '("Calendar"))
+  (gnus-icalendar-org-setup)
+  (setq mu4e-view-use-gnus t)
+  (mu4e-icalendar-setup)
+
+  ;; Restore keybindings that somehow aren't present by default in mu4e-gnus
+  (require 'mu4e-view)
+  (define-key mu4e-view-mode-map (kbd "e") 'mu4e-view-save-attachment)
+  (define-key mu4e-view-mode-map (kbd "o") 'mu4e-view-open-attachment)
+  
   ;; use mu4e as email client in emacs
   (setq mail-user-agent 'mu4e-user-agent)
   ;; don't keep message buffers around
@@ -558,6 +577,7 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ" ;; System Crafters
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA" ;; Veritasium
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCRS4DvO9X7qaqVYUW2_dwOw" ;; Rock the JVM
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCeP0-mA85a1UM05qFMub7Ow" ;; Peter Bence
 
       "http://planet.emacsen.org/atom.xml"))
 
@@ -834,8 +854,19 @@ See `elfeed-play-with-mpv'."
  'org-babel-load-languages
  '((python . t)))
 
+(require 'ob-jshell)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((jshell . t)))
+
+;; use java with babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((java . t)))
+
 (require 'org-expiry)
 (require 'ox-md nil t)
+(require 'ox-beamer)
 
 ;; fontify inside org mode
 (setq org-src-fontify-natively t)
@@ -873,10 +904,9 @@ See `elfeed-play-with-mpv'."
 
 
 ;; https://emacs.stackexchange.com/questions/44914/choose-individual-startup-visibility-of-org-modes-source-blocks
-(defun individual-visibility-source-blocks ()
+(defun my/individual-visibility-source-blocks ()
   "Fold some blocks in the current buffer that are marked with :hidden."
   (interactive)
-  (org-show-block-all)
   (org-block-map
    (lambda ()
      (let ((case-fold-search t))
@@ -888,7 +918,7 @@ See `elfeed-play-with-mpv'."
                ':hidden
                (cl-third
                 (org-babel-get-src-block-info))))
-         (org-hide-block-toggle))))))
+         (org-hide-block-toggle 1))))))
 
 (defun my/org-mode-setup ()
   (whitespace-mode -1)
@@ -903,7 +933,9 @@ See `elfeed-play-with-mpv'."
                      ("#+name:" . "✎")
                      ("#+NAME:" . "✎")
                      ("#+BEGIN_SRC" . "➤")
+                     ("#+BEGIN_EXAMPLE" . "➤")
                      ("#+END_SRC" . "⏹")
+                     ("#+END_EXAMPLE" . "⏹")
                      ("#+RESULTS:" . "🠋")
                      )))
   (prettify-symbols-mode 0)
@@ -921,6 +953,9 @@ See `elfeed-play-with-mpv'."
   (setq left-margin-width 2)
   (setq right-margin-width 2)
   (set-window-buffer nil (current-buffer))
+
+  (flyspell-mode 1)
+  (ws-butler-mode 1)
 
   (defvar-local my/org-show-emphasis-hidden nil)
   (add-hook 'post-command-hook
@@ -1269,9 +1304,10 @@ See `elfeed-play-with-mpv'."
 ;; Allow images to be zoomed in and out
 (defun scale-image ()
   "Scale the image by the same factor specified by the text scaling."
-  (image-transform-set-scale
-   (expt text-scale-mode-step
-         text-scale-mode-amount)))
+  (if (derived-mode-p 'image-mode)
+      (image-transform-set-scale
+       (expt text-scale-mode-step
+             text-scale-mode-amount))))
 
 (defun scale-image-register-hook ()
   "Register the image scaling hook."
@@ -1318,6 +1354,8 @@ See `elfeed-play-with-mpv'."
 (use-package daemons)
 
 (defun my/presentation-setup ()
+  (shell-command "dunstctl set-paused true")
+  (flyspell-mode 0)
   (setq text-scale-mode-amount 3)
   (org-display-inline-images)
   (text-scale-mode 1)
@@ -1325,7 +1363,10 @@ See `elfeed-play-with-mpv'."
   (font-lock-ensure))
 
 (defun my/presentation-end ()
+  (shell-command "dunstctl set-paused false")
+  (flyspell-mode 1)
   (text-scale-mode 0)
+  (org-remove-inline-images)
   (font-lock-flush)
   (font-lock-ensure))
 

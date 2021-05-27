@@ -335,7 +335,7 @@ an error."
   (interactive)
   (let ((receivers (format "%s %s" (message-fetch-field "cc") (message-fetch-field "to"))))
     (when (string-match-p "\\.dk" receivers)
-      (ispell-change-dictionary "da")
+      (ispell-change-dictionary "dansk")
       )))
 
 (add-hook 'mu4e-compose-mode-hook 'my/message-auto-ispell-language)
