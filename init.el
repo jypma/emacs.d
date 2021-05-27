@@ -74,9 +74,11 @@
   (interactive)
   (if window-system
       (progn
-        (if (> (x-display-pixel-width) 2600)
-            (set-frame-font "Iosevka 14" nil t) ;; HIDPI
-         (set-frame-font "Iosevka 10" nil t)))))
+        (if (> (x-display-pixel-width) 3000)
+            (set-frame-font "Iosevka 10" nil t) ;; HiDPI but setting Xresources properly
+          (if (> (x-display-pixel-width) 2600)
+              (set-frame-font "Iosevka 14" nil t) ;; HIDPI
+            (set-frame-font "Iosevka 12" nil t))))))
 
 ;; Fontify current frame
 (my/fontify-frame nil)
