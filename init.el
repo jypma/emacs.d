@@ -1389,3 +1389,5 @@ See `elfeed-play-with-mpv'."
 ;; Enable emacsclient to connect to this emacs (needed for mail trigger)
 (require 'server)
 (unless (server-running-p) (server-start))
+
+(require 'pkgbuild-mode)
