@@ -81,45 +81,18 @@ or user `keyboard-quit' during execution of body."
 
          (results (jshell-org-babel-comint-with-output (session "jshell> ")
                 (insert (format "%s\n" (org-trim full-body)))
-                (comint-send-input nil t)
-                ))
-         ;;(lines (split-string full-body "\n"))
-         ;;(results (mapcar (lambda (line) (org-babel-jshell-line session line)) lines))
+                (comint-send-input nil t)))
          (result (org-trim (string-join results "\n")))
+         (trimmed (replace-regexp-in-string "^   \\.\\.\\.>   " "" result))
+;;         (body-regexp (replace-regexp-in-string "[[:space:]]*}[[:space:]]*" "[[:space:]]*}}?[[:space:]]*" (regexp-quote (org-trim full-body))))
+         (body-regexp (format "^%s" (replace-regexp-in-string "^[[:space:]]+" "[[:space:]]*" (replace-regexp-in-string "[[:space:]]*}" "[[:space:]]*}}?" (regexp-quote (org-trim full-body))))))
+         (cleaned (replace-regexp-in-string body-regexp "" trimmed))
          )
 
-         ;; (raw (org-babel-comint-with-output
-	 ;;          (session org-babel-jshell-eoe t full-body)
-         ;;        (insert (org-trim full-body))
-         ;;        (comint-send-input nil t)
-         ;;        (insert org-babel-jshell-eoe)
-         ;;        (comint-send-input nil t)))
-         ;; (results (mapcar #'org-strip-quotes
-	 ;;                  (cdr (member org-babel-jshell-eoe
-         ;;                               (reverse (mapcar #'org-trim raw))))))
-         ;; Remove leading and trailing newline
-         ;; (cleaned (replace-regexp-in-string "\n$\\|^\n" "" (mapconcat 'identity results "\n"))) ;
-         ;; JShell echoes a closing "}" as double "}}"
-         ;;(expected-echo (replace-regexp-in-string "}" "}}" full-body))
-         ;; JShell changes whitespace in echo, and eats a leading ";"
-         ;; (expected-echo-regex
-         ;;  (replace-regexp-in-string ";" " *;"
-         ;;                            (replace-regexp-in-string "}" "}}?"
-         ;;                                                      (replace-regexp-in-string ";$" ""
-         ;;                                                                                (replace-regexp-in-string " +" " +" (regexp-quote full-body))))))
-         ;; (withoutecho (replace-regexp-in-string expected-echo-regex "" cleaned 'literal)))
-
-    ;; (message "full-body: %s" full-body)
-    ;; (message "raw: %s" raw)
-    ;; (message "results: %s" results)
-    ;; (message "cleaned: %s" cleaned)
-    ;; (message "expected echo: %s" expected-echo)
-     ;; (message "expected echo regex: %s" expected-echo-regex)
-     ;; (message "withoutecho: %s" withoutecho)
-
-         (message "results: %s" results)
-         (message "result: %s" result)
-    result))
+    (message "results: %s" results)
+    (message "trimmed: %s" trimmed)
+    (message "body regexp: %s" body-regexp)
+    cleaned))
 
 (defvar org-babel-jshell-eoe "\"org-babel-jshell-eoe\"")
 
