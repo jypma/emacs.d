@@ -70,15 +70,18 @@
 
 (tool-bar-mode -1)
 
+(setq my/frame-font-name "New Heterodox Mono")
+;;(setq my/frame-font-name "Iosevka")
+
 (defun my/fontify-frame (frame)
   (interactive)
   (if window-system
       (progn
         (if (> (x-display-pixel-width) 3000)
-            (set-frame-font "Iosevka 10" nil t) ;; HiDPI but setting Xresources properly
+            (set-frame-font (format "%s 10" my/frame-font-name) nil t) ;; HiDPI but setting Xresources properly
           (if (> (x-display-pixel-width) 2600)
-              (set-frame-font "Iosevka 14" nil t) ;; HIDPI
-            (set-frame-font "Iosevka 12" nil t))))))
+              (set-frame-font (format "%s 15" my/frame-font-name) nil t) ;; HIDPI
+            (set-frame-font (format "%s 12" my/frame-font-name) nil t))))))
 
 ;; Fontify current frame
 (my/fontify-frame nil)
