@@ -181,11 +181,38 @@ they are appended."
     )
   )
 
+(defun my/scala-zio-spec-name ()
+  "Returns the name of the innermost test() or testM() invocation"
+  (save-excursion
+    (if (re-search-backward "test.?(\"\\(.+\\)\")" nil t)
+        (match-string-no-properties 1)
+      nil)
+    )
+  )
+
+(defun my/java-extra-test-args ()
+  "Returns extra bloop arguments for testing, e.g. which spec inside the test to run"
+  (let ((spec (my/scala-zio-spec-name)))
+    (if spec
+        (format "-t \"%s\"" (my/scala-zio-spec-name))
+      ""
+        )
+    )
+  )
+
 (defun my/java-run-test ()
   "Runs the test for the current *.java or *.scala file (or the file itself, if it is a test)"
   (interactive)
   (let ((default-directory (projectile-project-root)))
     (compile (format "bloop test %s --reporter scalac -o %s" (my/module-name-for-buffer) (my/test-name-for-buffer)))))
+
+(defun my/java-run-test-case ()
+  "Runs the test for the current *.java or *.scala file (or the
+file itself, if it is a test), limiting the run to only the
+current test case"
+  (interactive)
+  (let ((default-directory (projectile-project-root)))
+    (compile (format "bloop test %s --reporter scalac -o %s -- %s" (my/module-name-for-buffer) (my/test-name-for-buffer) (my/java-extra-test-args)))))
 
 (defun my/root-project-name-from-buildsbt (dir)
   "Returns the name of the root project defined in build.sbt in directory [dir]"
