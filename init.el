@@ -584,6 +584,11 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCl9OJE9OpXui-gRsnWjSrlA" ;; Photonicinduction
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCvigl2g67gl18hJgFex-3zg" ;; Bad Normals
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCTUtqcDkzw7bisadh6AOx5w" ;; 12 Tone Videos
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UUP7H8NPvamkD9mL5sIXnnFQ" ;; CodingKaiju
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCz2iUx-Imr6HgDC3zAFpjOw" ;; David Bennett Piano
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UC8Ob-HnnmhlgSv5Vs_i32TQ" ;; Ralph S Bacon
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCchBatdUMZoMfJ3rIzgV84g" ;; VivaLaDirtLeague
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UC6gJtkKLq7MTkm0SJRpYBWg" ;;  DECODED
 
       "http://planet.emacsen.org/atom.xml"))
 
