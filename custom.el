@@ -32,6 +32,7 @@
  '(git-gutter:update-interval 1)
  '(global-subword-mode t)
  '(global-whitespace-mode nil)
+ '(gnus-article-date-headers '(combined-local-lapsed))
  '(highlight-indent-guides-auto-enabled nil)
  '(highlight-indent-guides-method 'bitmap)
  '(highlight-indent-guides-responsive 'top)
@@ -61,22 +62,25 @@
  '(lsp-java-favorite-static-members
    '("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*"))
  '(lsp-java-format-settings-url "/home/jan/eclipse-format-jan.xml")
+ '(lsp-java-java-path "/usr/lib/jvm/java-17-jdk/bin/java")
  '(lsp-java-save-action-organize-imports nil)
  '(lsp-java-vmargs
    '("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"))
  '(lsp-keep-workspace-alive nil)
- '(lsp-metals-java-home "/usr/lib/jvm/java-8-openjdk")
+ '(lsp-metals-java-home "/usr/lib/jvm/java-11-openjdk")
  '(lsp-ui-doc-enable t)
  '(lsp-ui-doc-include-signature t)
  '(lsp-ui-doc-position 'top)
  '(lsp-ui-flycheck-enable t)
  '(lsp-ui-flycheck-list-position 'right)
  '(lsp-ui-peek-enable t)
+ '(lsp-ui-sideline-diagnostic-max-lines 7)
  '(lsp-ui-sideline-enable nil)
  '(lsp-ui-sideline-ignore-duplicate t)
  '(lsp-ui-sideline-show-code-actions t)
  '(lsp-ui-sideline-show-hover nil)
  '(lsp-ui-sideline-show-symbol nil)
+ '(lsp-xml-validation-resolve-external-entities t)
  '(magit-todos-auto-group-items 'always)
  '(magit-todos-branch-list nil)
  '(magit-todos-scanner nil)
@@ -119,7 +123,8 @@
  '(org-catch-invisible-edits 'smart)
  '(org-confirm-babel-evaluate nil)
  '(org-edit-src-content-indentation 0)
- '(org-hide-block-startup t)
+ '(org-fontify-done-headline nil)
+ '(org-hide-block-startup nil)
  '(org-hide-emphasis-markers t)
  '(org-hide-leading-stars t)
  '(org-latex-active-timestamp-format "%s")
@@ -132,7 +137,7 @@
  '(org-tree-slide-fold-subtrees-skipped nil)
  '(org-tree-slide-heading-emphasis t)
  '(package-selected-packages
-   '(org-gtd org transient org-caldav doom-modeline esup flymake-json org-superstar org-superstar-mode org-tree-slide emacs-scroll-on-jump daemons flycheck-rust cargo rust-mode toml-mode ibuffer-projectile lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
+   '(log4j-mode gdscript-mode org-gtd org transient org-caldav doom-modeline esup flymake-json org-superstar org-superstar-mode org-tree-slide emacs-scroll-on-jump daemons flycheck-rust cargo rust-mode toml-mode ibuffer-projectile lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
  '(password-cache-expiry 600)
  '(plantuml-indent-level 2)
  '(restclient-content-type-modes
@@ -173,4 +178,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(flycheck-warning ((t (:underline "chocolate")))))

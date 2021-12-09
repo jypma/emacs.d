@@ -6,6 +6,8 @@
 (add-to-list 'org-babel-tangle-lang-exts '("jshell" . "java"))
 (add-to-list 'org-src-lang-modes '("jshell" . java))
 
+;; TODO add a parser to separate out Java multiple Java statements into multiple invocations.
+
 ;; Tweaked to allow arbitrary output until a timeout (JShell is a mess)
 (defmacro jshell-org-babel-comint-with-output (meta &rest body)
   "Evaluate BODY in BUFFER and return process output.
@@ -92,7 +94,7 @@ or user `keyboard-quit' during execution of body."
     (message "results: %s" results)
     (message "trimmed: %s" trimmed)
     (message "body regexp: %s" body-regexp)
-    cleaned))
+    (org-trim cleaned)))
 
 (defvar org-babel-jshell-eoe "\"org-babel-jshell-eoe\"")
 
@@ -136,11 +138,11 @@ create.  Return the initialized session."
 (defun org-babel-jshell-command ()
   "Returns the jshell command and arguments, as a list"
   ;; TODO add "compile" first as option
-  `("mvn" "test-compile" "com.github.johnpoth:jshell-maven-plugin:1.3:run" "-Djshell.options=-q,--no-startup" "-Djshell.scripts=/home/jan/.emacs.d/lisp/imports"))
+  `("mvn" "test-compile" "com.github.johnpoth:jshell-maven-plugin:1.3:run" "-Djshell.options=-q,--no-startup,--enable-preview" "-Djshell.scripts=/home/jan/.emacs.d/lisp/imports"))
 
 (defun org-babel-jshell-run (session)
   (let ((command (org-babel-jshell-command))
-        (process-environment (cons "JAVA_HOME=/usr/lib/jvm/java-17-jdk/" process-environment)))
+        (process-environment (cons "MAVEN_OPTS=--enable-preview" (cons "JAVA_HOME=/usr/lib/jvm/java-17-jdk/" process-environment))))
     ;; TODO: figure out the appropriate maven pom directory
     ;;  (setq default-directory inferior-haskell-root-dir))
     (switch-to-buffer

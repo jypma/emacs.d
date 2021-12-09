@@ -677,6 +677,16 @@ See `elfeed-play-with-mpv'."
 
 (advice-add 'c-get-syntactic-indentation :around 'my-java-indent-lambda)
 
+;; Java 13 addition
+(font-lock-add-keywords 'java-mode
+                        '(("yield" . font-lock-keyword-face)))
+(font-lock-add-keywords 'java-mode
+                        '(("sealed" . font-lock-keyword-face)))
+(font-lock-add-keywords 'java-mode
+                        '(("record" . font-lock-keyword-face)) 1)
+(font-lock-add-keywords 'java-mode
+                        '(("permits" . font-lock-keyword-face)))
+
 (add-hook 'java-mode-hook
           (lambda ()
             (abbrev-mode 0)
@@ -684,6 +694,7 @@ See `elfeed-play-with-mpv'."
             (c-set-offset 'arglist-intro '+)         ;; only 1 indent for multi-line args lists
             (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
             (c-set-offset 'arglist-close '0)         ;; Single closing paren on a line should line up
+            (c-set-offset 'case-label '+)            ;; Indent before case labels
             (setq fill-column 130)                   ;; yes, looks worse on github, but, java.
             (setq whitespace-line-column 130)
             (setq c-basic-offset 4)
@@ -902,7 +913,8 @@ See `elfeed-play-with-mpv'."
 	   '(invisible org-link)))
       (if my/org-show-emphasis-hidden
           (progn
-            (apply 'font-lock-flush (list (match-beginning 3) (match-beginning 5)))
+            ;; Add about 100 characters extra, in case we're moving lines.
+            (apply 'font-lock-flush (list (- (match-beginning 3) 100) (+ (match-beginning 5) 100)))
             (setq my/org-show-emphasis-hidden nil))))))
 
 
@@ -996,6 +1008,13 @@ See `elfeed-play-with-mpv'."
 
 ;; Smart beginning and end of line for org mode
 (setq org-special-ctrl-a/e t)
+
+(defun my/image-animate ()
+    "Starts to animate the image under the cursor"
+    (interactive)
+    (image-animate (image--get-imagemagick-and-warn)))
+
+(define-key image-map (kbd "a") 'my/image-animate)
 
 ;; Unbind Ctrl-Z to not minimize emacs in UI mode
 (global-unset-key [(control z)])
@@ -1364,7 +1383,8 @@ See `elfeed-play-with-mpv'."
   (org-display-inline-images)
   (text-scale-mode 1)
   (font-lock-flush)
-  (font-lock-ensure))
+  (font-lock-ensure)
+  (my/individual-visibility-source-blocks))
 
 (defun my/presentation-end ()
   (shell-command "dunstctl set-paused false")
