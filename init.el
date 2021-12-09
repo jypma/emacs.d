@@ -1439,3 +1439,4 @@ See `elfeed-play-with-mpv'."
   ;; Runs the function `lsp--gdscript-ignore-errors` around `lsp--get-message-type` to suppress unknown notification errors.
   (advice-add #'lsp--get-message-type :around #'lsp--gdscript-ignore-errors))
 
+(use-package log4j-mode)
