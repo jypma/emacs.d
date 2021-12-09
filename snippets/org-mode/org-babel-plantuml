@@ -1,8 +1,13 @@
 # -*- mode: snippet -*-
 # name: org-babel-plantuml
-# key: #u
+# key: #p
 # --
-#+BEGIN_SRC plantuml :file $1.png :hidden
+#+BEGIN_SRC plantuml :file $1.svg :hidden
 skinparam dpi :dpi
+' partition "name" for sequence diagrams
+package "$1" {
+
 $0
+
+}
 #+END_SRC

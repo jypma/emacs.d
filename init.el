@@ -1289,7 +1289,7 @@ See `elfeed-play-with-mpv'."
   :mode "\\.\\(plantuml\\|pum\\|plu\\)\\'"
   :config
   ;; plantuml is in standard arch repositories
-  (setq plantuml-default-exec-mode 'executable)
+  (setq plantuml-default-exec-mode 'jar)
   (setq plantuml-executable-path "plantuml")
   (setq plantuml-jar-path "~/.emacs.d/plantuml.jar")
 
@@ -1303,6 +1303,7 @@ See `elfeed-play-with-mpv'."
 ;; Allow execute of plantuml from org
 (require 'ob-plantuml)
 (setq org-plantuml-jar-path "~/.emacs.d/plantuml.jar")
+(setq org-plantuml-exec-mode 'plantuml)
 
 ;; Allow images to be zoomed in and out
 (defun scale-image ()
