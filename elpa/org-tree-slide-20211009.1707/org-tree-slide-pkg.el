@@ -1,0 +1,2 @@
+;;; Generated package description from org-tree-slide.el  -*- no-byte-compile: t -*-
+(define-package "org-tree-slide" "20211009.1707" "A presentation tool for org-mode" '((emacs "24.4")) :commit "27f8bb6a9676e1c0b500e75799e3b5c37a9156af" :authors '(("Takaaki ISHIKAWA <takaxp at ieee dot org>")) :maintainer '("Takaaki ISHIKAWA <takaxp at ieee dot org>") :keywords '("convenience" "org-mode" "presentation" "narrowing") :url "https://github.com/takaxp/org-tree-slide")
