@@ -142,7 +142,7 @@ create.  Return the initialized session."
 
 (defun org-babel-jshell-run (session)
   (let ((command (org-babel-jshell-command))
-        (process-environment (cons "MAVEN_OPTS=--enable-preview" (cons "JAVA_HOME=/usr/lib/jvm/java-17-jdk/" process-environment))))
+        (process-environment (cons "MAVEN_OPTS=--enable-preview" (cons "JAVA_HOME=/usr/lib/jvm/java-17-openjdk/" process-environment))))
     ;; TODO: figure out the appropriate maven pom directory
     ;;  (setq default-directory inferior-haskell-root-dir))
     (switch-to-buffer
