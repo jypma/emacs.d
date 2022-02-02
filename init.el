@@ -574,6 +574,9 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UC8Ob-HnnmhlgSv5Vs_i32TQ" ;; Ralph S Bacon
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCchBatdUMZoMfJ3rIzgV84g" ;; VivaLaDirtLeague
       "https://www.youtube.com/feeds/videos.xml?channel_id=UC6gJtkKLq7MTkm0SJRpYBWg" ;;  DECODED
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCsWRAAMs_Cn78_kRLSpkb6w" ;; Fesz Electronics
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCQwyP4Yd0-O49e05kMUJgQQ" ;; Andress Spiess  HB9BLA
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UCuWKHSHTHMV_nVSeNH4gYAg" ;; Omri Cohen
 
       "http://planet.emacsen.org/atom.xml"))
 
@@ -1554,6 +1557,15 @@ See `elfeed-play-with-mpv'."
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref)
 
+
+  ;; Use `consult-completion-in-region' if Vertico is enabled.
+  ;; Otherwise use the default `completion--in-region' function.
+  (setq completion-in-region-function
+        (lambda (&rest args)
+          (apply (if vertico-mode
+                     #'consult-completion-in-region
+                   #'completion--in-region)
+                 args)))
   ;; Configure other variables and modes in the :config section,
   ;; after lazily loading the package.
   :config
@@ -1610,3 +1622,5 @@ See `elfeed-play-with-mpv'."
   ;; Must be in the :init section of use-package such that the mode gets
   ;; enabled right away. Note that this forces loading the package.
   (marginalia-mode))
+
+(use-package org-journal)
