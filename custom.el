@@ -12,7 +12,7 @@
  '(company-auto-commit-chars '(119))
  '(company-auto-complete nil)
  '(company-auto-complete-chars '(119))
- '(company-idle-delay 0.3)
+ '(company-idle-delay 0.3 t)
  '(company-lsp-enable-recompletion nil)
  '(company-show-numbers t)
  '(company-show-quick-access t)
@@ -66,7 +66,7 @@
  '(lsp-java-favorite-static-members
    '("org.junit.Assert.*" "org.junit.Assume.*" "java.util.concurrent.CompletableFuture.completedFuture" "io.vavr.control.Option.*"))
  '(lsp-java-format-settings-url "/home/jan/eclipse-format-jan.xml")
- '(lsp-java-java-path "/usr/lib/jvm/java-17-jdk/bin/java")
+ '(lsp-java-java-path "/usr/lib/jvm/java-17-openjdk/bin/java")
  '(lsp-java-save-action-organize-imports nil)
  '(lsp-java-vmargs
    '("-noverify" "-Xmx8G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"))
@@ -149,7 +149,7 @@
  '(org-tree-slide-heading-level-3 '(outline-3 bold))
  '(org-tree-slide-heading-level-4 '(outline-4 bold))
  '(package-selected-packages
-   '(org-journal marginalia consult orderless vertico log4j-mode gdscript-mode org-gtd org transient org-caldav doom-modeline esup flymake-json org-superstar org-superstar-mode org-tree-slide emacs-scroll-on-jump daemons flycheck-rust cargo rust-mode toml-mode ibuffer-projectile lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
+   '(osm org-journal marginalia consult orderless vertico log4j-mode gdscript-mode org-gtd org transient org-caldav doom-modeline esup flymake-json org-superstar org-superstar-mode org-tree-slide emacs-scroll-on-jump daemons flycheck-rust cargo rust-mode toml-mode ibuffer-projectile lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
  '(password-cache-expiry 600)
  '(plantuml-indent-level 2)
  '(restclient-content-type-modes
@@ -191,4 +191,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flycheck-warning ((t (:underline "chocolate")))))
+ '(flycheck-warning ((t (:underline "chocolate"))))
+ '(org-tag ((t (:background "#ADA05F" :foreground "black" :box (:line-width 2 :color "#7C754F") :weight bold))))
+ '(org-tree-slide-header-overlay-face ((t (:background "#001D2D" :foreground "#d3d3d3" :weight bold)))))

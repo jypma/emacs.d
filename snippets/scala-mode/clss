@@ -2,7 +2,7 @@
 # name: File template for a scala class
 # key: clss
 # --
-package `(mapconcat 'identity (split-string (replace-regexp-in-string ".*src\\(/\\(main\\|test\\)\\)?\\(/scala\\)?" "" default-directory) "/" t) ".")`
+# package `(mapconcat 'identity (split-string (replace-regexp-in-string ".*src\\(/\\(main\\|test\\)\\)?\\(/scala\\)?" "" default-directory) "/" t) ".")`
 
 class ${1:`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`}($2) {
   $0

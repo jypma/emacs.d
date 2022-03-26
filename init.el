@@ -869,6 +869,29 @@ See `elfeed-play-with-mpv'."
  'org-babel-load-languages
  '((java . t)))
 
+(require 'ox)
+(defun my/org-export-replacements (text backend info)
+  "Replace common org-babel source block modes with names that TeX pygmentize understands"
+    (with-temp-buffer
+      (insert text)
+
+      (goto-char (point-min))
+      (while (search-forward "{restclient}" nil t) (replace-match "{text}" nil t))
+
+      (goto-char (point-min))
+      (while (search-forward "{sgml}" nil t) (replace-match "{xml}" nil t))
+
+      (goto-char (point-min))
+      (while (search-forward "{jshell}" nil t) (replace-match "{java}" nil t))
+
+      (buffer-substring-no-properties (point-min) (point-max))))
+
+;;(make-variable-buffer-local 'org-export-filter-src-block-functions)
+
+(add-to-list 'org-export-filter-src-block-functions
+  'my/org-export-replacements)
+
+
 (require 'org-expiry)
 (require 'ox-md nil t)
 (require 'ox-beamer)
@@ -942,7 +965,7 @@ See `elfeed-play-with-mpv'."
                      ("#+BEGIN_EXAMPLE" . "➤")
                      ("#+END_SRC" . "⏹")
                      ("#+END_EXAMPLE" . "⏹")
-                     ("#+RESULTS:" . "🠋")
+                     ("#+RESULTS:" . "🠋")    ;; Font: ttf-symbola
                      )))
   (prettify-symbols-mode 0)
   (prettify-symbols-mode)
@@ -1488,7 +1511,7 @@ See `elfeed-play-with-mpv'."
   ;; Replace bindings. Lazily loaded due by `use-package'.
   :bind (;; C-c bindings (mode-specific-map)
          ("C-c h" . consult-history)
-         ("C-c m" . consult-mode-command)
+;;         ("C-c m" . consult-mode-command)
          ("C-c b" . consult-bookmark)
          ("C-c k" . consult-kmacro)
          ;; C-x bindings (ctl-x-map)
@@ -1624,3 +1647,25 @@ See `elfeed-play-with-mpv'."
   (marginalia-mode))
 
 (use-package org-journal)
+
+;; https://github.com/minad/osm/issues/12
+(unless (fboundp 'json-available-p)
+  (defun json-available-p ()
+    (fboundp 'json-parse-string)))
+(use-package osm
+  :bind (("C-c m h" . osm-home)
+         ("C-c m s" . osm-search)
+         ("C-c m v" . osm-server)
+         ("C-c m t" . osm-goto)
+         ("C-c m x" . osm-gpx-show)
+         ("C-c m j" . osm-bookmark-jump))
+
+  :custom
+  ;; Take a look at the customization group `osm' for more options.
+  (osm-server 'default) ;; Configure the tile server
+  (osm-copyright nil)     ;; Display the copyright information
+
+  :init
+  ;; Load Org link support
+  (with-eval-after-load 'org
+    (require 'osm-ol)))
