@@ -32,9 +32,8 @@ recentf~
 forge-database.sqlite
 /elpa/gnupg/tofu.db
 /logview-cache.extmap
-elpa/pdf-tools-20191228.1005/epdfinfo
-/elpa/telega-20200811.2204/server/telega-server
 epdfinfo
+/elpa/telega-20200811.2204/server/telega-server
 /%backup%~
 /elpa/pdf-tools-20200512.1524/build/
 /var/osm/

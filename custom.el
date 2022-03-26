@@ -87,6 +87,8 @@
  '(lsp-xml-validation-resolve-external-entities t)
  '(magit-todos-auto-group-items 'always)
  '(magit-todos-branch-list nil)
+ '(magit-todos-keyword-suffix "[ :]+")
+ '(magit-todos-keywords '("TODO" "FIXME"))
  '(magit-todos-scanner nil)
  '(markdown-asymmetric-header t)
  '(markdown-code-lang-modes
