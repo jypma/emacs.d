@@ -1,4 +1,4 @@
-;;; gdscript-mode-autoloads.el --- automatically extracted autoloads
+;;; gdscript-mode-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -10,7 +10,7 @@
 ;;;;;;  0 0))
 ;;; Generated autoloads from gdscript-comint.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-comint" '("gdscript-comint--" "godot-mode")))
+(register-definition-prefixes "gdscript-comint" '("gdscript-comint--" "godot-mode"))
 
 ;;;***
 
@@ -18,7 +18,7 @@
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from gdscript-comint-gdformat.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-comint-gdformat" '("gdformat-mode" "gdscript-comint-gdformat--")))
+(register-definition-prefixes "gdscript-comint-gdformat" '("gdformat-mode" "gdscript-comint-gdformat--"))
 
 ;;;***
 
@@ -26,7 +26,7 @@
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from gdscript-completion.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-completion" '("gdscript-completion-")))
+(register-definition-prefixes "gdscript-completion" '("gdscript-completion-"))
 
 ;;;***
 
@@ -34,7 +34,7 @@
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from gdscript-customization.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-customization" '("gdscript-")))
+(register-definition-prefixes "gdscript-customization" '("gdscript-"))
 
 ;;;***
 
@@ -44,7 +44,7 @@
 
 (autoload 'gdscript-debug-make-server "gdscript-debug" nil t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-debug" '("gdscript-")))
+(register-definition-prefixes "gdscript-debug" '("gdscript-"))
 
 ;;;***
 
@@ -56,7 +56,7 @@ Open the main page of Godot API. Use the universal prefix (C-u) to force browsin
 
 \(fn &optional FORCE-ONLINE)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-docs" '("gdscript-docs-")))
+(register-definition-prefixes "gdscript-docs" '("gdscript-docs-"))
 
 ;;;***
 
@@ -64,7 +64,7 @@ Open the main page of Godot API. Use the universal prefix (C-u) to force browsin
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from gdscript-fill-paragraph.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-fill-paragraph" '("gdscript-fill-paragraph")))
+(register-definition-prefixes "gdscript-fill-paragraph" '("gdscript-fill-paragraph"))
 
 ;;;***
 
@@ -72,7 +72,7 @@ Open the main page of Godot API. Use the universal prefix (C-u) to force browsin
 ;;;;;;  0 0))
 ;;; Generated autoloads from gdscript-format.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-format" '("gdscript-")))
+(register-definition-prefixes "gdscript-format" '("gdscript-"))
 
 ;;;***
 
@@ -82,7 +82,7 @@ Open the main page of Godot API. Use the universal prefix (C-u) to force browsin
 
 (defvar gdscript-godot--debug-options-hydra :not-list)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-godot" '("gdscript-godot-")))
+(register-definition-prefixes "gdscript-godot" '("gdscript-godot-"))
 
 ;;;***
 
@@ -90,7 +90,7 @@ Open the main page of Godot API. Use the universal prefix (C-u) to force browsin
 ;;;;;;  0 0 0))
 ;;; Generated autoloads from gdscript-history.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-history" '("gdscript-history--")))
+(register-definition-prefixes "gdscript-history" '("gdscript-history--"))
 
 ;;;***
 
@@ -100,7 +100,7 @@ Open the main page of Godot API. Use the universal prefix (C-u) to force browsin
 
 (defvar gdscript-hydra--open nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-hydra" '("gdscript-hydra-")))
+(register-definition-prefixes "gdscript-hydra" '("gdscript-hydra-"))
 
 ;;;***
 
@@ -108,7 +108,7 @@ Open the main page of Godot API. Use the universal prefix (C-u) to force browsin
 ;;;;;;  0))
 ;;; Generated autoloads from gdscript-imenu.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-imenu" '("gdscript-imenu-")))
+(register-definition-prefixes "gdscript-imenu" '("gdscript-imenu-"))
 
 ;;;***
 
@@ -116,7 +116,7 @@ Open the main page of Godot API. Use the universal prefix (C-u) to force browsin
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from gdscript-indent-and-nav.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-indent-and-nav" '("gdscript-")))
+(register-definition-prefixes "gdscript-indent-and-nav" '("gdscript-"))
 
 ;;;***
 
@@ -124,7 +124,7 @@ Open the main page of Godot API. Use the universal prefix (C-u) to force browsin
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from gdscript-keywords.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-keywords" '("gdscript-")))
+(register-definition-prefixes "gdscript-keywords" '("gdscript-"))
 
 ;;;***
 
@@ -142,7 +142,7 @@ Major mode for editing Godot GDScript files.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-mode" '("gdscript-")))
+(register-definition-prefixes "gdscript-mode" '("gdscript-"))
 
 ;;;***
 
@@ -150,7 +150,7 @@ Major mode for editing Godot GDScript files.
 ;;;;;;  0 0 0))
 ;;; Generated autoloads from gdscript-project.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-project" '("gdscript-project--")))
+(register-definition-prefixes "gdscript-project" '("gdscript-project--"))
 
 ;;;***
 
@@ -346,7 +346,7 @@ For more details, see Info node `(elisp) Extending Rx'.
 
 (function-put 'gdscript-rx-define 'lisp-indent-function '1)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-rx" '("gdscript-rx")))
+(register-definition-prefixes "gdscript-rx" '("gdscript-rx"))
 
 ;;;***
 
@@ -354,7 +354,7 @@ For more details, see Info node `(elisp) Extending Rx'.
 ;;;;;;  0 0))
 ;;; Generated autoloads from gdscript-syntax.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-syntax" '("gdscript-")))
+(register-definition-prefixes "gdscript-syntax" '("gdscript-"))
 
 ;;;***
 
@@ -362,7 +362,7 @@ For more details, see Info node `(elisp) Extending Rx'.
 ;;;;;;  0))
 ;;; Generated autoloads from gdscript-utils.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "gdscript-utils" '("gdscript-")))
+(register-definition-prefixes "gdscript-utils" '("gdscript-"))
 
 ;;;***
 

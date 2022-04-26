@@ -1,4 +1,4 @@
-;;; alert-autoloads.el --- automatically extracted autoloads
+;;; alert-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -87,7 +87,7 @@ Here are some more typical examples of usage:
 
 \(fn MESSAGE &key (SEVERITY \\='normal) TITLE ICON CATEGORY BUFFER MODE DATA STYLE PERSISTENT NEVER-PERSIST ID)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "alert" '("alert-" "x-urgen")))
+(register-definition-prefixes "alert" '("alert-" "x-urgen"))
 
 ;;;***
 

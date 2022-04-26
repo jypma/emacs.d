@@ -1,4 +1,4 @@
-;;; visual-regexp-autoloads.el --- automatically extracted autoloads
+;;; visual-regexp-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -24,7 +24,7 @@ Use `vr/query-replace' like you would use `query-replace-regexp'.
 
 \(fn REGEXP REPLACE START END)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "visual-regexp" '("vr--" "vr/")))
+(register-definition-prefixes "visual-regexp" '("vr--" "vr/"))
 
 ;;;***
 

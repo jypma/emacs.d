@@ -1,4 +1,4 @@
-;;; rainbow-identifiers-autoloads.el --- automatically extracted autoloads
+;;; rainbow-identifiers-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -21,7 +21,7 @@ mode if ARG is omitted or nil, and toggle it if ARG is `toggle'.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "rainbow-identifiers" '("rainbow-identifiers-")))
+(register-definition-prefixes "rainbow-identifiers" '("rainbow-identifiers-"))
 
 ;;;***
 

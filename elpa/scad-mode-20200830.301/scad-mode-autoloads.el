@@ -1,4 +1,4 @@
-;;; scad-mode-autoloads.el --- automatically extracted autoloads
+;;; scad-mode-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -24,7 +24,7 @@ Key bindings:
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "scad-mode" '("scad-")))
+(register-definition-prefixes "scad-mode" '("scad-"))
 
 ;;;***
 

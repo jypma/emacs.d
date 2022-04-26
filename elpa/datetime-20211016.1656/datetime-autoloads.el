@@ -1,4 +1,4 @@
-;;; datetime-autoloads.el --- automatically extracted autoloads
+;;; datetime-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -9,7 +9,7 @@
 ;;;### (autoloads nil "datetime" "datetime.el" (0 0 0 0))
 ;;; Generated autoloads from datetime.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "datetime" '("datetime-")))
+(register-definition-prefixes "datetime" '("datetime-"))
 
 ;;;***
 

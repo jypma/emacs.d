@@ -1,4 +1,4 @@
-;;; ws-butler-autoloads.el --- automatically extracted autoloads
+;;; ws-butler-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -12,10 +12,19 @@
 (autoload 'ws-butler-mode "ws-butler" "\
 White space cleanup, without obtrusive white space removal.
 
-If called interactively, enable Ws-Butler mode if ARG is
-positive, and disable it if ARG is zero or negative.  If called
-from Lisp, also enable the mode if ARG is omitted or nil, and
-toggle it if ARG is `toggle'; disable the mode otherwise.
+This is a minor mode.  If called interactively, toggle the
+`Ws-Butler mode' mode.  If the prefix argument is positive,
+enable the mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
+the mode if ARG is nil, omitted, or is a positive number.
+Disable the mode if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `ws-butler-mode'.
+
+The mode's hook is called both when the mode is enabled and when
+it is disabled.
 
 Whitespaces at EOL and EOF are trimmed upon file save, and only
 for lines modified by you.
@@ -36,17 +45,20 @@ or call the function `ws-butler-global-mode'.")
 
 (autoload 'ws-butler-global-mode "ws-butler" "\
 Toggle Ws-Butler mode in all buffers.
-With prefix ARG, enable Ws-Butler-Global mode if ARG is positive;
-otherwise, disable it.  If called from Lisp, enable the mode if
-ARG is omitted or nil.
+With prefix ARG, enable Ws-Butler-Global mode if ARG is positive; otherwise, disable it.
 
-Ws-Butler mode is enabled in all buffers where
-`(lambda nil (unless (apply #'derived-mode-p ws-butler-global-exempt-modes) (ws-butler-mode)))' would do it.
+If called from Lisp, toggle the mode if ARG is `toggle'.
+Enable the mode if ARG is nil, omitted, or is a positive number.
+Disable the mode if ARG is a negative number.
+
+Ws-Butler mode is enabled in all buffers where `(lambda nil (unless (apply #'derived-mode-p
+ws-butler-global-exempt-modes) (ws-butler-mode)))' would do it.
+
 See `ws-butler-mode' for more information on Ws-Butler mode.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "ws-butler" '("ws-butler-")))
+(register-definition-prefixes "ws-butler" '("ws-butler-"))
 
 ;;;***
 

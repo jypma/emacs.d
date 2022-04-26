@@ -1,4 +1,4 @@
-;;; eshell-bookmark-autoloads.el --- automatically extracted autoloads
+;;; eshell-bookmark-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -13,7 +13,7 @@
 (autoload 'eshell-bookmark-setup "eshell-bookmark" "\
 Setup eshell-bookmark." nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "eshell-bookmark" '("eshell-bookmark--")))
+(register-definition-prefixes "eshell-bookmark" '("eshell-bookmark--"))
 
 ;;;***
 

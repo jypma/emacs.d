@@ -1,4 +1,4 @@
-;;; log4j-mode-autoloads.el --- automatically extracted autoloads
+;;; log4j-mode-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -41,7 +41,7 @@ across log records.
 
 \\{log4j-mode-local-map}" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "log4j-mode" '("log4j-")))
+(register-definition-prefixes "log4j-mode" '("log4j-"))
 
 ;;;***
 

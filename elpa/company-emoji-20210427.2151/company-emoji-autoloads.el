@@ -1,4 +1,4 @@
-;;; company-emoji-autoloads.el --- automatically extracted autoloads
+;;; company-emoji-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -24,7 +24,7 @@ is a single candidate, as when COMMAND is 'annotation' or
 (autoload 'company-emoji-init "company-emoji" "\
 Add emoji to the company backends." t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "company-emoji" '("company-emoji")))
+(register-definition-prefixes "company-emoji" '("company-emoji"))
 
 ;;;***
 
@@ -32,7 +32,7 @@ Add emoji to the company backends." t nil)
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from company-emoji-list.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "company-emoji-list" '("company-emoji-list-create")))
+(register-definition-prefixes "company-emoji-list" '("company-emoji-list-create"))
 
 ;;;***
 

@@ -1,4 +1,4 @@
-;;; logview-autoloads.el --- automatically extracted autoloads
+;;; logview-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -16,7 +16,7 @@ Major mode for viewing and filtering various log files.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "logview" '("logview-")))
+(register-definition-prefixes "logview" '("logview-"))
 
 ;;;***
 

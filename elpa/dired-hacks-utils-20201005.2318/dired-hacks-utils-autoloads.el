@@ -1,4 +1,4 @@
-;;; dired-hacks-utils-autoloads.el --- automatically extracted autoloads
+;;; dired-hacks-utils-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -10,7 +10,7 @@
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from dired-hacks-utils.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "dired-hacks-utils" '("dired-")))
+(register-definition-prefixes "dired-hacks-utils" '("dired-"))
 
 ;;;***
 

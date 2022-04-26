@@ -1,4 +1,4 @@
-;;; log4e-autoloads.el --- automatically extracted autoloads
+;;; log4e-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -20,7 +20,7 @@ Major mode for browsing a buffer made by log4e.
 (autoload 'log4e:insert-start-log-quickly "log4e" "\
 Insert logging statment for trace level log at start of current function/macro." t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "log4e" '("log4e")))
+(register-definition-prefixes "log4e" '("log4e"))
 
 ;;;***
 

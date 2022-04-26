@@ -1,4 +1,4 @@
-;;; dired-du-autoloads.el --- automatically extracted autoloads
+;;; dired-du-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -16,10 +16,19 @@ A positive prefix argument enables the mode, any other prefix
 argument disables it.  From Lisp, argument omitted or nil enables
 the mode, `toggle' toggles the state.
 
-If called interactively, enable Dired-Du mode if ARG is positive,
-and disable it if ARG is zero or negative.  If called from Lisp,
-also enable the mode if ARG is omitted or nil, and toggle it if
-ARG is `toggle'; disable the mode otherwise.
+This is a minor mode.  If called interactively, toggle the
+`Dired-du mode' mode.  If the prefix argument is positive, enable
+the mode, and if it is zero or negative, disable the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
+the mode if ARG is nil, omitted, or is a positive number.
+Disable the mode if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `dired-du-mode'.
+
+The mode's hook is called both when the mode is enabled and when
+it is disabled.
 
 Show the recursive size of directories in Dired buffers.
 Once this mode is enabled, every new Dired buffer displays
@@ -57,7 +66,7 @@ their recursive size.
 (autoload 'dired-du-insert-marked-dirs "dired-du" "\
 Insert all marked subdirectories." t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "dired-du" '("dired-du-")))
+(register-definition-prefixes "dired-du" '("dired-du-"))
 
 ;;;***
 

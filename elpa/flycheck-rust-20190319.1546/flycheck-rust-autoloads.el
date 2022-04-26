@@ -1,4 +1,4 @@
-;;; flycheck-rust-autoloads.el --- automatically extracted autoloads
+;;; flycheck-rust-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -15,7 +15,7 @@ Setup Rust in Flycheck.
 If the current file is part of a Cargo project, configure
 Flycheck according to the Cargo project layout." t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flycheck-rust" '("flycheck-rust-")))
+(register-definition-prefixes "flycheck-rust" '("flycheck-rust-"))
 
 ;;;***
 

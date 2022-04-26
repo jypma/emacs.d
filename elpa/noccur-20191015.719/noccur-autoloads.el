@@ -1,4 +1,4 @@
-;;; noccur-autoloads.el --- automatically extracted autoloads
+;;; noccur-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
@@ -26,7 +26,7 @@ ls-files' and 'grep'.
 
 \(fn REGEXP &optional NLINES DIRECTORY-TO-SEARCH)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "noccur" '("noccur--")))
+(register-definition-prefixes "noccur" '("noccur--"))
 
 ;;;***
 
