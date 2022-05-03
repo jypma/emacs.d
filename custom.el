@@ -12,7 +12,7 @@
  '(company-auto-commit-chars '(119))
  '(company-auto-complete nil)
  '(company-auto-complete-chars '(119))
- '(company-idle-delay 0.3)
+ '(company-idle-delay 0.3 t)
  '(company-insertion-on-trigger nil)
  '(company-insertion-triggers '(119))
  '(company-lsp-enable-recompletion nil)
@@ -191,7 +191,11 @@
  '(whitespace-display-mappings '((space-mark 160 [164] [95]) (tab-mark 9 [187 9] [92 9])))
  '(whitespace-line-column 110)
  '(whitespace-style
-   '(face trailing tabs spaces lines-tail newline empty indentation space-after-tab space-before-tab space-mark tab-mark newline-mark)))
+   '(face trailing tabs spaces lines-tail newline empty indentation space-after-tab space-before-tab space-mark tab-mark newline-mark))
+ '(world-clock-list
+   '(("UTC" "UTC")
+     ("Europe/Copenhagen" "Copenhagen")
+     ("Europe/Kiev" "Kiev"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
