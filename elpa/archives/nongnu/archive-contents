@@ -28,13 +28,13 @@
 		(:authors
 		 ("Jordon Biondo" . "jordonbiondo@gmail.com")))])
  (annotate .
-	   [(1 5 3)
+	   [(1 5 4)
 	    nil "annotate files without changing them" tar
 	    ((:url . "https://github.com/bastibe/annotate.el")
 	     (:maintainer "Bastian Bechtold <bastibe.dev@mailbox.org>, cage" . "cage-dev@twistfold.it")
 	     (:authors
 	      ("Bastian Bechtold"))
-	     (:commit . "e694b977cc82887ce722912a2634ae4b0bc4f5ea"))])
+	     (:commit . "c00b6f49f779dc5caac7b37d1e35f87891e015d4"))])
  (anti-zenburn-theme .
 		     [(2 5 1)
 		      nil "Low-contrast Zenburn-inverted theme" tar
@@ -150,11 +150,11 @@
 	  ("Damien Doligez" . "damien.doligez@inria.fr"))
 	 (:keywords "ocaml"))])
  (cider .
-	[(1 3 0)
+	[(1 4 0)
 	 ((emacs
 	   (26))
 	  (clojure-mode
-	   (5 12))
+	   (5 14))
 	  (parseedn
 	   (1 0 6))
 	  (queue
@@ -176,7 +176,7 @@
 	   ("Artur Malabarba" . "bruce.connor.am@gmail.com")
 	   ("Hugo Duncan" . "hugo@hugoduncan.org")
 	   ("Steve Purcell" . "steve@sanityinc.com"))
-	  (:commit . "6ddccef1d8cf48515b1cfa0addc1dd41e57e840a"))])
+	  (:commit . "b2cee7fc301735b403920583cc2c23dcf70990a3"))])
  (clojure-mode .
 	       [(5 14 0)
 		((emacs
@@ -295,7 +295,7 @@
 		(:keywords "languages" "elixir")
 		(:commit . "1d94b525ddcc995b5a979de7b050c2309648ca6f"))])
  (elpher .
-	 [(3 3 3)
+	 [(3 4 0)
 	  ((emacs
 	    (27 1)))
 	  "A friendly gopher and gemini client" tar
@@ -304,12 +304,14 @@
 	   (:maintainer "Tim Vaughan" . "plugd@thelambdalab.xyz")
 	   (:authors
 	    ("Tim Vaughan" . "plugd@thelambdalab.xyz"))
-	   (:commit . "ab75cffa4572115c3d6b17348b6bfa2f746f4798"))])
+	   (:commit . "61d565ce18392a8a92347cb3376f7cd8d1092fe5"))])
  (evil .
-       [(1 14 0)
+       [(1 15 0)
 	nil "extensible vi layer" tar
 	((:url . "https://github.com/emacs-evil/evil")
-	 (:keywords "emulation" "vim"))])
+	 (:keywords "emulation" "vim")
+	 (:maintainer "Tom Dalziel" . "tom.dalziel@gmail.com")
+	 (:commit . "008a6cdb12f15e748979a7d1c2f26c34c84dedbf"))])
  (evil-anzu .
 	    [(0 2)
 	     ((evil
@@ -1585,16 +1587,16 @@
 	      (:authors
 	       ("Le Wang")))])
  (xah-fly-keys .
-	       [(17 5 20220416101054)
+	       [(17 7 20220429090059)
 		((emacs
 		  (24 1)))
 		"ergonomic modal keybinding minor mode." tar
 		((:url . "http://xahlee.info/emacs/misc/ergoemacs_vi_mode.html")
 		 (:keywords "convenience" "emulations" "vim" "ergoemacs")
-		 (:maintainer "Xah Lee ( http://xahlee.info/ )")
+		 (:maintainer "Xah Lee" . "xah@xahlee.org")
 		 (:authors
 		  ("Xah Lee ( http://xahlee.info/ )"))
-		 (:commit . "cb2b27ed7566b7863ad3e9adf67d75945d4118b0"))])
+		 (:commit . "e4db51a90d13eb886b88bbba6a71846653a76e47"))])
  (xml-rpc .
 	  [(1 6 15)
 	   nil "An elisp implementation of clientside XML-RPC" tar

@@ -440,6 +440,7 @@
                 javascript-mode-hook
                 js-mode-hook
                 groovy-mode-hook
+                yaml-mode-hook
                 java-mode-hook))
   (add-hook mode #'flyspell-prog-mode))
 
@@ -466,9 +467,20 @@
 
 (use-package git-gutter
   :config
-  (global-git-gutter-mode +1)
   (custom-set-variables
-   '(git-gutter:update-interval 1)))
+   '(git-gutter:update-interval 1))
+  (dolist (mode '(emacs-lisp-mode-hook
+                  inferior-lisp-mode-hook
+                  c++-mode-hook
+                  c-mode-hook
+                  scala-mode-hook
+                  protobuf-mode-hook
+                  javascript-mode-hook
+                  js-mode-hook
+                  groovy-mode-hook
+                  yaml-mode-hook
+                  java-mode-hook))
+    (add-hook mode #'git-gutter-mode)))
 
 (use-package diff-hl
   ;; only for dired, we use git-gutter for normal files
@@ -1669,3 +1681,11 @@ See `elfeed-play-with-mpv'."
   ;; Load Org link support
   (with-eval-after-load 'org
     (require 'osm-ol)))
+
+(use-package nov
+  :config
+  (add-hook 'nov-mode-hook
+          (lambda ()
+            (setq adaptive-wrap-extra-indent 2)
+            (visual-line-mode)
+            )))
