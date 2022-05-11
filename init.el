@@ -467,6 +467,12 @@
 
 (use-package git-gutter
   :config
+  (global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
+  (global-set-key (kbd "C-x C-p") 'git-gutter:previous-hunk)
+  (global-set-key (kbd "C-x C-n") 'git-gutter:next-hunk)
+  (global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
+  (global-set-key (kbd "C-x v k") 'git-gutter:revert-hunk)
+
   (custom-set-variables
    '(git-gutter:update-interval 1))
   (dolist (mode '(emacs-lisp-mode-hook
@@ -479,6 +485,7 @@
                   js-mode-hook
                   groovy-mode-hook
                   yaml-mode-hook
+                  conf-mode-hook
                   java-mode-hook))
     (add-hook mode #'git-gutter-mode)))
 
@@ -746,13 +753,6 @@ See `elfeed-play-with-mpv'."
 (global-set-key (kbd "C-x b") 'ibuffer)
 
 (global-set-key (kbd "C-c d") 'my/duplicate-line)
-
-(global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
-(global-set-key (kbd "C-x C-p") 'git-gutter:previous-hunk)
-(global-set-key (kbd "C-x C-n") 'git-gutter:next-hunk)
-(global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
-(global-set-key (kbd "C-x v k") 'git-gutter:revert-hunk)
-
 
 ;; dired: automatically move/copy to "other" pane's directory
 (setq dired-dwim-target t)
