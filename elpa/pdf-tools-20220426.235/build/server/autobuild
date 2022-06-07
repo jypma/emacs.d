@@ -542,7 +542,7 @@ if [ -n "$INSTALL_DIR" ]; then
 fi
 
 echo "./configure -q $prefix && make clean && make -s"
-eval "./configure -q $(quote "$prefix") && make clean && make -s || exit_fail"
+eval "./configure CXXFLAGS='-std=c++17' -q $(quote "$prefix") && make clean && make -s || exit_fail"
 echo
 if [ -n "$INSTALL_DIR" ]; then
     echo "---------------------------"
