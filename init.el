@@ -1007,6 +1007,7 @@ See `elfeed-play-with-mpv'."
 
 ;; https://emacs.stackexchange.com/questions/32347/how-to-have-wrapped-text-when-exporting-from-org-to-latex
 (add-to-list 'org-latex-packages-alist '("" "tabularx"))
+(add-to-list 'org-latex-packages-alist '("" "supertabular"))
 
 ;; https://emacs.stackexchange.com/questions/7996/is-there-a-way-to-resize-margins-when-exporting-pdf-in-org-mode
 (add-to-list 'org-latex-packages-alist '("margin=2cm" "geometry" nil))
