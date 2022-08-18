@@ -969,6 +969,7 @@ See `elfeed-play-with-mpv'."
 
   ;; Shorten some text
   (setq prettify-symbols-alist
+      (assoc-delete-all ">="
         (map-merge 'list prettify-symbols-alist
                    `(
                      ("#+name:" . "✎")
@@ -978,7 +979,7 @@ See `elfeed-play-with-mpv'."
                      ("#+END_SRC" . "⏹")
                      ("#+END_EXAMPLE" . "⏹")
                      ("#+RESULTS:" . "🠋")    ;; Font: ttf-symbola
-                     )))
+                     ))))
   (prettify-symbols-mode 0)
   (prettify-symbols-mode)
 
