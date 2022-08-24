@@ -12,7 +12,7 @@
  '(company-auto-commit-chars '(119))
  '(company-auto-complete nil)
  '(company-auto-complete-chars '(119))
- '(company-idle-delay 0.3 t)
+ '(company-idle-delay 0.3)
  '(company-insertion-on-trigger nil)
  '(company-insertion-triggers '(119))
  '(company-lsp-enable-recompletion nil)
@@ -197,7 +197,8 @@
  '(world-clock-list
    '(("UTC" "UTC")
      ("Europe/Copenhagen" "Copenhagen")
-     ("Europe/Kiev" "Kiev"))))
+     ("Europe/Kiev" "Kiev")
+     ("Asia/Kuala_Lumpur" "Kuala Lumpur"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -205,5 +206,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(flycheck-warning ((t (:underline "chocolate"))))
+ '(org-code ((t (:foreground "#9C9C9C" :inherit ##))))
  '(org-tag ((t (:background "#ADA05F" :foreground "black" :box (:line-width 2 :color "#7C754F") :weight bold))))
  '(org-tree-slide-header-overlay-face ((t (:background "#001D2D" :foreground "#d3d3d3" :weight bold)))))

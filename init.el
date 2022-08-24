@@ -124,16 +124,16 @@
 ;; Allow tree-semantics for undo operations.
 ;; Execute (undo-tree-visualize) then navigate along the tree to witness
 ;; changes being made to your file live!
-(use-package undo-tree
-  :config
+;;(use-package undo-tree
+;;  :config
   ;; Always have it on
-  (global-undo-tree-mode)
+;;  (global-undo-tree-mode)
 
   ;; Each node in the undo tree should have a timestamp.
-  (setq undo-tree-visualizer-timestamps t)
+;;  (setq undo-tree-visualizer-timestamps t)
 
   ;; Show a diff window displaying changes between undo nodes.
-  (setq undo-tree-visualizer-diff t))
+;;  (setq undo-tree-visualizer-diff t))
 
 ;; run all-the-icons-install-fonts on first run on a machine.
 
@@ -595,6 +595,7 @@
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCsWRAAMs_Cn78_kRLSpkb6w" ;; Fesz Electronics
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCQwyP4Yd0-O49e05kMUJgQQ" ;; Andress Spiess  HB9BLA
       "https://www.youtube.com/feeds/videos.xml?channel_id=UCuWKHSHTHMV_nVSeNH4gYAg" ;; Omri Cohen
+      "https://www.youtube.com/feeds/videos.xml?channel_id=UC4PIiYewI1YGyiZvgNlJNrA" ;; Charles Cornell
 
       "http://planet.emacsen.org/atom.xml"))
 
