@@ -381,9 +381,8 @@
 
   ;; Restore keybindings that somehow aren't present by default in mu4e-gnus
   (require 'mu4e-view)
-  (define-key mu4e-view-mode-map (kbd "e") 'mu4e-view-save-attachment)
-  (define-key mu4e-view-mode-map (kbd "o") 'mu4e-view-open-attachment)
-  
+  (define-key mu4e-view-mode-map (kbd "e") 'mu4e-view-save-attachments)
+
   ;; use mu4e as email client in emacs
   (setq mail-user-agent 'mu4e-user-agent)
   ;; don't keep message buffers around
