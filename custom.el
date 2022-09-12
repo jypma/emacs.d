@@ -205,6 +205,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-blue ((t (:background "blue2" :foreground "#6B60FB"))))
  '(flycheck-warning ((t (:underline "chocolate"))))
  '(org-code ((t (:foreground "#9C9C9C" :inherit ##))))
  '(org-tag ((t (:background "#ADA05F" :foreground "black" :box (:line-width 2 :color "#7C754F") :weight bold))))
