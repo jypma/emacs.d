@@ -427,7 +427,7 @@
     (if (= p (point))
         (beginning-of-line))))
 (add-hook 'eshell-mode-hook
-          '(lambda () (define-key eshell-mode-map "\C-a" 'eshell-maybe-bol)))
+          (lambda () (define-key eshell-mode-map "\C-a" 'eshell-maybe-bol)))
 
 ;; enable spell checking in documentation
 (dolist (mode '(emacs-lisp-mode-hook
@@ -1588,7 +1588,7 @@ See `elfeed-play-with-mpv'."
   (advice-add #'register-preview :override #'consult-register-window)
 
   ;; Optionally replace `completing-read-multiple' with an enhanced version.
-  (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
+;;  (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
 
   ;; Use Consult to select xref locations with preview
   (setq xref-show-xrefs-function #'consult-xref
@@ -1660,7 +1660,24 @@ See `elfeed-play-with-mpv'."
   ;; enabled right away. Note that this forces loading the package.
   (marginalia-mode))
 
-(use-package org-journal)
+(defun org-journal-find-location ()
+  ;; Open today's journal, but specify a non-nil prefix argument in order to
+  ;; inhibit inserting the heading; org-capture will insert the heading.
+  (org-journal-new-entry t)
+  (unless (eq org-journal-file-type 'daily)
+    (org-narrow-to-subtree))
+  (goto-char (point-max)))
+
+(setq org-capture-templates '(("j" "Journal entry" plain (function org-journal-find-location)
+                               "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?"
+                               :jump-to-captured t :immediate-finish t)
+                              ("t" "Journal entry (with TODO link)" plain (function org-journal-find-location)
+                               "** TODO %^{Title}\nSee %a:\n%i%?"
+                               :jump-to-captured t :immediate-finish t)))
+
+(use-package org-journal
+  :bind (
+         ("C-c c" . org-capture)))
 
 ;; https://github.com/minad/osm/issues/12
 (unless (fboundp 'json-available-p)

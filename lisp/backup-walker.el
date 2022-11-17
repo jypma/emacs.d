@@ -495,10 +495,10 @@ return an offset to adjust orig-linenum"
     (goto-char (point-min))
     (let (curr-line
           last-match-data)
-      (loop while (re-search-forward "^@@ -\\([0-9]+\\),?\\([0-9]*\\) \\+\\([0-9]+\\),?\\([0-9]*\\) @@$"
+      (cl-loop while (re-search-forward "^@@ -\\([0-9]+\\),?\\([0-9]*\\) \\+\\([0-9]+\\),?\\([0-9]*\\) @@$"
                                      nil
                                      t)
-            do (destructuring-bind (l r)
+            do (cl-destructuring-bind (l r)
                    (backup-walker-tupple-from-hunk-header nil t)
                  (setq curr-line (+ l r))
                  (unless (> curr-line orig-linenum)
@@ -506,7 +506,7 @@ return an offset to adjust orig-linenum"
             until (> curr-line orig-linenum))
       (if (not last-match-data)
           0
-        (destructuring-bind (orig-l orig-r new-l new-r)
+        (cl-destructuring-bind (orig-l orig-r new-l new-r)
             (backup-walker-tupple-from-hunk-header last-match-data)
           (- (+ new-l new-r) (+ orig-l orig-r)))))))
 

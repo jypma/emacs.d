@@ -1,0 +1,27 @@
+;; These are the gmail locations
+(setq mu4e-drafts-folder "/[Gmail].Drafts")
+(setq mu4e-sent-folder   "/[Gmail].Sent Mail")
+(setq mu4e-trash-folder  "/[Gmail].Trash")
+;; Don't store in sent folder, apparently gmail SMTP takes care of this?
+(setq mu4e-sent-messages-behavior 'delete)
+(setq
+   user-mail-address "jan@ypmania.nl"
+   user-full-name  "Jan Ypma")
+(setq  mu4e-user-mail-address-list '("jan@ypmania.nl"))
+
+;;alternatively, for emacs-24 you can use:
+(setq message-send-mail-function 'smtpmail-send-it
+    smtpmail-stream-type 'starttls
+    smtpmail-default-smtp-server "smtp.gmail.com"
+    smtpmail-smtp-server "smtp.gmail.com"
+    smtpmail-smtp-service 587)
+
+(setq mu4e-bookmarks
+      '(("contact:group.issworld.com OR contact:kpmg.com OR contact:fi.issworld.com OR contact:sofigate.com OR contact:hiq.fi" "ISS" ?i)
+        ("contact:lundogbendsen.dk OR reply-to:lundogbendsen.dk OR contact:getaccept.com" "Lund & Bendsen" ?l)
+        ("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
+        ("date:today..now" "Today's messages" ?t)
+        ("date:7d..now" "Last 7 days" ?w)
+        ("mime:application/*" "Messages with document attachments" ?a)))
+
+;; (add-hook 'mu4e-main-mode-hook (lambda() (mu4e-update-mail-and-index t)))
