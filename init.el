@@ -650,7 +650,7 @@ See `elfeed-play-with-mpv'."
 (c-set-offset 'case-label '+)
 
 ;; Auto refresh buffers if modified externally
-(global-auto-revert-mode t)
+(global-auto-revert-mode)
 ;; Also auto refresh dired, but be quiet about it
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
@@ -1677,7 +1677,8 @@ See `elfeed-play-with-mpv'."
 
 (use-package org-journal
   :bind (
-         ("C-c c" . org-capture)))
+         ("C-c c" . org-capture)
+         ("C-c C-j" . org-journal-new-entry)))
 
 ;; https://github.com/minad/osm/issues/12
 (unless (fboundp 'json-available-p)
