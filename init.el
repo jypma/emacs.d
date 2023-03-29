@@ -81,7 +81,10 @@
             (set-frame-font (format "%s 10" my/frame-font-name) nil t) ;; HiDPI but setting Xresources properly
           (if (> (x-display-pixel-width) 2600)
               (set-frame-font (format "%s 15" my/frame-font-name) nil t) ;; HIDPI
-            (set-frame-font (format "%s 12" my/frame-font-name) nil t))))))
+            (if (>= (x-display-pixel-width) 1920)
+                (set-frame-font (format "%s 12" my/frame-font-name) nil t)
+              (set-frame-font (format "%s 10" my/frame-font-name) nil t)
+              ))))))
 
 ;; Fontify current frame
 (my/fontify-frame nil)
@@ -392,7 +395,10 @@
   ;; fix the hideous rendering of html
   (require 'mu4e-contrib)
 
-  ;; (setq mu4e-html2text-command "w3m -T text/html")
+  ;; Allow to save also inline images using "o" (gnus-mime-save-part)
+  ;; (setq gnus-inhibit-mime-unbuttonizing t)
+
+  ;; (setq mu4e-html2text-command "w3m -T text/html")w
   (setq mu4e-html2text-command 'mu4e-shr2text)
   (setq shr-color-visible-luminance-min 80)
   (setq shr-color-visible-distance-min 40)
@@ -716,15 +722,12 @@ See `elfeed-play-with-mpv'."
             (outline-minor-mode)
             (visual-line-mode)))
 
-(require 'c-block-info-inline-mode)
-
 (add-hook 'c++-mode-hook (lambda()
                            (c-set-offset 'substatement-open 0)
                            (c-set-offset 'template-args-cont '+)
                            (c-set-offset 'brace-list-intro '+)
                            (abbrev-mode 0)
                            (setq adaptive-wrap-extra-indent 2)
-                           (c-block-info-inline-mode)
                            (visual-line-mode)
                            (lsp)))
 (add-hook 'c-mode-hook (lambda()
@@ -733,7 +736,6 @@ See `elfeed-play-with-mpv'."
                            (c-set-offset 'brace-list-intro '+)
                            (abbrev-mode 0)
                            (setq adaptive-wrap-extra-indent 2)
-                           (c-block-info-inline-mode)
                            (visual-line-mode)
                            (lsp)))
 
@@ -1401,15 +1403,30 @@ See `elfeed-play-with-mpv'."
 (defun my/presentation-setup ()
   (shell-command "dunstctl set-paused true")
   (flyspell-mode 0)
-  (setq text-scale-mode-amount 3)
-  (org-display-inline-images)
-  (text-scale-mode 1)
+  (menu-bar-mode 0)
+  (if (> (x-display-pixel-width) 2600)
+      (progn ;; HIDPI
+        (setq text-scale-mode-amount 3)
+        (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
+        (text-scale-mode 1))
+    (if (>= (x-display-pixel-width) 1920)
+        (progn ;; 1920x1080
+          (setq text-scale-mode-amount 1.5)
+          (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+          (text-scale-mode 1))
+          (setq org-image-actual-width (list (/ (x-display-pixel-width) 3)))
+      (progn ;; 1280x720
+        (setq org-image-actual-width (list (/ (x-display-pixel-width) 4))))))
+  (org-display-inline-images t t)
+  (org-latex-preview '(16))
   (font-lock-flush)
   (font-lock-ensure)
   (my/individual-visibility-source-blocks))
 
 (defun my/presentation-end ()
   (shell-command "dunstctl set-paused false")
+  (menu-bar-mode 1)
+  (org-latex-preview '(64))
   (flyspell-mode 1)
   (text-scale-mode 0)
   (org-remove-inline-images)
