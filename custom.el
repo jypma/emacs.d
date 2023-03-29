@@ -198,7 +198,8 @@
    '(("UTC" "UTC")
      ("Europe/Copenhagen" "Copenhagen")
      ("Europe/Kiev" "Kiev")
-     ("Asia/Kuala_Lumpur" "Kuala Lumpur"))))
+     ("Asia/Kuala_Lumpur" "Kuala Lumpur")
+     ("Australia/Brisbane" "Brisbane"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
