@@ -12,7 +12,7 @@
  '(company-auto-commit-chars '(119))
  '(company-auto-complete nil)
  '(company-auto-complete-chars '(119))
- '(company-idle-delay 0.3)
+ '(company-idle-delay 0.3 t)
  '(company-insertion-on-trigger nil)
  '(company-insertion-triggers '(119))
  '(company-lsp-enable-recompletion nil)
@@ -52,8 +52,8 @@
    '(("ISSGi-platform-prdev-cluster" "p2p-dev" "p2p-test" "common")))
  '(kubernetes-clean-up-interactive-exec-buffers nil)
  '(kubernetes-logs-arguments '("--tail=50"))
- '(kubernetes-poll-frequency 5)
- '(kubernetes-redraw-frequency 5)
+ '(kubernetes-poll-frequency 0)
+ '(kubernetes-redraw-frequency 0)
  '(logview-additional-submodes
    '(("Akka logs"
       (format . "TIMESTAMP LEVEL [NAME]")
@@ -89,6 +89,7 @@
  '(lsp-xml-validation-resolve-external-entities t)
  '(magit-todos-auto-group-items 'always)
  '(magit-todos-branch-list nil)
+ '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(magit-todos-keyword-suffix "[ :]+")
  '(magit-todos-keywords '("TODO" "FIXME"))
  '(magit-todos-scanner nil)
@@ -156,7 +157,7 @@
  '(org-tree-slide-heading-level-4 '(outline-4 bold))
  '(osm-max-age 31)
  '(package-selected-packages
-   '(nov osm org-journal marginalia consult orderless vertico log4j-mode gdscript-mode org-gtd org transient org-caldav doom-modeline esup flymake-json org-superstar org-superstar-mode org-tree-slide emacs-scroll-on-jump daemons flycheck-rust cargo rust-mode toml-mode ibuffer-projectile lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
+   '(org-appear nov osm org-journal marginalia consult orderless vertico log4j-mode gdscript-mode org-gtd org transient org-caldav doom-modeline esup flymake-json org-superstar org-superstar-mode org-tree-slide emacs-scroll-on-jump daemons flycheck-rust cargo rust-mode toml-mode ibuffer-projectile lsp-metals emojify csv-mode highlight-indent-guides git-timemachine magit-todos hl-todo irony string-inflection platformio-mode restclient plantuml-mode telega org-plus-contrib org-expiry logview undo-tree auto-package-update forge puppet-mode bicycle calctex deadgrep dired-git-info pdf-tools dired-rainbow dired-collapse smartparens alert cquery emacs-cquery org-jira scad-mode lsp-mode scala-mode sbt-mode super-save visual-regexp company-emoji noccur ob-http dockerfile-mode diff-hl ws-butler adaptive-wrap flycheck yasnippet eyebrowse company ido-completing-read+ dap-mode lsp-ui company-lsp treemacs lsp-java kubernetes highlight-symbol focus-autosave-mode all-the-icons delight smex docker-tramp rainbow-mode flyspell-popup ensime git-auto-commit-mode evil-numbers ace-window framemove htmlize elfeed expand-region mu4e-alert dired-du edit-indirect flx-ido dashboard rainbow-delimiters ido-vertical-mode git-gutter eshell-bookmark which-key clang-format flycheck-rtags rtags magit json-mode markdown-mode groovy-mode ## yaml-mode use-package projectile))
  '(password-cache-expiry 600)
  '(plantuml-indent-level 2)
  '(restclient-content-type-modes

@@ -926,25 +926,8 @@ See `elfeed-play-with-mpv'."
 
 (require 'markdown-mode) ;; We customize org faces to depend on markdown faces
 
-;;https://www.reddit.com/r/orgmode/comments/43uuck/temporarily_show_emphasis_markers_when_the_cursor/
-;; (adapted to also show verbatim markers)
-(defun my/org-show-emphasis-markers-at-point ()
-  (save-match-data
-    (if (and (or (org-in-regexp org-emph-re 2) (org-in-regexp org-verbatim-re 2))
-	     (>= (point) (match-beginning 3))
-	     (<= (point) (match-end 4))
-	     (member (match-string 3) (mapcar 'car org-emphasis-alist)))
-	(with-silent-modifications
-          (setq my/org-show-emphasis-hidden t)
-	  (remove-text-properties
-	   (match-beginning 3) (match-beginning 5)
-	   '(invisible org-link)))
-      (if my/org-show-emphasis-hidden
-          (progn
-            ;; Add about 100 characters extra, in case we're moving lines.
-            (apply 'font-lock-flush (list (- (match-beginning 3) 100) (+ (match-beginning 5) 100)))
-            (setq my/org-show-emphasis-hidden nil))))))
-
+(use-package org-appear
+  :hook (org-mode . org-appear-mode))
 
 ;; https://emacs.stackexchange.com/questions/44914/choose-individual-startup-visibility-of-org-modes-source-blocks
 (defun my/individual-visibility-source-blocks ()
@@ -1000,10 +983,7 @@ See `elfeed-play-with-mpv'."
 
   (flyspell-mode 1)
   (ws-butler-mode 1)
-
-  (defvar-local my/org-show-emphasis-hidden nil)
-  (add-hook 'post-command-hook
-	    'my/org-show-emphasis-markers-at-point nil t))
+)
 
 (add-hook 'org-mode-hook 'my/org-mode-setup)
 
@@ -1306,11 +1286,6 @@ See `elfeed-play-with-mpv'."
 (use-package puppet-mode
   :mode "\\.pp\\'"
   :pin melpa)
-
-(use-package kubectl
-  :ensure nil
-  :load-path "~/.emacs.d/kubectl/"
-  :commands (kubectl-deployments kubectl-statefulsets))
 
 (use-package platformio
   :ensure nil
@@ -1637,7 +1612,7 @@ See `elfeed-play-with-mpv'."
    consult-ripgrep consult-git-grep consult-grep
    consult-bookmark consult-recent-file consult-xref
    consult--source-recent-file consult--source-project-recent-file consult--source-bookmark
-   :preview-key (kbd "M-."))
+   )
 
   ;; Optionally configure the narrowing key.
   ;; Both < and C-+ work reasonably well.
@@ -1726,3 +1701,5 @@ See `elfeed-play-with-mpv'."
             (setq adaptive-wrap-extra-indent 2)
             (visual-line-mode)
             )))
+
+(use-package kubernetes)
