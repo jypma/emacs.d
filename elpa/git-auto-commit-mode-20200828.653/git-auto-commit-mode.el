@@ -5,8 +5,6 @@
 ;; Author: Tom Willemse <tom@ryuslash.org>
 ;; Created: Jan 9, 2012
 ;; Version: 4.7.0
-;; Package-Version: 20200828.653
-;; Package-Commit: df07899acdb3f9c114b72fdab77107c924b3172c
 ;; Keywords: vc
 ;; URL: https://github.com/ryuslash/git-auto-commit-mode
 

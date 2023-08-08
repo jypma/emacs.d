@@ -4,11 +4,9 @@
 ;;
 ;; Author: Steve Purcell <steve@sanityinc.com>
 ;; Keywords: convenience
-;; Package-Commit: ecbe482804a217b1471593f6c7a8b3d64f3cdc47
 ;; Package-Requires: ((projectile "0.11.0") (emacs "24.1"))
 ;; URL: https://github.com/purcell/ibuffer-projectile
-;; Package-Version: 20200805.604
-;; Package-X-Original-Version: 0
+;; Package-Version: 0
 ;;
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by

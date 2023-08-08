@@ -6,6 +6,8 @@
     (seq "1.11"))
   :commit "5f2ef177cb21ae8b73714575802beef04abd0f5e" :authors
   '(("Sebastian Wiesner" . "swiesner@lunaryorn.com"))
+  :maintainers
+  '(("Clément Pit-Claudel" . "clement.pitclaudel@live.com"))
   :maintainer
   '("Clément Pit-Claudel" . "clement.pitclaudel@live.com")
   :keywords

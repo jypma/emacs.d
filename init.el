@@ -615,7 +615,7 @@
       (message "Opening %s with height≤%s with mpv..." (elfeed-entry-link entry) quality-val)
       (when (< 0 quality-val)
         (setq quality-arg (format "--ytdl-format=[height<=?%s]" quality-val)))
-      (start-process "elfeed-mpv" nil "mpv" quality-arg (elfeed-entry-link entry))))
+      (start-process "elfeed-mpv" nil "~/bin/mpv" quality-arg (elfeed-entry-link entry))))
 
   (defvar elfeed-mpv-patterns
     '("youtu\\.?be")
@@ -726,6 +726,8 @@ See `elfeed-play-with-mpv'."
                            (c-set-offset 'substatement-open 0)
                            (c-set-offset 'template-args-cont '+)
                            (c-set-offset 'brace-list-intro '+)
+                           (c-set-offset 'case-label '+)
+                           (c-set-offset 'innamespace '[0])
                            (abbrev-mode 0)
                            (setq adaptive-wrap-extra-indent 2)
                            (visual-line-mode)
@@ -734,6 +736,7 @@ See `elfeed-play-with-mpv'."
                            (c-set-offset 'substatement-open 0)
                            (c-set-offset 'template-args-cont '+)
                            (c-set-offset 'brace-list-intro '+)
+                           (c-set-offset 'case-label '+)
                            (abbrev-mode 0)
                            (setq adaptive-wrap-extra-indent 2)
                            (visual-line-mode)
@@ -1047,9 +1050,6 @@ See `elfeed-play-with-mpv'."
   ("<kp-add>" . evil-numbers/inc-at-pt)
   ("C-c -" . evil-numbers/dec-at-pt)
   ("<kp-subtract>" . evil-numbers/dec-at-pt))
-
-(use-package docker-tramp
-  :defer t)
 
 ;; enable re-use of ssh connections
 ;; https://emacs.stackexchange.com/questions/22306/working-with-tramp-mode-on-slow-connection-emacs-does-network-trip-when-i-start

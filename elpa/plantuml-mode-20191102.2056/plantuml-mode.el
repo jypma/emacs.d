@@ -6,10 +6,8 @@
 ;; Author: Zhang Weize (zwz)
 ;; Maintainer: Carlo Sciolla (skuro)
 ;; Keywords: uml plantuml ascii
-;; Package-Commit: ea45a13707abd2a70df183f1aec6447197fc9ccc
 ;; Version: 1.2.9
-;; Package-Version: 20191102.2056
-;; Package-X-Original-Version: 1.2.9
+;; Package-Version: 1.2.9
 ;; Package-Requires: ((dash "2.0.0") (emacs "25.0"))
 
 ;; This file is free software; you can redistribute it and/or modify

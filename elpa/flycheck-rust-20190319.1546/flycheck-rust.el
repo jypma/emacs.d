@@ -5,8 +5,6 @@
 
 ;; Author: Sebastian Wiesner <swiesner@lunaryorn.com>
 ;; URL: https://github.com/flycheck/flycheck-rust
-;; Package-Version: 20190319.1546
-;; Package-Commit: a139cd53c5062697e9ed94ad80b803c37d999600
 ;; Keywords: tools, convenience
 ;; Version: 1.1
 ;; Package-Requires: ((emacs "24.1") (flycheck "28") (dash "2.13.0") (seq "2.3") (let-alist "1.0.4"))

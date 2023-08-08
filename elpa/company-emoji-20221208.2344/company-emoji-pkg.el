@@ -3,6 +3,8 @@
     (company "0.8.0"))
   :commit "9e2816ce9b5795bd0066f92d4f80d15ccf94ef36" :authors
   '(("Alex Dunn" . "dunn.alex@gmail.com"))
+  :maintainers
+  '(("Alex Dunn" . "dunn.alex@gmail.com"))
   :maintainer
   '("Alex Dunn" . "dunn.alex@gmail.com")
   :keywords

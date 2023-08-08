@@ -8,6 +8,8 @@
     (transient "0.3.0"))
   :commit "099004511670c7fd52a619c5758047bb3172ba36" :authors
   '(("Chris Barrett" . "chris+emacs@walrus.cool"))
+  :maintainers
+  '(("Chris Barrett" . "chris+emacs@walrus.cool"))
   :maintainer
   '("Chris Barrett" . "chris+emacs@walrus.cool")
   :keywords

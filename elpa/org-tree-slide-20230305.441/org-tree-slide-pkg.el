@@ -2,6 +2,8 @@
   '((emacs "25.2"))
   :commit "07906356f0b8d8ac51645b0994b8108deb53003d" :authors
   '(("Takaaki ISHIKAWA <takaxp at ieee dot org>"))
+  :maintainers
+  '(("Takaaki ISHIKAWA <takaxp at ieee dot org>"))
   :maintainer
   '("Takaaki ISHIKAWA <takaxp at ieee dot org>")
   :keywords

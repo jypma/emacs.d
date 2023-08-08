@@ -5,8 +5,6 @@
 ;; org-appear Copyright (C) 2021 Alice Istleyeva - MIT License
 ;; Author: Alice Istleyeva <awth13@gmail.com>
 ;; Version: 0.3.0
-;; Package-Version: 20220617.2355
-;; Package-Commit: 60ba267c5da336e75e603f8c7ab3f44e6f4e4dac
 ;; Description: Toggle Org mode element visibility upon entering and leaving
 ;; Homepage: https://github.com/awth13/org-appear
 ;; Package-Requires: ((emacs "25.1") (org "9.3"))

@@ -8,8 +8,6 @@
 ;; Maintainer: Neil Okamoto <neil.okamoto+melpa@gmail.com>
 ;;             Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; URL: https://github.com/emacsorphanage/git-gutter
-;; Package-Version: 20220922.256
-;; Package-Commit: ec28e85d237065cb3c28db4b66d129da6d309f9c
 ;; Version: 0.92
 ;; Package-Requires: ((emacs "25.1"))
 

@@ -3,6 +3,8 @@
     (markdown-mode "2.4"))
   :commit "225fdb846c702a193e58a98c1585bb3586a9aa86" :authors
   '(("Kevin W. van Rooijen"))
+  :maintainers
+  '(("Kevin W. van Rooijen"))
   :maintainer
   '("Kevin W. van Rooijen")
   :keywords

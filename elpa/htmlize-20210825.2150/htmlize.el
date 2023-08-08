@@ -5,8 +5,6 @@
 ;; Author: Hrvoje Niksic <hniksic@gmail.com>
 ;; Homepage: https://github.com/hniksic/emacs-htmlize
 ;; Keywords: hypermedia, extensions
-;; Package-Version: 20210825.2150
-;; Package-Commit: dd27bc3f26efd728f2b1f01f9e4ac4f61f2ffbf9
 ;; Version: 1.57
 
 ;; This program is free software; you can redistribute it and/or modify
