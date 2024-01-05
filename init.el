@@ -1699,11 +1699,7 @@ See `elfeed-play-with-mpv'."
   ;; Take a look at the customization group `osm' for more options.
   (osm-server 'default) ;; Configure the tile server
   (osm-copyright nil)     ;; Display the copyright information
-
-  :init
-  ;; Load Org link support
-  (with-eval-after-load 'org
-    (require 'osm-ol)))
+)
 
 (use-package nov
   :config

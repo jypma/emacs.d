@@ -40,3 +40,4 @@ epdfinfo
 /var/osm/
 eln-cache/
 elpa/pdf-tools*/build/server/
+/forge-*.sqlite
