@@ -8,6 +8,7 @@ eshell
 auto-save-list
 ensime
 bookmarks
+projects
 var/pcache
 /jira.el
 /mu4e.el

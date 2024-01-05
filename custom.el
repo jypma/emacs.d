@@ -122,6 +122,7 @@
      (:from . 22)
      (:size . 8)
      (:subject)))
+ '(mu4e-search-results-limit 5000)
  '(mu4e-use-fancy-chars t)
  '(network-stream-use-client-certificates t)
  '(nov-save-place-file "~/.cache/emacs-nov-places")

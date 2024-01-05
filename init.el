@@ -1145,6 +1145,17 @@ See `elfeed-play-with-mpv'."
 ;;            (lambda ()
 ;;              (setq-local company-backends (list 'company-lsp))))
 
+  (setq lombok-library-path "~/.cache/lombok.jar")
+
+  (unless (file-exists-p lombok-library-path)
+    (url-copy-file "https://projectlombok.org/downloads/lombok.jar" lombok-library-path))
+
+  ;; (setq lsp-java-vmargs '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4" "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true" "-Xmx4G" "-Xms100m"))
+
+  (push (concat "-javaagent:"
+                  (expand-file-name lombok-library-path))
+        lsp-java-vmargs)
+
   (add-hook 'java-mode-hook #'lsp))
 
 (use-package dap-mode
