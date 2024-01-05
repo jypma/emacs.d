@@ -1,0 +1,1276 @@
+# Library:           OASIS Universal Business Language (UBL) 2.2 OS
+#                    http://docs.oasis-open.org/ubl/os-UBL-2.2/
+# Release Date:      09 July 2018
+# Module:            xsd/maindoc/UBL-Catalogue-2.2.xsd
+# Generated on:      2018-07-08 20:04z
+# Copyright (c) OASIS Open 2018. All Rights Reserved.
+
+default namespace =
+  "urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace cac =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+namespace cbc =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+namespace ccts = "urn:un:unece:uncefact:documentation:2"
+namespace ext =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+# ===== Imports =====
+include "UBL-CommonAggregateComponents-2.2.rnc" inherit = cac
+include "UBL-CommonBasicComponents-2.2.rnc" inherit = cbc
+include "UBL-CommonExtensionComponents-2.2.rnc" inherit = ext
+# ===== Element Declarations =====
+start |= starting_Catalogue
+starting_Catalogue =
+  element Catalogue {
+    CatalogueType
+    >> a:documentation [
+         "\x{a}" ~
+         "         This element MUST be conveyed as the root element in any instance document based on this Schema expression\x{a}" ~
+         "      "
+       ]
+  }
+# ===== Type Definitions =====
+
+# ===== Aggregate Business Information Entity Type Definitions =====
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:Component [
+      "\x{a}" ~
+      "               "
+      ccts:ComponentType [ "ABIE" ]
+      "\x{a}" ~
+      "               "
+      ccts:DictionaryEntryName [ "Catalogue. Details" ]
+      "\x{a}" ~
+      "               "
+      ccts:Definition [
+        "A document that describes items, prices, and price validity."
+      ]
+      "\x{a}" ~
+      "               "
+      ccts:ObjectClass [ "Catalogue" ]
+      "\x{a}" ~
+      "            "
+    ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+CatalogueType =
+  UBLExtensions
+  >> a:documentation [
+       "\x{a}" ~
+       "               A container for all extensions present in the document.\x{a}" ~
+       "            "
+     ]?,
+  UBLVersionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. UBL Version Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies the earliest version of the UBL 2 schema for this document type that defines all of the elements that might be encountered in the current instance."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "UBL Version Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "2.0.5" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  CustomizationID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Customization Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies a user-defined customization of UBL for a specific use."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Customization Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "NES" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ProfileID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Profile Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies a user-defined profile of the customization of UBL being used."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Profile Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "BasicProcurementProcess" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ProfileExecutionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Profile Execution Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies an instance of executing a profile, to associate all transactions in a collaboration."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Profile Execution Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "BPP-1001" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "An identifier for this document, assigned by the sender."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  UUID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. UUID. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A universally unique identifier for an instance of this document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "UUID" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ActionCode
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Action Code. Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A code signifying whether the transaction is a replacement or an update."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Action Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Code. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "Replace , Update ." ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  Name
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Text, assigned by the sender, that identifies this document to business users."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Name. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "winter 2005 collection " ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  IssueDate
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Issue Date. Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The date, assigned by the sender, on which this document was issued."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Issue Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Date. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  IssueTime
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Issue Time. Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The time, assigned by the sender, at which this document was issued."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Issue Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Time. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  RevisionDate
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Revision Date. Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The date, assigned by the seller party, on which the information in the Catalogue was last revised."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Revision Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Date. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  RevisionTime
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Revision Time. Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The time, assigned by the Seller party, at which the information in the Catalogue was last revised."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Revision Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Time. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  Note
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Note. Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Free-form text pertinent to this document, conveying information that is not contained explicitly in other structures."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Note" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Text. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  Description
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Description. Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Textual description of the document instance."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Description" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Text. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "computer accessories for laptops " ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  VersionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Version. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "An identifier for the current version of the Catalogue."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Version" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "1.1 " ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  PreviousVersionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Previous_ Version. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "An identifier for the previous version of the Catalogue that is superseded by this version."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Previous" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Version" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "1.0 " ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  LineCountNumeric
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Line Count. Numeric" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The number of Catalogue Lines in the document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Line Count" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Numeric" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Numeric. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ValidityPeriod
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Validity_ Period. Period"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A period, assigned by the seller, during which the information in the Catalogue is effective. This may be given as start and end dates or as a duration."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Validity" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Period" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  ReferencedContract
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Referenced_ Contract. Contract"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A contract or framework agreement with which this Catalogue is associated."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Referenced" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Contract" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  SourceCatalogueReference
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Source_ Catalogue Reference. Catalogue Reference"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "A reference to the source catalogue." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Source" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Catalogue Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Catalogue Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Catalogue Reference" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  DocumentReference
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A reference to another document associated with this document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  Signature
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "A signature applied to this document." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Signature" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  ProviderParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Provider_ Party. Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The party providing the Catalogue." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Provider" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  ReceiverParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Receiver_ Party. Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The party receiving the Catalogue." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Receiver" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  SellerSupplierParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Seller_ Supplier Party. Supplier Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The seller." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Seller" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Supplier Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Supplier Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Supplier Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ContractorCustomerParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Catalogue. Contractor_ Customer Party. Customer Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The customer party responsible for the contracts with which the Catalogue is associated."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Contractor" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Customer Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Customer Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Customer Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  TradingTerms
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Trading Terms" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The trading terms associated with this Catalogue."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Trading Terms" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Trading Terms" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Trading Terms" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  CatalogueLine
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Catalogue. Catalogue Line" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A line in a Catalogue describing an item of sale."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Catalogue Line" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Catalogue Line" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Catalogue Line" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]+
+# ===== Copyright Notice =====
+
+# OASIS takes no position regarding the validity or scope of any 
+# intellectual property or other rights that might be claimed to pertain 
+# to the implementation or use of the technology described in this 
+# document or the extent to which any license under such rights 
+# might or might not be available; neither does it represent that it has 
+# made any effort to identify any such rights. Information on OASIS's 
+# procedures with respect to rights in OASIS specifications can be 
+# found at the OASIS website. Copies of claims of rights made 
+# available for publication and any assurances of licenses to be made 
+# available, or the result of an attempt made to obtain a general 
+# license or permission for the use of such proprietary rights by 
+# implementors or users of this specification, can be obtained from 
+# the OASIS Executive Director.
+# 
+# OASIS invites any interested party to bring to its attention any 
+# copyrights, patents or patent applications, or other proprietary 
+# rights which may cover technology that may be required to 
+# implement this specification. Please address the information to the 
+# OASIS Executive Director.
+# 
+# This document and translations of it may be copied and furnished to 
+# others, and derivative works that comment on or otherwise explain 
+# it or assist in its implementation may be prepared, copied, 
+# published and distributed, in whole or in part, without restriction of 
+# any kind, provided that the above copyright notice and this 
+# paragraph are included on all such copies and derivative works. 
+# However, this document itself may not be modified in any way, 
+# such as by removing the copyright notice or references to OASIS, 
+# except as needed for the purpose of developing OASIS 
+# specifications, in which case the procedures for copyrights defined 
+# in the OASIS Intellectual Property Rights document must be 
+# followed, or as required to translate it into languages other than 
+# English. 
+# 
+# The limited permissions granted above are perpetual and will not be 
+# revoked by OASIS or its successors or assigns. 
+# 
+# This document and the information contained herein is provided on 
+# an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, 
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY 
+# WARRANTY THAT THE USE OF THE INFORMATION HEREIN 
+# WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED 
+# WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A 
+# PARTICULAR PURPOSE.    

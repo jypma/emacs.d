@@ -1,0 +1,460 @@
+# Library:           OASIS Universal Business Language (UBL) 2.2 OS
+#                    http://docs.oasis-open.org/ubl/os-UBL-2.2/
+# Release Date:      09 July 2018
+# Module:            UBL-XAdES01903v132-201601-2.2.xsd
+# Generated on:      2016-06-24 19:50(UTC)
+# 
+# This is a copy of http://uri.etsi.org/01903/v1.3.2/XAdES01903v132-201601.xsd
+# modified only to change the importing URI for the W3C dsig schema.
+
+default namespace = "http://uri.etsi.org/01903/v1.3.2#"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace ds = "http://www.w3.org/2000/09/xmldsig#"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+include "UBL-xmldsig-core-schema-2.2.rnc" inherit = ds
+# Start auxiliary types definitions: AnyType, ObjectIdentifierType, 
+# EncapsulatedPKIDataType and containers for time-stamp tokens
+
+# Start AnyType
+start |= starting_Any
+starting_Any = element Any { AnyType }
+AnyType =
+  element * { text },
+  attribute * { text }
+# End AnyType
+
+#  Start ObjectIdentifierType
+start |= starting_ObjectIdentifier
+starting_ObjectIdentifier =
+  element ObjectIdentifier { ObjectIdentifierType }
+ObjectIdentifierType =
+  element Identifier { IdentifierType },
+  element Description { xsd:string }?,
+  element DocumentationReferences { DocumentationReferencesType }?
+IdentifierType =
+  xsd:anyURI,
+  attribute Qualifier { QualifierType }?
+QualifierType = "OIDAsURI" | "OIDAsURN"
+DocumentationReferencesType =
+  element DocumentationReference { xsd:anyURI }
+#  End ObjectIdentifierType
+
+#  Start EncapsulatedPKIDataType
+start |= starting_EncapsulatedPKIData
+starting_EncapsulatedPKIData =
+  element EncapsulatedPKIData { EncapsulatedPKIDataType }
+EncapsulatedPKIDataType =
+  xsd:base64Binary,
+  attribute Id { xsd:ID }?,
+  attribute Encoding { xsd:anyURI }?
+# End EncapsulatedPKIDataType
+
+# Start time-stamp containers types
+
+# Start GenericTimeStampType
+start |= starting_Include
+starting_Include = element Include { IncludeType }
+IncludeType =
+  attribute URI { xsd:anyURI },
+  attribute referencedData { xsd:boolean }?
+start |= starting_ReferenceInfo
+starting_ReferenceInfo = element ReferenceInfo { ReferenceInfoType }
+ReferenceInfoType =
+  DigestMethod,
+  DigestValue,
+  attribute Id { xsd:ID }?,
+  attribute URI { xsd:anyURI }?
+GenericTimeStampType =
+  (Include* | ReferenceInfo+)?,
+  CanonicalizationMethod?,
+  (element EncapsulatedTimeStamp { EncapsulatedPKIDataType }
+   | element XMLTimeStamp { AnyType })+,
+  attribute Id { xsd:ID }?
+# End GenericTimeStampType
+
+# Start XAdESTimeStampType
+start |= starting_XAdESTimeStamp
+starting_XAdESTimeStamp = element XAdESTimeStamp { XAdESTimeStampType }
+XAdESTimeStampType =
+  GenericTimeStampType,
+  Include*,
+  CanonicalizationMethod?,
+  (element EncapsulatedTimeStamp { EncapsulatedPKIDataType }
+   | element XMLTimeStamp { AnyType })+,
+  attribute Id { xsd:ID }?
+# End XAdESTimeStampType
+
+# Start OtherTimeStampType
+start |= starting_OtherTimeStamp
+starting_OtherTimeStamp = element OtherTimeStamp { OtherTimeStampType }
+OtherTimeStampType =
+  GenericTimeStampType,
+  ReferenceInfo+,
+  CanonicalizationMethod?,
+  (element EncapsulatedTimeStamp { EncapsulatedPKIDataType }
+   | element XMLTimeStamp { AnyType }),
+  attribute Id { xsd:ID }?
+# End OtherTimeStampType
+
+# End time-stamp containers types
+
+#  End auxiliary types definitions
+
+# Start container types
+
+# Start QualifyingProperties
+start |= starting_QualifyingProperties
+starting_QualifyingProperties =
+  element QualifyingProperties { QualifyingPropertiesType }
+QualifyingPropertiesType =
+  SignedProperties?,
+  UnsignedProperties?,
+  attribute Target { xsd:anyURI },
+  attribute Id { xsd:ID }?
+# End QualifyingProperties
+
+#  Start SignedProperties
+start |= starting_SignedProperties
+starting_SignedProperties =
+  element SignedProperties { SignedPropertiesType }
+SignedPropertiesType =
+  SignedSignatureProperties?,
+  SignedDataObjectProperties?,
+  attribute Id { xsd:ID }?
+#  End SignedProperties
+
+#  Start UnsignedProperties
+start |= starting_UnsignedProperties
+starting_UnsignedProperties =
+  element UnsignedProperties { UnsignedPropertiesType }
+UnsignedPropertiesType =
+  UnsignedSignatureProperties?,
+  UnsignedDataObjectProperties?,
+  attribute Id { xsd:ID }?
+#  End UnsignedProperties
+
+#  Start SignedSignatureProperties
+
+# Definition changed: added new optional children for EN
+start |= starting_SignedSignatureProperties
+starting_SignedSignatureProperties =
+  element SignedSignatureProperties { SignedSignaturePropertiesType }
+SignedSignaturePropertiesType =
+  SigningTime?,
+  SigningCertificate?,
+  SigningCertificateV2?,
+  SignaturePolicyIdentifier?,
+  SignatureProductionPlace?,
+  SignatureProductionPlaceV2?,
+  SignerRole?,
+  SignerRoleV2?,
+  element * { text }*,
+  attribute Id { xsd:ID }?
+#  End SignedSignatureProperties
+
+#  Start SignedDataObjectProperties
+start |= starting_SignedDataObjectProperties
+starting_SignedDataObjectProperties =
+  element SignedDataObjectProperties { SignedDataObjectPropertiesType }
+SignedDataObjectPropertiesType =
+  DataObjectFormat*,
+  CommitmentTypeIndication*,
+  AllDataObjectsTimeStamp*,
+  IndividualDataObjectsTimeStamp*,
+  element * { text }*,
+  attribute Id { xsd:ID }?
+#  End SignedDataObjectProperties
+
+#  Start UnsignedSignatureProperties
+start |= starting_UnsignedSignatureProperties
+starting_UnsignedSignatureProperties =
+  element UnsignedSignatureProperties {
+    UnsignedSignaturePropertiesType
+  }
+UnsignedSignaturePropertiesType =
+  (CounterSignature
+   | SignatureTimeStamp
+   | CompleteCertificateRefs
+   | CompleteRevocationRefs
+   | AttributeCertificateRefs
+   | AttributeRevocationRefs
+   | SigAndRefsTimeStamp
+   | RefsOnlyTimeStamp
+   | CertificateValues
+   | RevocationValues
+   | AttrAuthoritiesCertValues
+   | AttributeRevocationValues
+   | ArchiveTimeStamp
+   | element * { text })+,
+  attribute Id { xsd:ID }?
+#  End UnsignedSignatureProperties
+
+#  Start UnsignedDataObjectProperties
+start |= starting_UnsignedDataObjectProperties
+starting_UnsignedDataObjectProperties =
+  element UnsignedDataObjectProperties {
+    UnsignedDataObjectPropertiesType
+  }
+UnsignedDataObjectPropertiesType =
+  element UnsignedDataObjectProperty { AnyType }+,
+  attribute Id { xsd:ID }?
+#  End UnsignedDataObjectProperties
+
+#  Start QualifyingPropertiesReference
+start |= starting_QualifyingPropertiesReference
+starting_QualifyingPropertiesReference =
+  element QualifyingPropertiesReference {
+    QualifyingPropertiesReferenceType
+  }
+QualifyingPropertiesReferenceType =
+  attribute URI { xsd:anyURI },
+  attribute Id { xsd:ID }?
+#  End QualifyingPropertiesReference
+
+# End container types
+
+# Start SigningTime element
+start |= starting_SigningTime
+starting_SigningTime = element SigningTime { xsd:dateTime }
+# End SigningTime element
+
+# Start SigningCertificate
+start |= starting_SigningCertificate
+starting_SigningCertificate =
+  element SigningCertificate { CertIDListType }
+CertIDListType = element Cert { CertIDType }+
+CertIDType =
+  element CertDigest { DigestAlgAndValueType },
+  element IssuerSerial { X509IssuerSerialType },
+  attribute URI { xsd:anyURI }?
+DigestAlgAndValueType = DigestMethod, DigestValue
+# End SigningCertificate
+
+# Start SigningCertificateV2 and CertIDListV2Type
+start |= starting_SigningCertificateV2
+starting_SigningCertificateV2 =
+  element SigningCertificateV2 { CertIDListV2Type }
+CertIDListV2Type = element Cert { CertIDTypeV2 }+
+CertIDTypeV2 =
+  element CertDigest { DigestAlgAndValueType },
+  element IssuerSerialV2 { xsd:base64Binary }?,
+  attribute URI { xsd:anyURI }?
+# End SigningCertificateV2 and CertIDListV2Type
+
+# Start SignaturePolicyIdentifier
+start |= starting_SignaturePolicyIdentifier
+starting_SignaturePolicyIdentifier =
+  element SignaturePolicyIdentifier { SignaturePolicyIdentifierType }
+SignaturePolicyIdentifierType =
+  element SignaturePolicyId { SignaturePolicyIdType }
+  | element SignaturePolicyImplied { empty }
+SignaturePolicyIdType =
+  element SigPolicyId { ObjectIdentifierType },
+  Transforms?,
+  element SigPolicyHash { DigestAlgAndValueType },
+  element SigPolicyQualifiers { SigPolicyQualifiersListType }?
+SigPolicyQualifiersListType = element SigPolicyQualifier { AnyType }+
+start |= starting_SPURI
+starting_SPURI = element SPURI { xsd:anyURI }
+start |= starting_SPUserNotice
+starting_SPUserNotice = element SPUserNotice { SPUserNoticeType }
+SPUserNoticeType =
+  element NoticeRef { NoticeReferenceType }?,
+  element ExplicitText { xsd:string }?
+NoticeReferenceType =
+  element Organization { xsd:string },
+  element NoticeNumbers { IntegerListType }
+IntegerListType = element int { xsd:integer }*
+# End SignaturePolicyIdentifier
+
+# Start CounterSignature
+start |= starting_CounterSignature
+starting_CounterSignature =
+  element CounterSignature { CounterSignatureType }
+CounterSignatureType =
+  Signature,
+  attribute Id { xsd:ID }?
+# End CounterSignature
+
+# Start DataObjectFormat
+start |= starting_DataObjectFormat
+starting_DataObjectFormat =
+  element DataObjectFormat { DataObjectFormatType }
+DataObjectFormatType =
+  element Description { xsd:string }?,
+  element ObjectIdentifier { ObjectIdentifierType }?,
+  element MimeType { xsd:string }?,
+  element Encoding { xsd:anyURI }?,
+  attribute ObjectReference { xsd:anyURI }
+# End DataObjectFormat
+
+# Start CommitmentTypeIndication
+start |= starting_CommitmentTypeIndication
+starting_CommitmentTypeIndication =
+  element CommitmentTypeIndication { CommitmentTypeIndicationType }
+CommitmentTypeIndicationType =
+  element CommitmentTypeId { ObjectIdentifierType },
+  (element ObjectReference { xsd:anyURI }+
+   | element AllSignedDataObjects { empty }),
+  element CommitmentTypeQualifiers { CommitmentTypeQualifiersListType }?
+CommitmentTypeQualifiersListType =
+  element CommitmentTypeQualifier { AnyType }*
+# End CommitmentTypeIndication
+
+# Start SignatureProductionPlace
+start |= starting_SignatureProductionPlace
+starting_SignatureProductionPlace =
+  element SignatureProductionPlace { SignatureProductionPlaceType }
+SignatureProductionPlaceType =
+  element City { xsd:string }?,
+  element StateOrProvince { xsd:string }?,
+  element PostalCode { xsd:string }?,
+  element CountryName { xsd:string }?
+# End SignatureProductionPlace
+
+# Start SignatureProductionPlaceV2 and SignatureProductionPlaceV2Type
+start |= starting_SignatureProductionPlaceV2
+starting_SignatureProductionPlaceV2 =
+  element SignatureProductionPlaceV2 { SignatureProductionPlaceV2Type }
+SignatureProductionPlaceV2Type =
+  element City { xsd:string }?,
+  element StreetAddress { xsd:string }?,
+  element StateOrProvince { xsd:string }?,
+  element PostalCode { xsd:string }?,
+  element CountryName { xsd:string }?
+# End SignatureProductionPlace
+
+# Start SignerRole
+start |= starting_SignerRole
+starting_SignerRole = element SignerRole { SignerRoleType }
+SignerRoleType =
+  element ClaimedRoles { ClaimedRolesListType }?,
+  element CertifiedRoles { CertifiedRolesListType }?
+ClaimedRolesListType = element ClaimedRole { AnyType }+
+CertifiedRolesListType =
+  element CertifiedRole { EncapsulatedPKIDataType }+
+# End SignerRole
+
+# Start SignerRoleV2 and SignerRoleV2Type
+start |= starting_SignerRoleV2
+starting_SignerRoleV2 = element SignerRoleV2 { SignerRoleV2Type }
+SignerRoleV2Type = ClaimedRoles?, CertifiedRolesV2?, SignedAssertions?
+start |= starting_ClaimedRoles
+starting_ClaimedRoles = element ClaimedRoles { ClaimedRolesListType }
+start |= starting_CertifiedRolesV2
+starting_CertifiedRolesV2 =
+  element CertifiedRolesV2 { CertifiedRolesListTypeV2 }
+start |= starting_SignedAssertions
+starting_SignedAssertions =
+  element SignedAssertions { SignedAssertionsListType }
+CertifiedRolesListTypeV2 =
+  element CertifiedRole { CertifiedRoleTypeV2 }+
+CertifiedRoleTypeV2 =
+  X509AttributeCertificate | OtherAttributeCertificate
+start |= starting_X509AttributeCertificate
+starting_X509AttributeCertificate =
+  element X509AttributeCertificate { EncapsulatedPKIDataType }
+start |= starting_OtherAttributeCertificate
+starting_OtherAttributeCertificate =
+  element OtherAttributeCertificate { AnyType }
+SignedAssertionsListType = SignedAssertion+
+start |= starting_SignedAssertion
+starting_SignedAssertion = element SignedAssertion { AnyType }
+# End SignerRoleV2 and SignerRoleV2Type
+start |= starting_AllDataObjectsTimeStamp
+starting_AllDataObjectsTimeStamp =
+  element AllDataObjectsTimeStamp { XAdESTimeStampType }
+start |= starting_IndividualDataObjectsTimeStamp
+starting_IndividualDataObjectsTimeStamp =
+  element IndividualDataObjectsTimeStamp { XAdESTimeStampType }
+start |= starting_SignatureTimeStamp
+starting_SignatureTimeStamp =
+  element SignatureTimeStamp { XAdESTimeStampType }
+# Start CompleteCertificateRefs
+start |= starting_CompleteCertificateRefs
+starting_CompleteCertificateRefs =
+  element CompleteCertificateRefs { CompleteCertificateRefsType }
+CompleteCertificateRefsType =
+  element CertRefs { CertIDListType },
+  attribute Id { xsd:ID }?
+# End CompleteCertificateRefs
+
+#  Start CompleteRevocationRefs
+start |= starting_CompleteRevocationRefs
+starting_CompleteRevocationRefs =
+  element CompleteRevocationRefs { CompleteRevocationRefsType }
+CompleteRevocationRefsType =
+  element CRLRefs { CRLRefsType }?,
+  element OCSPRefs { OCSPRefsType }?,
+  element OtherRefs { OtherCertStatusRefsType }?,
+  attribute Id { xsd:ID }?
+CRLRefsType = element CRLRef { CRLRefType }+
+CRLRefType =
+  element DigestAlgAndValue { DigestAlgAndValueType },
+  element CRLIdentifier { CRLIdentifierType }?
+CRLIdentifierType =
+  element Issuer { xsd:string },
+  element IssueTime { xsd:dateTime },
+  element Number { xsd:integer }?,
+  attribute URI { xsd:anyURI }?
+OCSPRefsType = element OCSPRef { OCSPRefType }+
+OCSPRefType =
+  element OCSPIdentifier { OCSPIdentifierType },
+  element DigestAlgAndValue { DigestAlgAndValueType }?
+ResponderIDType =
+  element ByName { xsd:string }
+  | element ByKey { xsd:base64Binary }
+OCSPIdentifierType =
+  element ResponderID { ResponderIDType },
+  element ProducedAt { xsd:dateTime },
+  attribute URI { xsd:anyURI }?
+OtherCertStatusRefsType = element OtherRef { AnyType }+
+#  End CompleteRevocationRefs
+start |= starting_AttributeCertificateRefs
+starting_AttributeCertificateRefs =
+  element AttributeCertificateRefs { CompleteCertificateRefsType }
+start |= starting_AttributeRevocationRefs
+starting_AttributeRevocationRefs =
+  element AttributeRevocationRefs { CompleteRevocationRefsType }
+start |= starting_SigAndRefsTimeStamp
+starting_SigAndRefsTimeStamp =
+  element SigAndRefsTimeStamp { XAdESTimeStampType }
+start |= starting_RefsOnlyTimeStamp
+starting_RefsOnlyTimeStamp =
+  element RefsOnlyTimeStamp { XAdESTimeStampType }
+# Start CertificateValues
+start |= starting_CertificateValues
+starting_CertificateValues =
+  element CertificateValues { CertificateValuesType }
+CertificateValuesType =
+  (element EncapsulatedX509Certificate { EncapsulatedPKIDataType }
+   | element OtherCertificate { AnyType })*,
+  attribute Id { xsd:ID }?
+# End CertificateValues
+
+#  Start RevocationValues
+start |= starting_RevocationValues
+starting_RevocationValues =
+  element RevocationValues { RevocationValuesType }
+RevocationValuesType =
+  element CRLValues { CRLValuesType }?,
+  element OCSPValues { OCSPValuesType }?,
+  element OtherValues { OtherCertStatusValuesType }?,
+  attribute Id { xsd:ID }?
+CRLValuesType =
+  element EncapsulatedCRLValue { EncapsulatedPKIDataType }+
+OCSPValuesType =
+  element EncapsulatedOCSPValue { EncapsulatedPKIDataType }+
+OtherCertStatusValuesType = element OtherValue { AnyType }+
+#  End RevocationValues
+start |= starting_AttrAuthoritiesCertValues
+starting_AttrAuthoritiesCertValues =
+  element AttrAuthoritiesCertValues { CertificateValuesType }
+start |= starting_AttributeRevocationValues
+starting_AttributeRevocationValues =
+  element AttributeRevocationValues { RevocationValuesType }
+start |= starting_ArchiveTimeStamp
+starting_ArchiveTimeStamp =
+  element ArchiveTimeStamp { XAdESTimeStampType }

@@ -1,0 +1,1671 @@
+# ======================================================================
+
+# ===== CCTS Core Component Type Schema Module =====
+
+# ======================================================================
+
+# Module of Core Component Type
+# Agency: UN/CEFACT
+# VersionID: 1.1
+# Last change: 14 January 2005
+# 
+# 
+# 
+# Copyright (C) UN/CEFACT (2006). All Rights Reserved.
+# This document and translations of it may be copied and furnished to others,
+# and derivative works that comment on or otherwise explain it or assist
+# in its implementation may be prepared, copied, published and distributed,
+# in whole or in part, without restriction of any kind, provided that the
+# above copyright notice and this paragraph are included on all such copies
+# and derivative works. However, this document itself may not be modified in
+# any way, such as by removing the copyright notice or references to
+# UN/CEFACT, except as needed for the purpose of developing UN/CEFACT
+# specifications, in which case the procedures for copyrights defined in the
+# UN/CEFACT Intellectual Property Rights document must be followed, or as
+# 
+# 
+# required to translate it into languages other than English.
+# The limited permissions granted above are perpetual and will not be revoked
+# 
+# 
+# 
+# by UN/CEFACT or its successors or assigns.
+# This document and the information contained herein is provided on an "AS IS"
+# basis and UN/CEFACT DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
+# BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL
+# NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR
+# FITNESS FOR A PARTICULAR PURPOSE.
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace cct =
+  "urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
+namespace ccts = "urn:un:unece:uncefact:documentation:2"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+# ===== Type Definitions =====
+
+# ===================================================================
+
+# ===== CCT: AmountType =====
+
+# ===================================================================
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:UniqueID [ "UNDT000001" ]
+    "\x{a}" ~
+    "            "
+    ccts:CategoryCode [ "CCT" ]
+    "\x{a}" ~
+    "            "
+    ccts:DictionaryEntryName [ "Amount. Type" ]
+    "\x{a}" ~
+    "            "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "            "
+    ccts:Definition [
+      "A number of monetary units specified in a currency where the unit of the currency is explicit or implied."
+    ]
+    "\x{a}" ~
+    "            "
+    ccts:RepresentationTermName [ "Amount" ]
+    "\x{a}" ~
+    "            "
+    ccts:PrimitiveType [ "decimal" ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+cc_AmountType =
+  xsd:decimal,
+  attribute currencyID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000001-SC2" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Amount Currency. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The currency of the amount." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Amount Currency" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Identification" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                     "
+         ccts:UsageRule [
+           "Reference UNECE Rec 9, using 3-letter alphabetic codes."
+         ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute currencyCodeListVersionID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000001-SC3" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Amount Currency. Code List Version. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The VersionID of the UN/ECE Rec9 code list."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Amount Currency" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Code List Version" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?
+# ===== CCT: BinaryObjectType =====
+
+# ===================================================================
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:UniqueID [ "UNDT000002" ]
+    "\x{a}" ~
+    "            "
+    ccts:CategoryCode [ "CCT" ]
+    "\x{a}" ~
+    "            "
+    ccts:DictionaryEntryName [ "Binary Object. Type" ]
+    "\x{a}" ~
+    "            "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "            "
+    ccts:Definition [
+      "A set of finite-length sequences of binary octets."
+    ]
+    "\x{a}" ~
+    "            "
+    ccts:RepresentationTermName [ "Binary Object" ]
+    "\x{a}" ~
+    "            "
+    ccts:PrimitiveType [ "binary" ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+cc_BinaryObjectType =
+  xsd:base64Binary,
+  attribute format {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000002-SC2" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Binary Object. Format. Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The format of the binary content." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Binary Object" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Format" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute mimeCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000002-SC3" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Binary Object. Mime. Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The mime type of the binary object." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Binary Object" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Mime" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute encodingCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000002-SC4" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Binary Object. Encoding. Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Specifies the decoding algorithm of the binary object."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Binary Object" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Encoding" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute characterSetCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000002-SC5" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Binary Object. Character Set. Code"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The character set of the binary object if the mime type is text."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Binary Object" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Character Set" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute uri {
+    xsd:anyURI
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000002-SC6" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Binary Object. Uniform Resource. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The Uniform Resource Identifier that identifies where the binary object is located."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Binary Object" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Uniform Resource Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute filename {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000002-SC7" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Binary Object. Filename.Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The filename of the binary object." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Binary Object" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Filename" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?
+# ===== CCT: CodeType =====
+
+# ===================================================================
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:UniqueID [ "UNDT000007" ]
+    "\x{a}" ~
+    "            "
+    ccts:CategoryCode [ "CCT" ]
+    "\x{a}" ~
+    "            "
+    ccts:DictionaryEntryName [ "Code. Type" ]
+    "\x{a}" ~
+    "            "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "            "
+    ccts:Definition [
+      "A character string (letters, figures, or symbols) that for brevity and/or languange independence may be used to represent or replace a definitive value or text of an attribute together with relevant supplementary information."
+    ]
+    "\x{a}" ~
+    "            "
+    ccts:RepresentationTermName [ "Code" ]
+    "\x{a}" ~
+    "            "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "            "
+    ccts:UsageRule [
+      "Should not be used if the character string identifies an instance of an object class or an object in the real world, in which case the Identifier. Type should be used."
+    ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+cc_CodeType =
+  xsd:normalizedString,
+  attribute listID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000007-SC2" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Code List. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The identification of a list of codes." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Code List" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Identification" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute listAgencyID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000007-SC3" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Code List. Agency. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "An agency that maintains one or more lists of codes."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Code List" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Agency" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                     "
+         ccts:UsageRule [
+           "Defaults to the UN/EDIFACT data element 3055 code list."
+         ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute listAgencyName {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000007-SC4" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Code List. Agency Name. Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The name of the agency that maintains the list of codes."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Code List" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Agency Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute listName {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000007-SC5" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Code List. Name. Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The name of a list of codes." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Code List" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute listVersionID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000007-SC6" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Code List. Version. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The version of the list of codes." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Code List" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Version" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute name {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000007-SC7" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Code. Name. Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The textual equivalent of the code content component."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute languageID {
+    xsd:language
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000007-SC8" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Language. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The identifier of the language used in the code name."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Language" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Identification" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute listURI {
+    xsd:anyURI
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000007-SC9" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Code List. Uniform Resource. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The Uniform Resource Identifier that identifies where the code list is located."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Code List" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Uniform Resource Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute listSchemeURI {
+    xsd:anyURI
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000007-SC10" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Code List Scheme. Uniform Resource. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The Uniform Resource Identifier that identifies where the code list scheme is located."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Code List Scheme" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Uniform Resource Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?
+# ===== CCT: DateTimeType =====
+
+# ===================================================================
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:UniqueID [ "UNDT000008" ]
+    "\x{a}" ~
+    "            "
+    ccts:CategoryCode [ "CCT" ]
+    "\x{a}" ~
+    "            "
+    ccts:DictionaryEntryName [ "Date Time. Type" ]
+    "\x{a}" ~
+    "            "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "            "
+    ccts:Definition [
+      "A particular point in the progression of time together with the relevant supplementary information."
+    ]
+    "\x{a}" ~
+    "            "
+    ccts:RepresentationTermName [ "Date Time" ]
+    "\x{a}" ~
+    "            "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "            "
+    ccts:UsageRule [ "Can be used for a date and/or time." ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+cc_DateTimeType =
+  xsd:string,
+  attribute format {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000008-SC1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Date Time. Format. Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The format of the date time content" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Date Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Format" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?
+# ===== CCT: IdentifierType =====
+
+# ===================================================================
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:UniqueID [ "UNDT000011" ]
+    "\x{a}" ~
+    "            "
+    ccts:CategoryCode [ "CCT" ]
+    "\x{a}" ~
+    "            "
+    ccts:DictionaryEntryName [ "Identifier. Type" ]
+    "\x{a}" ~
+    "            "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "            "
+    ccts:Definition [
+      "A character string to identify and distinguish uniquely, one instance of an object in an identification scheme from all other objects in the same scheme together with relevant supplementary information."
+    ]
+    "\x{a}" ~
+    "            "
+    ccts:RepresentationTermName [ "Identifier" ]
+    "\x{a}" ~
+    "            "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+cc_IdentifierType =
+  xsd:normalizedString,
+  attribute schemeID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000011-SC2" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Identification Scheme. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The identification of the identification scheme."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Identification Scheme" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Identification" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute schemeName {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000011-SC3" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Identification Scheme. Name. Text"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The name of the identification scheme." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Identification Scheme" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute schemeAgencyID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000011-SC4" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Identification Scheme Agency. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The identification of the agency that maintains the identification scheme."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Identification Scheme Agency" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Identification" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                     "
+         ccts:UsageRule [
+           "Defaults to the UN/EDIFACT data element 3055 code list."
+         ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute schemeAgencyName {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000011-SC5" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Identification Scheme Agency. Name. Text"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The name of the agency that maintains the identification scheme."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Identification Scheme Agency" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Agency Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute schemeVersionID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000011-SC6" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Identification Scheme. Version. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The version of the identification scheme." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Identification Scheme" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Version" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute schemeDataURI {
+    xsd:anyURI
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000011-SC7" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Identification Scheme Data. Uniform Resource. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The Uniform Resource Identifier that identifies where the identification scheme data is located."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Identification Scheme Data" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Uniform Resource Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute schemeURI {
+    xsd:anyURI
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000011-SC8" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Identification Scheme. Uniform Resource. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The Uniform Resource Identifier that identifies where the identification scheme is located."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Identification Scheme" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Uniform Resource Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?
+# ===== CCT: IndicatorType =====
+
+# ===================================================================
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:UniqueID [ "UNDT000012" ]
+    "\x{a}" ~
+    "            "
+    ccts:CategoryCode [ "CCT" ]
+    "\x{a}" ~
+    "            "
+    ccts:DictionaryEntryName [ "Indicator. Type" ]
+    "\x{a}" ~
+    "            "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "            "
+    ccts:Definition [
+      "A list of two mutually exclusive Boolean values that express the only possible states of a Property."
+    ]
+    "\x{a}" ~
+    "            "
+    ccts:RepresentationTermName [ "Indicator" ]
+    "\x{a}" ~
+    "            "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+cc_IndicatorType =
+  xsd:string,
+  attribute format {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000012-SC2" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Indicator. Format. Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Whether the indicator is numeric, textual or binary."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Indicator" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Format" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?
+# ===== CCT: MeasureType =====
+
+# ===================================================================
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:UniqueID [ "UNDT000013" ]
+    "\x{a}" ~
+    "            "
+    ccts:CategoryCode [ "CCT" ]
+    "\x{a}" ~
+    "            "
+    ccts:DictionaryEntryName [ "Measure. Type" ]
+    "\x{a}" ~
+    "            "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "            "
+    ccts:Definition [
+      "A numeric value determined by measuring an object along with the specified unit of measure."
+    ]
+    "\x{a}" ~
+    "            "
+    ccts:RepresentationTermName [ "Measure" ]
+    "\x{a}" ~
+    "            "
+    ccts:PrimitiveType [ "decimal" ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+cc_MeasureType =
+  xsd:decimal,
+  attribute unitCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000013-SC2" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Measure Unit. Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The type of unit of measure." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Measure Unit" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                     "
+         ccts:UsageRule [ "Reference UNECE Rec. 20 and X12 355" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute unitCodeListVersionID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000013-SC3" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Measure Unit. Code List Version. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The version of the measure unit code list."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Measure Unit" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Code List Version" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?
+# ===== CCT: NumericType =====
+
+# ===================================================================
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:UniqueID [ "UNDT000014" ]
+    "\x{a}" ~
+    "            "
+    ccts:CategoryCode [ "CCT" ]
+    "\x{a}" ~
+    "            "
+    ccts:DictionaryEntryName [ "Numeric. Type" ]
+    "\x{a}" ~
+    "            "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "            "
+    ccts:Definition [
+      "Numeric information that is assigned or is determined by calculation, counting, or sequencing. It does not require a unit of quantity or unit of measure."
+    ]
+    "\x{a}" ~
+    "            "
+    ccts:RepresentationTermName [ "Numeric" ]
+    "\x{a}" ~
+    "            "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+cc_NumericType =
+  xsd:decimal,
+  attribute format {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000014-SC2" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Numeric. Format. Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Whether the number is an integer, decimal, real number or percentage."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Numeric" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Format" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?
+# ===== CCT: QuantityType =====
+
+# ===================================================================
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:UniqueID [ "UNDT000018" ]
+    "\x{a}" ~
+    "            "
+    ccts:CategoryCode [ "CCT" ]
+    "\x{a}" ~
+    "            "
+    ccts:DictionaryEntryName [ "Quantity. Type" ]
+    "\x{a}" ~
+    "            "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "            "
+    ccts:Definition [
+      "A counted number of non-monetary units possibly including fractions."
+    ]
+    "\x{a}" ~
+    "            "
+    ccts:RepresentationTermName [ "Quantity" ]
+    "\x{a}" ~
+    "            "
+    ccts:PrimitiveType [ "decimal" ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+cc_QuantityType =
+  xsd:decimal,
+  attribute unitCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000018-SC2" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Quantity. Unit. Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The unit of the quantity" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Quantity" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Unit Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute unitCodeListID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000018-SC3" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Quantity Unit. Code List. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The quantity unit code list." ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Quantity Unit" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Code List" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute unitCodeListAgencyID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000018-SC4" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Quantity Unit. Code List Agency. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The identification of the agency that maintains the quantity unit code list"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Quantity Unit" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Code List Agency" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                     "
+         ccts:UsageRule [
+           "Defaults to the UN/EDIFACT data element 3055 code list."
+         ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute unitCodeListAgencyName {
+    xsd:string
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000018-SC5" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Quantity Unit. Code List Agency Name. Text"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The name of the agency which maintains the quantity unit code list."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Quantity Unit" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Code List Agency Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?
+# ===== CCT: TextType =====
+
+# ===================================================================
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:UniqueID [ "UNDT000019" ]
+    "\x{a}" ~
+    "            "
+    ccts:CategoryCode [ "CCT" ]
+    "\x{a}" ~
+    "            "
+    ccts:DictionaryEntryName [ "Text. Type" ]
+    "\x{a}" ~
+    "            "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "            "
+    ccts:Definition [
+      "A character string (i.e. a finite set of characters) generally in the form of words of a language."
+    ]
+    "\x{a}" ~
+    "            "
+    ccts:RepresentationTermName [ "Text" ]
+    "\x{a}" ~
+    "            "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+cc_TextType =
+  xsd:string,
+  attribute languageID {
+    xsd:language
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000019-SC2" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Language. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The identifier of the language used in the content component."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Language" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Identification" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?,
+  attribute languageLocaleID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "                     "
+         ccts:UniqueID [ "UNDT000019-SC3" ]
+         "\x{a}" ~
+         "                     "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ " Language. Locale. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The identification of the locale of the language."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Language" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermName [ "Locale" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                  \x{a}" ~
+         "               "
+       ]
+  }?

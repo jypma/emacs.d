@@ -1,0 +1,231 @@
+#   Library:           OASIS Universal Business Language (UBL) 2.2 OS
+#                      http://docs.oasis-open.org/ubl/os-UBL-2.2/
+#   Release Date:      09 July 2018
+#   Module:            UBL-xmldsig-core-schema-2.2.xsd
+#   Generated on:      2017-08-15 14:20(UTC)
+# 
+#   This is a copy of
+#   http://www.w3.org/TR/2008/REC-xmldsig-core-20080610/xmldsig-core-schema.xsd
+#   modified only to remove the DOCTYPE declaration that has no impact on the
+#   XDM model of the XML instance of this schema fragment:
+# 
+# <!DOCTYPE schema
+#   PUBLIC "-//W3C//DTD XMLSchema 200102//EN" "http://www.w3.org/2001/XMLSchema.dtd"
+#  [
+#    <!ATTLIST schema 
+#      xmlns:ds CDATA #FIXED "http://www.w3.org/2000/09/xmldsig#">
+#    <!ENTITY dsig 'http://www.w3.org/2000/09/xmldsig#'>
+#    <!ENTITY % p ''>
+#    <!ENTITY % s ''>
+#   ]>
+
+# Schema for XML Signatures
+# http://www.w3.org/2000/09/xmldsig#
+# $Revision: 1.1 $ on $Date: 2002/02/08 20:32:26 $ by $Author: reagle $
+# 
+# Copyright 2001 The Internet Society and W3C (Massachusetts Institute
+# of Technology, Institut National de Recherche en Informatique et en
+# Automatique, Keio University). All Rights Reserved.
+# http://www.w3.org/Consortium/Legal/
+# 
+# This document is governed by the W3C Software License [1] as described
+# in the FAQ [2].
+# 
+# [1] http://www.w3.org/Consortium/Legal/copyright-software-19980720
+# [2] http://www.w3.org/Consortium/Legal/IPR-FAQ-20000620.html#DTD
+
+default namespace = "http://www.w3.org/2000/09/xmldsig#"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace ds = "http://www.w3.org/2000/09/xmldsig#"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+
+# Basic Types Defined for Signatures
+CryptoBinary = base64Binary
+# Start Signature
+start |= starting_Signature
+starting_Signature = element Signature { SignatureType }
+SignatureType =
+  SignedInfo,
+  SignatureValue,
+  KeyInfo?,
+  Object*,
+  attribute Id { ID }?
+start |= starting_SignatureValue
+starting_SignatureValue = element SignatureValue { SignatureValueType }
+SignatureValueType =
+  base64Binary,
+  attribute Id { ID }?
+# Start SignedInfo
+start |= starting_SignedInfo
+starting_SignedInfo = element SignedInfo { SignedInfoType }
+SignedInfoType =
+  CanonicalizationMethod,
+  SignatureMethod,
+  Reference+,
+  attribute Id { ID }?
+start |= starting_CanonicalizationMethod
+starting_CanonicalizationMethod =
+  element CanonicalizationMethod { CanonicalizationMethodType }
+CanonicalizationMethodType =
+  element * { text }*,
+  # (0,unbounded) elements from (1,1) namespace
+  attribute Algorithm { anyURI }
+start |= starting_SignatureMethod
+starting_SignatureMethod =
+  element SignatureMethod { SignatureMethodType }
+SignatureMethodType =
+  element HMACOutputLength { HMACOutputLengthType }?,
+  element * { text }*,
+  # (0,unbounded) elements from (1,1) external namespace
+  attribute Algorithm { anyURI }
+# Start Reference
+start |= starting_Reference
+starting_Reference = element Reference { ReferenceType }
+ReferenceType =
+  Transforms?,
+  DigestMethod,
+  DigestValue,
+  attribute Id { ID }?,
+  attribute URI { anyURI }?,
+  attribute Type { anyURI }?
+start |= starting_Transforms
+starting_Transforms = element Transforms { TransformsType }
+TransformsType = Transform+
+start |= starting_Transform
+starting_Transform = element Transform { TransformType }
+TransformType =
+  (element * { text }
+   | # (1,1) elements from (0,unbounded) namespaces
+     element XPath { \string })*,
+  attribute Algorithm { anyURI }
+# End Reference
+start |= starting_DigestMethod
+starting_DigestMethod = element DigestMethod { DigestMethodType }
+DigestMethodType =
+  element * { text }*,
+  attribute Algorithm { anyURI }
+start |= starting_DigestValue
+starting_DigestValue = element DigestValue { DigestValueType }
+DigestValueType = base64Binary
+# End SignedInfo
+
+# Start KeyInfo
+start |= starting_KeyInfo
+starting_KeyInfo = element KeyInfo { KeyInfoType }
+KeyInfoType =
+  (KeyName
+   | KeyValue
+   | RetrievalMethod
+   | X509Data
+   | PGPData
+   | SPKIData
+   | MgmtData
+   | element * { text }
+     # (1,1) elements from (0,unbounded) namespaces
+     )+,
+  attribute Id { ID }?
+start |= starting_KeyName
+starting_KeyName = element KeyName { \string }
+start |= starting_MgmtData
+starting_MgmtData = element MgmtData { \string }
+start |= starting_KeyValue
+starting_KeyValue = element KeyValue { KeyValueType }
+KeyValueType =
+  DSAKeyValue
+  | RSAKeyValue
+  | element * { text }
+start |= starting_RetrievalMethod
+starting_RetrievalMethod =
+  element RetrievalMethod { RetrievalMethodType }
+RetrievalMethodType =
+  Transforms?,
+  attribute URI { anyURI }?,
+  attribute Type { anyURI }?
+# Start X509Data
+start |= starting_X509Data
+starting_X509Data = element X509Data { X509DataType }
+X509DataType =
+  element X509IssuerSerial { X509IssuerSerialType }
+  | element X509SKI { base64Binary }
+  | element X509SubjectName { \string }
+  | element X509Certificate { base64Binary }
+  | element X509CRL { base64Binary }
+  | element * { text }
+X509IssuerSerialType =
+  element X509IssuerName { \string },
+  element X509SerialNumber { integer }
+# End X509Data
+
+# Begin PGPData
+start |= starting_PGPData
+starting_PGPData = element PGPData { PGPDataType }
+PGPDataType =
+  element PGPKeyID { base64Binary }
+  | element PGPKeyPacket { base64Binary }?
+  | element * { text }*
+  | element PGPKeyPacket { base64Binary }
+  | element * { text }*
+# End PGPData
+
+# Begin SPKIData
+start |= starting_SPKIData
+starting_SPKIData = element SPKIData { SPKIDataType }
+SPKIDataType =
+  element SPKISexp { base64Binary },
+  element * { text }?
+# End SPKIData
+
+# End KeyInfo
+
+# Start Object (Manifest, SignatureProperty)
+start |= starting_Object
+starting_Object = element Object { ObjectType }
+ObjectType =
+  element * { text },
+  attribute Id { ID }?,
+  attribute MimeType { \string }?,
+  # add a grep facet
+  attribute Encoding { anyURI }?
+start |= starting_Manifest
+starting_Manifest = element Manifest { ManifestType }
+ManifestType =
+  Reference+,
+  attribute Id { ID }?
+start |= starting_SignatureProperties
+starting_SignatureProperties =
+  element SignatureProperties { SignaturePropertiesType }
+SignaturePropertiesType =
+  SignatureProperty+,
+  attribute Id { ID }?
+start |= starting_SignatureProperty
+starting_SignatureProperty =
+  element SignatureProperty { SignaturePropertyType }
+SignaturePropertyType =
+  (element * { text }
+   # (1,1) elements from (1,unbounded) namespaces
+   )+,
+  attribute Target { anyURI },
+  attribute Id { ID }?
+# End Object (Manifest, SignatureProperty)
+
+# Start Algorithm Parameters
+HMACOutputLengthType = integer
+# Start KeyValue Element-types
+start |= starting_DSAKeyValue
+starting_DSAKeyValue = element DSAKeyValue { DSAKeyValueType }
+DSAKeyValueType =
+  element P { CryptoBinary },
+  element Q { CryptoBinary },
+  element G { CryptoBinary }?,
+  element Y { CryptoBinary },
+  element J { CryptoBinary }?,
+  element Seed { CryptoBinary },
+  element PgenCounter { CryptoBinary }
+start |= starting_RSAKeyValue
+starting_RSAKeyValue = element RSAKeyValue { RSAKeyValueType }
+RSAKeyValueType =
+  element Modulus { CryptoBinary },
+  element Exponent { CryptoBinary }
+# End KeyValue Element-types
+
+# End Signature

@@ -1,0 +1,3843 @@
+# Library:           OASIS Universal Business Language (UBL) 2.2 OS
+#                    http://docs.oasis-open.org/ubl/os-UBL-2.2/
+# Release Date:      09 July 2018
+# Module:            xsd/common/UBL-CommonBasicComponents-2.2.xsd
+# Generated on:      2018-07-08 20:04z
+# Copyright (c) OASIS Open 2018. All Rights Reserved.
+
+default namespace =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace qdt =
+  "urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace udt =
+  "urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+# ===== Imports =====
+include "UBL-QualifiedDataTypes-2.2.rnc" inherit = qdt
+include "UBL-UnqualifiedDataTypes-2.2.rnc" inherit = udt
+# ===== Element Declarations =====
+start |= starting_AcceptedIndicator
+starting_AcceptedIndicator =
+  element AcceptedIndicator { AcceptedIndicatorType }
+start |= starting_AcceptedVariantsDescription
+starting_AcceptedVariantsDescription =
+  element AcceptedVariantsDescription {
+    AcceptedVariantsDescriptionType
+  }
+start |= starting_AccessToolsURI
+starting_AccessToolsURI = element AccessToolsURI { AccessToolsURIType }
+start |= starting_AccountFormatCode
+starting_AccountFormatCode =
+  element AccountFormatCode { AccountFormatCodeType }
+start |= starting_AccountID
+starting_AccountID = element AccountID { AccountIDType }
+start |= starting_AccountTypeCode
+starting_AccountTypeCode =
+  element AccountTypeCode { AccountTypeCodeType }
+start |= starting_AccountingCost
+starting_AccountingCost = element AccountingCost { AccountingCostType }
+start |= starting_AccountingCostCode
+starting_AccountingCostCode =
+  element AccountingCostCode { AccountingCostCodeType }
+start |= starting_ActionCode
+starting_ActionCode = element ActionCode { ActionCodeType }
+start |= starting_ActivityType
+starting_ActivityType = element ActivityType { ActivityTypeType }
+start |= starting_ActivityTypeCode
+starting_ActivityTypeCode =
+  element ActivityTypeCode { ActivityTypeCodeType }
+start |= starting_ActualDeliveryDate
+starting_ActualDeliveryDate =
+  element ActualDeliveryDate { ActualDeliveryDateType }
+start |= starting_ActualDeliveryTime
+starting_ActualDeliveryTime =
+  element ActualDeliveryTime { ActualDeliveryTimeType }
+start |= starting_ActualDespatchDate
+starting_ActualDespatchDate =
+  element ActualDespatchDate { ActualDespatchDateType }
+start |= starting_ActualDespatchTime
+starting_ActualDespatchTime =
+  element ActualDespatchTime { ActualDespatchTimeType }
+start |= starting_ActualPickupDate
+starting_ActualPickupDate =
+  element ActualPickupDate { ActualPickupDateType }
+start |= starting_ActualPickupTime
+starting_ActualPickupTime =
+  element ActualPickupTime { ActualPickupTimeType }
+start |= starting_ActualTemperatureReductionQuantity
+starting_ActualTemperatureReductionQuantity =
+  element ActualTemperatureReductionQuantity {
+    ActualTemperatureReductionQuantityType
+  }
+start |= starting_AdValoremIndicator
+starting_AdValoremIndicator =
+  element AdValoremIndicator { AdValoremIndicatorType }
+start |= starting_AdditionalAccountID
+starting_AdditionalAccountID =
+  element AdditionalAccountID { AdditionalAccountIDType }
+start |= starting_AdditionalConditions
+starting_AdditionalConditions =
+  element AdditionalConditions { AdditionalConditionsType }
+start |= starting_AdditionalInformation
+starting_AdditionalInformation =
+  element AdditionalInformation { AdditionalInformationType }
+start |= starting_AdditionalStreetName
+starting_AdditionalStreetName =
+  element AdditionalStreetName { AdditionalStreetNameType }
+start |= starting_AddressFormatCode
+starting_AddressFormatCode =
+  element AddressFormatCode { AddressFormatCodeType }
+start |= starting_AddressTypeCode
+starting_AddressTypeCode =
+  element AddressTypeCode { AddressTypeCodeType }
+start |= starting_AdjustmentReasonCode
+starting_AdjustmentReasonCode =
+  element AdjustmentReasonCode { AdjustmentReasonCodeType }
+start |= starting_AdmissionCode
+starting_AdmissionCode = element AdmissionCode { AdmissionCodeType }
+start |= starting_AdvertisementAmount
+starting_AdvertisementAmount =
+  element AdvertisementAmount { AdvertisementAmountType }
+start |= starting_AgencyID
+starting_AgencyID = element AgencyID { AgencyIDType }
+start |= starting_AgencyName
+starting_AgencyName = element AgencyName { AgencyNameType }
+start |= starting_AgreementTypeCode
+starting_AgreementTypeCode =
+  element AgreementTypeCode { AgreementTypeCodeType }
+start |= starting_AirFlowPercent
+starting_AirFlowPercent = element AirFlowPercent { AirFlowPercentType }
+start |= starting_AircraftID
+starting_AircraftID = element AircraftID { AircraftIDType }
+start |= starting_AliasName
+starting_AliasName = element AliasName { AliasNameType }
+start |= starting_AllowanceChargeReason
+starting_AllowanceChargeReason =
+  element AllowanceChargeReason { AllowanceChargeReasonType }
+start |= starting_AllowanceChargeReasonCode
+starting_AllowanceChargeReasonCode =
+  element AllowanceChargeReasonCode { AllowanceChargeReasonCodeType }
+start |= starting_AllowanceTotalAmount
+starting_AllowanceTotalAmount =
+  element AllowanceTotalAmount { AllowanceTotalAmountType }
+start |= starting_AltitudeMeasure
+starting_AltitudeMeasure =
+  element AltitudeMeasure { AltitudeMeasureType }
+start |= starting_Amount
+starting_Amount = element Amount { AmountType }
+start |= starting_AmountRate
+starting_AmountRate = element AmountRate { AmountRateType }
+start |= starting_AnimalFoodApprovedIndicator
+starting_AnimalFoodApprovedIndicator =
+  element AnimalFoodApprovedIndicator {
+    AnimalFoodApprovedIndicatorType
+  }
+start |= starting_AnimalFoodIndicator
+starting_AnimalFoodIndicator =
+  element AnimalFoodIndicator { AnimalFoodIndicatorType }
+start |= starting_AnnualAverageAmount
+starting_AnnualAverageAmount =
+  element AnnualAverageAmount { AnnualAverageAmountType }
+start |= starting_ApplicationStatusCode
+starting_ApplicationStatusCode =
+  element ApplicationStatusCode { ApplicationStatusCodeType }
+start |= starting_ApprovalDate
+starting_ApprovalDate = element ApprovalDate { ApprovalDateType }
+start |= starting_ApprovalStatus
+starting_ApprovalStatus = element ApprovalStatus { ApprovalStatusType }
+start |= starting_Article
+starting_Article = element Article { ArticleType }
+start |= starting_AttributeID
+starting_AttributeID = element AttributeID { AttributeIDType }
+start |= starting_AuctionConstraintIndicator
+starting_AuctionConstraintIndicator =
+  element AuctionConstraintIndicator { AuctionConstraintIndicatorType }
+start |= starting_AuctionURI
+starting_AuctionURI = element AuctionURI { AuctionURIType }
+start |= starting_AvailabilityDate
+starting_AvailabilityDate =
+  element AvailabilityDate { AvailabilityDateType }
+start |= starting_AvailabilityStatusCode
+starting_AvailabilityStatusCode =
+  element AvailabilityStatusCode { AvailabilityStatusCodeType }
+start |= starting_AvailabilityTimePercent
+starting_AvailabilityTimePercent =
+  element AvailabilityTimePercent { AvailabilityTimePercentType }
+start |= starting_AverageAmount
+starting_AverageAmount = element AverageAmount { AverageAmountType }
+start |= starting_AverageSubsequentContractAmount
+starting_AverageSubsequentContractAmount =
+  element AverageSubsequentContractAmount {
+    AverageSubsequentContractAmountType
+  }
+start |= starting_AwardDate
+starting_AwardDate = element AwardDate { AwardDateType }
+start |= starting_AwardID
+starting_AwardID = element AwardID { AwardIDType }
+start |= starting_AwardTime
+starting_AwardTime = element AwardTime { AwardTimeType }
+start |= starting_AwardingCriterionDescription
+starting_AwardingCriterionDescription =
+  element AwardingCriterionDescription {
+    AwardingCriterionDescriptionType
+  }
+start |= starting_AwardingCriterionID
+starting_AwardingCriterionID =
+  element AwardingCriterionID { AwardingCriterionIDType }
+start |= starting_AwardingCriterionTypeCode
+starting_AwardingCriterionTypeCode =
+  element AwardingCriterionTypeCode { AwardingCriterionTypeCodeType }
+start |= starting_AwardingMethodTypeCode
+starting_AwardingMethodTypeCode =
+  element AwardingMethodTypeCode { AwardingMethodTypeCodeType }
+start |= starting_BackOrderAllowedIndicator
+starting_BackOrderAllowedIndicator =
+  element BackOrderAllowedIndicator { BackOrderAllowedIndicatorType }
+start |= starting_BackorderQuantity
+starting_BackorderQuantity =
+  element BackorderQuantity { BackorderQuantityType }
+start |= starting_BackorderReason
+starting_BackorderReason =
+  element BackorderReason { BackorderReasonType }
+start |= starting_BalanceAmount
+starting_BalanceAmount = element BalanceAmount { BalanceAmountType }
+start |= starting_BalanceBroughtForwardIndicator
+starting_BalanceBroughtForwardIndicator =
+  element BalanceBroughtForwardIndicator {
+    BalanceBroughtForwardIndicatorType
+  }
+start |= starting_BarcodeSymbologyID
+starting_BarcodeSymbologyID =
+  element BarcodeSymbologyID { BarcodeSymbologyIDType }
+start |= starting_BaseAmount
+starting_BaseAmount = element BaseAmount { BaseAmountType }
+start |= starting_BaseQuantity
+starting_BaseQuantity = element BaseQuantity { BaseQuantityType }
+start |= starting_BaseUnitMeasure
+starting_BaseUnitMeasure =
+  element BaseUnitMeasure { BaseUnitMeasureType }
+start |= starting_BasedOnConsensusIndicator
+starting_BasedOnConsensusIndicator =
+  element BasedOnConsensusIndicator { BasedOnConsensusIndicatorType }
+start |= starting_BasicConsumedQuantity
+starting_BasicConsumedQuantity =
+  element BasicConsumedQuantity { BasicConsumedQuantityType }
+start |= starting_BatchQuantity
+starting_BatchQuantity = element BatchQuantity { BatchQuantityType }
+start |= starting_BestBeforeDate
+starting_BestBeforeDate = element BestBeforeDate { BestBeforeDateType }
+start |= starting_BindingOnBuyerIndicator
+starting_BindingOnBuyerIndicator =
+  element BindingOnBuyerIndicator { BindingOnBuyerIndicatorType }
+start |= starting_BirthDate
+starting_BirthDate = element BirthDate { BirthDateType }
+start |= starting_BirthplaceName
+starting_BirthplaceName = element BirthplaceName { BirthplaceNameType }
+start |= starting_BlockName
+starting_BlockName = element BlockName { BlockNameType }
+start |= starting_BrandName
+starting_BrandName = element BrandName { BrandNameType }
+start |= starting_BriefDescription
+starting_BriefDescription =
+  element BriefDescription { BriefDescriptionType }
+start |= starting_BrokerAssignedID
+starting_BrokerAssignedID =
+  element BrokerAssignedID { BrokerAssignedIDType }
+start |= starting_BudgetYearNumeric
+starting_BudgetYearNumeric =
+  element BudgetYearNumeric { BudgetYearNumericType }
+start |= starting_BuildingName
+starting_BuildingName = element BuildingName { BuildingNameType }
+start |= starting_BuildingNumber
+starting_BuildingNumber = element BuildingNumber { BuildingNumberType }
+start |= starting_BulkCargoIndicator
+starting_BulkCargoIndicator =
+  element BulkCargoIndicator { BulkCargoIndicatorType }
+start |= starting_BusinessClassificationEvidenceID
+starting_BusinessClassificationEvidenceID =
+  element BusinessClassificationEvidenceID {
+    BusinessClassificationEvidenceIDType
+  }
+start |= starting_BusinessIdentityEvidenceID
+starting_BusinessIdentityEvidenceID =
+  element BusinessIdentityEvidenceID { BusinessIdentityEvidenceIDType }
+start |= starting_BuyerEventID
+starting_BuyerEventID = element BuyerEventID { BuyerEventIDType }
+start |= starting_BuyerProfileURI
+starting_BuyerProfileURI =
+  element BuyerProfileURI { BuyerProfileURIType }
+start |= starting_BuyerReference
+starting_BuyerReference = element BuyerReference { BuyerReferenceType }
+start |= starting_CV2ID
+starting_CV2ID = element CV2ID { CV2IDType }
+start |= starting_CalculationExpression
+starting_CalculationExpression =
+  element CalculationExpression { CalculationExpressionType }
+start |= starting_CalculationExpressionCode
+starting_CalculationExpressionCode =
+  element CalculationExpressionCode { CalculationExpressionCodeType }
+start |= starting_CalculationMethodCode
+starting_CalculationMethodCode =
+  element CalculationMethodCode { CalculationMethodCodeType }
+start |= starting_CalculationRate
+starting_CalculationRate =
+  element CalculationRate { CalculationRateType }
+start |= starting_CalculationSequenceNumeric
+starting_CalculationSequenceNumeric =
+  element CalculationSequenceNumeric { CalculationSequenceNumericType }
+start |= starting_CallBaseAmount
+starting_CallBaseAmount = element CallBaseAmount { CallBaseAmountType }
+start |= starting_CallDate
+starting_CallDate = element CallDate { CallDateType }
+start |= starting_CallExtensionAmount
+starting_CallExtensionAmount =
+  element CallExtensionAmount { CallExtensionAmountType }
+start |= starting_CallTime
+starting_CallTime = element CallTime { CallTimeType }
+start |= starting_CancellationNote
+starting_CancellationNote =
+  element CancellationNote { CancellationNoteType }
+start |= starting_CandidateReductionConstraintIndicator
+starting_CandidateReductionConstraintIndicator =
+  element CandidateReductionConstraintIndicator {
+    CandidateReductionConstraintIndicatorType
+  }
+start |= starting_CandidateStatement
+starting_CandidateStatement =
+  element CandidateStatement { CandidateStatementType }
+start |= starting_CanonicalizationMethod
+starting_CanonicalizationMethod =
+  element CanonicalizationMethod { CanonicalizationMethodType }
+start |= starting_CapabilityTypeCode
+starting_CapabilityTypeCode =
+  element CapabilityTypeCode { CapabilityTypeCodeType }
+start |= starting_CardChipCode
+starting_CardChipCode = element CardChipCode { CardChipCodeType }
+start |= starting_CardTypeCode
+starting_CardTypeCode = element CardTypeCode { CardTypeCodeType }
+start |= starting_CargoTypeCode
+starting_CargoTypeCode = element CargoTypeCode { CargoTypeCodeType }
+start |= starting_CarrierAssignedID
+starting_CarrierAssignedID =
+  element CarrierAssignedID { CarrierAssignedIDType }
+start |= starting_CarrierServiceInstructions
+starting_CarrierServiceInstructions =
+  element CarrierServiceInstructions { CarrierServiceInstructionsType }
+start |= starting_CatalogueIndicator
+starting_CatalogueIndicator =
+  element CatalogueIndicator { CatalogueIndicatorType }
+start |= starting_CategoryName
+starting_CategoryName = element CategoryName { CategoryNameType }
+start |= starting_CertificateType
+starting_CertificateType =
+  element CertificateType { CertificateTypeType }
+start |= starting_CertificateTypeCode
+starting_CertificateTypeCode =
+  element CertificateTypeCode { CertificateTypeCodeType }
+start |= starting_CertificationLevelDescription
+starting_CertificationLevelDescription =
+  element CertificationLevelDescription {
+    CertificationLevelDescriptionType
+  }
+start |= starting_ChangeConditions
+starting_ChangeConditions =
+  element ChangeConditions { ChangeConditionsType }
+start |= starting_Channel
+starting_Channel = element Channel { ChannelType }
+start |= starting_ChannelCode
+starting_ChannelCode = element ChannelCode { ChannelCodeType }
+start |= starting_CharacterSetCode
+starting_CharacterSetCode =
+  element CharacterSetCode { CharacterSetCodeType }
+start |= starting_Characteristics
+starting_Characteristics =
+  element Characteristics { CharacteristicsType }
+start |= starting_ChargeIndicator
+starting_ChargeIndicator =
+  element ChargeIndicator { ChargeIndicatorType }
+start |= starting_ChargeTotalAmount
+starting_ChargeTotalAmount =
+  element ChargeTotalAmount { ChargeTotalAmountType }
+start |= starting_ChargeableQuantity
+starting_ChargeableQuantity =
+  element ChargeableQuantity { ChargeableQuantityType }
+start |= starting_ChargeableWeightMeasure
+starting_ChargeableWeightMeasure =
+  element ChargeableWeightMeasure { ChargeableWeightMeasureType }
+start |= starting_ChildConsignmentQuantity
+starting_ChildConsignmentQuantity =
+  element ChildConsignmentQuantity { ChildConsignmentQuantityType }
+start |= starting_ChipApplicationID
+starting_ChipApplicationID =
+  element ChipApplicationID { ChipApplicationIDType }
+start |= starting_CityName
+starting_CityName = element CityName { CityNameType }
+start |= starting_CitySubdivisionName
+starting_CitySubdivisionName =
+  element CitySubdivisionName { CitySubdivisionNameType }
+start |= starting_CodeValue
+starting_CodeValue = element CodeValue { CodeValueType }
+start |= starting_CollaborationPriorityCode
+starting_CollaborationPriorityCode =
+  element CollaborationPriorityCode { CollaborationPriorityCodeType }
+start |= starting_Comment
+starting_Comment = element Comment { CommentType }
+start |= starting_CommodityCode
+starting_CommodityCode = element CommodityCode { CommodityCodeType }
+start |= starting_CompanyID
+starting_CompanyID = element CompanyID { CompanyIDType }
+start |= starting_CompanyLegalForm
+starting_CompanyLegalForm =
+  element CompanyLegalForm { CompanyLegalFormType }
+start |= starting_CompanyLegalFormCode
+starting_CompanyLegalFormCode =
+  element CompanyLegalFormCode { CompanyLegalFormCodeType }
+start |= starting_CompanyLiquidationStatusCode
+starting_CompanyLiquidationStatusCode =
+  element CompanyLiquidationStatusCode {
+    CompanyLiquidationStatusCodeType
+  }
+start |= starting_ComparedValueMeasure
+starting_ComparedValueMeasure =
+  element ComparedValueMeasure { ComparedValueMeasureType }
+start |= starting_ComparisonDataCode
+starting_ComparisonDataCode =
+  element ComparisonDataCode { ComparisonDataCodeType }
+start |= starting_ComparisonDataSourceCode
+starting_ComparisonDataSourceCode =
+  element ComparisonDataSourceCode { ComparisonDataSourceCodeType }
+start |= starting_ComparisonForecastIssueDate
+starting_ComparisonForecastIssueDate =
+  element ComparisonForecastIssueDate {
+    ComparisonForecastIssueDateType
+  }
+start |= starting_ComparisonForecastIssueTime
+starting_ComparisonForecastIssueTime =
+  element ComparisonForecastIssueTime {
+    ComparisonForecastIssueTimeType
+  }
+start |= starting_CompletionIndicator
+starting_CompletionIndicator =
+  element CompletionIndicator { CompletionIndicatorType }
+start |= starting_Condition
+starting_Condition = element Condition { ConditionType }
+start |= starting_ConditionCode
+starting_ConditionCode = element ConditionCode { ConditionCodeType }
+start |= starting_Conditions
+starting_Conditions = element Conditions { ConditionsType }
+start |= starting_ConditionsDescription
+starting_ConditionsDescription =
+  element ConditionsDescription { ConditionsDescriptionType }
+start |= starting_ConfidentialityLevelCode
+starting_ConfidentialityLevelCode =
+  element ConfidentialityLevelCode { ConfidentialityLevelCodeType }
+start |= starting_ConsigneeAssignedID
+starting_ConsigneeAssignedID =
+  element ConsigneeAssignedID { ConsigneeAssignedIDType }
+start |= starting_ConsignmentQuantity
+starting_ConsignmentQuantity =
+  element ConsignmentQuantity { ConsignmentQuantityType }
+start |= starting_ConsignorAssignedID
+starting_ConsignorAssignedID =
+  element ConsignorAssignedID { ConsignorAssignedIDType }
+start |= starting_ConsolidatableIndicator
+starting_ConsolidatableIndicator =
+  element ConsolidatableIndicator { ConsolidatableIndicatorType }
+start |= starting_ConstitutionCode
+starting_ConstitutionCode =
+  element ConstitutionCode { ConstitutionCodeType }
+start |= starting_ConsumerIncentiveTacticTypeCode
+starting_ConsumerIncentiveTacticTypeCode =
+  element ConsumerIncentiveTacticTypeCode {
+    ConsumerIncentiveTacticTypeCodeType
+  }
+start |= starting_ConsumerUnitQuantity
+starting_ConsumerUnitQuantity =
+  element ConsumerUnitQuantity { ConsumerUnitQuantityType }
+start |= starting_ConsumersEnergyLevel
+starting_ConsumersEnergyLevel =
+  element ConsumersEnergyLevel { ConsumersEnergyLevelType }
+start |= starting_ConsumersEnergyLevelCode
+starting_ConsumersEnergyLevelCode =
+  element ConsumersEnergyLevelCode { ConsumersEnergyLevelCodeType }
+start |= starting_ConsumptionEnergyQuantity
+starting_ConsumptionEnergyQuantity =
+  element ConsumptionEnergyQuantity { ConsumptionEnergyQuantityType }
+start |= starting_ConsumptionID
+starting_ConsumptionID = element ConsumptionID { ConsumptionIDType }
+start |= starting_ConsumptionLevel
+starting_ConsumptionLevel =
+  element ConsumptionLevel { ConsumptionLevelType }
+start |= starting_ConsumptionLevelCode
+starting_ConsumptionLevelCode =
+  element ConsumptionLevelCode { ConsumptionLevelCodeType }
+start |= starting_ConsumptionReportID
+starting_ConsumptionReportID =
+  element ConsumptionReportID { ConsumptionReportIDType }
+start |= starting_ConsumptionType
+starting_ConsumptionType =
+  element ConsumptionType { ConsumptionTypeType }
+start |= starting_ConsumptionTypeCode
+starting_ConsumptionTypeCode =
+  element ConsumptionTypeCode { ConsumptionTypeCodeType }
+start |= starting_ConsumptionWaterQuantity
+starting_ConsumptionWaterQuantity =
+  element ConsumptionWaterQuantity { ConsumptionWaterQuantityType }
+start |= starting_ContainerizedIndicator
+starting_ContainerizedIndicator =
+  element ContainerizedIndicator { ContainerizedIndicatorType }
+start |= starting_Content
+starting_Content = element Content { ContentType }
+start |= starting_ContentUnitQuantity
+starting_ContentUnitQuantity =
+  element ContentUnitQuantity { ContentUnitQuantityType }
+start |= starting_ContractFolderID
+starting_ContractFolderID =
+  element ContractFolderID { ContractFolderIDType }
+start |= starting_ContractName
+starting_ContractName = element ContractName { ContractNameType }
+start |= starting_ContractSubdivision
+starting_ContractSubdivision =
+  element ContractSubdivision { ContractSubdivisionType }
+start |= starting_ContractType
+starting_ContractType = element ContractType { ContractTypeType }
+start |= starting_ContractTypeCode
+starting_ContractTypeCode =
+  element ContractTypeCode { ContractTypeCodeType }
+start |= starting_ContractedCarrierAssignedID
+starting_ContractedCarrierAssignedID =
+  element ContractedCarrierAssignedID {
+    ContractedCarrierAssignedIDType
+  }
+start |= starting_ContractingSystemCode
+starting_ContractingSystemCode =
+  element ContractingSystemCode { ContractingSystemCodeType }
+start |= starting_ContractingSystemTypeCode
+starting_ContractingSystemTypeCode =
+  element ContractingSystemTypeCode { ContractingSystemTypeCodeType }
+start |= starting_CoordinateSystemCode
+starting_CoordinateSystemCode =
+  element CoordinateSystemCode { CoordinateSystemCodeType }
+start |= starting_CopyIndicator
+starting_CopyIndicator = element CopyIndicator { CopyIndicatorType }
+start |= starting_CopyQualityTypeCode
+starting_CopyQualityTypeCode =
+  element CopyQualityTypeCode { CopyQualityTypeCodeType }
+start |= starting_CorporateRegistrationTypeCode
+starting_CorporateRegistrationTypeCode =
+  element CorporateRegistrationTypeCode {
+    CorporateRegistrationTypeCodeType
+  }
+start |= starting_CorporateStockAmount
+starting_CorporateStockAmount =
+  element CorporateStockAmount { CorporateStockAmountType }
+start |= starting_CorrectionAmount
+starting_CorrectionAmount =
+  element CorrectionAmount { CorrectionAmountType }
+start |= starting_CorrectionType
+starting_CorrectionType = element CorrectionType { CorrectionTypeType }
+start |= starting_CorrectionTypeCode
+starting_CorrectionTypeCode =
+  element CorrectionTypeCode { CorrectionTypeCodeType }
+start |= starting_CorrectionUnitAmount
+starting_CorrectionUnitAmount =
+  element CorrectionUnitAmount { CorrectionUnitAmountType }
+start |= starting_CountrySubentity
+starting_CountrySubentity =
+  element CountrySubentity { CountrySubentityType }
+start |= starting_CountrySubentityCode
+starting_CountrySubentityCode =
+  element CountrySubentityCode { CountrySubentityCodeType }
+start |= starting_CreditLineAmount
+starting_CreditLineAmount =
+  element CreditLineAmount { CreditLineAmountType }
+start |= starting_CreditNoteTypeCode
+starting_CreditNoteTypeCode =
+  element CreditNoteTypeCode { CreditNoteTypeCodeType }
+start |= starting_CreditedQuantity
+starting_CreditedQuantity =
+  element CreditedQuantity { CreditedQuantityType }
+start |= starting_CrewQuantity
+starting_CrewQuantity = element CrewQuantity { CrewQuantityType }
+start |= starting_CriterionTypeCode
+starting_CriterionTypeCode =
+  element CriterionTypeCode { CriterionTypeCodeType }
+start |= starting_CurrencyCode
+starting_CurrencyCode = element CurrencyCode { CurrencyCodeType }
+start |= starting_CurrentChargeType
+starting_CurrentChargeType =
+  element CurrentChargeType { CurrentChargeTypeType }
+start |= starting_CurrentChargeTypeCode
+starting_CurrentChargeTypeCode =
+  element CurrentChargeTypeCode { CurrentChargeTypeCodeType }
+start |= starting_CustomerAssignedAccountID
+starting_CustomerAssignedAccountID =
+  element CustomerAssignedAccountID { CustomerAssignedAccountIDType }
+start |= starting_CustomerReference
+starting_CustomerReference =
+  element CustomerReference { CustomerReferenceType }
+start |= starting_CustomizationID
+starting_CustomizationID =
+  element CustomizationID { CustomizationIDType }
+start |= starting_CustomsClearanceServiceInstructions
+starting_CustomsClearanceServiceInstructions =
+  element CustomsClearanceServiceInstructions {
+    CustomsClearanceServiceInstructionsType
+  }
+start |= starting_CustomsImportClassifiedIndicator
+starting_CustomsImportClassifiedIndicator =
+  element CustomsImportClassifiedIndicator {
+    CustomsImportClassifiedIndicatorType
+  }
+start |= starting_CustomsStatusCode
+starting_CustomsStatusCode =
+  element CustomsStatusCode { CustomsStatusCodeType }
+start |= starting_CustomsTariffQuantity
+starting_CustomsTariffQuantity =
+  element CustomsTariffQuantity { CustomsTariffQuantityType }
+start |= starting_DamageRemarks
+starting_DamageRemarks = element DamageRemarks { DamageRemarksType }
+start |= starting_DangerousGoodsApprovedIndicator
+starting_DangerousGoodsApprovedIndicator =
+  element DangerousGoodsApprovedIndicator {
+    DangerousGoodsApprovedIndicatorType
+  }
+start |= starting_DataSendingCapability
+starting_DataSendingCapability =
+  element DataSendingCapability { DataSendingCapabilityType }
+start |= starting_DataSourceCode
+starting_DataSourceCode = element DataSourceCode { DataSourceCodeType }
+start |= starting_Date
+starting_Date = element Date { DateType }
+start |= starting_DebitLineAmount
+starting_DebitLineAmount =
+  element DebitLineAmount { DebitLineAmountType }
+start |= starting_DebitedQuantity
+starting_DebitedQuantity =
+  element DebitedQuantity { DebitedQuantityType }
+start |= starting_DeclarationTypeCode
+starting_DeclarationTypeCode =
+  element DeclarationTypeCode { DeclarationTypeCodeType }
+start |= starting_DeclaredCarriageValueAmount
+starting_DeclaredCarriageValueAmount =
+  element DeclaredCarriageValueAmount {
+    DeclaredCarriageValueAmountType
+  }
+start |= starting_DeclaredCustomsValueAmount
+starting_DeclaredCustomsValueAmount =
+  element DeclaredCustomsValueAmount { DeclaredCustomsValueAmountType }
+start |= starting_DeclaredForCarriageValueAmount
+starting_DeclaredForCarriageValueAmount =
+  element DeclaredForCarriageValueAmount {
+    DeclaredForCarriageValueAmountType
+  }
+start |= starting_DeclaredStatisticsValueAmount
+starting_DeclaredStatisticsValueAmount =
+  element DeclaredStatisticsValueAmount {
+    DeclaredStatisticsValueAmountType
+  }
+start |= starting_DeliveredQuantity
+starting_DeliveredQuantity =
+  element DeliveredQuantity { DeliveredQuantityType }
+start |= starting_DeliveryInstructions
+starting_DeliveryInstructions =
+  element DeliveryInstructions { DeliveryInstructionsType }
+start |= starting_DemurrageInstructions
+starting_DemurrageInstructions =
+  element DemurrageInstructions { DemurrageInstructionsType }
+start |= starting_Department
+starting_Department = element Department { DepartmentType }
+start |= starting_Description
+starting_Description = element Description { DescriptionType }
+start |= starting_DescriptionCode
+starting_DescriptionCode =
+  element DescriptionCode { DescriptionCodeType }
+start |= starting_DespatchAdviceTypeCode
+starting_DespatchAdviceTypeCode =
+  element DespatchAdviceTypeCode { DespatchAdviceTypeCodeType }
+start |= starting_DifferenceTemperatureReductionQuantity
+starting_DifferenceTemperatureReductionQuantity =
+  element DifferenceTemperatureReductionQuantity {
+    DifferenceTemperatureReductionQuantityType
+  }
+start |= starting_DirectionCode
+starting_DirectionCode = element DirectionCode { DirectionCodeType }
+start |= starting_DisplayTacticTypeCode
+starting_DisplayTacticTypeCode =
+  element DisplayTacticTypeCode { DisplayTacticTypeCodeType }
+start |= starting_DispositionCode
+starting_DispositionCode =
+  element DispositionCode { DispositionCodeType }
+start |= starting_District
+starting_District = element District { DistrictType }
+start |= starting_DocumentCurrencyCode
+starting_DocumentCurrencyCode =
+  element DocumentCurrencyCode { DocumentCurrencyCodeType }
+start |= starting_DocumentDescription
+starting_DocumentDescription =
+  element DocumentDescription { DocumentDescriptionType }
+start |= starting_DocumentHash
+starting_DocumentHash = element DocumentHash { DocumentHashType }
+start |= starting_DocumentID
+starting_DocumentID = element DocumentID { DocumentIDType }
+start |= starting_DocumentStatusCode
+starting_DocumentStatusCode =
+  element DocumentStatusCode { DocumentStatusCodeType }
+start |= starting_DocumentStatusReasonCode
+starting_DocumentStatusReasonCode =
+  element DocumentStatusReasonCode { DocumentStatusReasonCodeType }
+start |= starting_DocumentStatusReasonDescription
+starting_DocumentStatusReasonDescription =
+  element DocumentStatusReasonDescription {
+    DocumentStatusReasonDescriptionType
+  }
+start |= starting_DocumentType
+starting_DocumentType = element DocumentType { DocumentTypeType }
+start |= starting_DocumentTypeCode
+starting_DocumentTypeCode =
+  element DocumentTypeCode { DocumentTypeCodeType }
+start |= starting_DocumentationFeeAmount
+starting_DocumentationFeeAmount =
+  element DocumentationFeeAmount { DocumentationFeeAmountType }
+start |= starting_DueDate
+starting_DueDate = element DueDate { DueDateType }
+start |= starting_DurationMeasure
+starting_DurationMeasure =
+  element DurationMeasure { DurationMeasureType }
+start |= starting_Duty
+starting_Duty = element Duty { DutyType }
+start |= starting_DutyCode
+starting_DutyCode = element DutyCode { DutyCodeType }
+start |= starting_EarliestPickupDate
+starting_EarliestPickupDate =
+  element EarliestPickupDate { EarliestPickupDateType }
+start |= starting_EarliestPickupTime
+starting_EarliestPickupTime =
+  element EarliestPickupTime { EarliestPickupTimeType }
+start |= starting_EconomicOperatorGroupName
+starting_EconomicOperatorGroupName =
+  element EconomicOperatorGroupName { EconomicOperatorGroupNameType }
+start |= starting_EconomicOperatorRegistryURI
+starting_EconomicOperatorRegistryURI =
+  element EconomicOperatorRegistryURI {
+    EconomicOperatorRegistryURIType
+  }
+start |= starting_EffectiveDate
+starting_EffectiveDate = element EffectiveDate { EffectiveDateType }
+start |= starting_EffectiveTime
+starting_EffectiveTime = element EffectiveTime { EffectiveTimeType }
+start |= starting_ElectronicCatalogueUsageIndicator
+starting_ElectronicCatalogueUsageIndicator =
+  element ElectronicCatalogueUsageIndicator {
+    ElectronicCatalogueUsageIndicatorType
+  }
+start |= starting_ElectronicDeviceDescription
+starting_ElectronicDeviceDescription =
+  element ElectronicDeviceDescription {
+    ElectronicDeviceDescriptionType
+  }
+start |= starting_ElectronicInvoiceAcceptedIndicator
+starting_ElectronicInvoiceAcceptedIndicator =
+  element ElectronicInvoiceAcceptedIndicator {
+    ElectronicInvoiceAcceptedIndicatorType
+  }
+start |= starting_ElectronicMail
+starting_ElectronicMail = element ElectronicMail { ElectronicMailType }
+start |= starting_ElectronicOrderUsageIndicator
+starting_ElectronicOrderUsageIndicator =
+  element ElectronicOrderUsageIndicator {
+    ElectronicOrderUsageIndicatorType
+  }
+start |= starting_ElectronicPaymentUsageIndicator
+starting_ElectronicPaymentUsageIndicator =
+  element ElectronicPaymentUsageIndicator {
+    ElectronicPaymentUsageIndicatorType
+  }
+start |= starting_EmbeddedDocument
+starting_EmbeddedDocument =
+  element EmbeddedDocument { EmbeddedDocumentType }
+start |= starting_EmbeddedDocumentBinaryObject
+starting_EmbeddedDocumentBinaryObject =
+  element EmbeddedDocumentBinaryObject {
+    EmbeddedDocumentBinaryObjectType
+  }
+start |= starting_EmergencyProceduresCode
+starting_EmergencyProceduresCode =
+  element EmergencyProceduresCode { EmergencyProceduresCodeType }
+start |= starting_EmployeeQuantity
+starting_EmployeeQuantity =
+  element EmployeeQuantity { EmployeeQuantityType }
+start |= starting_EncodingCode
+starting_EncodingCode = element EncodingCode { EncodingCodeType }
+start |= starting_EndDate
+starting_EndDate = element EndDate { EndDateType }
+start |= starting_EndTime
+starting_EndTime = element EndTime { EndTimeType }
+start |= starting_EndpointID
+starting_EndpointID = element EndpointID { EndpointIDType }
+start |= starting_EndpointURI
+starting_EndpointURI = element EndpointURI { EndpointURIType }
+start |= starting_EnvelopeTypeCode
+starting_EnvelopeTypeCode =
+  element EnvelopeTypeCode { EnvelopeTypeCodeType }
+start |= starting_EnvironmentalEmissionTypeCode
+starting_EnvironmentalEmissionTypeCode =
+  element EnvironmentalEmissionTypeCode {
+    EnvironmentalEmissionTypeCodeType
+  }
+start |= starting_EstimatedAmount
+starting_EstimatedAmount =
+  element EstimatedAmount { EstimatedAmountType }
+start |= starting_EstimatedConsumedQuantity
+starting_EstimatedConsumedQuantity =
+  element EstimatedConsumedQuantity { EstimatedConsumedQuantityType }
+start |= starting_EstimatedDeliveryDate
+starting_EstimatedDeliveryDate =
+  element EstimatedDeliveryDate { EstimatedDeliveryDateType }
+start |= starting_EstimatedDeliveryTime
+starting_EstimatedDeliveryTime =
+  element EstimatedDeliveryTime { EstimatedDeliveryTimeType }
+start |= starting_EstimatedDespatchDate
+starting_EstimatedDespatchDate =
+  element EstimatedDespatchDate { EstimatedDespatchDateType }
+start |= starting_EstimatedDespatchTime
+starting_EstimatedDespatchTime =
+  element EstimatedDespatchTime { EstimatedDespatchTimeType }
+start |= starting_EstimatedOverallContractAmount
+starting_EstimatedOverallContractAmount =
+  element EstimatedOverallContractAmount {
+    EstimatedOverallContractAmountType
+  }
+start |= starting_EstimatedOverallContractQuantity
+starting_EstimatedOverallContractQuantity =
+  element EstimatedOverallContractQuantity {
+    EstimatedOverallContractQuantityType
+  }
+start |= starting_EstimatedTimingFurtherPublication
+starting_EstimatedTimingFurtherPublication =
+  element EstimatedTimingFurtherPublication {
+    EstimatedTimingFurtherPublicationType
+  }
+start |= starting_EvaluationCriterionTypeCode
+starting_EvaluationCriterionTypeCode =
+  element EvaluationCriterionTypeCode {
+    EvaluationCriterionTypeCodeType
+  }
+start |= starting_EvaluationMethodTypeCode
+starting_EvaluationMethodTypeCode =
+  element EvaluationMethodTypeCode { EvaluationMethodTypeCodeType }
+start |= starting_EvidenceTypeCode
+starting_EvidenceTypeCode =
+  element EvidenceTypeCode { EvidenceTypeCodeType }
+start |= starting_ExceptionResolutionCode
+starting_ExceptionResolutionCode =
+  element ExceptionResolutionCode { ExceptionResolutionCodeType }
+start |= starting_ExceptionStatusCode
+starting_ExceptionStatusCode =
+  element ExceptionStatusCode { ExceptionStatusCodeType }
+start |= starting_ExchangeMarketID
+starting_ExchangeMarketID =
+  element ExchangeMarketID { ExchangeMarketIDType }
+start |= starting_ExclusionReason
+starting_ExclusionReason =
+  element ExclusionReason { ExclusionReasonType }
+start |= starting_ExecutionRequirementCode
+starting_ExecutionRequirementCode =
+  element ExecutionRequirementCode { ExecutionRequirementCodeType }
+start |= starting_ExemptionReason
+starting_ExemptionReason =
+  element ExemptionReason { ExemptionReasonType }
+start |= starting_ExemptionReasonCode
+starting_ExemptionReasonCode =
+  element ExemptionReasonCode { ExemptionReasonCodeType }
+start |= starting_ExpectedAmount
+starting_ExpectedAmount = element ExpectedAmount { ExpectedAmountType }
+start |= starting_ExpectedCode
+starting_ExpectedCode = element ExpectedCode { ExpectedCodeType }
+start |= starting_ExpectedDescription
+starting_ExpectedDescription =
+  element ExpectedDescription { ExpectedDescriptionType }
+start |= starting_ExpectedID
+starting_ExpectedID = element ExpectedID { ExpectedIDType }
+start |= starting_ExpectedOperatorQuantity
+starting_ExpectedOperatorQuantity =
+  element ExpectedOperatorQuantity { ExpectedOperatorQuantityType }
+start |= starting_ExpectedQuantity
+starting_ExpectedQuantity =
+  element ExpectedQuantity { ExpectedQuantityType }
+start |= starting_ExpectedValueNumeric
+starting_ExpectedValueNumeric =
+  element ExpectedValueNumeric { ExpectedValueNumericType }
+start |= starting_ExpenseCode
+starting_ExpenseCode = element ExpenseCode { ExpenseCodeType }
+start |= starting_ExpiryDate
+starting_ExpiryDate = element ExpiryDate { ExpiryDateType }
+start |= starting_ExpiryTime
+starting_ExpiryTime = element ExpiryTime { ExpiryTimeType }
+start |= starting_Expression
+starting_Expression = element Expression { ExpressionType }
+start |= starting_ExpressionCode
+starting_ExpressionCode = element ExpressionCode { ExpressionCodeType }
+start |= starting_ExtendedID
+starting_ExtendedID = element ExtendedID { ExtendedIDType }
+start |= starting_Extension
+starting_Extension = element Extension { ExtensionType }
+start |= starting_FaceValueAmount
+starting_FaceValueAmount =
+  element FaceValueAmount { FaceValueAmountType }
+start |= starting_FamilyName
+starting_FamilyName = element FamilyName { FamilyNameType }
+start |= starting_FeatureTacticTypeCode
+starting_FeatureTacticTypeCode =
+  element FeatureTacticTypeCode { FeatureTacticTypeCodeType }
+start |= starting_FeeAmount
+starting_FeeAmount = element FeeAmount { FeeAmountType }
+start |= starting_FeeDescription
+starting_FeeDescription = element FeeDescription { FeeDescriptionType }
+start |= starting_FileName
+starting_FileName = element FileName { FileNameType }
+start |= starting_FinancingInstrumentCode
+starting_FinancingInstrumentCode =
+  element FinancingInstrumentCode { FinancingInstrumentCodeType }
+start |= starting_FirstName
+starting_FirstName = element FirstName { FirstNameType }
+start |= starting_FirstShipmentAvailibilityDate
+starting_FirstShipmentAvailibilityDate =
+  element FirstShipmentAvailibilityDate {
+    FirstShipmentAvailibilityDateType
+  }
+start |= starting_Floor
+starting_Floor = element Floor { FloorType }
+start |= starting_FollowupContractIndicator
+starting_FollowupContractIndicator =
+  element FollowupContractIndicator { FollowupContractIndicatorType }
+start |= starting_ForecastPurposeCode
+starting_ForecastPurposeCode =
+  element ForecastPurposeCode { ForecastPurposeCodeType }
+start |= starting_ForecastTypeCode
+starting_ForecastTypeCode =
+  element ForecastTypeCode { ForecastTypeCodeType }
+start |= starting_FormatCode
+starting_FormatCode = element FormatCode { FormatCodeType }
+start |= starting_FormatID
+starting_FormatID = element FormatID { FormatIDType }
+start |= starting_ForwarderServiceInstructions
+starting_ForwarderServiceInstructions =
+  element ForwarderServiceInstructions {
+    ForwarderServiceInstructionsType
+  }
+start |= starting_FreeOfChargeIndicator
+starting_FreeOfChargeIndicator =
+  element FreeOfChargeIndicator { FreeOfChargeIndicatorType }
+start |= starting_FreeOnBoardValueAmount
+starting_FreeOnBoardValueAmount =
+  element FreeOnBoardValueAmount { FreeOnBoardValueAmountType }
+start |= starting_FreightForwarderAssignedID
+starting_FreightForwarderAssignedID =
+  element FreightForwarderAssignedID { FreightForwarderAssignedIDType }
+start |= starting_FreightRateClassCode
+starting_FreightRateClassCode =
+  element FreightRateClassCode { FreightRateClassCodeType }
+start |= starting_Frequency
+starting_Frequency = element Frequency { FrequencyType }
+start |= starting_FridayAvailabilityIndicator
+starting_FridayAvailabilityIndicator =
+  element FridayAvailabilityIndicator {
+    FridayAvailabilityIndicatorType
+  }
+start |= starting_FrozenDocumentIndicator
+starting_FrozenDocumentIndicator =
+  element FrozenDocumentIndicator { FrozenDocumentIndicatorType }
+start |= starting_FrozenPeriodDaysNumeric
+starting_FrozenPeriodDaysNumeric =
+  element FrozenPeriodDaysNumeric { FrozenPeriodDaysNumericType }
+start |= starting_FulfilmentIndicator
+starting_FulfilmentIndicator =
+  element FulfilmentIndicator { FulfilmentIndicatorType }
+start |= starting_FulfilmentIndicatorTypeCode
+starting_FulfilmentIndicatorTypeCode =
+  element FulfilmentIndicatorTypeCode {
+    FulfilmentIndicatorTypeCodeType
+  }
+start |= starting_FullnessIndicationCode
+starting_FullnessIndicationCode =
+  element FullnessIndicationCode { FullnessIndicationCodeType }
+start |= starting_FullyPaidSharesIndicator
+starting_FullyPaidSharesIndicator =
+  element FullyPaidSharesIndicator { FullyPaidSharesIndicatorType }
+start |= starting_FundingProgram
+starting_FundingProgram = element FundingProgram { FundingProgramType }
+start |= starting_FundingProgramCode
+starting_FundingProgramCode =
+  element FundingProgramCode { FundingProgramCodeType }
+start |= starting_GasPressureQuantity
+starting_GasPressureQuantity =
+  element GasPressureQuantity { GasPressureQuantityType }
+start |= starting_GenderCode
+starting_GenderCode = element GenderCode { GenderCodeType }
+start |= starting_GeneralCargoIndicator
+starting_GeneralCargoIndicator =
+  element GeneralCargoIndicator { GeneralCargoIndicatorType }
+start |= starting_GovernmentAgreementConstraintIndicator
+starting_GovernmentAgreementConstraintIndicator =
+  element GovernmentAgreementConstraintIndicator {
+    GovernmentAgreementConstraintIndicatorType
+  }
+start |= starting_GrossMassMeasure
+starting_GrossMassMeasure =
+  element GrossMassMeasure { GrossMassMeasureType }
+start |= starting_GrossTonnageMeasure
+starting_GrossTonnageMeasure =
+  element GrossTonnageMeasure { GrossTonnageMeasureType }
+start |= starting_GrossVolumeMeasure
+starting_GrossVolumeMeasure =
+  element GrossVolumeMeasure { GrossVolumeMeasureType }
+start |= starting_GrossWeightMeasure
+starting_GrossWeightMeasure =
+  element GrossWeightMeasure { GrossWeightMeasureType }
+start |= starting_GroupingLots
+starting_GroupingLots = element GroupingLots { GroupingLotsType }
+start |= starting_GuaranteeTypeCode
+starting_GuaranteeTypeCode =
+  element GuaranteeTypeCode { GuaranteeTypeCodeType }
+start |= starting_GuaranteedDespatchDate
+starting_GuaranteedDespatchDate =
+  element GuaranteedDespatchDate { GuaranteedDespatchDateType }
+start |= starting_GuaranteedDespatchTime
+starting_GuaranteedDespatchTime =
+  element GuaranteedDespatchTime { GuaranteedDespatchTimeType }
+start |= starting_HandlingCode
+starting_HandlingCode = element HandlingCode { HandlingCodeType }
+start |= starting_HandlingInstructions
+starting_HandlingInstructions =
+  element HandlingInstructions { HandlingInstructionsType }
+start |= starting_HashAlgorithmMethod
+starting_HashAlgorithmMethod =
+  element HashAlgorithmMethod { HashAlgorithmMethodType }
+start |= starting_HaulageInstructions
+starting_HaulageInstructions =
+  element HaulageInstructions { HaulageInstructionsType }
+start |= starting_HazardClassID
+starting_HazardClassID = element HazardClassID { HazardClassIDType }
+start |= starting_HazardousCategoryCode
+starting_HazardousCategoryCode =
+  element HazardousCategoryCode { HazardousCategoryCodeType }
+start |= starting_HazardousRegulationCode
+starting_HazardousRegulationCode =
+  element HazardousRegulationCode { HazardousRegulationCodeType }
+start |= starting_HazardousRiskIndicator
+starting_HazardousRiskIndicator =
+  element HazardousRiskIndicator { HazardousRiskIndicatorType }
+start |= starting_HeatingType
+starting_HeatingType = element HeatingType { HeatingTypeType }
+start |= starting_HeatingTypeCode
+starting_HeatingTypeCode =
+  element HeatingTypeCode { HeatingTypeCodeType }
+start |= starting_HigherTenderAmount
+starting_HigherTenderAmount =
+  element HigherTenderAmount { HigherTenderAmountType }
+start |= starting_HolderName
+starting_HolderName = element HolderName { HolderNameType }
+start |= starting_HumanFoodApprovedIndicator
+starting_HumanFoodApprovedIndicator =
+  element HumanFoodApprovedIndicator { HumanFoodApprovedIndicatorType }
+start |= starting_HumanFoodIndicator
+starting_HumanFoodIndicator =
+  element HumanFoodIndicator { HumanFoodIndicatorType }
+start |= starting_HumidityPercent
+starting_HumidityPercent =
+  element HumidityPercent { HumidityPercentType }
+start |= starting_ID
+starting_ID = element ID { IDType }
+start |= starting_IdentificationCode
+starting_IdentificationCode =
+  element IdentificationCode { IdentificationCodeType }
+start |= starting_IdentificationID
+starting_IdentificationID =
+  element IdentificationID { IdentificationIDType }
+start |= starting_ImmobilizationCertificateID
+starting_ImmobilizationCertificateID =
+  element ImmobilizationCertificateID {
+    ImmobilizationCertificateIDType
+  }
+start |= starting_ImportanceCode
+starting_ImportanceCode = element ImportanceCode { ImportanceCodeType }
+start |= starting_IndicationIndicator
+starting_IndicationIndicator =
+  element IndicationIndicator { IndicationIndicatorType }
+start |= starting_IndustryClassificationCode
+starting_IndustryClassificationCode =
+  element IndustryClassificationCode { IndustryClassificationCodeType }
+start |= starting_Information
+starting_Information = element Information { InformationType }
+start |= starting_InformationURI
+starting_InformationURI = element InformationURI { InformationURIType }
+start |= starting_InhalationToxicityZoneCode
+starting_InhalationToxicityZoneCode =
+  element InhalationToxicityZoneCode { InhalationToxicityZoneCodeType }
+start |= starting_InhouseMail
+starting_InhouseMail = element InhouseMail { InhouseMailType }
+start |= starting_InitiatingPartyIndicator
+starting_InitiatingPartyIndicator =
+  element InitiatingPartyIndicator { InitiatingPartyIndicatorType }
+start |= starting_InspectionMethodCode
+starting_InspectionMethodCode =
+  element InspectionMethodCode { InspectionMethodCodeType }
+start |= starting_InstallmentDueDate
+starting_InstallmentDueDate =
+  element InstallmentDueDate { InstallmentDueDateType }
+start |= starting_InstructionID
+starting_InstructionID = element InstructionID { InstructionIDType }
+start |= starting_InstructionNote
+starting_InstructionNote =
+  element InstructionNote { InstructionNoteType }
+start |= starting_Instructions
+starting_Instructions = element Instructions { InstructionsType }
+start |= starting_InsurancePremiumAmount
+starting_InsurancePremiumAmount =
+  element InsurancePremiumAmount { InsurancePremiumAmountType }
+start |= starting_InsuranceValueAmount
+starting_InsuranceValueAmount =
+  element InsuranceValueAmount { InsuranceValueAmountType }
+start |= starting_InventoryValueAmount
+starting_InventoryValueAmount =
+  element InventoryValueAmount { InventoryValueAmountType }
+start |= starting_InvoiceTypeCode
+starting_InvoiceTypeCode =
+  element InvoiceTypeCode { InvoiceTypeCodeType }
+start |= starting_InvoicedQuantity
+starting_InvoicedQuantity =
+  element InvoicedQuantity { InvoicedQuantityType }
+start |= starting_InvoicingPartyReference
+starting_InvoicingPartyReference =
+  element InvoicingPartyReference { InvoicingPartyReferenceType }
+start |= starting_IssueDate
+starting_IssueDate = element IssueDate { IssueDateType }
+start |= starting_IssueNumberID
+starting_IssueNumberID = element IssueNumberID { IssueNumberIDType }
+start |= starting_IssueTime
+starting_IssueTime = element IssueTime { IssueTimeType }
+start |= starting_IssuerID
+starting_IssuerID = element IssuerID { IssuerIDType }
+start |= starting_ItemClassificationCode
+starting_ItemClassificationCode =
+  element ItemClassificationCode { ItemClassificationCodeType }
+start |= starting_ItemUpdateRequestIndicator
+starting_ItemUpdateRequestIndicator =
+  element ItemUpdateRequestIndicator { ItemUpdateRequestIndicatorType }
+start |= starting_JobTitle
+starting_JobTitle = element JobTitle { JobTitleType }
+start |= starting_JourneyID
+starting_JourneyID = element JourneyID { JourneyIDType }
+start |= starting_JurisdictionLevel
+starting_JurisdictionLevel =
+  element JurisdictionLevel { JurisdictionLevelType }
+start |= starting_Justification
+starting_Justification = element Justification { JustificationType }
+start |= starting_JustificationDescription
+starting_JustificationDescription =
+  element JustificationDescription { JustificationDescriptionType }
+start |= starting_Keyword
+starting_Keyword = element Keyword { KeywordType }
+start |= starting_LanguageID
+starting_LanguageID = element LanguageID { LanguageIDType }
+start |= starting_LastRevisionDate
+starting_LastRevisionDate =
+  element LastRevisionDate { LastRevisionDateType }
+start |= starting_LastRevisionTime
+starting_LastRevisionTime =
+  element LastRevisionTime { LastRevisionTimeType }
+start |= starting_LatestDeliveryDate
+starting_LatestDeliveryDate =
+  element LatestDeliveryDate { LatestDeliveryDateType }
+start |= starting_LatestDeliveryTime
+starting_LatestDeliveryTime =
+  element LatestDeliveryTime { LatestDeliveryTimeType }
+start |= starting_LatestMeterQuantity
+starting_LatestMeterQuantity =
+  element LatestMeterQuantity { LatestMeterQuantityType }
+start |= starting_LatestMeterReadingDate
+starting_LatestMeterReadingDate =
+  element LatestMeterReadingDate { LatestMeterReadingDateType }
+start |= starting_LatestMeterReadingMethod
+starting_LatestMeterReadingMethod =
+  element LatestMeterReadingMethod { LatestMeterReadingMethodType }
+start |= starting_LatestMeterReadingMethodCode
+starting_LatestMeterReadingMethodCode =
+  element LatestMeterReadingMethodCode {
+    LatestMeterReadingMethodCodeType
+  }
+start |= starting_LatestPickupDate
+starting_LatestPickupDate =
+  element LatestPickupDate { LatestPickupDateType }
+start |= starting_LatestPickupTime
+starting_LatestPickupTime =
+  element LatestPickupTime { LatestPickupTimeType }
+start |= starting_LatestProposalAcceptanceDate
+starting_LatestProposalAcceptanceDate =
+  element LatestProposalAcceptanceDate {
+    LatestProposalAcceptanceDateType
+  }
+start |= starting_LatestReplyDate
+starting_LatestReplyDate =
+  element LatestReplyDate { LatestReplyDateType }
+start |= starting_LatestReplyTime
+starting_LatestReplyTime =
+  element LatestReplyTime { LatestReplyTimeType }
+start |= starting_LatestSecurityClearanceDate
+starting_LatestSecurityClearanceDate =
+  element LatestSecurityClearanceDate {
+    LatestSecurityClearanceDateType
+  }
+start |= starting_LatitudeDegreesMeasure
+starting_LatitudeDegreesMeasure =
+  element LatitudeDegreesMeasure { LatitudeDegreesMeasureType }
+start |= starting_LatitudeDirectionCode
+starting_LatitudeDirectionCode =
+  element LatitudeDirectionCode { LatitudeDirectionCodeType }
+start |= starting_LatitudeMinutesMeasure
+starting_LatitudeMinutesMeasure =
+  element LatitudeMinutesMeasure { LatitudeMinutesMeasureType }
+start |= starting_LeadTimeMeasure
+starting_LeadTimeMeasure =
+  element LeadTimeMeasure { LeadTimeMeasureType }
+start |= starting_LegalReference
+starting_LegalReference = element LegalReference { LegalReferenceType }
+start |= starting_LegalStatusIndicator
+starting_LegalStatusIndicator =
+  element LegalStatusIndicator { LegalStatusIndicatorType }
+start |= starting_LiabilityAmount
+starting_LiabilityAmount =
+  element LiabilityAmount { LiabilityAmountType }
+start |= starting_LicensePlateID
+starting_LicensePlateID = element LicensePlateID { LicensePlateIDType }
+start |= starting_LifeCycleStatusCode
+starting_LifeCycleStatusCode =
+  element LifeCycleStatusCode { LifeCycleStatusCodeType }
+start |= starting_LimitationDescription
+starting_LimitationDescription =
+  element LimitationDescription { LimitationDescriptionType }
+start |= starting_Line
+starting_Line = element Line { LineType }
+start |= starting_LineCountNumeric
+starting_LineCountNumeric =
+  element LineCountNumeric { LineCountNumericType }
+start |= starting_LineExtensionAmount
+starting_LineExtensionAmount =
+  element LineExtensionAmount { LineExtensionAmountType }
+start |= starting_LineID
+starting_LineID = element LineID { LineIDType }
+start |= starting_LineNumberNumeric
+starting_LineNumberNumeric =
+  element LineNumberNumeric { LineNumberNumericType }
+start |= starting_LineStatusCode
+starting_LineStatusCode = element LineStatusCode { LineStatusCodeType }
+start |= starting_ListValue
+starting_ListValue = element ListValue { ListValueType }
+start |= starting_LivestockIndicator
+starting_LivestockIndicator =
+  element LivestockIndicator { LivestockIndicatorType }
+start |= starting_LoadingLengthMeasure
+starting_LoadingLengthMeasure =
+  element LoadingLengthMeasure { LoadingLengthMeasureType }
+start |= starting_LoadingSequenceID
+starting_LoadingSequenceID =
+  element LoadingSequenceID { LoadingSequenceIDType }
+start |= starting_LocaleCode
+starting_LocaleCode = element LocaleCode { LocaleCodeType }
+start |= starting_Location
+starting_Location = element Location { LocationType }
+start |= starting_LocationID
+starting_LocationID = element LocationID { LocationIDType }
+start |= starting_LocationTypeCode
+starting_LocationTypeCode =
+  element LocationTypeCode { LocationTypeCodeType }
+start |= starting_Login
+starting_Login = element Login { LoginType }
+start |= starting_LogoReferenceID
+starting_LogoReferenceID =
+  element LogoReferenceID { LogoReferenceIDType }
+start |= starting_LongitudeDegreesMeasure
+starting_LongitudeDegreesMeasure =
+  element LongitudeDegreesMeasure { LongitudeDegreesMeasureType }
+start |= starting_LongitudeDirectionCode
+starting_LongitudeDirectionCode =
+  element LongitudeDirectionCode { LongitudeDirectionCodeType }
+start |= starting_LongitudeMinutesMeasure
+starting_LongitudeMinutesMeasure =
+  element LongitudeMinutesMeasure { LongitudeMinutesMeasureType }
+start |= starting_LossRisk
+starting_LossRisk = element LossRisk { LossRiskType }
+start |= starting_LossRiskResponsibilityCode
+starting_LossRiskResponsibilityCode =
+  element LossRiskResponsibilityCode { LossRiskResponsibilityCodeType }
+start |= starting_LotNumberID
+starting_LotNumberID = element LotNumberID { LotNumberIDType }
+start |= starting_LowTendersDescription
+starting_LowTendersDescription =
+  element LowTendersDescription { LowTendersDescriptionType }
+start |= starting_LowerOrangeHazardPlacardID
+starting_LowerOrangeHazardPlacardID =
+  element LowerOrangeHazardPlacardID { LowerOrangeHazardPlacardIDType }
+start |= starting_LowerTenderAmount
+starting_LowerTenderAmount =
+  element LowerTenderAmount { LowerTenderAmountType }
+start |= starting_MandateTypeCode
+starting_MandateTypeCode =
+  element MandateTypeCode { MandateTypeCodeType }
+start |= starting_ManufactureDate
+starting_ManufactureDate =
+  element ManufactureDate { ManufactureDateType }
+start |= starting_ManufactureTime
+starting_ManufactureTime =
+  element ManufactureTime { ManufactureTimeType }
+start |= starting_MarkAttention
+starting_MarkAttention = element MarkAttention { MarkAttentionType }
+start |= starting_MarkAttentionIndicator
+starting_MarkAttentionIndicator =
+  element MarkAttentionIndicator { MarkAttentionIndicatorType }
+start |= starting_MarkCare
+starting_MarkCare = element MarkCare { MarkCareType }
+start |= starting_MarkCareIndicator
+starting_MarkCareIndicator =
+  element MarkCareIndicator { MarkCareIndicatorType }
+start |= starting_MarketValueAmount
+starting_MarketValueAmount =
+  element MarketValueAmount { MarketValueAmountType }
+start |= starting_MarkingID
+starting_MarkingID = element MarkingID { MarkingIDType }
+start |= starting_MathematicOperatorCode
+starting_MathematicOperatorCode =
+  element MathematicOperatorCode { MathematicOperatorCodeType }
+start |= starting_MaximumAdvertisementAmount
+starting_MaximumAdvertisementAmount =
+  element MaximumAdvertisementAmount { MaximumAdvertisementAmountType }
+start |= starting_MaximumAmount
+starting_MaximumAmount = element MaximumAmount { MaximumAmountType }
+start |= starting_MaximumBackorderQuantity
+starting_MaximumBackorderQuantity =
+  element MaximumBackorderQuantity { MaximumBackorderQuantityType }
+start |= starting_MaximumCopiesNumeric
+starting_MaximumCopiesNumeric =
+  element MaximumCopiesNumeric { MaximumCopiesNumericType }
+start |= starting_MaximumDataLossDurationMeasure
+starting_MaximumDataLossDurationMeasure =
+  element MaximumDataLossDurationMeasure {
+    MaximumDataLossDurationMeasureType
+  }
+start |= starting_MaximumIncidentNotificationDurationMeasure
+starting_MaximumIncidentNotificationDurationMeasure =
+  element MaximumIncidentNotificationDurationMeasure {
+    MaximumIncidentNotificationDurationMeasureType
+  }
+start |= starting_MaximumLotsAwardedNumeric
+starting_MaximumLotsAwardedNumeric =
+  element MaximumLotsAwardedNumeric { MaximumLotsAwardedNumericType }
+start |= starting_MaximumLotsSubmittedNumeric
+starting_MaximumLotsSubmittedNumeric =
+  element MaximumLotsSubmittedNumeric {
+    MaximumLotsSubmittedNumericType
+  }
+start |= starting_MaximumMeasure
+starting_MaximumMeasure = element MaximumMeasure { MaximumMeasureType }
+start |= starting_MaximumNumberNumeric
+starting_MaximumNumberNumeric =
+  element MaximumNumberNumeric { MaximumNumberNumericType }
+start |= starting_MaximumOperatorQuantity
+starting_MaximumOperatorQuantity =
+  element MaximumOperatorQuantity { MaximumOperatorQuantityType }
+start |= starting_MaximumOrderQuantity
+starting_MaximumOrderQuantity =
+  element MaximumOrderQuantity { MaximumOrderQuantityType }
+start |= starting_MaximumOriginalsNumeric
+starting_MaximumOriginalsNumeric =
+  element MaximumOriginalsNumeric { MaximumOriginalsNumericType }
+start |= starting_MaximumPaidAmount
+starting_MaximumPaidAmount =
+  element MaximumPaidAmount { MaximumPaidAmountType }
+start |= starting_MaximumPaymentInstructionsNumeric
+starting_MaximumPaymentInstructionsNumeric =
+  element MaximumPaymentInstructionsNumeric {
+    MaximumPaymentInstructionsNumericType
+  }
+start |= starting_MaximumPercent
+starting_MaximumPercent = element MaximumPercent { MaximumPercentType }
+start |= starting_MaximumQuantity
+starting_MaximumQuantity =
+  element MaximumQuantity { MaximumQuantityType }
+start |= starting_MaximumValue
+starting_MaximumValue = element MaximumValue { MaximumValueType }
+start |= starting_MaximumValueNumeric
+starting_MaximumValueNumeric =
+  element MaximumValueNumeric { MaximumValueNumericType }
+start |= starting_MaximumVariantQuantity
+starting_MaximumVariantQuantity =
+  element MaximumVariantQuantity { MaximumVariantQuantityType }
+start |= starting_MeanTimeToRecoverDurationMeasure
+starting_MeanTimeToRecoverDurationMeasure =
+  element MeanTimeToRecoverDurationMeasure {
+    MeanTimeToRecoverDurationMeasureType
+  }
+start |= starting_Measure
+starting_Measure = element Measure { MeasureType }
+start |= starting_MedicalFirstAidGuideCode
+starting_MedicalFirstAidGuideCode =
+  element MedicalFirstAidGuideCode { MedicalFirstAidGuideCodeType }
+start |= starting_MessageFormat
+starting_MessageFormat = element MessageFormat { MessageFormatType }
+start |= starting_MeterConstant
+starting_MeterConstant = element MeterConstant { MeterConstantType }
+start |= starting_MeterConstantCode
+starting_MeterConstantCode =
+  element MeterConstantCode { MeterConstantCodeType }
+start |= starting_MeterName
+starting_MeterName = element MeterName { MeterNameType }
+start |= starting_MeterNumber
+starting_MeterNumber = element MeterNumber { MeterNumberType }
+start |= starting_MeterReadingComments
+starting_MeterReadingComments =
+  element MeterReadingComments { MeterReadingCommentsType }
+start |= starting_MeterReadingType
+starting_MeterReadingType =
+  element MeterReadingType { MeterReadingTypeType }
+start |= starting_MeterReadingTypeCode
+starting_MeterReadingTypeCode =
+  element MeterReadingTypeCode { MeterReadingTypeCodeType }
+start |= starting_MiddleName
+starting_MiddleName = element MiddleName { MiddleNameType }
+start |= starting_MimeCode
+starting_MimeCode = element MimeCode { MimeCodeType }
+start |= starting_MinimumAmount
+starting_MinimumAmount = element MinimumAmount { MinimumAmountType }
+start |= starting_MinimumBackorderQuantity
+starting_MinimumBackorderQuantity =
+  element MinimumBackorderQuantity { MinimumBackorderQuantityType }
+start |= starting_MinimumDownTimeScheduleDurationMeasure
+starting_MinimumDownTimeScheduleDurationMeasure =
+  element MinimumDownTimeScheduleDurationMeasure {
+    MinimumDownTimeScheduleDurationMeasureType
+  }
+start |= starting_MinimumImprovementBid
+starting_MinimumImprovementBid =
+  element MinimumImprovementBid { MinimumImprovementBidType }
+start |= starting_MinimumInventoryQuantity
+starting_MinimumInventoryQuantity =
+  element MinimumInventoryQuantity { MinimumInventoryQuantityType }
+start |= starting_MinimumMeasure
+starting_MinimumMeasure = element MinimumMeasure { MinimumMeasureType }
+start |= starting_MinimumNumberNumeric
+starting_MinimumNumberNumeric =
+  element MinimumNumberNumeric { MinimumNumberNumericType }
+start |= starting_MinimumOrderQuantity
+starting_MinimumOrderQuantity =
+  element MinimumOrderQuantity { MinimumOrderQuantityType }
+start |= starting_MinimumPercent
+starting_MinimumPercent = element MinimumPercent { MinimumPercentType }
+start |= starting_MinimumQuantity
+starting_MinimumQuantity =
+  element MinimumQuantity { MinimumQuantityType }
+start |= starting_MinimumResponseTimeDurationMeasure
+starting_MinimumResponseTimeDurationMeasure =
+  element MinimumResponseTimeDurationMeasure {
+    MinimumResponseTimeDurationMeasureType
+  }
+start |= starting_MinimumValue
+starting_MinimumValue = element MinimumValue { MinimumValueType }
+start |= starting_MinimumValueNumeric
+starting_MinimumValueNumeric =
+  element MinimumValueNumeric { MinimumValueNumericType }
+start |= starting_MiscellaneousEventTypeCode
+starting_MiscellaneousEventTypeCode =
+  element MiscellaneousEventTypeCode { MiscellaneousEventTypeCodeType }
+start |= starting_ModelName
+starting_ModelName = element ModelName { ModelNameType }
+start |= starting_MondayAvailabilityIndicator
+starting_MondayAvailabilityIndicator =
+  element MondayAvailabilityIndicator {
+    MondayAvailabilityIndicatorType
+  }
+start |= starting_MonetaryScope
+starting_MonetaryScope = element MonetaryScope { MonetaryScopeType }
+start |= starting_MovieTitle
+starting_MovieTitle = element MovieTitle { MovieTitleType }
+start |= starting_MultipleOrderQuantity
+starting_MultipleOrderQuantity =
+  element MultipleOrderQuantity { MultipleOrderQuantityType }
+start |= starting_MultiplierFactorNumeric
+starting_MultiplierFactorNumeric =
+  element MultiplierFactorNumeric { MultiplierFactorNumericType }
+start |= starting_Name
+starting_Name = element Name { NameType }
+start |= starting_NameCode
+starting_NameCode = element NameCode { NameCodeType }
+start |= starting_NameSuffix
+starting_NameSuffix = element NameSuffix { NameSuffixType }
+start |= starting_NationalityID
+starting_NationalityID = element NationalityID { NationalityIDType }
+start |= starting_NatureCode
+starting_NatureCode = element NatureCode { NatureCodeType }
+start |= starting_NegotiationDescription
+starting_NegotiationDescription =
+  element NegotiationDescription { NegotiationDescriptionType }
+start |= starting_NetNetWeightMeasure
+starting_NetNetWeightMeasure =
+  element NetNetWeightMeasure { NetNetWeightMeasureType }
+start |= starting_NetTonnageMeasure
+starting_NetTonnageMeasure =
+  element NetTonnageMeasure { NetTonnageMeasureType }
+start |= starting_NetVolumeMeasure
+starting_NetVolumeMeasure =
+  element NetVolumeMeasure { NetVolumeMeasureType }
+start |= starting_NetWeightMeasure
+starting_NetWeightMeasure =
+  element NetWeightMeasure { NetWeightMeasureType }
+start |= starting_NetworkID
+starting_NetworkID = element NetworkID { NetworkIDType }
+start |= starting_NoFurtherNegotiationIndicator
+starting_NoFurtherNegotiationIndicator =
+  element NoFurtherNegotiationIndicator {
+    NoFurtherNegotiationIndicatorType
+  }
+start |= starting_NominationDate
+starting_NominationDate = element NominationDate { NominationDateType }
+start |= starting_NominationTime
+starting_NominationTime = element NominationTime { NominationTimeType }
+start |= starting_NormalTemperatureReductionQuantity
+starting_NormalTemperatureReductionQuantity =
+  element NormalTemperatureReductionQuantity {
+    NormalTemperatureReductionQuantityType
+  }
+start |= starting_Note
+starting_Note = element Note { NoteType }
+start |= starting_NoticeLanguageCode
+starting_NoticeLanguageCode =
+  element NoticeLanguageCode { NoticeLanguageCodeType }
+start |= starting_NoticeTypeCode
+starting_NoticeTypeCode = element NoticeTypeCode { NoticeTypeCodeType }
+start |= starting_NotificationTypeCode
+starting_NotificationTypeCode =
+  element NotificationTypeCode { NotificationTypeCodeType }
+start |= starting_OID
+starting_OID = element OID { OIDType }
+start |= starting_OccurrenceDate
+starting_OccurrenceDate = element OccurrenceDate { OccurrenceDateType }
+start |= starting_OccurrenceTime
+starting_OccurrenceTime = element OccurrenceTime { OccurrenceTimeType }
+start |= starting_OnCarriageIndicator
+starting_OnCarriageIndicator =
+  element OnCarriageIndicator { OnCarriageIndicatorType }
+start |= starting_OneTimeChargeType
+starting_OneTimeChargeType =
+  element OneTimeChargeType { OneTimeChargeTypeType }
+start |= starting_OneTimeChargeTypeCode
+starting_OneTimeChargeTypeCode =
+  element OneTimeChargeTypeCode { OneTimeChargeTypeCodeType }
+start |= starting_OntologyURI
+starting_OntologyURI = element OntologyURI { OntologyURIType }
+start |= starting_OpenTenderID
+starting_OpenTenderID = element OpenTenderID { OpenTenderIDType }
+start |= starting_OperatingYearsQuantity
+starting_OperatingYearsQuantity =
+  element OperatingYearsQuantity { OperatingYearsQuantityType }
+start |= starting_OptionalLineItemIndicator
+starting_OptionalLineItemIndicator =
+  element OptionalLineItemIndicator { OptionalLineItemIndicatorType }
+start |= starting_OptionsDescription
+starting_OptionsDescription =
+  element OptionsDescription { OptionsDescriptionType }
+start |= starting_OrderIntervalDaysNumeric
+starting_OrderIntervalDaysNumeric =
+  element OrderIntervalDaysNumeric { OrderIntervalDaysNumericType }
+start |= starting_OrderQuantityIncrementNumeric
+starting_OrderQuantityIncrementNumeric =
+  element OrderQuantityIncrementNumeric {
+    OrderQuantityIncrementNumericType
+  }
+start |= starting_OrderResponseCode
+starting_OrderResponseCode =
+  element OrderResponseCode { OrderResponseCodeType }
+start |= starting_OrderTypeCode
+starting_OrderTypeCode = element OrderTypeCode { OrderTypeCodeType }
+start |= starting_OrderableIndicator
+starting_OrderableIndicator =
+  element OrderableIndicator { OrderableIndicatorType }
+start |= starting_OrderableUnit
+starting_OrderableUnit = element OrderableUnit { OrderableUnitType }
+start |= starting_OrderableUnitFactorRate
+starting_OrderableUnitFactorRate =
+  element OrderableUnitFactorRate { OrderableUnitFactorRateType }
+start |= starting_OrganizationDepartment
+starting_OrganizationDepartment =
+  element OrganizationDepartment { OrganizationDepartmentType }
+start |= starting_OriginalContractingSystemID
+starting_OriginalContractingSystemID =
+  element OriginalContractingSystemID {
+    OriginalContractingSystemIDType
+  }
+start |= starting_OriginalJobID
+starting_OriginalJobID = element OriginalJobID { OriginalJobIDType }
+start |= starting_OtherConditionsIndicator
+starting_OtherConditionsIndicator =
+  element OtherConditionsIndicator { OtherConditionsIndicatorType }
+start |= starting_OtherInstruction
+starting_OtherInstruction =
+  element OtherInstruction { OtherInstructionType }
+start |= starting_OtherName
+starting_OtherName = element OtherName { OtherNameType }
+start |= starting_OutstandingQuantity
+starting_OutstandingQuantity =
+  element OutstandingQuantity { OutstandingQuantityType }
+start |= starting_OutstandingReason
+starting_OutstandingReason =
+  element OutstandingReason { OutstandingReasonType }
+start |= starting_OversupplyQuantity
+starting_OversupplyQuantity =
+  element OversupplyQuantity { OversupplyQuantityType }
+start |= starting_OwnerTypeCode
+starting_OwnerTypeCode = element OwnerTypeCode { OwnerTypeCodeType }
+start |= starting_PackLevelCode
+starting_PackLevelCode = element PackLevelCode { PackLevelCodeType }
+start |= starting_PackQuantity
+starting_PackQuantity = element PackQuantity { PackQuantityType }
+start |= starting_PackSizeNumeric
+starting_PackSizeNumeric =
+  element PackSizeNumeric { PackSizeNumericType }
+start |= starting_PackageLevelCode
+starting_PackageLevelCode =
+  element PackageLevelCode { PackageLevelCodeType }
+start |= starting_PackagingTypeCode
+starting_PackagingTypeCode =
+  element PackagingTypeCode { PackagingTypeCodeType }
+start |= starting_PackingCriteriaCode
+starting_PackingCriteriaCode =
+  element PackingCriteriaCode { PackingCriteriaCodeType }
+start |= starting_PackingMaterial
+starting_PackingMaterial =
+  element PackingMaterial { PackingMaterialType }
+start |= starting_PaidAmount
+starting_PaidAmount = element PaidAmount { PaidAmountType }
+start |= starting_PaidDate
+starting_PaidDate = element PaidDate { PaidDateType }
+start |= starting_PaidTime
+starting_PaidTime = element PaidTime { PaidTimeType }
+start |= starting_ParentDocumentID
+starting_ParentDocumentID =
+  element ParentDocumentID { ParentDocumentIDType }
+start |= starting_ParentDocumentLineReferenceID
+starting_ParentDocumentLineReferenceID =
+  element ParentDocumentLineReferenceID {
+    ParentDocumentLineReferenceIDType
+  }
+start |= starting_ParentDocumentTypeCode
+starting_ParentDocumentTypeCode =
+  element ParentDocumentTypeCode { ParentDocumentTypeCodeType }
+start |= starting_ParentDocumentVersionID
+starting_ParentDocumentVersionID =
+  element ParentDocumentVersionID { ParentDocumentVersionIDType }
+start |= starting_PartPresentationCode
+starting_PartPresentationCode =
+  element PartPresentationCode { PartPresentationCodeType }
+start |= starting_PartecipationPercent
+starting_PartecipationPercent =
+  element PartecipationPercent { PartecipationPercentType }
+start |= starting_PartialDeliveryIndicator
+starting_PartialDeliveryIndicator =
+  element PartialDeliveryIndicator { PartialDeliveryIndicatorType }
+start |= starting_ParticipantID
+starting_ParticipantID = element ParticipantID { ParticipantIDType }
+start |= starting_ParticipationPercent
+starting_ParticipationPercent =
+  element ParticipationPercent { ParticipationPercentType }
+start |= starting_PartyCapacityAmount
+starting_PartyCapacityAmount =
+  element PartyCapacityAmount { PartyCapacityAmountType }
+start |= starting_PartyType
+starting_PartyType = element PartyType { PartyTypeType }
+start |= starting_PartyTypeCode
+starting_PartyTypeCode = element PartyTypeCode { PartyTypeCodeType }
+start |= starting_PassengerQuantity
+starting_PassengerQuantity =
+  element PassengerQuantity { PassengerQuantityType }
+start |= starting_Password
+starting_Password = element Password { PasswordType }
+start |= starting_PayPerView
+starting_PayPerView = element PayPerView { PayPerViewType }
+start |= starting_PayableAlternativeAmount
+starting_PayableAlternativeAmount =
+  element PayableAlternativeAmount { PayableAlternativeAmountType }
+start |= starting_PayableAmount
+starting_PayableAmount = element PayableAmount { PayableAmountType }
+start |= starting_PayableRoundingAmount
+starting_PayableRoundingAmount =
+  element PayableRoundingAmount { PayableRoundingAmountType }
+start |= starting_PayerReference
+starting_PayerReference = element PayerReference { PayerReferenceType }
+start |= starting_PaymentAlternativeCurrencyCode
+starting_PaymentAlternativeCurrencyCode =
+  element PaymentAlternativeCurrencyCode {
+    PaymentAlternativeCurrencyCodeType
+  }
+start |= starting_PaymentChannelCode
+starting_PaymentChannelCode =
+  element PaymentChannelCode { PaymentChannelCodeType }
+start |= starting_PaymentCurrencyCode
+starting_PaymentCurrencyCode =
+  element PaymentCurrencyCode { PaymentCurrencyCodeType }
+start |= starting_PaymentDescription
+starting_PaymentDescription =
+  element PaymentDescription { PaymentDescriptionType }
+start |= starting_PaymentDueDate
+starting_PaymentDueDate = element PaymentDueDate { PaymentDueDateType }
+start |= starting_PaymentFrequencyCode
+starting_PaymentFrequencyCode =
+  element PaymentFrequencyCode { PaymentFrequencyCodeType }
+start |= starting_PaymentID
+starting_PaymentID = element PaymentID { PaymentIDType }
+start |= starting_PaymentMeansCode
+starting_PaymentMeansCode =
+  element PaymentMeansCode { PaymentMeansCodeType }
+start |= starting_PaymentMeansID
+starting_PaymentMeansID = element PaymentMeansID { PaymentMeansIDType }
+start |= starting_PaymentNote
+starting_PaymentNote = element PaymentNote { PaymentNoteType }
+start |= starting_PaymentOrderReference
+starting_PaymentOrderReference =
+  element PaymentOrderReference { PaymentOrderReferenceType }
+start |= starting_PaymentPercent
+starting_PaymentPercent = element PaymentPercent { PaymentPercentType }
+start |= starting_PaymentPurposeCode
+starting_PaymentPurposeCode =
+  element PaymentPurposeCode { PaymentPurposeCodeType }
+start |= starting_PaymentTermsDetailsURI
+starting_PaymentTermsDetailsURI =
+  element PaymentTermsDetailsURI { PaymentTermsDetailsURIType }
+start |= starting_PenaltyAmount
+starting_PenaltyAmount = element PenaltyAmount { PenaltyAmountType }
+start |= starting_PenaltySurchargePercent
+starting_PenaltySurchargePercent =
+  element PenaltySurchargePercent { PenaltySurchargePercentType }
+start |= starting_PerUnitAmount
+starting_PerUnitAmount = element PerUnitAmount { PerUnitAmountType }
+start |= starting_Percent
+starting_Percent = element Percent { PercentType }
+start |= starting_PerformanceMetricTypeCode
+starting_PerformanceMetricTypeCode =
+  element PerformanceMetricTypeCode { PerformanceMetricTypeCodeType }
+start |= starting_PerformanceValueQuantity
+starting_PerformanceValueQuantity =
+  element PerformanceValueQuantity { PerformanceValueQuantityType }
+start |= starting_PerformingCarrierAssignedID
+starting_PerformingCarrierAssignedID =
+  element PerformingCarrierAssignedID {
+    PerformingCarrierAssignedIDType
+  }
+start |= starting_PersonalSituation
+starting_PersonalSituation =
+  element PersonalSituation { PersonalSituationType }
+start |= starting_PhoneNumber
+starting_PhoneNumber = element PhoneNumber { PhoneNumberType }
+start |= starting_PlacardEndorsement
+starting_PlacardEndorsement =
+  element PlacardEndorsement { PlacardEndorsementType }
+start |= starting_PlacardNotation
+starting_PlacardNotation =
+  element PlacardNotation { PlacardNotationType }
+start |= starting_PlannedDate
+starting_PlannedDate = element PlannedDate { PlannedDateType }
+start |= starting_PlotIdentification
+starting_PlotIdentification =
+  element PlotIdentification { PlotIdentificationType }
+start |= starting_PositionCode
+starting_PositionCode = element PositionCode { PositionCodeType }
+start |= starting_PostEventNotificationDurationMeasure
+starting_PostEventNotificationDurationMeasure =
+  element PostEventNotificationDurationMeasure {
+    PostEventNotificationDurationMeasureType
+  }
+start |= starting_PostalZone
+starting_PostalZone = element PostalZone { PostalZoneType }
+start |= starting_Postbox
+starting_Postbox = element Postbox { PostboxType }
+start |= starting_PowerIndicator
+starting_PowerIndicator = element PowerIndicator { PowerIndicatorType }
+start |= starting_PreCarriageIndicator
+starting_PreCarriageIndicator =
+  element PreCarriageIndicator { PreCarriageIndicatorType }
+start |= starting_PreEventNotificationDurationMeasure
+starting_PreEventNotificationDurationMeasure =
+  element PreEventNotificationDurationMeasure {
+    PreEventNotificationDurationMeasureType
+  }
+start |= starting_PreferenceCriterionCode
+starting_PreferenceCriterionCode =
+  element PreferenceCriterionCode { PreferenceCriterionCodeType }
+start |= starting_PreferredLanguageLocaleCode
+starting_PreferredLanguageLocaleCode =
+  element PreferredLanguageLocaleCode {
+    PreferredLanguageLocaleCodeType
+  }
+start |= starting_PrepaidAmount
+starting_PrepaidAmount = element PrepaidAmount { PrepaidAmountType }
+start |= starting_PrepaidIndicator
+starting_PrepaidIndicator =
+  element PrepaidIndicator { PrepaidIndicatorType }
+start |= starting_PrepaidPaymentReferenceID
+starting_PrepaidPaymentReferenceID =
+  element PrepaidPaymentReferenceID { PrepaidPaymentReferenceIDType }
+start |= starting_PreviousCancellationReasonCode
+starting_PreviousCancellationReasonCode =
+  element PreviousCancellationReasonCode {
+    PreviousCancellationReasonCodeType
+  }
+start |= starting_PreviousJobID
+starting_PreviousJobID = element PreviousJobID { PreviousJobIDType }
+start |= starting_PreviousMeterQuantity
+starting_PreviousMeterQuantity =
+  element PreviousMeterQuantity { PreviousMeterQuantityType }
+start |= starting_PreviousMeterReadingDate
+starting_PreviousMeterReadingDate =
+  element PreviousMeterReadingDate { PreviousMeterReadingDateType }
+start |= starting_PreviousMeterReadingMethod
+starting_PreviousMeterReadingMethod =
+  element PreviousMeterReadingMethod { PreviousMeterReadingMethodType }
+start |= starting_PreviousMeterReadingMethodCode
+starting_PreviousMeterReadingMethodCode =
+  element PreviousMeterReadingMethodCode {
+    PreviousMeterReadingMethodCodeType
+  }
+start |= starting_PreviousVersionID
+starting_PreviousVersionID =
+  element PreviousVersionID { PreviousVersionIDType }
+start |= starting_PriceAmount
+starting_PriceAmount = element PriceAmount { PriceAmountType }
+start |= starting_PriceChangeReason
+starting_PriceChangeReason =
+  element PriceChangeReason { PriceChangeReasonType }
+start |= starting_PriceEvaluationCode
+starting_PriceEvaluationCode =
+  element PriceEvaluationCode { PriceEvaluationCodeType }
+start |= starting_PriceRevisionFormulaDescription
+starting_PriceRevisionFormulaDescription =
+  element PriceRevisionFormulaDescription {
+    PriceRevisionFormulaDescriptionType
+  }
+start |= starting_PriceType
+starting_PriceType = element PriceType { PriceTypeType }
+start |= starting_PriceTypeCode
+starting_PriceTypeCode = element PriceTypeCode { PriceTypeCodeType }
+start |= starting_PricingCurrencyCode
+starting_PricingCurrencyCode =
+  element PricingCurrencyCode { PricingCurrencyCodeType }
+start |= starting_PricingUpdateRequestIndicator
+starting_PricingUpdateRequestIndicator =
+  element PricingUpdateRequestIndicator {
+    PricingUpdateRequestIndicatorType
+  }
+start |= starting_PrimaryAccountNumberID
+starting_PrimaryAccountNumberID =
+  element PrimaryAccountNumberID { PrimaryAccountNumberIDType }
+start |= starting_PrintQualifier
+starting_PrintQualifier = element PrintQualifier { PrintQualifierType }
+start |= starting_Priority
+starting_Priority = element Priority { PriorityType }
+start |= starting_PrivacyCode
+starting_PrivacyCode = element PrivacyCode { PrivacyCodeType }
+start |= starting_PrivatePartyIndicator
+starting_PrivatePartyIndicator =
+  element PrivatePartyIndicator { PrivatePartyIndicatorType }
+start |= starting_PrizeDescription
+starting_PrizeDescription =
+  element PrizeDescription { PrizeDescriptionType }
+start |= starting_PrizeIndicator
+starting_PrizeIndicator = element PrizeIndicator { PrizeIndicatorType }
+start |= starting_ProcedureCode
+starting_ProcedureCode = element ProcedureCode { ProcedureCodeType }
+start |= starting_ProcessDescription
+starting_ProcessDescription =
+  element ProcessDescription { ProcessDescriptionType }
+start |= starting_ProcessReason
+starting_ProcessReason = element ProcessReason { ProcessReasonType }
+start |= starting_ProcessReasonCode
+starting_ProcessReasonCode =
+  element ProcessReasonCode { ProcessReasonCodeType }
+start |= starting_ProcurementSubTypeCode
+starting_ProcurementSubTypeCode =
+  element ProcurementSubTypeCode { ProcurementSubTypeCodeType }
+start |= starting_ProcurementTypeCode
+starting_ProcurementTypeCode =
+  element ProcurementTypeCode { ProcurementTypeCodeType }
+start |= starting_ProductTraceID
+starting_ProductTraceID = element ProductTraceID { ProductTraceIDType }
+start |= starting_ProfileExecutionID
+starting_ProfileExecutionID =
+  element ProfileExecutionID { ProfileExecutionIDType }
+start |= starting_ProfileID
+starting_ProfileID = element ProfileID { ProfileIDType }
+start |= starting_ProfileStatusCode
+starting_ProfileStatusCode =
+  element ProfileStatusCode { ProfileStatusCodeType }
+start |= starting_ProgressPercent
+starting_ProgressPercent =
+  element ProgressPercent { ProgressPercentType }
+start |= starting_PromotionalEventTypeCode
+starting_PromotionalEventTypeCode =
+  element PromotionalEventTypeCode { PromotionalEventTypeCodeType }
+start |= starting_PropertyGroupTypeCode
+starting_PropertyGroupTypeCode =
+  element PropertyGroupTypeCode { PropertyGroupTypeCodeType }
+start |= starting_ProtocolID
+starting_ProtocolID = element ProtocolID { ProtocolIDType }
+start |= starting_ProviderTypeCode
+starting_ProviderTypeCode =
+  element ProviderTypeCode { ProviderTypeCodeType }
+start |= starting_PublicPartyIndicator
+starting_PublicPartyIndicator =
+  element PublicPartyIndicator { PublicPartyIndicatorType }
+start |= starting_PublishAwardIndicator
+starting_PublishAwardIndicator =
+  element PublishAwardIndicator { PublishAwardIndicatorType }
+start |= starting_Purpose
+starting_Purpose = element Purpose { PurposeType }
+start |= starting_PurposeCode
+starting_PurposeCode = element PurposeCode { PurposeCodeType }
+start |= starting_QualificationApplicationTypeCode
+starting_QualificationApplicationTypeCode =
+  element QualificationApplicationTypeCode {
+    QualificationApplicationTypeCodeType
+  }
+start |= starting_QualityControlCode
+starting_QualityControlCode =
+  element QualityControlCode { QualityControlCodeType }
+start |= starting_Quantity
+starting_Quantity = element Quantity { QuantityType }
+start |= starting_QuantityDiscrepancyCode
+starting_QuantityDiscrepancyCode =
+  element QuantityDiscrepancyCode { QuantityDiscrepancyCodeType }
+start |= starting_RadioCallSignID
+starting_RadioCallSignID =
+  element RadioCallSignID { RadioCallSignIDType }
+start |= starting_RailCarID
+starting_RailCarID = element RailCarID { RailCarIDType }
+start |= starting_Rank
+starting_Rank = element Rank { RankType }
+start |= starting_Rate
+starting_Rate = element Rate { RateType }
+start |= starting_ReceiptAdviceTypeCode
+starting_ReceiptAdviceTypeCode =
+  element ReceiptAdviceTypeCode { ReceiptAdviceTypeCodeType }
+start |= starting_ReceivedDate
+starting_ReceivedDate = element ReceivedDate { ReceivedDateType }
+start |= starting_ReceivedElectronicTenderQuantity
+starting_ReceivedElectronicTenderQuantity =
+  element ReceivedElectronicTenderQuantity {
+    ReceivedElectronicTenderQuantityType
+  }
+start |= starting_ReceivedForeignTenderQuantity
+starting_ReceivedForeignTenderQuantity =
+  element ReceivedForeignTenderQuantity {
+    ReceivedForeignTenderQuantityType
+  }
+start |= starting_ReceivedQuantity
+starting_ReceivedQuantity =
+  element ReceivedQuantity { ReceivedQuantityType }
+start |= starting_ReceivedTenderQuantity
+starting_ReceivedTenderQuantity =
+  element ReceivedTenderQuantity { ReceivedTenderQuantityType }
+start |= starting_RecurringProcurementIndicator
+starting_RecurringProcurementIndicator =
+  element RecurringProcurementIndicator {
+    RecurringProcurementIndicatorType
+  }
+start |= starting_Reference
+starting_Reference = element Reference { ReferenceType }
+start |= starting_ReferenceDate
+starting_ReferenceDate = element ReferenceDate { ReferenceDateType }
+start |= starting_ReferenceEventCode
+starting_ReferenceEventCode =
+  element ReferenceEventCode { ReferenceEventCodeType }
+start |= starting_ReferenceID
+starting_ReferenceID = element ReferenceID { ReferenceIDType }
+start |= starting_ReferenceTime
+starting_ReferenceTime = element ReferenceTime { ReferenceTimeType }
+start |= starting_ReferencedConsignmentID
+starting_ReferencedConsignmentID =
+  element ReferencedConsignmentID { ReferencedConsignmentIDType }
+start |= starting_RefrigeratedIndicator
+starting_RefrigeratedIndicator =
+  element RefrigeratedIndicator { RefrigeratedIndicatorType }
+start |= starting_RefrigerationOnIndicator
+starting_RefrigerationOnIndicator =
+  element RefrigerationOnIndicator { RefrigerationOnIndicatorType }
+start |= starting_Region
+starting_Region = element Region { RegionType }
+start |= starting_RegisteredDate
+starting_RegisteredDate = element RegisteredDate { RegisteredDateType }
+start |= starting_RegisteredTime
+starting_RegisteredTime = element RegisteredTime { RegisteredTimeType }
+start |= starting_RegistrationDate
+starting_RegistrationDate =
+  element RegistrationDate { RegistrationDateType }
+start |= starting_RegistrationExpirationDate
+starting_RegistrationExpirationDate =
+  element RegistrationExpirationDate { RegistrationExpirationDateType }
+start |= starting_RegistrationID
+starting_RegistrationID = element RegistrationID { RegistrationIDType }
+start |= starting_RegistrationName
+starting_RegistrationName =
+  element RegistrationName { RegistrationNameType }
+start |= starting_RegistrationNationality
+starting_RegistrationNationality =
+  element RegistrationNationality { RegistrationNationalityType }
+start |= starting_RegistrationNationalityID
+starting_RegistrationNationalityID =
+  element RegistrationNationalityID { RegistrationNationalityIDType }
+start |= starting_RegulatoryDomain
+starting_RegulatoryDomain =
+  element RegulatoryDomain { RegulatoryDomainType }
+start |= starting_RejectActionCode
+starting_RejectActionCode =
+  element RejectActionCode { RejectActionCodeType }
+start |= starting_RejectReason
+starting_RejectReason = element RejectReason { RejectReasonType }
+start |= starting_RejectReasonCode
+starting_RejectReasonCode =
+  element RejectReasonCode { RejectReasonCodeType }
+start |= starting_RejectedQuantity
+starting_RejectedQuantity =
+  element RejectedQuantity { RejectedQuantityType }
+start |= starting_RejectionNote
+starting_RejectionNote = element RejectionNote { RejectionNoteType }
+start |= starting_ReleaseID
+starting_ReleaseID = element ReleaseID { ReleaseIDType }
+start |= starting_ReliabilityPercent
+starting_ReliabilityPercent =
+  element ReliabilityPercent { ReliabilityPercentType }
+start |= starting_Remarks
+starting_Remarks = element Remarks { RemarksType }
+start |= starting_ReminderSequenceNumeric
+starting_ReminderSequenceNumeric =
+  element ReminderSequenceNumeric { ReminderSequenceNumericType }
+start |= starting_ReminderTypeCode
+starting_ReminderTypeCode =
+  element ReminderTypeCode { ReminderTypeCodeType }
+start |= starting_RenewalsIndicator
+starting_RenewalsIndicator =
+  element RenewalsIndicator { RenewalsIndicatorType }
+start |= starting_ReplenishmentOwnerDescription
+starting_ReplenishmentOwnerDescription =
+  element ReplenishmentOwnerDescription {
+    ReplenishmentOwnerDescriptionType
+  }
+start |= starting_RequestForQuotationLineID
+starting_RequestForQuotationLineID =
+  element RequestForQuotationLineID { RequestForQuotationLineIDType }
+start |= starting_RequestedDeliveryDate
+starting_RequestedDeliveryDate =
+  element RequestedDeliveryDate { RequestedDeliveryDateType }
+start |= starting_RequestedDespatchDate
+starting_RequestedDespatchDate =
+  element RequestedDespatchDate { RequestedDespatchDateType }
+start |= starting_RequestedDespatchTime
+starting_RequestedDespatchTime =
+  element RequestedDespatchTime { RequestedDespatchTimeType }
+start |= starting_RequestedInvoiceCurrencyCode
+starting_RequestedInvoiceCurrencyCode =
+  element RequestedInvoiceCurrencyCode {
+    RequestedInvoiceCurrencyCodeType
+  }
+start |= starting_RequestedPublicationDate
+starting_RequestedPublicationDate =
+  element RequestedPublicationDate { RequestedPublicationDateType }
+start |= starting_RequiredCurriculaIndicator
+starting_RequiredCurriculaIndicator =
+  element RequiredCurriculaIndicator { RequiredCurriculaIndicatorType }
+start |= starting_RequiredCustomsID
+starting_RequiredCustomsID =
+  element RequiredCustomsID { RequiredCustomsIDType }
+start |= starting_RequiredDeliveryDate
+starting_RequiredDeliveryDate =
+  element RequiredDeliveryDate { RequiredDeliveryDateType }
+start |= starting_RequiredDeliveryTime
+starting_RequiredDeliveryTime =
+  element RequiredDeliveryTime { RequiredDeliveryTimeType }
+start |= starting_RequiredFeeAmount
+starting_RequiredFeeAmount =
+  element RequiredFeeAmount { RequiredFeeAmountType }
+start |= starting_RequiredResponseMessageLevelCode
+starting_RequiredResponseMessageLevelCode =
+  element RequiredResponseMessageLevelCode {
+    RequiredResponseMessageLevelCodeType
+  }
+start |= starting_ResidenceType
+starting_ResidenceType = element ResidenceType { ResidenceTypeType }
+start |= starting_ResidenceTypeCode
+starting_ResidenceTypeCode =
+  element ResidenceTypeCode { ResidenceTypeCodeType }
+start |= starting_ResidentOccupantsNumeric
+starting_ResidentOccupantsNumeric =
+  element ResidentOccupantsNumeric { ResidentOccupantsNumericType }
+start |= starting_Resolution
+starting_Resolution = element Resolution { ResolutionType }
+start |= starting_ResolutionCode
+starting_ResolutionCode = element ResolutionCode { ResolutionCodeType }
+start |= starting_ResolutionDate
+starting_ResolutionDate = element ResolutionDate { ResolutionDateType }
+start |= starting_ResolutionTime
+starting_ResolutionTime = element ResolutionTime { ResolutionTimeType }
+start |= starting_Response
+starting_Response = element Response { ResponseType }
+start |= starting_ResponseAmount
+starting_ResponseAmount = element ResponseAmount { ResponseAmountType }
+start |= starting_ResponseBinaryObject
+starting_ResponseBinaryObject =
+  element ResponseBinaryObject { ResponseBinaryObjectType }
+start |= starting_ResponseCode
+starting_ResponseCode = element ResponseCode { ResponseCodeType }
+start |= starting_ResponseDate
+starting_ResponseDate = element ResponseDate { ResponseDateType }
+start |= starting_ResponseID
+starting_ResponseID = element ResponseID { ResponseIDType }
+start |= starting_ResponseIndicator
+starting_ResponseIndicator =
+  element ResponseIndicator { ResponseIndicatorType }
+start |= starting_ResponseMeasure
+starting_ResponseMeasure =
+  element ResponseMeasure { ResponseMeasureType }
+start |= starting_ResponseNumeric
+starting_ResponseNumeric =
+  element ResponseNumeric { ResponseNumericType }
+start |= starting_ResponseQuantity
+starting_ResponseQuantity =
+  element ResponseQuantity { ResponseQuantityType }
+start |= starting_ResponseTime
+starting_ResponseTime = element ResponseTime { ResponseTimeType }
+start |= starting_ResponseURI
+starting_ResponseURI = element ResponseURI { ResponseURIType }
+start |= starting_RetailEventName
+starting_RetailEventName =
+  element RetailEventName { RetailEventNameType }
+start |= starting_RetailEventStatusCode
+starting_RetailEventStatusCode =
+  element RetailEventStatusCode { RetailEventStatusCodeType }
+start |= starting_ReturnabilityIndicator
+starting_ReturnabilityIndicator =
+  element ReturnabilityIndicator { ReturnabilityIndicatorType }
+start |= starting_ReturnableMaterialIndicator
+starting_ReturnableMaterialIndicator =
+  element ReturnableMaterialIndicator {
+    ReturnableMaterialIndicatorType
+  }
+start |= starting_ReturnableQuantity
+starting_ReturnableQuantity =
+  element ReturnableQuantity { ReturnableQuantityType }
+start |= starting_RevisedForecastLineID
+starting_RevisedForecastLineID =
+  element RevisedForecastLineID { RevisedForecastLineIDType }
+start |= starting_RevisionDate
+starting_RevisionDate = element RevisionDate { RevisionDateType }
+start |= starting_RevisionStatusCode
+starting_RevisionStatusCode =
+  element RevisionStatusCode { RevisionStatusCodeType }
+start |= starting_RevisionTime
+starting_RevisionTime = element RevisionTime { RevisionTimeType }
+start |= starting_RoamingPartnerName
+starting_RoamingPartnerName =
+  element RoamingPartnerName { RoamingPartnerNameType }
+start |= starting_RoleCode
+starting_RoleCode = element RoleCode { RoleCodeType }
+start |= starting_RoleDescription
+starting_RoleDescription =
+  element RoleDescription { RoleDescriptionType }
+start |= starting_Room
+starting_Room = element Room { RoomType }
+start |= starting_RoundingAmount
+starting_RoundingAmount = element RoundingAmount { RoundingAmountType }
+start |= starting_SalesOrderID
+starting_SalesOrderID = element SalesOrderID { SalesOrderIDType }
+start |= starting_SalesOrderLineID
+starting_SalesOrderLineID =
+  element SalesOrderLineID { SalesOrderLineIDType }
+start |= starting_SaturdayAvailabilityIndicator
+starting_SaturdayAvailabilityIndicator =
+  element SaturdayAvailabilityIndicator {
+    SaturdayAvailabilityIndicatorType
+  }
+start |= starting_SchemaURI
+starting_SchemaURI = element SchemaURI { SchemaURIType }
+start |= starting_SchemeURI
+starting_SchemeURI = element SchemeURI { SchemeURIType }
+start |= starting_SealIssuerTypeCode
+starting_SealIssuerTypeCode =
+  element SealIssuerTypeCode { SealIssuerTypeCodeType }
+start |= starting_SealStatusCode
+starting_SealStatusCode = element SealStatusCode { SealStatusCodeType }
+start |= starting_SealingPartyType
+starting_SealingPartyType =
+  element SealingPartyType { SealingPartyTypeType }
+start |= starting_SecurityClassificationCode
+starting_SecurityClassificationCode =
+  element SecurityClassificationCode { SecurityClassificationCodeType }
+start |= starting_SecurityID
+starting_SecurityID = element SecurityID { SecurityIDType }
+start |= starting_SellerEventID
+starting_SellerEventID = element SellerEventID { SellerEventIDType }
+start |= starting_SequenceID
+starting_SequenceID = element SequenceID { SequenceIDType }
+start |= starting_SequenceNumberID
+starting_SequenceNumberID =
+  element SequenceNumberID { SequenceNumberIDType }
+start |= starting_SequenceNumeric
+starting_SequenceNumeric =
+  element SequenceNumeric { SequenceNumericType }
+start |= starting_SerialID
+starting_SerialID = element SerialID { SerialIDType }
+start |= starting_ServiceInformationPreferenceCode
+starting_ServiceInformationPreferenceCode =
+  element ServiceInformationPreferenceCode {
+    ServiceInformationPreferenceCodeType
+  }
+start |= starting_ServiceName
+starting_ServiceName = element ServiceName { ServiceNameType }
+start |= starting_ServiceNumberCalled
+starting_ServiceNumberCalled =
+  element ServiceNumberCalled { ServiceNumberCalledType }
+start |= starting_ServiceProviderPartyIndicator
+starting_ServiceProviderPartyIndicator =
+  element ServiceProviderPartyIndicator {
+    ServiceProviderPartyIndicatorType
+  }
+start |= starting_ServiceType
+starting_ServiceType = element ServiceType { ServiceTypeType }
+start |= starting_ServiceTypeCode
+starting_ServiceTypeCode =
+  element ServiceTypeCode { ServiceTypeCodeType }
+start |= starting_SettlementDiscountAmount
+starting_SettlementDiscountAmount =
+  element SettlementDiscountAmount { SettlementDiscountAmountType }
+start |= starting_SettlementDiscountPercent
+starting_SettlementDiscountPercent =
+  element SettlementDiscountPercent { SettlementDiscountPercentType }
+start |= starting_SharesNumberQuantity
+starting_SharesNumberQuantity =
+  element SharesNumberQuantity { SharesNumberQuantityType }
+start |= starting_ShippingMarks
+starting_ShippingMarks = element ShippingMarks { ShippingMarksType }
+start |= starting_ShippingOrderID
+starting_ShippingOrderID =
+  element ShippingOrderID { ShippingOrderIDType }
+start |= starting_ShippingPriorityLevelCode
+starting_ShippingPriorityLevelCode =
+  element ShippingPriorityLevelCode { ShippingPriorityLevelCodeType }
+start |= starting_ShipsRequirements
+starting_ShipsRequirements =
+  element ShipsRequirements { ShipsRequirementsType }
+start |= starting_ShortQuantity
+starting_ShortQuantity = element ShortQuantity { ShortQuantityType }
+start |= starting_ShortageActionCode
+starting_ShortageActionCode =
+  element ShortageActionCode { ShortageActionCodeType }
+start |= starting_SignatureID
+starting_SignatureID = element SignatureID { SignatureIDType }
+start |= starting_SignatureMethod
+starting_SignatureMethod =
+  element SignatureMethod { SignatureMethodType }
+start |= starting_SizeTypeCode
+starting_SizeTypeCode = element SizeTypeCode { SizeTypeCodeType }
+start |= starting_SocialMediaTypeCode
+starting_SocialMediaTypeCode =
+  element SocialMediaTypeCode { SocialMediaTypeCodeType }
+start |= starting_SoleProprietorshipIndicator
+starting_SoleProprietorshipIndicator =
+  element SoleProprietorshipIndicator {
+    SoleProprietorshipIndicatorType
+  }
+start |= starting_SourceCurrencyBaseRate
+starting_SourceCurrencyBaseRate =
+  element SourceCurrencyBaseRate { SourceCurrencyBaseRateType }
+start |= starting_SourceCurrencyCode
+starting_SourceCurrencyCode =
+  element SourceCurrencyCode { SourceCurrencyCodeType }
+start |= starting_SourceForecastIssueDate
+starting_SourceForecastIssueDate =
+  element SourceForecastIssueDate { SourceForecastIssueDateType }
+start |= starting_SourceForecastIssueTime
+starting_SourceForecastIssueTime =
+  element SourceForecastIssueTime { SourceForecastIssueTimeType }
+start |= starting_SourceValueMeasure
+starting_SourceValueMeasure =
+  element SourceValueMeasure { SourceValueMeasureType }
+start |= starting_SpecialInstructions
+starting_SpecialInstructions =
+  element SpecialInstructions { SpecialInstructionsType }
+start |= starting_SpecialSecurityIndicator
+starting_SpecialSecurityIndicator =
+  element SpecialSecurityIndicator { SpecialSecurityIndicatorType }
+start |= starting_SpecialServiceInstructions
+starting_SpecialServiceInstructions =
+  element SpecialServiceInstructions { SpecialServiceInstructionsType }
+start |= starting_SpecialTerms
+starting_SpecialTerms = element SpecialTerms { SpecialTermsType }
+start |= starting_SpecialTransportRequirements
+starting_SpecialTransportRequirements =
+  element SpecialTransportRequirements {
+    SpecialTransportRequirementsType
+  }
+start |= starting_SpecificationID
+starting_SpecificationID =
+  element SpecificationID { SpecificationIDType }
+start |= starting_SpecificationTypeCode
+starting_SpecificationTypeCode =
+  element SpecificationTypeCode { SpecificationTypeCodeType }
+start |= starting_SplitConsignmentIndicator
+starting_SplitConsignmentIndicator =
+  element SplitConsignmentIndicator { SplitConsignmentIndicatorType }
+start |= starting_StartDate
+starting_StartDate = element StartDate { StartDateType }
+start |= starting_StartTime
+starting_StartTime = element StartTime { StartTimeType }
+start |= starting_StatementTypeCode
+starting_StatementTypeCode =
+  element StatementTypeCode { StatementTypeCodeType }
+start |= starting_StatusAvailableIndicator
+starting_StatusAvailableIndicator =
+  element StatusAvailableIndicator { StatusAvailableIndicatorType }
+start |= starting_StatusCode
+starting_StatusCode = element StatusCode { StatusCodeType }
+start |= starting_StatusReason
+starting_StatusReason = element StatusReason { StatusReasonType }
+start |= starting_StatusReasonCode
+starting_StatusReasonCode =
+  element StatusReasonCode { StatusReasonCodeType }
+start |= starting_StreetName
+starting_StreetName = element StreetName { StreetNameType }
+start |= starting_SubcontractingConditionsCode
+starting_SubcontractingConditionsCode =
+  element SubcontractingConditionsCode {
+    SubcontractingConditionsCodeType
+  }
+start |= starting_SubmissionDate
+starting_SubmissionDate = element SubmissionDate { SubmissionDateType }
+start |= starting_SubmissionDueDate
+starting_SubmissionDueDate =
+  element SubmissionDueDate { SubmissionDueDateType }
+start |= starting_SubmissionMethodCode
+starting_SubmissionMethodCode =
+  element SubmissionMethodCode { SubmissionMethodCodeType }
+start |= starting_SubscriberID
+starting_SubscriberID = element SubscriberID { SubscriberIDType }
+start |= starting_SubscriberType
+starting_SubscriberType = element SubscriberType { SubscriberTypeType }
+start |= starting_SubscriberTypeCode
+starting_SubscriberTypeCode =
+  element SubscriberTypeCode { SubscriberTypeCodeType }
+start |= starting_SubstitutionStatusCode
+starting_SubstitutionStatusCode =
+  element SubstitutionStatusCode { SubstitutionStatusCodeType }
+start |= starting_SuccessiveSequenceID
+starting_SuccessiveSequenceID =
+  element SuccessiveSequenceID { SuccessiveSequenceIDType }
+start |= starting_SummaryDescription
+starting_SummaryDescription =
+  element SummaryDescription { SummaryDescriptionType }
+start |= starting_SundayAvailabilityIndicator
+starting_SundayAvailabilityIndicator =
+  element SundayAvailabilityIndicator {
+    SundayAvailabilityIndicatorType
+  }
+start |= starting_SupplierAssignedAccountID
+starting_SupplierAssignedAccountID =
+  element SupplierAssignedAccountID { SupplierAssignedAccountIDType }
+start |= starting_SupplyChainActivityTypeCode
+starting_SupplyChainActivityTypeCode =
+  element SupplyChainActivityTypeCode {
+    SupplyChainActivityTypeCodeType
+  }
+start |= starting_TareWeightMeasure
+starting_TareWeightMeasure =
+  element TareWeightMeasure { TareWeightMeasureType }
+start |= starting_TargetCurrencyBaseRate
+starting_TargetCurrencyBaseRate =
+  element TargetCurrencyBaseRate { TargetCurrencyBaseRateType }
+start |= starting_TargetCurrencyCode
+starting_TargetCurrencyCode =
+  element TargetCurrencyCode { TargetCurrencyCodeType }
+start |= starting_TargetInventoryQuantity
+starting_TargetInventoryQuantity =
+  element TargetInventoryQuantity { TargetInventoryQuantityType }
+start |= starting_TargetServicePercent
+starting_TargetServicePercent =
+  element TargetServicePercent { TargetServicePercentType }
+start |= starting_TariffClassCode
+starting_TariffClassCode =
+  element TariffClassCode { TariffClassCodeType }
+start |= starting_TariffCode
+starting_TariffCode = element TariffCode { TariffCodeType }
+start |= starting_TariffDescription
+starting_TariffDescription =
+  element TariffDescription { TariffDescriptionType }
+start |= starting_TaxAmount
+starting_TaxAmount = element TaxAmount { TaxAmountType }
+start |= starting_TaxCurrencyCode
+starting_TaxCurrencyCode =
+  element TaxCurrencyCode { TaxCurrencyCodeType }
+start |= starting_TaxEnergyAmount
+starting_TaxEnergyAmount =
+  element TaxEnergyAmount { TaxEnergyAmountType }
+start |= starting_TaxEnergyBalanceAmount
+starting_TaxEnergyBalanceAmount =
+  element TaxEnergyBalanceAmount { TaxEnergyBalanceAmountType }
+start |= starting_TaxEnergyOnAccountAmount
+starting_TaxEnergyOnAccountAmount =
+  element TaxEnergyOnAccountAmount { TaxEnergyOnAccountAmountType }
+start |= starting_TaxEvidenceIndicator
+starting_TaxEvidenceIndicator =
+  element TaxEvidenceIndicator { TaxEvidenceIndicatorType }
+start |= starting_TaxExclusiveAmount
+starting_TaxExclusiveAmount =
+  element TaxExclusiveAmount { TaxExclusiveAmountType }
+start |= starting_TaxExemptionReason
+starting_TaxExemptionReason =
+  element TaxExemptionReason { TaxExemptionReasonType }
+start |= starting_TaxExemptionReasonCode
+starting_TaxExemptionReasonCode =
+  element TaxExemptionReasonCode { TaxExemptionReasonCodeType }
+start |= starting_TaxIncludedIndicator
+starting_TaxIncludedIndicator =
+  element TaxIncludedIndicator { TaxIncludedIndicatorType }
+start |= starting_TaxInclusiveAmount
+starting_TaxInclusiveAmount =
+  element TaxInclusiveAmount { TaxInclusiveAmountType }
+start |= starting_TaxLevelCode
+starting_TaxLevelCode = element TaxLevelCode { TaxLevelCodeType }
+start |= starting_TaxPointDate
+starting_TaxPointDate = element TaxPointDate { TaxPointDateType }
+start |= starting_TaxTypeCode
+starting_TaxTypeCode = element TaxTypeCode { TaxTypeCodeType }
+start |= starting_TaxableAmount
+starting_TaxableAmount = element TaxableAmount { TaxableAmountType }
+start |= starting_TechnicalCommitteeDescription
+starting_TechnicalCommitteeDescription =
+  element TechnicalCommitteeDescription {
+    TechnicalCommitteeDescriptionType
+  }
+start |= starting_TechnicalName
+starting_TechnicalName = element TechnicalName { TechnicalNameType }
+start |= starting_TelecommunicationsServiceCall
+starting_TelecommunicationsServiceCall =
+  element TelecommunicationsServiceCall {
+    TelecommunicationsServiceCallType
+  }
+start |= starting_TelecommunicationsServiceCallCode
+starting_TelecommunicationsServiceCallCode =
+  element TelecommunicationsServiceCallCode {
+    TelecommunicationsServiceCallCodeType
+  }
+start |= starting_TelecommunicationsServiceCategory
+starting_TelecommunicationsServiceCategory =
+  element TelecommunicationsServiceCategory {
+    TelecommunicationsServiceCategoryType
+  }
+start |= starting_TelecommunicationsServiceCategoryCode
+starting_TelecommunicationsServiceCategoryCode =
+  element TelecommunicationsServiceCategoryCode {
+    TelecommunicationsServiceCategoryCodeType
+  }
+start |= starting_TelecommunicationsSupplyType
+starting_TelecommunicationsSupplyType =
+  element TelecommunicationsSupplyType {
+    TelecommunicationsSupplyTypeType
+  }
+start |= starting_TelecommunicationsSupplyTypeCode
+starting_TelecommunicationsSupplyTypeCode =
+  element TelecommunicationsSupplyTypeCode {
+    TelecommunicationsSupplyTypeCodeType
+  }
+start |= starting_Telefax
+starting_Telefax = element Telefax { TelefaxType }
+start |= starting_Telephone
+starting_Telephone = element Telephone { TelephoneType }
+start |= starting_TenderEnvelopeID
+starting_TenderEnvelopeID =
+  element TenderEnvelopeID { TenderEnvelopeIDType }
+start |= starting_TenderEnvelopeTypeCode
+starting_TenderEnvelopeTypeCode =
+  element TenderEnvelopeTypeCode { TenderEnvelopeTypeCodeType }
+start |= starting_TenderLanguageLocaleCode
+starting_TenderLanguageLocaleCode =
+  element TenderLanguageLocaleCode { TenderLanguageLocaleCodeType }
+start |= starting_TenderResultCode
+starting_TenderResultCode =
+  element TenderResultCode { TenderResultCodeType }
+start |= starting_TenderTypeCode
+starting_TenderTypeCode = element TenderTypeCode { TenderTypeCodeType }
+start |= starting_TendererRequirementTypeCode
+starting_TendererRequirementTypeCode =
+  element TendererRequirementTypeCode {
+    TendererRequirementTypeCodeType
+  }
+start |= starting_TendererRoleCode
+starting_TendererRoleCode =
+  element TendererRoleCode { TendererRoleCodeType }
+start |= starting_TestIndicator
+starting_TestIndicator = element TestIndicator { TestIndicatorType }
+start |= starting_TestMethod
+starting_TestMethod = element TestMethod { TestMethodType }
+start |= starting_Text
+starting_Text = element Text { TextType }
+start |= starting_ThirdPartyPayerIndicator
+starting_ThirdPartyPayerIndicator =
+  element ThirdPartyPayerIndicator { ThirdPartyPayerIndicatorType }
+start |= starting_ThresholdAmount
+starting_ThresholdAmount =
+  element ThresholdAmount { ThresholdAmountType }
+start |= starting_ThresholdQuantity
+starting_ThresholdQuantity =
+  element ThresholdQuantity { ThresholdQuantityType }
+start |= starting_ThresholdValueComparisonCode
+starting_ThresholdValueComparisonCode =
+  element ThresholdValueComparisonCode {
+    ThresholdValueComparisonCodeType
+  }
+start |= starting_ThursdayAvailabilityIndicator
+starting_ThursdayAvailabilityIndicator =
+  element ThursdayAvailabilityIndicator {
+    ThursdayAvailabilityIndicatorType
+  }
+start |= starting_TierRange
+starting_TierRange = element TierRange { TierRangeType }
+start |= starting_TierRatePercent
+starting_TierRatePercent =
+  element TierRatePercent { TierRatePercentType }
+start |= starting_TimeAmount
+starting_TimeAmount = element TimeAmount { TimeAmountType }
+start |= starting_TimeDeltaDaysQuantity
+starting_TimeDeltaDaysQuantity =
+  element TimeDeltaDaysQuantity { TimeDeltaDaysQuantityType }
+start |= starting_TimeFrequencyCode
+starting_TimeFrequencyCode =
+  element TimeFrequencyCode { TimeFrequencyCodeType }
+start |= starting_TimezoneOffset
+starting_TimezoneOffset = element TimezoneOffset { TimezoneOffsetType }
+start |= starting_TimingComplaint
+starting_TimingComplaint =
+  element TimingComplaint { TimingComplaintType }
+start |= starting_TimingComplaintCode
+starting_TimingComplaintCode =
+  element TimingComplaintCode { TimingComplaintCodeType }
+start |= starting_Title
+starting_Title = element Title { TitleType }
+start |= starting_ToOrderIndicator
+starting_ToOrderIndicator =
+  element ToOrderIndicator { ToOrderIndicatorType }
+start |= starting_TotalAmount
+starting_TotalAmount = element TotalAmount { TotalAmountType }
+start |= starting_TotalBalanceAmount
+starting_TotalBalanceAmount =
+  element TotalBalanceAmount { TotalBalanceAmountType }
+start |= starting_TotalConsumedQuantity
+starting_TotalConsumedQuantity =
+  element TotalConsumedQuantity { TotalConsumedQuantityType }
+start |= starting_TotalCreditAmount
+starting_TotalCreditAmount =
+  element TotalCreditAmount { TotalCreditAmountType }
+start |= starting_TotalDebitAmount
+starting_TotalDebitAmount =
+  element TotalDebitAmount { TotalDebitAmountType }
+start |= starting_TotalDeliveredQuantity
+starting_TotalDeliveredQuantity =
+  element TotalDeliveredQuantity { TotalDeliveredQuantityType }
+start |= starting_TotalGoodsItemQuantity
+starting_TotalGoodsItemQuantity =
+  element TotalGoodsItemQuantity { TotalGoodsItemQuantityType }
+start |= starting_TotalInvoiceAmount
+starting_TotalInvoiceAmount =
+  element TotalInvoiceAmount { TotalInvoiceAmountType }
+start |= starting_TotalMeteredQuantity
+starting_TotalMeteredQuantity =
+  element TotalMeteredQuantity { TotalMeteredQuantityType }
+start |= starting_TotalPackageQuantity
+starting_TotalPackageQuantity =
+  element TotalPackageQuantity { TotalPackageQuantityType }
+start |= starting_TotalPackagesQuantity
+starting_TotalPackagesQuantity =
+  element TotalPackagesQuantity { TotalPackagesQuantityType }
+start |= starting_TotalPaymentAmount
+starting_TotalPaymentAmount =
+  element TotalPaymentAmount { TotalPaymentAmountType }
+start |= starting_TotalTaskAmount
+starting_TotalTaskAmount =
+  element TotalTaskAmount { TotalTaskAmountType }
+start |= starting_TotalTaxAmount
+starting_TotalTaxAmount = element TotalTaxAmount { TotalTaxAmountType }
+start |= starting_TotalTransportHandlingUnitQuantity
+starting_TotalTransportHandlingUnitQuantity =
+  element TotalTransportHandlingUnitQuantity {
+    TotalTransportHandlingUnitQuantityType
+  }
+start |= starting_TraceID
+starting_TraceID = element TraceID { TraceIDType }
+start |= starting_TrackingDeviceCode
+starting_TrackingDeviceCode =
+  element TrackingDeviceCode { TrackingDeviceCodeType }
+start |= starting_TrackingID
+starting_TrackingID = element TrackingID { TrackingIDType }
+start |= starting_TradeItemPackingLabelingTypeCode
+starting_TradeItemPackingLabelingTypeCode =
+  element TradeItemPackingLabelingTypeCode {
+    TradeItemPackingLabelingTypeCodeType
+  }
+start |= starting_TradeServiceCode
+starting_TradeServiceCode =
+  element TradeServiceCode { TradeServiceCodeType }
+start |= starting_TradingRestrictions
+starting_TradingRestrictions =
+  element TradingRestrictions { TradingRestrictionsType }
+start |= starting_TrainID
+starting_TrainID = element TrainID { TrainIDType }
+start |= starting_TransactionCurrencyTaxAmount
+starting_TransactionCurrencyTaxAmount =
+  element TransactionCurrencyTaxAmount {
+    TransactionCurrencyTaxAmountType
+  }
+start |= starting_TransitDirectionCode
+starting_TransitDirectionCode =
+  element TransitDirectionCode { TransitDirectionCodeType }
+start |= starting_TranslationTypeCode
+starting_TranslationTypeCode =
+  element TranslationTypeCode { TranslationTypeCodeType }
+start |= starting_TransportAuthorizationCode
+starting_TransportAuthorizationCode =
+  element TransportAuthorizationCode { TransportAuthorizationCodeType }
+start |= starting_TransportEmergencyCardCode
+starting_TransportEmergencyCardCode =
+  element TransportEmergencyCardCode { TransportEmergencyCardCodeType }
+start |= starting_TransportEquipmentTypeCode
+starting_TransportEquipmentTypeCode =
+  element TransportEquipmentTypeCode { TransportEquipmentTypeCodeType }
+start |= starting_TransportEventTypeCode
+starting_TransportEventTypeCode =
+  element TransportEventTypeCode { TransportEventTypeCodeType }
+start |= starting_TransportExecutionPlanReferenceID
+starting_TransportExecutionPlanReferenceID =
+  element TransportExecutionPlanReferenceID {
+    TransportExecutionPlanReferenceIDType
+  }
+start |= starting_TransportExecutionStatusCode
+starting_TransportExecutionStatusCode =
+  element TransportExecutionStatusCode {
+    TransportExecutionStatusCodeType
+  }
+start |= starting_TransportHandlingUnitTypeCode
+starting_TransportHandlingUnitTypeCode =
+  element TransportHandlingUnitTypeCode {
+    TransportHandlingUnitTypeCodeType
+  }
+start |= starting_TransportMeansTypeCode
+starting_TransportMeansTypeCode =
+  element TransportMeansTypeCode { TransportMeansTypeCodeType }
+start |= starting_TransportModeCode
+starting_TransportModeCode =
+  element TransportModeCode { TransportModeCodeType }
+start |= starting_TransportServiceCode
+starting_TransportServiceCode =
+  element TransportServiceCode { TransportServiceCodeType }
+start |= starting_TransportServiceProviderRemarks
+starting_TransportServiceProviderRemarks =
+  element TransportServiceProviderRemarks {
+    TransportServiceProviderRemarksType
+  }
+start |= starting_TransportServiceProviderSpecialTerms
+starting_TransportServiceProviderSpecialTerms =
+  element TransportServiceProviderSpecialTerms {
+    TransportServiceProviderSpecialTermsType
+  }
+start |= starting_TransportUserRemarks
+starting_TransportUserRemarks =
+  element TransportUserRemarks { TransportUserRemarksType }
+start |= starting_TransportUserSpecialTerms
+starting_TransportUserSpecialTerms =
+  element TransportUserSpecialTerms { TransportUserSpecialTermsType }
+start |= starting_TransportationServiceDescription
+starting_TransportationServiceDescription =
+  element TransportationServiceDescription {
+    TransportationServiceDescriptionType
+  }
+start |= starting_TransportationServiceDetailsURI
+starting_TransportationServiceDetailsURI =
+  element TransportationServiceDetailsURI {
+    TransportationServiceDetailsURIType
+  }
+start |= starting_TransportationStatusTypeCode
+starting_TransportationStatusTypeCode =
+  element TransportationStatusTypeCode {
+    TransportationStatusTypeCodeType
+  }
+start |= starting_TuesdayAvailabilityIndicator
+starting_TuesdayAvailabilityIndicator =
+  element TuesdayAvailabilityIndicator {
+    TuesdayAvailabilityIndicatorType
+  }
+start |= starting_TypeCode
+starting_TypeCode = element TypeCode { TypeCodeType }
+start |= starting_UBLVersionID
+starting_UBLVersionID = element UBLVersionID { UBLVersionIDType }
+start |= starting_UNDGCode
+starting_UNDGCode = element UNDGCode { UNDGCodeType }
+start |= starting_URI
+starting_URI = element URI { URIType }
+start |= starting_UUID
+starting_UUID = element UUID { UUIDType }
+start |= starting_UnknownPriceIndicator
+starting_UnknownPriceIndicator =
+  element UnknownPriceIndicator { UnknownPriceIndicatorType }
+start |= starting_UpperOrangeHazardPlacardID
+starting_UpperOrangeHazardPlacardID =
+  element UpperOrangeHazardPlacardID { UpperOrangeHazardPlacardIDType }
+start |= starting_UrgencyCode
+starting_UrgencyCode = element UrgencyCode { UrgencyCodeType }
+start |= starting_UtilityStatementTypeCode
+starting_UtilityStatementTypeCode =
+  element UtilityStatementTypeCode { UtilityStatementTypeCodeType }
+start |= starting_ValidateProcess
+starting_ValidateProcess =
+  element ValidateProcess { ValidateProcessType }
+start |= starting_ValidateTool
+starting_ValidateTool = element ValidateTool { ValidateToolType }
+start |= starting_ValidateToolVersion
+starting_ValidateToolVersion =
+  element ValidateToolVersion { ValidateToolVersionType }
+start |= starting_ValidatedCriterionPropertyID
+starting_ValidatedCriterionPropertyID =
+  element ValidatedCriterionPropertyID {
+    ValidatedCriterionPropertyIDType
+  }
+start |= starting_ValidationDate
+starting_ValidationDate = element ValidationDate { ValidationDateType }
+start |= starting_ValidationResultCode
+starting_ValidationResultCode =
+  element ValidationResultCode { ValidationResultCodeType }
+start |= starting_ValidationTime
+starting_ValidationTime = element ValidationTime { ValidationTimeType }
+start |= starting_ValidatorID
+starting_ValidatorID = element ValidatorID { ValidatorIDType }
+start |= starting_ValidityStartDate
+starting_ValidityStartDate =
+  element ValidityStartDate { ValidityStartDateType }
+start |= starting_Value
+starting_Value = element Value { ValueType }
+start |= starting_ValueAmount
+starting_ValueAmount = element ValueAmount { ValueAmountType }
+start |= starting_ValueCurrencyCode
+starting_ValueCurrencyCode =
+  element ValueCurrencyCode { ValueCurrencyCodeType }
+start |= starting_ValueDataTypeCode
+starting_ValueDataTypeCode =
+  element ValueDataTypeCode { ValueDataTypeCodeType }
+start |= starting_ValueMeasure
+starting_ValueMeasure = element ValueMeasure { ValueMeasureType }
+start |= starting_ValueQualifier
+starting_ValueQualifier = element ValueQualifier { ValueQualifierType }
+start |= starting_ValueQuantity
+starting_ValueQuantity = element ValueQuantity { ValueQuantityType }
+start |= starting_ValueUnitCode
+starting_ValueUnitCode = element ValueUnitCode { ValueUnitCodeType }
+start |= starting_VarianceQuantity
+starting_VarianceQuantity =
+  element VarianceQuantity { VarianceQuantityType }
+start |= starting_VariantConstraintIndicator
+starting_VariantConstraintIndicator =
+  element VariantConstraintIndicator { VariantConstraintIndicatorType }
+start |= starting_VariantID
+starting_VariantID = element VariantID { VariantIDType }
+start |= starting_VersionID
+starting_VersionID = element VersionID { VersionIDType }
+start |= starting_VesselID
+starting_VesselID = element VesselID { VesselIDType }
+start |= starting_VesselName
+starting_VesselName = element VesselName { VesselNameType }
+start |= starting_WarrantyInformation
+starting_WarrantyInformation =
+  element WarrantyInformation { WarrantyInformationType }
+start |= starting_WebSiteTypeCode
+starting_WebSiteTypeCode =
+  element WebSiteTypeCode { WebSiteTypeCodeType }
+start |= starting_WebsiteURI
+starting_WebsiteURI = element WebsiteURI { WebsiteURIType }
+start |= starting_WednesdayAvailabilityIndicator
+starting_WednesdayAvailabilityIndicator =
+  element WednesdayAvailabilityIndicator {
+    WednesdayAvailabilityIndicatorType
+  }
+start |= starting_WeekDayCode
+starting_WeekDayCode = element WeekDayCode { WeekDayCodeType }
+start |= starting_WeighingDate
+starting_WeighingDate = element WeighingDate { WeighingDateType }
+start |= starting_WeighingDeviceID
+starting_WeighingDeviceID =
+  element WeighingDeviceID { WeighingDeviceIDType }
+start |= starting_WeighingDeviceType
+starting_WeighingDeviceType =
+  element WeighingDeviceType { WeighingDeviceTypeType }
+start |= starting_WeighingMethodCode
+starting_WeighingMethodCode =
+  element WeighingMethodCode { WeighingMethodCodeType }
+start |= starting_WeighingTime
+starting_WeighingTime = element WeighingTime { WeighingTimeType }
+start |= starting_Weight
+starting_Weight = element Weight { WeightType }
+start |= starting_WeightNumeric
+starting_WeightNumeric = element WeightNumeric { WeightNumericType }
+start |= starting_WeightScoringMethodologyNote
+starting_WeightScoringMethodologyNote =
+  element WeightScoringMethodologyNote {
+    WeightScoringMethodologyNoteType
+  }
+start |= starting_WeightStatementTypeCode
+starting_WeightStatementTypeCode =
+  element WeightStatementTypeCode { WeightStatementTypeCodeType }
+start |= starting_WeightingAlgorithmCode
+starting_WeightingAlgorithmCode =
+  element WeightingAlgorithmCode { WeightingAlgorithmCodeType }
+start |= starting_WeightingConsiderationDescription
+starting_WeightingConsiderationDescription =
+  element WeightingConsiderationDescription {
+    WeightingConsiderationDescriptionType
+  }
+start |= starting_WeightingTypeCode
+starting_WeightingTypeCode =
+  element WeightingTypeCode { WeightingTypeCodeType }
+start |= starting_WithdrawOfferIndicator
+starting_WithdrawOfferIndicator =
+  element WithdrawOfferIndicator { WithdrawOfferIndicatorType }
+start |= starting_WithholdingTaxTotalAmount
+starting_WithholdingTaxTotalAmount =
+  element WithholdingTaxTotalAmount { WithholdingTaxTotalAmountType }
+start |= starting_WorkPhase
+starting_WorkPhase = element WorkPhase { WorkPhaseType }
+start |= starting_WorkPhaseCode
+starting_WorkPhaseCode = element WorkPhaseCode { WorkPhaseCodeType }
+start |= starting_XPath
+starting_XPath = element XPath { XPathType }
+# ===== Type Definitions =====
+
+# ===== Basic Business Information Entity Type Definitions =====
+AcceptedIndicatorType = IndicatorType
+AcceptedVariantsDescriptionType = TextType
+AccessToolsURIType = IdentifierType
+AccountFormatCodeType = CodeType
+AccountIDType = IdentifierType
+AccountTypeCodeType = CodeType
+AccountingCostCodeType = CodeType
+AccountingCostType = TextType
+ActionCodeType = CodeType
+ActivityTypeCodeType = CodeType
+ActivityTypeType = TextType
+ActualDeliveryDateType = DateType
+ActualDeliveryTimeType = TimeType
+ActualDespatchDateType = DateType
+ActualDespatchTimeType = TimeType
+ActualPickupDateType = DateType
+ActualPickupTimeType = TimeType
+ActualTemperatureReductionQuantityType = QuantityType
+AdValoremIndicatorType = IndicatorType
+AdditionalAccountIDType = IdentifierType
+AdditionalConditionsType = TextType
+AdditionalInformationType = TextType
+AdditionalStreetNameType = NameType
+AddressFormatCodeType = CodeType
+AddressTypeCodeType = CodeType
+AdjustmentReasonCodeType = CodeType
+AdmissionCodeType = CodeType
+AdvertisementAmountType = AmountType
+AgencyIDType = IdentifierType
+AgencyNameType = NameType
+AgreementTypeCodeType = CodeType
+AirFlowPercentType = PercentType
+AircraftIDType = IdentifierType
+AliasNameType = NameType
+AllowanceChargeReasonCodeType = AllowanceChargeReasonCodeType
+AllowanceChargeReasonType = TextType
+AllowanceTotalAmountType = AmountType
+AltitudeMeasureType = MeasureType
+AmountRateType = RateType
+AmountType = AmountType
+AnimalFoodApprovedIndicatorType = IndicatorType
+AnimalFoodIndicatorType = IndicatorType
+AnnualAverageAmountType = AmountType
+ApplicationStatusCodeType = CodeType
+ApprovalDateType = DateType
+ApprovalStatusType = TextType
+ArticleType = TextType
+AttributeIDType = IdentifierType
+AuctionConstraintIndicatorType = IndicatorType
+AuctionURIType = IdentifierType
+AvailabilityDateType = DateType
+AvailabilityStatusCodeType = CodeType
+AvailabilityTimePercentType = PercentType
+AverageAmountType = AmountType
+AverageSubsequentContractAmountType = AmountType
+AwardDateType = DateType
+AwardIDType = IdentifierType
+AwardTimeType = TimeType
+AwardingCriterionDescriptionType = TextType
+AwardingCriterionIDType = IdentifierType
+AwardingCriterionTypeCodeType = CodeType
+AwardingMethodTypeCodeType = CodeType
+BackOrderAllowedIndicatorType = IndicatorType
+BackorderQuantityType = QuantityType
+BackorderReasonType = TextType
+BalanceAmountType = AmountType
+BalanceBroughtForwardIndicatorType = IndicatorType
+BarcodeSymbologyIDType = IdentifierType
+BaseAmountType = AmountType
+BaseQuantityType = QuantityType
+BaseUnitMeasureType = MeasureType
+BasedOnConsensusIndicatorType = IndicatorType
+BasicConsumedQuantityType = QuantityType
+BatchQuantityType = QuantityType
+BestBeforeDateType = DateType
+BindingOnBuyerIndicatorType = IndicatorType
+BirthDateType = DateType
+BirthplaceNameType = NameType
+BlockNameType = NameType
+BrandNameType = NameType
+BriefDescriptionType = TextType
+BrokerAssignedIDType = IdentifierType
+BudgetYearNumericType = NumericType
+BuildingNameType = NameType
+BuildingNumberType = TextType
+BulkCargoIndicatorType = IndicatorType
+BusinessClassificationEvidenceIDType = IdentifierType
+BusinessIdentityEvidenceIDType = IdentifierType
+BuyerEventIDType = IdentifierType
+BuyerProfileURIType = IdentifierType
+BuyerReferenceType = TextType
+CV2IDType = IdentifierType
+CalculationExpressionCodeType = CodeType
+CalculationExpressionType = TextType
+CalculationMethodCodeType = CodeType
+CalculationRateType = RateType
+CalculationSequenceNumericType = NumericType
+CallBaseAmountType = AmountType
+CallDateType = DateType
+CallExtensionAmountType = AmountType
+CallTimeType = TimeType
+CancellationNoteType = TextType
+CandidateReductionConstraintIndicatorType = IndicatorType
+CandidateStatementType = TextType
+CanonicalizationMethodType = TextType
+CapabilityTypeCodeType = CodeType
+CardChipCodeType = ChipCodeType
+CardTypeCodeType = CodeType
+CargoTypeCodeType = CodeType
+CarrierAssignedIDType = IdentifierType
+CarrierServiceInstructionsType = TextType
+CatalogueIndicatorType = IndicatorType
+CategoryNameType = NameType
+CertificateTypeCodeType = CodeType
+CertificateTypeType = TextType
+CertificationLevelDescriptionType = TextType
+ChangeConditionsType = TextType
+ChannelCodeType = ChannelCodeType
+ChannelType = TextType
+CharacterSetCodeType = CodeType
+CharacteristicsType = TextType
+ChargeIndicatorType = IndicatorType
+ChargeTotalAmountType = AmountType
+ChargeableQuantityType = QuantityType
+ChargeableWeightMeasureType = MeasureType
+ChildConsignmentQuantityType = QuantityType
+ChipApplicationIDType = IdentifierType
+CityNameType = NameType
+CitySubdivisionNameType = NameType
+CodeValueType = TextType
+CollaborationPriorityCodeType = CodeType
+CommentType = TextType
+CommodityCodeType = CodeType
+CompanyIDType = IdentifierType
+CompanyLegalFormCodeType = CodeType
+CompanyLegalFormType = TextType
+CompanyLiquidationStatusCodeType = CodeType
+ComparedValueMeasureType = MeasureType
+ComparisonDataCodeType = CodeType
+ComparisonDataSourceCodeType = CodeType
+ComparisonForecastIssueDateType = DateType
+ComparisonForecastIssueTimeType = TimeType
+CompletionIndicatorType = IndicatorType
+ConditionCodeType = CodeType
+ConditionType = TextType
+ConditionsDescriptionType = TextType
+ConditionsType = TextType
+ConfidentialityLevelCodeType = CodeType
+ConsigneeAssignedIDType = IdentifierType
+ConsignmentQuantityType = QuantityType
+ConsignorAssignedIDType = IdentifierType
+ConsolidatableIndicatorType = IndicatorType
+ConstitutionCodeType = CodeType
+ConsumerIncentiveTacticTypeCodeType = CodeType
+ConsumerUnitQuantityType = QuantityType
+ConsumersEnergyLevelCodeType = CodeType
+ConsumersEnergyLevelType = TextType
+ConsumptionEnergyQuantityType = QuantityType
+ConsumptionIDType = IdentifierType
+ConsumptionLevelCodeType = CodeType
+ConsumptionLevelType = TextType
+ConsumptionReportIDType = IdentifierType
+ConsumptionTypeCodeType = CodeType
+ConsumptionTypeType = TextType
+ConsumptionWaterQuantityType = QuantityType
+ContainerizedIndicatorType = IndicatorType
+ContentType = TextType
+ContentUnitQuantityType = QuantityType
+ContractFolderIDType = IdentifierType
+ContractNameType = NameType
+ContractSubdivisionType = TextType
+ContractTypeCodeType = CodeType
+ContractTypeType = TextType
+ContractedCarrierAssignedIDType = IdentifierType
+ContractingSystemCodeType = CodeType
+ContractingSystemTypeCodeType = CodeType
+CoordinateSystemCodeType = CodeType
+CopyIndicatorType = IndicatorType
+CopyQualityTypeCodeType = CodeType
+CorporateRegistrationTypeCodeType = CodeType
+CorporateStockAmountType = AmountType
+CorrectionAmountType = AmountType
+CorrectionTypeCodeType = CodeType
+CorrectionTypeType = TextType
+CorrectionUnitAmountType = AmountType
+CountrySubentityCodeType = CodeType
+CountrySubentityType = TextType
+CreditLineAmountType = AmountType
+CreditNoteTypeCodeType = CodeType
+CreditedQuantityType = QuantityType
+CrewQuantityType = QuantityType
+CriterionTypeCodeType = CodeType
+CurrencyCodeType = CurrencyCodeType
+CurrentChargeTypeCodeType = CodeType
+CurrentChargeTypeType = TextType
+CustomerAssignedAccountIDType = IdentifierType
+CustomerReferenceType = TextType
+CustomizationIDType = IdentifierType
+CustomsClearanceServiceInstructionsType = TextType
+CustomsImportClassifiedIndicatorType = IndicatorType
+CustomsStatusCodeType = CodeType
+CustomsTariffQuantityType = QuantityType
+DamageRemarksType = TextType
+DangerousGoodsApprovedIndicatorType = IndicatorType
+DataSendingCapabilityType = TextType
+DataSourceCodeType = CodeType
+DateType = DateType
+DebitLineAmountType = AmountType
+DebitedQuantityType = QuantityType
+DeclarationTypeCodeType = CodeType
+DeclaredCarriageValueAmountType = AmountType
+DeclaredCustomsValueAmountType = AmountType
+DeclaredForCarriageValueAmountType = AmountType
+DeclaredStatisticsValueAmountType = AmountType
+DeliveredQuantityType = QuantityType
+DeliveryInstructionsType = TextType
+DemurrageInstructionsType = TextType
+DepartmentType = TextType
+DescriptionCodeType = CodeType
+DescriptionType = TextType
+DespatchAdviceTypeCodeType = CodeType
+DifferenceTemperatureReductionQuantityType = QuantityType
+DirectionCodeType = CodeType
+DisplayTacticTypeCodeType = CodeType
+DispositionCodeType = CodeType
+DistrictType = TextType
+DocumentCurrencyCodeType = CurrencyCodeType
+DocumentDescriptionType = TextType
+DocumentHashType = TextType
+DocumentIDType = IdentifierType
+DocumentStatusCodeType = DocumentStatusCodeType
+DocumentStatusReasonCodeType = CodeType
+DocumentStatusReasonDescriptionType = TextType
+DocumentTypeCodeType = CodeType
+DocumentTypeType = TextType
+DocumentationFeeAmountType = AmountType
+DueDateType = DateType
+DurationMeasureType = MeasureType
+DutyCodeType = CodeType
+DutyType = TextType
+EarliestPickupDateType = DateType
+EarliestPickupTimeType = TimeType
+EconomicOperatorGroupNameType = NameType
+EconomicOperatorRegistryURIType = IdentifierType
+EffectiveDateType = DateType
+EffectiveTimeType = TimeType
+ElectronicCatalogueUsageIndicatorType = IndicatorType
+ElectronicDeviceDescriptionType = TextType
+ElectronicInvoiceAcceptedIndicatorType = IndicatorType
+ElectronicMailType = TextType
+ElectronicOrderUsageIndicatorType = IndicatorType
+ElectronicPaymentUsageIndicatorType = IndicatorType
+EmbeddedDocumentBinaryObjectType = BinaryObjectType
+EmbeddedDocumentType = TextType
+EmergencyProceduresCodeType = CodeType
+EmployeeQuantityType = QuantityType
+EncodingCodeType = CodeType
+EndDateType = DateType
+EndTimeType = TimeType
+EndpointIDType = IdentifierType
+EndpointURIType = IdentifierType
+EnvelopeTypeCodeType = CodeType
+EnvironmentalEmissionTypeCodeType = CodeType
+EstimatedAmountType = AmountType
+EstimatedConsumedQuantityType = QuantityType
+EstimatedDeliveryDateType = DateType
+EstimatedDeliveryTimeType = TimeType
+EstimatedDespatchDateType = DateType
+EstimatedDespatchTimeType = TimeType
+EstimatedOverallContractAmountType = AmountType
+EstimatedOverallContractQuantityType = QuantityType
+EstimatedTimingFurtherPublicationType = TextType
+EvaluationCriterionTypeCodeType = CodeType
+EvaluationMethodTypeCodeType = CodeType
+EvidenceTypeCodeType = CodeType
+ExceptionResolutionCodeType = CodeType
+ExceptionStatusCodeType = CodeType
+ExchangeMarketIDType = IdentifierType
+ExclusionReasonType = TextType
+ExecutionRequirementCodeType = CodeType
+ExemptionReasonCodeType = CodeType
+ExemptionReasonType = TextType
+ExpectedAmountType = AmountType
+ExpectedCodeType = CodeType
+ExpectedDescriptionType = TextType
+ExpectedIDType = IdentifierType
+ExpectedOperatorQuantityType = QuantityType
+ExpectedQuantityType = QuantityType
+ExpectedValueNumericType = NumericType
+ExpenseCodeType = CodeType
+ExpiryDateType = DateType
+ExpiryTimeType = TimeType
+ExpressionCodeType = CodeType
+ExpressionType = TextType
+ExtendedIDType = IdentifierType
+ExtensionType = TextType
+FaceValueAmountType = AmountType
+FamilyNameType = NameType
+FeatureTacticTypeCodeType = CodeType
+FeeAmountType = AmountType
+FeeDescriptionType = TextType
+FileNameType = NameType
+FinancingInstrumentCodeType = CodeType
+FirstNameType = NameType
+FirstShipmentAvailibilityDateType = DateType
+FloorType = TextType
+FollowupContractIndicatorType = IndicatorType
+ForecastPurposeCodeType = CodeType
+ForecastTypeCodeType = CodeType
+FormatCodeType = CodeType
+FormatIDType = IdentifierType
+ForwarderServiceInstructionsType = TextType
+FreeOfChargeIndicatorType = IndicatorType
+FreeOnBoardValueAmountType = AmountType
+FreightForwarderAssignedIDType = IdentifierType
+FreightRateClassCodeType = CodeType
+FrequencyType = TextType
+FridayAvailabilityIndicatorType = IndicatorType
+FrozenDocumentIndicatorType = IndicatorType
+FrozenPeriodDaysNumericType = NumericType
+FulfilmentIndicatorType = IndicatorType
+FulfilmentIndicatorTypeCodeType = CodeType
+FullnessIndicationCodeType = CodeType
+FullyPaidSharesIndicatorType = IndicatorType
+FundingProgramCodeType = CodeType
+FundingProgramType = TextType
+GasPressureQuantityType = QuantityType
+GenderCodeType = CodeType
+GeneralCargoIndicatorType = IndicatorType
+GovernmentAgreementConstraintIndicatorType = IndicatorType
+GrossMassMeasureType = MeasureType
+GrossTonnageMeasureType = MeasureType
+GrossVolumeMeasureType = MeasureType
+GrossWeightMeasureType = MeasureType
+GroupingLotsType = TextType
+GuaranteeTypeCodeType = CodeType
+GuaranteedDespatchDateType = DateType
+GuaranteedDespatchTimeType = TimeType
+HandlingCodeType = CodeType
+HandlingInstructionsType = TextType
+HashAlgorithmMethodType = TextType
+HaulageInstructionsType = TextType
+HazardClassIDType = IdentifierType
+HazardousCategoryCodeType = CodeType
+HazardousRegulationCodeType = CodeType
+HazardousRiskIndicatorType = IndicatorType
+HeatingTypeCodeType = CodeType
+HeatingTypeType = TextType
+HigherTenderAmountType = AmountType
+HolderNameType = NameType
+HumanFoodApprovedIndicatorType = IndicatorType
+HumanFoodIndicatorType = IndicatorType
+HumidityPercentType = PercentType
+IDType = IdentifierType
+IdentificationCodeType = CountryIdentificationCodeType
+IdentificationIDType = IdentifierType
+ImmobilizationCertificateIDType = IdentifierType
+ImportanceCodeType = CodeType
+IndicationIndicatorType = IndicatorType
+IndustryClassificationCodeType = CodeType
+InformationType = TextType
+InformationURIType = IdentifierType
+InhalationToxicityZoneCodeType = CodeType
+InhouseMailType = TextType
+InitiatingPartyIndicatorType = IndicatorType
+InspectionMethodCodeType = CodeType
+InstallmentDueDateType = DateType
+InstructionIDType = IdentifierType
+InstructionNoteType = TextType
+InstructionsType = TextType
+InsurancePremiumAmountType = AmountType
+InsuranceValueAmountType = AmountType
+InventoryValueAmountType = AmountType
+InvoiceTypeCodeType = CodeType
+InvoicedQuantityType = QuantityType
+InvoicingPartyReferenceType = TextType
+IssueDateType = DateType
+IssueNumberIDType = IdentifierType
+IssueTimeType = TimeType
+IssuerIDType = IdentifierType
+ItemClassificationCodeType = CodeType
+ItemUpdateRequestIndicatorType = IndicatorType
+JobTitleType = TextType
+JourneyIDType = IdentifierType
+JurisdictionLevelType = TextType
+JustificationDescriptionType = TextType
+JustificationType = TextType
+KeywordType = TextType
+LanguageIDType = IdentifierType
+LastRevisionDateType = DateType
+LastRevisionTimeType = TimeType
+LatestDeliveryDateType = DateType
+LatestDeliveryTimeType = TimeType
+LatestMeterQuantityType = QuantityType
+LatestMeterReadingDateType = DateType
+LatestMeterReadingMethodCodeType = CodeType
+LatestMeterReadingMethodType = TextType
+LatestPickupDateType = DateType
+LatestPickupTimeType = TimeType
+LatestProposalAcceptanceDateType = DateType
+LatestReplyDateType = DateType
+LatestReplyTimeType = TimeType
+LatestSecurityClearanceDateType = DateType
+LatitudeDegreesMeasureType = MeasureType
+LatitudeDirectionCodeType = LatitudeDirectionCodeType
+LatitudeMinutesMeasureType = MeasureType
+LeadTimeMeasureType = MeasureType
+LegalReferenceType = TextType
+LegalStatusIndicatorType = IndicatorType
+LiabilityAmountType = AmountType
+LicensePlateIDType = IdentifierType
+LifeCycleStatusCodeType = CodeType
+LimitationDescriptionType = TextType
+LineCountNumericType = NumericType
+LineExtensionAmountType = AmountType
+LineIDType = IdentifierType
+LineNumberNumericType = NumericType
+LineStatusCodeType = LineStatusCodeType
+LineType = TextType
+ListValueType = TextType
+LivestockIndicatorType = IndicatorType
+LoadingLengthMeasureType = MeasureType
+LoadingSequenceIDType = IdentifierType
+LocaleCodeType = LanguageCodeType
+LocationIDType = IdentifierType
+LocationType = TextType
+LocationTypeCodeType = CodeType
+LoginType = TextType
+LogoReferenceIDType = IdentifierType
+LongitudeDegreesMeasureType = MeasureType
+LongitudeDirectionCodeType = LongitudeDirectionCodeType
+LongitudeMinutesMeasureType = MeasureType
+LossRiskResponsibilityCodeType = CodeType
+LossRiskType = TextType
+LotNumberIDType = IdentifierType
+LowTendersDescriptionType = TextType
+LowerOrangeHazardPlacardIDType = IdentifierType
+LowerTenderAmountType = AmountType
+MandateTypeCodeType = CodeType
+ManufactureDateType = DateType
+ManufactureTimeType = TimeType
+MarkAttentionIndicatorType = IndicatorType
+MarkAttentionType = TextType
+MarkCareIndicatorType = IndicatorType
+MarkCareType = TextType
+MarketValueAmountType = AmountType
+MarkingIDType = IdentifierType
+MathematicOperatorCodeType = OperatorCodeType
+MaximumAdvertisementAmountType = AmountType
+MaximumAmountType = AmountType
+MaximumBackorderQuantityType = QuantityType
+MaximumCopiesNumericType = NumericType
+MaximumDataLossDurationMeasureType = MeasureType
+MaximumIncidentNotificationDurationMeasureType = MeasureType
+MaximumLotsAwardedNumericType = NumericType
+MaximumLotsSubmittedNumericType = NumericType
+MaximumMeasureType = MeasureType
+MaximumNumberNumericType = NumericType
+MaximumOperatorQuantityType = QuantityType
+MaximumOrderQuantityType = QuantityType
+MaximumOriginalsNumericType = NumericType
+MaximumPaidAmountType = AmountType
+MaximumPaymentInstructionsNumericType = NumericType
+MaximumPercentType = PercentType
+MaximumQuantityType = QuantityType
+MaximumValueNumericType = NumericType
+MaximumValueType = TextType
+MaximumVariantQuantityType = QuantityType
+MeanTimeToRecoverDurationMeasureType = MeasureType
+MeasureType = MeasureType
+MedicalFirstAidGuideCodeType = CodeType
+MessageFormatType = TextType
+MeterConstantCodeType = CodeType
+MeterConstantType = TextType
+MeterNameType = NameType
+MeterNumberType = TextType
+MeterReadingCommentsType = TextType
+MeterReadingTypeCodeType = CodeType
+MeterReadingTypeType = TextType
+MiddleNameType = NameType
+MimeCodeType = CodeType
+MinimumAmountType = AmountType
+MinimumBackorderQuantityType = QuantityType
+MinimumDownTimeScheduleDurationMeasureType = MeasureType
+MinimumImprovementBidType = TextType
+MinimumInventoryQuantityType = QuantityType
+MinimumMeasureType = MeasureType
+MinimumNumberNumericType = NumericType
+MinimumOrderQuantityType = QuantityType
+MinimumPercentType = PercentType
+MinimumQuantityType = QuantityType
+MinimumResponseTimeDurationMeasureType = MeasureType
+MinimumValueNumericType = NumericType
+MinimumValueType = TextType
+MiscellaneousEventTypeCodeType = CodeType
+ModelNameType = NameType
+MondayAvailabilityIndicatorType = IndicatorType
+MonetaryScopeType = TextType
+MovieTitleType = TextType
+MultipleOrderQuantityType = QuantityType
+MultiplierFactorNumericType = NumericType
+NameCodeType = CodeType
+NameSuffixType = TextType
+NameType = NameType
+NationalityIDType = IdentifierType
+NatureCodeType = CodeType
+NegotiationDescriptionType = TextType
+NetNetWeightMeasureType = MeasureType
+NetTonnageMeasureType = MeasureType
+NetVolumeMeasureType = MeasureType
+NetWeightMeasureType = MeasureType
+NetworkIDType = IdentifierType
+NoFurtherNegotiationIndicatorType = IndicatorType
+NominationDateType = DateType
+NominationTimeType = TimeType
+NormalTemperatureReductionQuantityType = QuantityType
+NoteType = TextType
+NoticeLanguageCodeType = LanguageCodeType
+NoticeTypeCodeType = CodeType
+NotificationTypeCodeType = CodeType
+OIDType = IdentifierType
+OccurrenceDateType = DateType
+OccurrenceTimeType = TimeType
+OnCarriageIndicatorType = IndicatorType
+OneTimeChargeTypeCodeType = CodeType
+OneTimeChargeTypeType = TextType
+OntologyURIType = IdentifierType
+OpenTenderIDType = IdentifierType
+OperatingYearsQuantityType = QuantityType
+OptionalLineItemIndicatorType = IndicatorType
+OptionsDescriptionType = TextType
+OrderIntervalDaysNumericType = NumericType
+OrderQuantityIncrementNumericType = NumericType
+OrderResponseCodeType = CodeType
+OrderTypeCodeType = CodeType
+OrderableIndicatorType = IndicatorType
+OrderableUnitFactorRateType = RateType
+OrderableUnitType = TextType
+OrganizationDepartmentType = TextType
+OriginalContractingSystemIDType = IdentifierType
+OriginalJobIDType = IdentifierType
+OtherConditionsIndicatorType = IndicatorType
+OtherInstructionType = TextType
+OtherNameType = NameType
+OutstandingQuantityType = QuantityType
+OutstandingReasonType = TextType
+OversupplyQuantityType = QuantityType
+OwnerTypeCodeType = CodeType
+PackLevelCodeType = CodeType
+PackQuantityType = QuantityType
+PackSizeNumericType = NumericType
+PackageLevelCodeType = CodeType
+PackagingTypeCodeType = PackagingTypeCodeType
+PackingCriteriaCodeType = CodeType
+PackingMaterialType = TextType
+PaidAmountType = AmountType
+PaidDateType = DateType
+PaidTimeType = TimeType
+ParentDocumentIDType = IdentifierType
+ParentDocumentLineReferenceIDType = IdentifierType
+ParentDocumentTypeCodeType = CodeType
+ParentDocumentVersionIDType = IdentifierType
+PartPresentationCodeType = CodeType
+PartecipationPercentType = PercentType
+PartialDeliveryIndicatorType = IndicatorType
+ParticipantIDType = IdentifierType
+ParticipationPercentType = PercentType
+PartyCapacityAmountType = AmountType
+PartyTypeCodeType = CodeType
+PartyTypeType = TextType
+PassengerQuantityType = QuantityType
+PasswordType = TextType
+PayPerViewType = TextType
+PayableAlternativeAmountType = AmountType
+PayableAmountType = AmountType
+PayableRoundingAmountType = AmountType
+PayerReferenceType = TextType
+PaymentAlternativeCurrencyCodeType = CurrencyCodeType
+PaymentChannelCodeType = CodeType
+PaymentCurrencyCodeType = CurrencyCodeType
+PaymentDescriptionType = TextType
+PaymentDueDateType = DateType
+PaymentFrequencyCodeType = CodeType
+PaymentIDType = IdentifierType
+PaymentMeansCodeType = PaymentMeansCodeType
+PaymentMeansIDType = IdentifierType
+PaymentNoteType = TextType
+PaymentOrderReferenceType = TextType
+PaymentPercentType = PercentType
+PaymentPurposeCodeType = CodeType
+PaymentTermsDetailsURIType = IdentifierType
+PenaltyAmountType = AmountType
+PenaltySurchargePercentType = PercentType
+PerUnitAmountType = AmountType
+PercentType = PercentType
+PerformanceMetricTypeCodeType = CodeType
+PerformanceValueQuantityType = QuantityType
+PerformingCarrierAssignedIDType = IdentifierType
+PersonalSituationType = TextType
+PhoneNumberType = TextType
+PlacardEndorsementType = TextType
+PlacardNotationType = TextType
+PlannedDateType = DateType
+PlotIdentificationType = TextType
+PositionCodeType = CodeType
+PostEventNotificationDurationMeasureType = MeasureType
+PostalZoneType = TextType
+PostboxType = TextType
+PowerIndicatorType = IndicatorType
+PreCarriageIndicatorType = IndicatorType
+PreEventNotificationDurationMeasureType = MeasureType
+PreferenceCriterionCodeType = CodeType
+PreferredLanguageLocaleCodeType = LanguageCodeType
+PrepaidAmountType = AmountType
+PrepaidIndicatorType = IndicatorType
+PrepaidPaymentReferenceIDType = IdentifierType
+PreviousCancellationReasonCodeType = CodeType
+PreviousJobIDType = IdentifierType
+PreviousMeterQuantityType = QuantityType
+PreviousMeterReadingDateType = DateType
+PreviousMeterReadingMethodCodeType = CodeType
+PreviousMeterReadingMethodType = TextType
+PreviousVersionIDType = IdentifierType
+PriceAmountType = AmountType
+PriceChangeReasonType = TextType
+PriceEvaluationCodeType = CodeType
+PriceRevisionFormulaDescriptionType = TextType
+PriceTypeCodeType = CodeType
+PriceTypeType = TextType
+PricingCurrencyCodeType = CurrencyCodeType
+PricingUpdateRequestIndicatorType = IndicatorType
+PrimaryAccountNumberIDType = IdentifierType
+PrintQualifierType = TextType
+PriorityType = TextType
+PrivacyCodeType = CodeType
+PrivatePartyIndicatorType = IndicatorType
+PrizeDescriptionType = TextType
+PrizeIndicatorType = IndicatorType
+ProcedureCodeType = CodeType
+ProcessDescriptionType = TextType
+ProcessReasonCodeType = CodeType
+ProcessReasonType = TextType
+ProcurementSubTypeCodeType = CodeType
+ProcurementTypeCodeType = CodeType
+ProductTraceIDType = IdentifierType
+ProfileExecutionIDType = IdentifierType
+ProfileIDType = IdentifierType
+ProfileStatusCodeType = CodeType
+ProgressPercentType = PercentType
+PromotionalEventTypeCodeType = CodeType
+PropertyGroupTypeCodeType = CodeType
+ProtocolIDType = IdentifierType
+ProviderTypeCodeType = CodeType
+PublicPartyIndicatorType = IndicatorType
+PublishAwardIndicatorType = IndicatorType
+PurposeCodeType = CodeType
+PurposeType = TextType
+QualificationApplicationTypeCodeType = CodeType
+QualityControlCodeType = CodeType
+QuantityDiscrepancyCodeType = CodeType
+QuantityType = QuantityType
+RadioCallSignIDType = IdentifierType
+RailCarIDType = IdentifierType
+RankType = TextType
+RateType = RateType
+ReceiptAdviceTypeCodeType = ReceiptAdviceTypeCodeType
+ReceivedDateType = DateType
+ReceivedElectronicTenderQuantityType = QuantityType
+ReceivedForeignTenderQuantityType = QuantityType
+ReceivedQuantityType = QuantityType
+ReceivedTenderQuantityType = QuantityType
+RecurringProcurementIndicatorType = IndicatorType
+ReferenceDateType = DateType
+ReferenceEventCodeType = CodeType
+ReferenceIDType = IdentifierType
+ReferenceTimeType = TimeType
+ReferenceType = TextType
+ReferencedConsignmentIDType = IdentifierType
+RefrigeratedIndicatorType = IndicatorType
+RefrigerationOnIndicatorType = IndicatorType
+RegionType = TextType
+RegisteredDateType = DateType
+RegisteredTimeType = TimeType
+RegistrationDateType = DateType
+RegistrationExpirationDateType = DateType
+RegistrationIDType = IdentifierType
+RegistrationNameType = NameType
+RegistrationNationalityIDType = IdentifierType
+RegistrationNationalityType = TextType
+RegulatoryDomainType = TextType
+RejectActionCodeType = CodeType
+RejectReasonCodeType = CodeType
+RejectReasonType = TextType
+RejectedQuantityType = QuantityType
+RejectionNoteType = TextType
+ReleaseIDType = IdentifierType
+ReliabilityPercentType = PercentType
+RemarksType = TextType
+ReminderSequenceNumericType = NumericType
+ReminderTypeCodeType = CodeType
+RenewalsIndicatorType = IndicatorType
+ReplenishmentOwnerDescriptionType = TextType
+RequestForQuotationLineIDType = IdentifierType
+RequestedDeliveryDateType = DateType
+RequestedDespatchDateType = DateType
+RequestedDespatchTimeType = TimeType
+RequestedInvoiceCurrencyCodeType = CurrencyCodeType
+RequestedPublicationDateType = DateType
+RequiredCurriculaIndicatorType = IndicatorType
+RequiredCustomsIDType = IdentifierType
+RequiredDeliveryDateType = DateType
+RequiredDeliveryTimeType = TimeType
+RequiredFeeAmountType = AmountType
+RequiredResponseMessageLevelCodeType = CodeType
+ResidenceTypeCodeType = CodeType
+ResidenceTypeType = TextType
+ResidentOccupantsNumericType = NumericType
+ResolutionCodeType = CodeType
+ResolutionDateType = DateType
+ResolutionTimeType = TimeType
+ResolutionType = TextType
+ResponseAmountType = AmountType
+ResponseBinaryObjectType = BinaryObjectType
+ResponseCodeType = CodeType
+ResponseDateType = DateType
+ResponseIDType = IdentifierType
+ResponseIndicatorType = IndicatorType
+ResponseMeasureType = MeasureType
+ResponseNumericType = NumericType
+ResponseQuantityType = QuantityType
+ResponseTimeType = TimeType
+ResponseType = TextType
+ResponseURIType = IdentifierType
+RetailEventNameType = NameType
+RetailEventStatusCodeType = CodeType
+ReturnabilityIndicatorType = IndicatorType
+ReturnableMaterialIndicatorType = IndicatorType
+ReturnableQuantityType = QuantityType
+RevisedForecastLineIDType = IdentifierType
+RevisionDateType = DateType
+RevisionStatusCodeType = CodeType
+RevisionTimeType = TimeType
+RoamingPartnerNameType = NameType
+RoleCodeType = CodeType
+RoleDescriptionType = TextType
+RoomType = TextType
+RoundingAmountType = AmountType
+SalesOrderIDType = IdentifierType
+SalesOrderLineIDType = IdentifierType
+SaturdayAvailabilityIndicatorType = IndicatorType
+SchemaURIType = IdentifierType
+SchemeURIType = IdentifierType
+SealIssuerTypeCodeType = CodeType
+SealStatusCodeType = CodeType
+SealingPartyTypeType = TextType
+SecurityClassificationCodeType = CodeType
+SecurityIDType = IdentifierType
+SellerEventIDType = IdentifierType
+SequenceIDType = IdentifierType
+SequenceNumberIDType = IdentifierType
+SequenceNumericType = NumericType
+SerialIDType = IdentifierType
+ServiceInformationPreferenceCodeType = CodeType
+ServiceNameType = NameType
+ServiceNumberCalledType = TextType
+ServiceProviderPartyIndicatorType = IndicatorType
+ServiceTypeCodeType = CodeType
+ServiceTypeType = TextType
+SettlementDiscountAmountType = AmountType
+SettlementDiscountPercentType = PercentType
+SharesNumberQuantityType = QuantityType
+ShippingMarksType = TextType
+ShippingOrderIDType = IdentifierType
+ShippingPriorityLevelCodeType = CodeType
+ShipsRequirementsType = TextType
+ShortQuantityType = QuantityType
+ShortageActionCodeType = CodeType
+SignatureIDType = IdentifierType
+SignatureMethodType = TextType
+SizeTypeCodeType = CodeType
+SocialMediaTypeCodeType = CodeType
+SoleProprietorshipIndicatorType = IndicatorType
+SourceCurrencyBaseRateType = RateType
+SourceCurrencyCodeType = CurrencyCodeType
+SourceForecastIssueDateType = DateType
+SourceForecastIssueTimeType = TimeType
+SourceValueMeasureType = MeasureType
+SpecialInstructionsType = TextType
+SpecialSecurityIndicatorType = IndicatorType
+SpecialServiceInstructionsType = TextType
+SpecialTermsType = TextType
+SpecialTransportRequirementsType = TextType
+SpecificationIDType = IdentifierType
+SpecificationTypeCodeType = CodeType
+SplitConsignmentIndicatorType = IndicatorType
+StartDateType = DateType
+StartTimeType = TimeType
+StatementTypeCodeType = CodeType
+StatusAvailableIndicatorType = IndicatorType
+StatusCodeType = CodeType
+StatusReasonCodeType = CodeType
+StatusReasonType = TextType
+StreetNameType = NameType
+SubcontractingConditionsCodeType = CodeType
+SubmissionDateType = DateType
+SubmissionDueDateType = DateType
+SubmissionMethodCodeType = CodeType
+SubscriberIDType = IdentifierType
+SubscriberTypeCodeType = CodeType
+SubscriberTypeType = TextType
+SubstitutionStatusCodeType = SubstitutionStatusCodeType
+SuccessiveSequenceIDType = IdentifierType
+SummaryDescriptionType = TextType
+SundayAvailabilityIndicatorType = IndicatorType
+SupplierAssignedAccountIDType = IdentifierType
+SupplyChainActivityTypeCodeType = CodeType
+TareWeightMeasureType = MeasureType
+TargetCurrencyBaseRateType = RateType
+TargetCurrencyCodeType = CurrencyCodeType
+TargetInventoryQuantityType = QuantityType
+TargetServicePercentType = PercentType
+TariffClassCodeType = CodeType
+TariffCodeType = CodeType
+TariffDescriptionType = TextType
+TaxAmountType = AmountType
+TaxCurrencyCodeType = CurrencyCodeType
+TaxEnergyAmountType = AmountType
+TaxEnergyBalanceAmountType = AmountType
+TaxEnergyOnAccountAmountType = AmountType
+TaxEvidenceIndicatorType = IndicatorType
+TaxExclusiveAmountType = AmountType
+TaxExemptionReasonCodeType = CodeType
+TaxExemptionReasonType = TextType
+TaxIncludedIndicatorType = IndicatorType
+TaxInclusiveAmountType = AmountType
+TaxLevelCodeType = CodeType
+TaxPointDateType = DateType
+TaxTypeCodeType = CodeType
+TaxableAmountType = AmountType
+TechnicalCommitteeDescriptionType = TextType
+TechnicalNameType = NameType
+TelecommunicationsServiceCallCodeType = CodeType
+TelecommunicationsServiceCallType = TextType
+TelecommunicationsServiceCategoryCodeType = CodeType
+TelecommunicationsServiceCategoryType = TextType
+TelecommunicationsSupplyTypeCodeType = CodeType
+TelecommunicationsSupplyTypeType = TextType
+TelefaxType = TextType
+TelephoneType = TextType
+TenderEnvelopeIDType = IdentifierType
+TenderEnvelopeTypeCodeType = CodeType
+TenderLanguageLocaleCodeType = LanguageCodeType
+TenderResultCodeType = CodeType
+TenderTypeCodeType = CodeType
+TendererRequirementTypeCodeType = CodeType
+TendererRoleCodeType = CodeType
+TestIndicatorType = IndicatorType
+TestMethodType = TextType
+TextType = TextType
+ThirdPartyPayerIndicatorType = IndicatorType
+ThresholdAmountType = AmountType
+ThresholdQuantityType = QuantityType
+ThresholdValueComparisonCodeType = CodeType
+ThursdayAvailabilityIndicatorType = IndicatorType
+TierRangeType = TextType
+TierRatePercentType = PercentType
+TimeAmountType = TextType
+TimeDeltaDaysQuantityType = QuantityType
+TimeFrequencyCodeType = CodeType
+TimezoneOffsetType = TextType
+TimingComplaintCodeType = CodeType
+TimingComplaintType = TextType
+TitleType = TextType
+ToOrderIndicatorType = IndicatorType
+TotalAmountType = AmountType
+TotalBalanceAmountType = AmountType
+TotalConsumedQuantityType = QuantityType
+TotalCreditAmountType = AmountType
+TotalDebitAmountType = AmountType
+TotalDeliveredQuantityType = QuantityType
+TotalGoodsItemQuantityType = QuantityType
+TotalInvoiceAmountType = AmountType
+TotalMeteredQuantityType = QuantityType
+TotalPackageQuantityType = QuantityType
+TotalPackagesQuantityType = QuantityType
+TotalPaymentAmountType = AmountType
+TotalTaskAmountType = AmountType
+TotalTaxAmountType = AmountType
+TotalTransportHandlingUnitQuantityType = QuantityType
+TraceIDType = IdentifierType
+TrackingDeviceCodeType = CodeType
+TrackingIDType = IdentifierType
+TradeItemPackingLabelingTypeCodeType = CodeType
+TradeServiceCodeType = CodeType
+TradingRestrictionsType = TextType
+TrainIDType = IdentifierType
+TransactionCurrencyTaxAmountType = AmountType
+TransitDirectionCodeType = CodeType
+TranslationTypeCodeType = CodeType
+TransportAuthorizationCodeType = CodeType
+TransportEmergencyCardCodeType = CodeType
+TransportEquipmentTypeCodeType = TransportEquipmentTypeCodeType
+TransportEventTypeCodeType = CodeType
+TransportExecutionPlanReferenceIDType = IdentifierType
+TransportExecutionStatusCodeType = CodeType
+TransportHandlingUnitTypeCodeType = CodeType
+TransportMeansTypeCodeType = CodeType
+TransportModeCodeType = TransportModeCodeType
+TransportServiceCodeType = CodeType
+TransportServiceProviderRemarksType = TextType
+TransportServiceProviderSpecialTermsType = TextType
+TransportUserRemarksType = TextType
+TransportUserSpecialTermsType = TextType
+TransportationServiceDescriptionType = TextType
+TransportationServiceDetailsURIType = IdentifierType
+TransportationStatusTypeCodeType = CodeType
+TuesdayAvailabilityIndicatorType = IndicatorType
+TypeCodeType = CodeType
+UBLVersionIDType = IdentifierType
+UNDGCodeType = CodeType
+URIType = IdentifierType
+UUIDType = IdentifierType
+UnknownPriceIndicatorType = IndicatorType
+UpperOrangeHazardPlacardIDType = IdentifierType
+UrgencyCodeType = CodeType
+UtilityStatementTypeCodeType = CodeType
+ValidateProcessType = TextType
+ValidateToolType = TextType
+ValidateToolVersionType = TextType
+ValidatedCriterionPropertyIDType = IdentifierType
+ValidationDateType = DateType
+ValidationResultCodeType = CodeType
+ValidationTimeType = TimeType
+ValidatorIDType = IdentifierType
+ValidityStartDateType = DateType
+ValueAmountType = AmountType
+ValueCurrencyCodeType = CurrencyCodeType
+ValueDataTypeCodeType = CodeType
+ValueMeasureType = MeasureType
+ValueQualifierType = TextType
+ValueQuantityType = QuantityType
+ValueType = TextType
+ValueUnitCodeType = UnitOfMeasureCodeType
+VarianceQuantityType = QuantityType
+VariantConstraintIndicatorType = IndicatorType
+VariantIDType = IdentifierType
+VersionIDType = IdentifierType
+VesselIDType = IdentifierType
+VesselNameType = NameType
+WarrantyInformationType = TextType
+WebSiteTypeCodeType = CodeType
+WebsiteURIType = IdentifierType
+WednesdayAvailabilityIndicatorType = IndicatorType
+WeekDayCodeType = WeekDayCodeType
+WeighingDateType = DateType
+WeighingDeviceIDType = IdentifierType
+WeighingDeviceTypeType = TextType
+WeighingMethodCodeType = WeighingMethodCodeType
+WeighingTimeType = TimeType
+WeightNumericType = NumericType
+WeightScoringMethodologyNoteType = TextType
+WeightStatementTypeCodeType = CodeType
+WeightType = TextType
+WeightingAlgorithmCodeType = CodeType
+WeightingConsiderationDescriptionType = TextType
+WeightingTypeCodeType = CodeType
+WithdrawOfferIndicatorType = IndicatorType
+WithholdingTaxTotalAmountType = AmountType
+WorkPhaseCodeType = CodeType
+WorkPhaseType = TextType
+XPathType = TextType
+# ===== Copyright Notice =====
+
+# OASIS takes no position regarding the validity or scope of any 
+# intellectual property or other rights that might be claimed to pertain 
+# to the implementation or use of the technology described in this 
+# document or the extent to which any license under such rights 
+# might or might not be available; neither does it represent that it has 
+# made any effort to identify any such rights. Information on OASIS's 
+# procedures with respect to rights in OASIS specifications can be 
+# found at the OASIS website. Copies of claims of rights made 
+# available for publication and any assurances of licenses to be made 
+# available, or the result of an attempt made to obtain a general 
+# license or permission for the use of such proprietary rights by 
+# implementors or users of this specification, can be obtained from 
+# the OASIS Executive Director.
+# 
+# OASIS invites any interested party to bring to its attention any 
+# copyrights, patents or patent applications, or other proprietary 
+# rights which may cover technology that may be required to 
+# implement this specification. Please address the information to the 
+# OASIS Executive Director.
+# 
+# This document and translations of it may be copied and furnished to 
+# others, and derivative works that comment on or otherwise explain 
+# it or assist in its implementation may be prepared, copied, 
+# published and distributed, in whole or in part, without restriction of 
+# any kind, provided that the above copyright notice and this 
+# paragraph are included on all such copies and derivative works. 
+# However, this document itself may not be modified in any way, 
+# such as by removing the copyright notice or references to OASIS, 
+# except as needed for the purpose of developing OASIS 
+# specifications, in which case the procedures for copyrights defined 
+# in the OASIS Intellectual Property Rights document must be 
+# followed, or as required to translate it into languages other than 
+# English. 
+# 
+# The limited permissions granted above are perpetual and will not be 
+# revoked by OASIS or its successors or assigns. 
+# 
+# This document and the information contained herein is provided on 
+# an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, 
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY 
+# WARRANTY THAT THE USE OF THE INFORMATION HEREIN 
+# WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED 
+# WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A 
+# PARTICULAR PURPOSE.    

@@ -1,0 +1,83 @@
+# Library:           OASIS Universal Business Language (UBL) 2.2 OS
+#                    http://docs.oasis-open.org/ubl/os-UBL-2.2/
+# Release Date:      09 July 2018
+# Module:            UBL-XAdES01903v141-201601-2.2.xsd
+# Generated on:      2016-06-24 19:50(UTC)
+# 
+# This is a copy of http://uri.etsi.org/01903/v1.4.1/XAdES01903v141-201601.xsd
+# modified only to change the importing URIs for the XAdES v1.3.2 schema and
+# W3C dsig schema.
+
+default namespace = "http://uri.etsi.org/01903/v1.4.1#"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace ds = "http://www.w3.org/2000/09/xmldsig#"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace xades = "http://uri.etsi.org/01903/v1.3.2#"
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+include "UBL-xmldsig-core-schema-2.2.rnc" inherit = ds
+include "UBL-XAdES01903v132-201601-2.2.rnc" inherit = xades
+# Start CertificateValues
+start |= starting_TimeStampValidationData
+starting_TimeStampValidationData =
+  element TimeStampValidationData { ValidationDataType }
+ValidationDataType =
+  CertificateValues?,
+  RevocationValues?,
+  attribute Id { xsd:ID }?,
+  attribute URI { xsd:anyURI }?
+start |= starting_SignaturePolicyStore
+starting_SignaturePolicyStore =
+  element SignaturePolicyStore { SignaturePolicyStoreType }
+SignaturePolicyStoreType =
+  SPDocSpecification,
+  (element SignaturePolicyDocument { xsd:base64Binary }
+   | element SigPolDocLocalURI { xsd:anyURI }),
+  attribute Id { xsd:ID }?
+start |= starting_SPDocSpecification
+starting_SPDocSpecification =
+  element SPDocSpecification { ObjectIdentifierType }
+#
+
+#  Start RenewedDigests
+
+#
+start |= starting_RenewedDigests
+starting_RenewedDigests = element RenewedDigests { RenewedDigestsType }
+RenewedDigestsType =
+  DigestMethod,
+  RecomputedDigestValue+,
+  attribute Id { xsd:ID }?
+start |= starting_RecomputedDigestValue
+starting_RecomputedDigestValue =
+  element RecomputedDigestValue { RecomputedDigestValueType }
+RecomputedDigestValueType =
+  DigestValueType,
+  attribute Order { xsd:integer }
+#
+
+#  End RenewedDigests
+
+#
+
+#  ArchiveTimeStamp in namespace with URI 'http://uri.etsi.org/01903/v1.4.1#'
+start |= starting_ArchiveTimeStamp
+starting_ArchiveTimeStamp =
+  element ArchiveTimeStamp { XAdESTimeStampType }
+# CompleteCertificateRefsV2 and AttributeCertificateRefsV2
+start |= starting_CompleteCertificateRefsV2
+starting_CompleteCertificateRefsV2 =
+  element CompleteCertificateRefsV2 { CompleteCertificateRefsTypeV2 }
+start |= starting_AttributeCertificateRefsV2
+starting_AttributeCertificateRefsV2 =
+  element AttributeCertificateRefsV2 { CompleteCertificateRefsTypeV2 }
+CompleteCertificateRefsTypeV2 =
+  element CertRefs { CertIDListV2Type },
+  attribute Id { xsd:ID }?
+#  SigAndRefsTimeStampV2 and RefsOnlyTimeStampV2
+start |= starting_SigAndRefsTimeStampV2
+starting_SigAndRefsTimeStampV2 =
+  element SigAndRefsTimeStampV2 { XAdESTimeStampType }
+start |= starting_RefsOnlyTimeStampV2
+starting_RefsOnlyTimeStampV2 =
+  element RefsOnlyTimeStampV2 { XAdESTimeStampType }

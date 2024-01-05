@@ -1,0 +1,994 @@
+# Library:           OASIS Universal Business Language (UBL) 2.2 OS
+#                    http://docs.oasis-open.org/ubl/os-UBL-2.2/
+# Release Date:      09 July 2018
+# Module:            UBL-UnqualifiedDataTypes-2.2.xsd
+# Generated on:      2016-06-24 19:50(UTC)
+# Copyright (c) OASIS Open 2016. All Rights Reserved.
+# 
+# This schema fragment implements UBL unqualified datatypes using core
+# component types with all supplementary components as described in
+# CCTS 2.01 http://www.unece.org/cefact/ebxml/CCTS_V2-01_Final.pdf tables
+# 8-1, 8-2 and 8-3.
+# 
+# Per table 8-3, the graphic, picture, sound and video types are based on
+# "Binary Object. Type" as they are secondary representation terms.
+# 
+# Per table 8-3, the value, rate and percentage types are based on
+# "Numeric. Type" as they are secondary representation terms.
+# 
+# Per table 8-3, the name type is based on "Text. Type" as it is a 
+# secondary representation term.
+# 
+# Per XSD lexical constraints, the following unqualified data types 
+# corresponding to core component types and secondary representation terms 
+# are based on XSD types (accordingly, the supplementary component "format" 
+# is not made available for these types):
+# 
+#       Date Time. Type  on  xsd:dateTime
+#       Date. Type       on  xsd:date
+#       Time. Type       on  xsd:time
+#       Indicator. Type  on  xsd:boolean
+# 
+# Per UBL 2.0 the following supplementary components are restricted to be
+# required rather than optional:
+# 
+#  Amount. Currency. Identifier  as  (AmountType)/@currencyID
+#  Binary Object. Mime. Code     as  (BinaryObjectType)/@mimeCode
+#  Graphic. Mime. Code           as  (GraphicType)/@mimeCode
+#  Picture. Mime. Code           as  (PictureType)/@mimeCode
+#  Sound. Mime. Code             as  (SoundType)/@mimeCode
+#  Video. Mime. Code             as  (VideoType)/@mimeCode
+#  Measure. Unit. Code           as  (MeasureType)/@unitCode
+# 
+# All other unqualified data types inherit the core component types complete
+# with their supplementary components.
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace ccts = "urn:un:unece:uncefact:documentation:2"
+namespace ccts-cct =
+  "urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+# ===== Imports =====
+include "CCTS_CCT_SchemaModule-2.2.rnc" inherit = ccts-cct
+# ===== Type Definitions =====
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT000001" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Amount. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A number of monetary units specified using a given unit of currency."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Amount" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+AmountType =
+  cc_AmountType,
+  attribute currencyID {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "              \x{a}" ~
+         "                 "
+         ccts:UniqueID [ "UNDT000001-SC2" ]
+         "\x{a}" ~
+         "                 "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                 "
+         ccts:DictionaryEntryName [ "Amount. Currency. Identifier" ]
+         "\x{a}" ~
+         "                 "
+         ccts:Definition [ "The currency of the amount." ]
+         "\x{a}" ~
+         "                 "
+         ccts:ObjectClass [ "Amount Currency" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PropertyTermName [ "Identification" ]
+         "\x{a}" ~
+         "                 "
+         ccts:RepresentationTermName [ "Identifier" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "                 "
+         ccts:UsageRule [
+           "Reference UNECE Rec 9, using 3-letter alphabetic codes."
+         ]
+         "\x{a}" ~
+         "              \x{a}" ~
+         "           "
+       ]
+  }
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT000002" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Binary Object. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A set of finite-length sequences of binary octets."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Binary Object" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "binary" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+BinaryObjectType =
+  cc_BinaryObjectType,
+  attribute mimeCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "              \x{a}" ~
+         "                 "
+         ccts:UniqueID [ "UNDT000002-SC3" ]
+         "\x{a}" ~
+         "                 "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                 "
+         ccts:DictionaryEntryName [ "Binary Object. Mime. Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:Definition [ "The mime type of the binary object." ]
+         "\x{a}" ~
+         "                 "
+         ccts:ObjectClass [ "Binary Object" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PropertyTermName [ "Mime" ]
+         "\x{a}" ~
+         "                 "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PrimitiveType [ "string" ]
+         "\x{a}" ~
+         "              \x{a}" ~
+         "           "
+       ]
+  }
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT000003" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Graphic. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A diagram, graph, mathematical curve, or similar representation."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Graphic" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "binary" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+GraphicType =
+  cc_BinaryObjectType,
+  attribute mimeCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "              \x{a}" ~
+         "                 "
+         ccts:UniqueID [ "UNDT000003-SC3" ]
+         "\x{a}" ~
+         "                 "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                 "
+         ccts:DictionaryEntryName [ "Graphic. Mime. Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:Definition [ "The mime type of the graphic object." ]
+         "\x{a}" ~
+         "                 "
+         ccts:ObjectClass [ "Graphic" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PropertyTermName [ "Mime" ]
+         "\x{a}" ~
+         "                 "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PrimitiveType [ "normalizedString" ]
+         "\x{a}" ~
+         "              \x{a}" ~
+         "           "
+       ]
+  }
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT000004" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Picture. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A diagram, graph, mathematical curve, or similar representation."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Picture" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "binary" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+PictureType =
+  cc_BinaryObjectType,
+  attribute mimeCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "              \x{a}" ~
+         "                 "
+         ccts:UniqueID [ "UNDT000004-SC3" ]
+         "\x{a}" ~
+         "                 "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                 "
+         ccts:DictionaryEntryName [ "Picture. Mime. Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:Definition [ "The mime type of the picture object." ]
+         "\x{a}" ~
+         "                 "
+         ccts:ObjectClass [ "Picture" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PropertyTermName [ "Mime" ]
+         "\x{a}" ~
+         "                 "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PrimitiveType [ "normalizedString" ]
+         "\x{a}" ~
+         "              \x{a}" ~
+         "           "
+       ]
+  }
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT000005" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Sound. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [ "An audio representation." ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Sound" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "binary" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+SoundType =
+  cc_BinaryObjectType,
+  attribute mimeCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "              \x{a}" ~
+         "                 "
+         ccts:UniqueID [ "UNDT000005-SC3" ]
+         "\x{a}" ~
+         "                 "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                 "
+         ccts:DictionaryEntryName [ "Sound. Mime. Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:Definition [ "The mime type of the sound object." ]
+         "\x{a}" ~
+         "                 "
+         ccts:ObjectClass [ "Sound" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PropertyTermName [ "Mime" ]
+         "\x{a}" ~
+         "                 "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PrimitiveType [ "normalizedString" ]
+         "\x{a}" ~
+         "              \x{a}" ~
+         "           "
+       ]
+  }
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT000006" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Video. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [ "A video representation." ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Video" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "binary" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+VideoType =
+  cc_BinaryObjectType,
+  attribute mimeCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "              \x{a}" ~
+         "                 "
+         ccts:UniqueID [ "UNDT000006-SC3" ]
+         "\x{a}" ~
+         "                 "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                 "
+         ccts:DictionaryEntryName [ "Video. Mime. Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:Definition [ "The mime type of the video object." ]
+         "\x{a}" ~
+         "                 "
+         ccts:ObjectClass [ "Video" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PropertyTermName [ "Mime" ]
+         "\x{a}" ~
+         "                 "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PrimitiveType [ "normalizedString" ]
+         "\x{a}" ~
+         "              \x{a}" ~
+         "           "
+       ]
+  }
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT000007" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Code. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A character string (letters, figures, or symbols) that for brevity and/or language independence may be used to represent or replace a definitive value or text of an attribute, together with relevant supplementary information."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Code" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "        "
+    ccts:UsageRule [
+      "Other supplementary components in the CCT are captured as part of the token and name for the schema module containing the code list and thus, are not declared as attributes. "
+    ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+CodeType = cc_CodeType
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT000008" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Date Time. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A particular point in the progression of time, together with relevant supplementary information."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Date Time" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "        "
+    ccts:UsageRule [ "Can be used for a date and/or time." ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+DateTimeType = xsd:dateTime
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT000009" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Date. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "One calendar day according the Gregorian calendar."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Date" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+DateType = xsd:date
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000010" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Time. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [ "An instance of time that occurs every day." ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Time" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+TimeType = xsd:time
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000011" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Identifier. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A character string to identify and uniquely distinguish one instance of an object in an identification scheme from all other objects in the same scheme, together with relevant supplementary information."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Identifier" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "        "
+    ccts:UsageRule [
+      "Other supplementary components in the CCT are captured as part of the token and name for the schema module containing the identifier list and thus, are not declared as attributes. "
+    ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+IdentifierType = cc_IdentifierType
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000012" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Indicator. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A list of two mutually exclusive Boolean values that express the only possible states of a property."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Indicator" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+IndicatorType = xsd:boolean
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000013" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Measure. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A numeric value determined by measuring an object using a specified unit of measure."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Measure" ]
+    "\x{a}" ~
+    "        "
+    ccts:PropertyTermName [ "Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "decimal" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+MeasureType =
+  cc_MeasureType,
+  attribute unitCode {
+    xsd:normalizedString
+    >> a:documentation [
+         "\x{a}" ~
+         "              \x{a}" ~
+         "                 "
+         ccts:UniqueID [ "UNDT000013-SC2" ]
+         "\x{a}" ~
+         "                 "
+         ccts:CategoryCode [ "SC" ]
+         "\x{a}" ~
+         "                 "
+         ccts:DictionaryEntryName [ "Measure. Unit. Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:Definition [ "The type of unit of measure." ]
+         "\x{a}" ~
+         "                 "
+         ccts:ObjectClass [ "Measure Unit" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PropertyTermName [ "Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:RepresentationTermName [ "Code" ]
+         "\x{a}" ~
+         "                 "
+         ccts:PrimitiveType [ "normalizedString" ]
+         "\x{a}" ~
+         "                 "
+         ccts:UsageRule [ "Reference UNECE Rec. 20 and X12 355" ]
+         "\x{a}" ~
+         "              \x{a}" ~
+         "           "
+       ]
+  }
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000014" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Numeric. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "Numeric information that is assigned or is determined by calculation, counting, or sequencing. It does not require a unit of quantity or unit of measure."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Numeric" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+NumericType = cc_NumericType
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000015" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Value. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "Numeric information that is assigned or is determined by calculation, counting, or sequencing. It does not require a unit of quantity or unit of measure."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Value" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+ValueType = cc_NumericType
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000016" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Percent. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "Numeric information that is assigned or is determined by calculation, counting, or sequencing and is expressed as a percentage. It does not require a unit of quantity or unit of measure."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Percent" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+PercentType = cc_NumericType
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000017" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Rate. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A numeric expression of a rate that is assigned or is determined by calculation, counting, or sequencing. It does not require a unit of quantity or unit of measure."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Rate" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+RateType = cc_NumericType
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000018" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Quantity. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A counted number of non-monetary units, possibly including a fractional part."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Quantity" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "decimal" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+QuantityType = cc_QuantityType
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000019" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Text. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A character string (i.e. a finite set of characters), generally in the form of words of a language."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Text" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+TextType = cc_TextType
+[
+  a:documentation [
+    "\x{a}" ~
+    "      \x{a}" ~
+    "        "
+    ccts:UniqueID [ "UBLUDT0000020" ]
+    "\x{a}" ~
+    "        "
+    ccts:CategoryCode [ "UDT" ]
+    "\x{a}" ~
+    "        "
+    ccts:DictionaryEntryName [ "Name. Type" ]
+    "\x{a}" ~
+    "        "
+    ccts:VersionID [ "1.0" ]
+    "\x{a}" ~
+    "        "
+    ccts:Definition [
+      "A character string that constitutes the distinctive designation of a person, place, thing or concept."
+    ]
+    "\x{a}" ~
+    "        "
+    ccts:RepresentationTermName [ "Name" ]
+    "\x{a}" ~
+    "        "
+    ccts:PrimitiveType [ "string" ]
+    "\x{a}" ~
+    "      \x{a}" ~
+    "    "
+  ]
+]
+NameType = cc_TextType
+# ===== Copyright Notice =====
+
+# OASIS takes no position regarding the validity or scope of any 
+# intellectual property or other rights that might be claimed to pertain 
+# to the implementation or use of the technology described in this 
+# document or the extent to which any license under such rights 
+# might or might not be available; neither does it represent that it has 
+# made any effort to identify any such rights. Information on OASIS's 
+# procedures with respect to rights in OASIS specifications can be 
+# found at the OASIS website. Copies of claims of rights made 
+# available for publication and any assurances of licenses to be made 
+# available, or the result of an attempt made to obtain a general 
+# license or permission for the use of such proprietary rights by 
+# implementors or users of this specification, can be obtained from 
+# the OASIS Executive Director.
+# 
+# OASIS invites any interested party to bring to its attention any 
+# copyrights, patents or patent applications, or other proprietary 
+# rights which may cover technology that may be required to 
+# implement this specification. Please address the information to the 
+# OASIS Executive Director.
+# 
+# This document and translations of it may be copied and furnished to 
+# others, and derivative works that comment on or otherwise explain 
+# it or assist in its implementation may be prepared, copied, 
+# published and distributed, in whole or in part, without restriction of 
+# any kind, provided that the above copyright notice and this 
+# paragraph are included on all such copies and derivative works. 
+# However, this document itself may not be modified in any way, 
+# such as by removing the copyright notice or references to OASIS, 
+# except as needed for the purpose of developing OASIS 
+# specifications, in which case the procedures for copyrights defined 
+# in the OASIS Intellectual Property Rights document must be 
+# followed, or as required to translate it into languages other than 
+# English. 
+# 
+# The limited permissions granted above are perpetual and will not be 
+# revoked by OASIS or its successors or assigns. 
+# 
+# This document and the information contained herein is provided on 
+# an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, 
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY 
+# WARRANTY THAT THE USE OF THE INFORMATION HEREIN 
+# WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED 
+# WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A 
+# PARTICULAR PURPOSE.

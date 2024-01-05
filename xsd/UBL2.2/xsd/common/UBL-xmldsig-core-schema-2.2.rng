@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<!--
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
+  Module:            UBL-xmldsig-core-schema-2.2.xsd
+  Generated on:      2017-08-15 14:20(UTC)
+
+  This is a copy of
+  http://www.w3.org/TR/2008/REC-xmldsig-core-20080610/xmldsig-core-schema.xsd
+  modified only to remove the DOCTYPE declaration that has no impact on the
+  XDM model of the XML instance of this schema fragment:
+
+<!DOCTYPE schema
+  PUBLIC "-//W3C//DTD XMLSchema 200102//EN" "http://www.w3.org/2001/XMLSchema.dtd"
+ [
+   <!ATTLIST schema 
+     xmlns:ds CDATA #FIXED "http://www.w3.org/2000/09/xmldsig#">
+   <!ENTITY dsig 'http://www.w3.org/2000/09/xmldsig#'>
+   <!ENTITY % p ''>
+   <!ENTITY % s ''>
+  ]>
+-->
+<!-- Schema for XML Signatures
+    http://www.w3.org/2000/09/xmldsig#
+    $Revision: 1.1 $ on $Date: 2002/02/08 20:32:26 $ by $Author: reagle $
+
+    Copyright 2001 The Internet Society and W3C (Massachusetts Institute
+    of Technology, Institut National de Recherche en Informatique et en
+    Automatique, Keio University). All Rights Reserved.
+    http://www.w3.org/Consortium/Legal/
+
+    This document is governed by the W3C Software License [1] as described
+    in the FAQ [2].
+
+    [1] http://www.w3.org/Consortium/Legal/copyright-software-19980720
+    [2] http://www.w3.org/Consortium/Legal/IPR-FAQ-20000620.html#DTD
+-->
+<rng:grammar xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.w3.org/2001/XMLSchema" ns="http://www.w3.org/2000/09/xmldsig#" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"> 
+
+<!-- Basic Types Defined for Signatures -->
+
+<rng:define name="CryptoBinary">
+  <rng:ref name="base64Binary"/>
+  
+</rng:define>
+
+<!-- Start Signature -->
+
+<rng:start combine="choice"><rng:ref name="starting_Signature"/></rng:start><rng:define name="starting_Signature"><rng:element name="Signature"><rng:ref name="SignatureType"/></rng:element></rng:define>
+<rng:define name="SignatureType">
+   
+    <rng:ref name="SignedInfo"/> 
+    <rng:ref name="SignatureValue"/> 
+    <rng:optional><rng:ref name="KeyInfo"/></rng:optional> 
+    <rng:zeroOrMore><rng:ref name="Object"/></rng:zeroOrMore> 
+    
+  <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional>
+</rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_SignatureValue"/></rng:start><rng:define name="starting_SignatureValue"><rng:element name="SignatureValue"><rng:ref name="SignatureValueType"/></rng:element></rng:define> 
+  <rng:define name="SignatureValueType">
+    
+      <rng:ref name="base64Binary"/>
+        <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional>
+      
+    
+  </rng:define>
+
+<!-- Start SignedInfo -->
+
+<rng:start combine="choice"><rng:ref name="starting_SignedInfo"/></rng:start><rng:define name="starting_SignedInfo"><rng:element name="SignedInfo"><rng:ref name="SignedInfoType"/></rng:element></rng:define>
+<rng:define name="SignedInfoType">
+   
+    <rng:ref name="CanonicalizationMethod"/> 
+    <rng:ref name="SignatureMethod"/> 
+    <rng:oneOrMore><rng:ref name="Reference"/></rng:oneOrMore> 
+    
+  <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional> 
+</rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_CanonicalizationMethod"/></rng:start><rng:define name="starting_CanonicalizationMethod"><rng:element name="CanonicalizationMethod"><rng:ref name="CanonicalizationMethodType"/></rng:element></rng:define> 
+  <rng:define name="CanonicalizationMethodType">
+    
+      <rng:zeroOrMore><rng:element><rng:anyName/><rng:text/></rng:element></rng:zeroOrMore>
+      <!-- (0,unbounded) elements from (1,1) namespace -->
+    
+    <rng:attribute name="Algorithm"><rng:ref name="anyURI"/></rng:attribute> 
+  </rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_SignatureMethod"/></rng:start><rng:define name="starting_SignatureMethod"><rng:element name="SignatureMethod"><rng:ref name="SignatureMethodType"/></rng:element></rng:define>
+  <rng:define name="SignatureMethodType">
+    
+      <rng:optional><rng:element name="HMACOutputLength"><rng:ref name="HMACOutputLengthType"/></rng:element></rng:optional>
+      <rng:zeroOrMore><rng:element><rng:anyName/><rng:text/></rng:element></rng:zeroOrMore>
+      <!-- (0,unbounded) elements from (1,1) external namespace -->
+    
+    <rng:attribute name="Algorithm"><rng:ref name="anyURI"/></rng:attribute> 
+  </rng:define>
+
+<!-- Start Reference -->
+
+<rng:start combine="choice"><rng:ref name="starting_Reference"/></rng:start><rng:define name="starting_Reference"><rng:element name="Reference"><rng:ref name="ReferenceType"/></rng:element></rng:define>
+<rng:define name="ReferenceType">
+   
+    <rng:optional><rng:ref name="Transforms"/></rng:optional> 
+    <rng:ref name="DigestMethod"/> 
+    <rng:ref name="DigestValue"/> 
+  
+  <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional> 
+  <rng:optional><rng:attribute name="URI"><rng:ref name="anyURI"/></rng:attribute></rng:optional> 
+  <rng:optional><rng:attribute name="Type"><rng:ref name="anyURI"/></rng:attribute></rng:optional> 
+</rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_Transforms"/></rng:start><rng:define name="starting_Transforms"><rng:element name="Transforms"><rng:ref name="TransformsType"/></rng:element></rng:define>
+  <rng:define name="TransformsType">
+    
+      <rng:oneOrMore><rng:ref name="Transform"/></rng:oneOrMore>  
+    
+  </rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_Transform"/></rng:start><rng:define name="starting_Transform"><rng:element name="Transform"><rng:ref name="TransformType"/></rng:element></rng:define>
+  <rng:define name="TransformType">
+    <rng:zeroOrMore><rng:choice> 
+      <rng:element><rng:anyName/><rng:text/></rng:element>
+      <!-- (1,1) elements from (0,unbounded) namespaces -->
+      <rng:element name="XPath"><rng:ref name="string"/></rng:element> 
+    </rng:choice></rng:zeroOrMore>
+    <rng:attribute name="Algorithm"><rng:ref name="anyURI"/></rng:attribute> 
+  </rng:define>
+
+<!-- End Reference -->
+
+<rng:start combine="choice"><rng:ref name="starting_DigestMethod"/></rng:start><rng:define name="starting_DigestMethod"><rng:element name="DigestMethod"><rng:ref name="DigestMethodType"/></rng:element></rng:define>
+<rng:define name="DigestMethodType"> 
+  
+    <rng:zeroOrMore><rng:element><rng:anyName/><rng:text/></rng:element></rng:zeroOrMore>
+      
+  <rng:attribute name="Algorithm"><rng:ref name="anyURI"/></rng:attribute> 
+</rng:define>
+
+<rng:start combine="choice"><rng:ref name="starting_DigestValue"/></rng:start><rng:define name="starting_DigestValue"><rng:element name="DigestValue"><rng:ref name="DigestValueType"/></rng:element></rng:define>
+<rng:define name="DigestValueType">
+  <rng:ref name="base64Binary"/>
+</rng:define>
+
+<!-- End SignedInfo -->
+
+<!-- Start KeyInfo -->
+
+<rng:start combine="choice"><rng:ref name="starting_KeyInfo"/></rng:start><rng:define name="starting_KeyInfo"><rng:element name="KeyInfo"><rng:ref name="KeyInfoType"/></rng:element></rng:define> 
+<rng:define name="KeyInfoType">
+  <rng:oneOrMore><rng:choice>     
+    <rng:ref name="KeyName"/> 
+    <rng:ref name="KeyValue"/> 
+    <rng:ref name="RetrievalMethod"/> 
+    <rng:ref name="X509Data"/> 
+    <rng:ref name="PGPData"/> 
+    <rng:ref name="SPKIData"/>
+    <rng:ref name="MgmtData"/>
+    <rng:element><rng:anyName/><rng:text/></rng:element>
+    <!-- (1,1) elements from (0,unbounded) namespaces -->
+  </rng:choice></rng:oneOrMore>
+  <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional> 
+</rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_KeyName"/></rng:start><rng:define name="starting_KeyName"><rng:element name="KeyName"><rng:ref name="string"/></rng:element></rng:define>
+  <rng:start combine="choice"><rng:ref name="starting_MgmtData"/></rng:start><rng:define name="starting_MgmtData"><rng:element name="MgmtData"><rng:ref name="string"/></rng:element></rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_KeyValue"/></rng:start><rng:define name="starting_KeyValue"><rng:element name="KeyValue"><rng:ref name="KeyValueType"/></rng:element></rng:define> 
+  <rng:define name="KeyValueType">
+   <rng:choice>
+     <rng:ref name="DSAKeyValue"/>
+     <rng:ref name="RSAKeyValue"/>
+     <rng:element><rng:anyName/><rng:text/></rng:element>
+   </rng:choice>
+  </rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_RetrievalMethod"/></rng:start><rng:define name="starting_RetrievalMethod"><rng:element name="RetrievalMethod"><rng:ref name="RetrievalMethodType"/></rng:element></rng:define> 
+  <rng:define name="RetrievalMethodType">
+    
+      <rng:optional><rng:ref name="Transforms"/></rng:optional> 
+      
+    <rng:optional><rng:attribute name="URI"><rng:ref name="anyURI"/></rng:attribute></rng:optional>
+    <rng:optional><rng:attribute name="Type"><rng:ref name="anyURI"/></rng:attribute></rng:optional>
+  </rng:define>
+
+<!-- Start X509Data -->
+
+<rng:start combine="choice"><rng:ref name="starting_X509Data"/></rng:start><rng:define name="starting_X509Data"><rng:element name="X509Data"><rng:ref name="X509DataType"/></rng:element></rng:define> 
+<rng:define name="X509DataType">
+  
+    <rng:choice>
+      <rng:element name="X509IssuerSerial"><rng:ref name="X509IssuerSerialType"/></rng:element>
+      <rng:element name="X509SKI"><rng:ref name="base64Binary"/></rng:element>
+      <rng:element name="X509SubjectName"><rng:ref name="string"/></rng:element>
+      <rng:element name="X509Certificate"><rng:ref name="base64Binary"/></rng:element>
+      <rng:element name="X509CRL"><rng:ref name="base64Binary"/></rng:element>
+      <rng:element><rng:anyName/><rng:text/></rng:element>
+    </rng:choice>
+  
+</rng:define>
+
+<rng:define name="X509IssuerSerialType"> 
+   
+    <rng:element name="X509IssuerName"><rng:ref name="string"/></rng:element> 
+    <rng:element name="X509SerialNumber"><rng:ref name="integer"/></rng:element> 
+  
+</rng:define>
+
+<!-- End X509Data -->
+
+<!-- Begin PGPData -->
+
+<rng:start combine="choice"><rng:ref name="starting_PGPData"/></rng:start><rng:define name="starting_PGPData"><rng:element name="PGPData"><rng:ref name="PGPDataType"/></rng:element></rng:define> 
+<rng:define name="PGPDataType"> 
+  <rng:choice>
+    
+      <rng:element name="PGPKeyID"><rng:ref name="base64Binary"/></rng:element> 
+      <rng:optional><rng:element name="PGPKeyPacket"><rng:ref name="base64Binary"/></rng:element></rng:optional> 
+      <rng:zeroOrMore><rng:element><rng:anyName/><rng:text/></rng:element></rng:zeroOrMore>
+    
+    
+      <rng:element name="PGPKeyPacket"><rng:ref name="base64Binary"/></rng:element> 
+      <rng:zeroOrMore><rng:element><rng:anyName/><rng:text/></rng:element></rng:zeroOrMore>
+    
+  </rng:choice>
+</rng:define>
+
+<!-- End PGPData -->
+
+<!-- Begin SPKIData -->
+
+<rng:start combine="choice"><rng:ref name="starting_SPKIData"/></rng:start><rng:define name="starting_SPKIData"><rng:element name="SPKIData"><rng:ref name="SPKIDataType"/></rng:element></rng:define> 
+<rng:define name="SPKIDataType">
+  
+    <rng:element name="SPKISexp"><rng:ref name="base64Binary"/></rng:element>
+    <rng:optional><rng:element><rng:anyName/><rng:text/></rng:element></rng:optional>
+  
+</rng:define> 
+
+<!-- End SPKIData -->
+
+<!-- End KeyInfo -->
+
+<!-- Start Object (Manifest, SignatureProperty) -->
+
+<rng:start combine="choice"><rng:ref name="starting_Object"/></rng:start><rng:define name="starting_Object"><rng:element name="Object"><rng:ref name="ObjectType"/></rng:element></rng:define> 
+<rng:define name="ObjectType">
+  
+    <rng:element><rng:anyName/><rng:text/></rng:element>
+  
+  <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional> 
+  <rng:optional><rng:attribute name="MimeType"><rng:ref name="string"/></rng:attribute></rng:optional> <!-- add a grep facet -->
+  <rng:optional><rng:attribute name="Encoding"><rng:ref name="anyURI"/></rng:attribute></rng:optional> 
+</rng:define>
+
+<rng:start combine="choice"><rng:ref name="starting_Manifest"/></rng:start><rng:define name="starting_Manifest"><rng:element name="Manifest"><rng:ref name="ManifestType"/></rng:element></rng:define> 
+<rng:define name="ManifestType">
+  
+    <rng:oneOrMore><rng:ref name="Reference"/></rng:oneOrMore> 
+  
+  <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional> 
+</rng:define>
+
+<rng:start combine="choice"><rng:ref name="starting_SignatureProperties"/></rng:start><rng:define name="starting_SignatureProperties"><rng:element name="SignatureProperties"><rng:ref name="SignaturePropertiesType"/></rng:element></rng:define> 
+<rng:define name="SignaturePropertiesType">
+  
+    <rng:oneOrMore><rng:ref name="SignatureProperty"/></rng:oneOrMore> 
+  
+  <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional> 
+</rng:define>
+
+   <rng:start combine="choice"><rng:ref name="starting_SignatureProperty"/></rng:start><rng:define name="starting_SignatureProperty"><rng:element name="SignatureProperty"><rng:ref name="SignaturePropertyType"/></rng:element></rng:define> 
+   <rng:define name="SignaturePropertyType">
+     <rng:oneOrMore><rng:choice>
+       <rng:element><rng:anyName/><rng:text/></rng:element>
+       <!-- (1,1) elements from (1,unbounded) namespaces -->
+     </rng:choice></rng:oneOrMore>
+     <rng:attribute name="Target"><rng:ref name="anyURI"/></rng:attribute> 
+     <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional> 
+   </rng:define>
+
+<!-- End Object (Manifest, SignatureProperty) -->
+
+<!-- Start Algorithm Parameters -->
+
+<rng:define name="HMACOutputLengthType">
+  <rng:ref name="integer"/>
+</rng:define>
+
+<!-- Start KeyValue Element-types -->
+
+<rng:start combine="choice"><rng:ref name="starting_DSAKeyValue"/></rng:start><rng:define name="starting_DSAKeyValue"><rng:element name="DSAKeyValue"><rng:ref name="DSAKeyValueType"/></rng:element></rng:define>
+<rng:define name="DSAKeyValueType">
+  
+    
+      <rng:element name="P"><rng:ref name="CryptoBinary"/></rng:element>
+      <rng:element name="Q"><rng:ref name="CryptoBinary"/></rng:element>
+    
+    <rng:optional><rng:element name="G"><rng:ref name="CryptoBinary"/></rng:element></rng:optional>
+    <rng:element name="Y"><rng:ref name="CryptoBinary"/></rng:element>
+    <rng:optional><rng:element name="J"><rng:ref name="CryptoBinary"/></rng:element></rng:optional>
+    
+      <rng:element name="Seed"><rng:ref name="CryptoBinary"/></rng:element>
+      <rng:element name="PgenCounter"><rng:ref name="CryptoBinary"/></rng:element>
+    
+  
+</rng:define>
+
+<rng:start combine="choice"><rng:ref name="starting_RSAKeyValue"/></rng:start><rng:define name="starting_RSAKeyValue"><rng:element name="RSAKeyValue"><rng:ref name="RSAKeyValueType"/></rng:element></rng:define>
+<rng:define name="RSAKeyValueType">
+  
+    <rng:element name="Modulus"><rng:ref name="CryptoBinary"/></rng:element> 
+    <rng:element name="Exponent"><rng:ref name="CryptoBinary"/></rng:element> 
+  
+</rng:define> 
+
+<!-- End KeyValue Element-types -->
+
+<!-- End Signature -->
+
+</rng:grammar>

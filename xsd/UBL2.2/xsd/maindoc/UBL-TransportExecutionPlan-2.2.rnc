@@ -1,0 +1,1803 @@
+# Library:           OASIS Universal Business Language (UBL) 2.2 OS
+#                    http://docs.oasis-open.org/ubl/os-UBL-2.2/
+# Release Date:      09 July 2018
+# Module:            xsd/maindoc/UBL-TransportExecutionPlan-2.2.xsd
+# Generated on:      2018-07-08 20:04z
+# Copyright (c) OASIS Open 2018. All Rights Reserved.
+
+default namespace =
+  "urn:oasis:names:specification:ubl:schema:xsd:TransportExecutionPlan-2"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace cac =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+namespace cbc =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+namespace ccts = "urn:un:unece:uncefact:documentation:2"
+namespace ext =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+# ===== Imports =====
+include "UBL-CommonAggregateComponents-2.2.rnc" inherit = cac
+include "UBL-CommonBasicComponents-2.2.rnc" inherit = cbc
+include "UBL-CommonExtensionComponents-2.2.rnc" inherit = ext
+# ===== Element Declarations =====
+start |= starting_TransportExecutionPlan
+starting_TransportExecutionPlan =
+  element TransportExecutionPlan {
+    TransportExecutionPlanType
+    >> a:documentation [
+         "\x{a}" ~
+         "         This element MUST be conveyed as the root element in any instance document based on this Schema expression\x{a}" ~
+         "      "
+       ]
+  }
+# ===== Type Definitions =====
+
+# ===== Aggregate Business Information Entity Type Definitions =====
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:Component [
+      "\x{a}" ~
+      "               "
+      ccts:ComponentType [ "ABIE" ]
+      "\x{a}" ~
+      "               "
+      ccts:DictionaryEntryName [ "Transport Execution Plan. Details" ]
+      "\x{a}" ~
+      "               "
+      ccts:Definition [
+        "A document used in the negotiation of a transport service between a transport user and a transport service provider."
+      ]
+      "\x{a}" ~
+      "               "
+      ccts:ObjectClass [ "Transport Execution Plan" ]
+      "\x{a}" ~
+      "            "
+    ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+TransportExecutionPlanType =
+  UBLExtensions
+  >> a:documentation [
+       "\x{a}" ~
+       "               A container for all extensions present in the document.\x{a}" ~
+       "            "
+     ]?,
+  UBLVersionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. UBL Version Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies the earliest version of the UBL 2 schema for this document type that defines all of the elements that might be encountered in the current instance."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "UBL Version Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  CustomizationID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Customization Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies a user-defined customization of UBL for a specific use."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Customization Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ProfileID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Profile Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies a user-defined profile of the customization of UBL being used."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Profile Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ProfileExecutionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Profile Execution Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies an instance of executing a profile, to associate all transactions in a collaboration."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Profile Execution Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "An identifier for this document, assigned by the sender."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  VersionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Version. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Indicates the current version of the Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Version" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "1.1 " ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  CopyIndicator
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Copy_ Indicator. Indicator"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Indicates whether this document is a copy (true) or not (false)."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Copy" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Indicator" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Indicator" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Indicator. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  UUID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. UUID. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A universally unique identifier for an instance of this document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "UUID" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  IssueDate
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Issue Date. Date"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The date, assigned by the sender, on which this document was issued."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Issue Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Date. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AlternativeBusinessTerms [ "Transport Document Date" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  IssueTime
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Issue Time. Time"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The time, assigned by the sender, at which this document was issued."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Issue Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Time. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  DocumentStatusCode
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Document Status Code. Code"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A code signifying the status of the Transport Execution Plan (updated, cancelled, confirmed, etc.)"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Status Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataTypeQualifier [ "Document Status" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Document Status_ Code. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  DocumentStatusReasonCode
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Document Status Reason Code. Code"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A code signifying a reason associated with the status of a Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Status Reason Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Code. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  DocumentStatusReasonDescription
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Document Status Reason Description. Text"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A reason for the status assigned to the Transport Execution Plan, expressed in text."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Status Reason Description" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Text. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "123 Standard Chartered Tower " ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  Note
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Note. Text"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Free-form text pertinent to this document, conveying information that is not contained explicitly in other structures."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Note" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Text. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  TransportUserRemarks
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport User_ Remarks. Text"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Remarks from the transport user regarding the transport operations referred to in the Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Transport User" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Remarks" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Text. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  TransportServiceProviderRemarks
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport Service Provider_ Remarks. Text"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Remarks from the transport service provider regarding the transport operations referred to in the Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Transport Service Provider" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Remarks" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Text. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  SenderParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Sender_ Party. Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The party sending this document (can be either the transport user or the transport service provider)."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Sender" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ReceiverParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Receiver_ Party. Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The party receiving this document (can be either the transport user or the transport service provider)."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Receiver" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  TransportUserParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport User_ Party. Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The party requesting the transport service from a transport service provider."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Transport User" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  TransportServiceProviderParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport Service Provider_ Party. Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The party offering the transport service based upon a request from a transport user."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Transport Service Provider" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  BillToParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Bill To_ Party. Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Describes the party that will pay for the transport service(s) provided in a Transport Execution Plan"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Bill To" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  Signature
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Signature"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "A signature applied to this document." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Signature" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  TransportExecutionPlanRequestDocumentReference
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport Execution Plan Request_ Document Reference. Document Reference"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A reference to a Transport Execution Plan Request."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [
+           "Transport Execution Plan Request"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  TransportExecutionPlanDocumentReference
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport Execution Plan_ Document Reference. Document Reference"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A reference to an original Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  TransportServiceDescriptionDocumentReference
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport Service Description_ Document Reference. Document Reference"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A reference to the Transport Service Description, which is used by a transport service provider to announce transport services to transport users (buyers)."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Transport Service Description" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  AdditionalDocumentReference
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Additional_ Document Reference. Document Reference"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A reference to an additional document associated with this document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Additional" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  TransportContract
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport_ Contract. Contract"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A contract related to the Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Transport" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Contract" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  TransportServiceProviderResponseRequiredPeriod
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport Service Provider Response Required_ Period. Period"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Describes the deadline for when the Transport Service Provider will have to respond to a Transport Execution Plan ."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [
+           "Transport Service Provider Response Required"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Period" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  TransportUserResponseRequiredPeriod
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport User Response Required_ Period. Period"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Describes the deadline for when the Transport User will have to respond to a Transport Execution Plan suggested by a Transport Service Provider."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [
+           "Transport User Response Required"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Period" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  ValidityPeriod
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Validity_ Period. Period"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A period during which the Transport Execution Plan is valid."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Validity" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Period" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  MainTransportationService
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Main_ Transportation Service. Transportation Service"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Description of the main transportation service referenced in the Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Main" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Transportation Service" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Transportation Service" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Transportation Service" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  AdditionalTransportationService
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Additional_ Transportation Service. Transportation Service"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A description of an additional transportation service referenced in the Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Additional" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Transportation Service" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Transportation Service" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Transportation Service" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  ServiceStartTimePeriod
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Service Start Time_ Period. Period"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The period within which the service must begin."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Service Start Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Period" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ServiceEndTimePeriod
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Service End Time_ Period. Period"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The period during which the service must be completed."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Service End Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Period" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  FromLocation
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. From_ Location. Location"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The location of origin of the transport service referenced in the Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "From" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Location" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Location" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Location" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ToLocation
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. To_ Location. Location"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The destination location for the transport service referenced in the Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "To" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Location" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Location" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Location" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  AtLocation
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. At_ Location. Location"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The location of a transport service (e.g., terminal handling service) that does not require transport movement."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "At" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Location" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Location" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Location" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  TransportExecutionTerms
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Transport Execution Terms"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A description of terms and conditions related to the Transport Execution Plan."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Transport Execution Terms" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Transport Execution Terms" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Transport Execution Terms" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  Consignment
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Transport Execution Plan. Consignment"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A description of an identifiable collection of goods items to be transported between the consignor and the consignee. This information may be defined within a transport contract. A consignment may comprise more than one shipment (e.g., when consolidated by a freight forwarder)."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Transport Execution Plan" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Consignment" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Consignment" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Consignment" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]+
+# ===== Copyright Notice =====
+
+# OASIS takes no position regarding the validity or scope of any 
+# intellectual property or other rights that might be claimed to pertain 
+# to the implementation or use of the technology described in this 
+# document or the extent to which any license under such rights 
+# might or might not be available; neither does it represent that it has 
+# made any effort to identify any such rights. Information on OASIS's 
+# procedures with respect to rights in OASIS specifications can be 
+# found at the OASIS website. Copies of claims of rights made 
+# available for publication and any assurances of licenses to be made 
+# available, or the result of an attempt made to obtain a general 
+# license or permission for the use of such proprietary rights by 
+# implementors or users of this specification, can be obtained from 
+# the OASIS Executive Director.
+# 
+# OASIS invites any interested party to bring to its attention any 
+# copyrights, patents or patent applications, or other proprietary 
+# rights which may cover technology that may be required to 
+# implement this specification. Please address the information to the 
+# OASIS Executive Director.
+# 
+# This document and translations of it may be copied and furnished to 
+# others, and derivative works that comment on or otherwise explain 
+# it or assist in its implementation may be prepared, copied, 
+# published and distributed, in whole or in part, without restriction of 
+# any kind, provided that the above copyright notice and this 
+# paragraph are included on all such copies and derivative works. 
+# However, this document itself may not be modified in any way, 
+# such as by removing the copyright notice or references to OASIS, 
+# except as needed for the purpose of developing OASIS 
+# specifications, in which case the procedures for copyrights defined 
+# in the OASIS Intellectual Property Rights document must be 
+# followed, or as required to translate it into languages other than 
+# English. 
+# 
+# The limited permissions granted above are perpetual and will not be 
+# revoked by OASIS or its successors or assigns. 
+# 
+# This document and the information contained herein is provided on 
+# an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, 
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY 
+# WARRANTY THAT THE USE OF THE INFORMATION HEREIN 
+# WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED 
+# WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A 
+# PARTICULAR PURPOSE.    

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri name="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+       uri="./UBL2.2/xsd/maindoc/UBL-Invoice-2.2.xsd" />
+  bala<f
+</catalog>

@@ -1,0 +1,1138 @@
+# Library:           OASIS Universal Business Language (UBL) 2.2 OS
+#                    http://docs.oasis-open.org/ubl/os-UBL-2.2/
+# Release Date:      09 July 2018
+# Module:            xsd/maindoc/UBL-TenderContract-2.2.xsd
+# Generated on:      2018-07-08 20:04z
+# Copyright (c) OASIS Open 2018. All Rights Reserved.
+
+default namespace =
+  "urn:oasis:names:specification:ubl:schema:xsd:TenderContract-2"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace cac =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+namespace cbc =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+namespace ccts = "urn:un:unece:uncefact:documentation:2"
+namespace ext =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+# ===== Imports =====
+include "UBL-CommonAggregateComponents-2.2.rnc" inherit = cac
+include "UBL-CommonBasicComponents-2.2.rnc" inherit = cbc
+include "UBL-CommonExtensionComponents-2.2.rnc" inherit = ext
+# ===== Element Declarations =====
+start |= starting_TenderContract
+starting_TenderContract =
+  element TenderContract {
+    TenderContractType
+    >> a:documentation [
+         "\x{a}" ~
+         "         This element MUST be conveyed as the root element in any instance document based on this Schema expression\x{a}" ~
+         "      "
+       ]
+  }
+# ===== Type Definitions =====
+
+# ===== Aggregate Business Information Entity Type Definitions =====
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:Component [
+      "\x{a}" ~
+      "               "
+      ccts:ComponentType [ "ABIE" ]
+      "\x{a}" ~
+      "               "
+      ccts:DictionaryEntryName [ "Tender Contract. Details" ]
+      "\x{a}" ~
+      "               "
+      ccts:Definition [
+        "A document published by a Contracting Party to announce the awarding of a procurement project."
+      ]
+      "\x{a}" ~
+      "               "
+      ccts:ObjectClass [ "Tender Contract" ]
+      "\x{a}" ~
+      "            "
+    ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+TenderContractType =
+  UBLExtensions
+  >> a:documentation [
+       "\x{a}" ~
+       "               A container for all extensions present in the document.\x{a}" ~
+       "            "
+     ]?,
+  UBLVersionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. UBL Version Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies the earliest version of the UBL 2 schema for this document type that defines all of the elements that might be encountered in the current instance."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "UBL Version Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  CustomizationID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Customization Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies a user-defined customization of UBL for a specific use."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Customization Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ProfileID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Profile Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies a user-defined profile of the customization of UBL being used."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Profile Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ProfileExecutionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Profile Execution Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies an instance of executing a profile, to associate all transactions in a collaboration."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Profile Execution Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Tender Contract. Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "An identifier for this document, assigned by the sender."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  CopyIndicator
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Copy_ Indicator. Indicator"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Indicates whether this document is a copy (true) or not (false)."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Copy" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Indicator" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Indicator" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Indicator. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  UUID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. UUID. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A universally unique identifier for an instance of this document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "UUID" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ContractFolderID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Contract Folder Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "An identifier, assigned by the sender, for the process file (i.e., record) to which this document belongs."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Contract Folder Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  IssueDate
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Issue Date. Date"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The date, assigned by the sender, on which this document was issued."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Issue Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Date. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  IssueTime
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Issue Time. Time"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The time, assigned by the sender, at which this document was issued."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Issue Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Time. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ContractName
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Contract Name. Name"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Short title of a contract associated with this Tender."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Contract Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Name" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Name. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  Note
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Tender Contract. Note. Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Free-form text pertinent to this document, conveying information that is not contained explicitly in other structures."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Note" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Text. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  RegulatoryDomain
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Regulatory Domain. Text"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Information about the law that defines the regulatory domain."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Regulatory Domain" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Text. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  PublishAwardIndicator
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Publish Award Indicator. Indicator"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "An indicator specifying if the notice is published for service contracts within certain service categories (true) or not (false)."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Publish Award Indicator" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Indicator" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Indicator. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  PreviousDocumentReference
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Previous_ Document Reference. Document Reference"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A reference to a previously sent document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Previous" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  ContractDocumentReference
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Contract_ Document Reference. Document Reference"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "A reference to a set of minutes." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  Signature
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Tender Contract. Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "A signature applied to this document." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Signature" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  ContractingParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Contracting Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The contracting party." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Contracting Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Contracting Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Contracting Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]+,
+  EconomicOperatorParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Economic Operator Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The Economic Operator issuing the inquiry on the status of a tendering process."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Economic Operator Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Economic Operator Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Economic Operator Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]+,
+  ReceiverParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Receiver_ Party. Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The party receiving this document." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Receiver" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  TenderingTerms
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Tender Contract. Tendering Terms" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The tendering terms associated with this tendering process."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Tendering Terms" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Tendering Terms" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Tendering Terms" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  TenderingProcess
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Tendering Process"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A description of the tendering process itself."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Tendering Process" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Tendering Process" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Tendering Process" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ProcurementProject
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Procurement Project"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "An overall definition of this procurement project."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Procurement Project" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Procurement Project" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Procurement Project" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ProcurementProjectLot
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Tender Contract. Procurement Project Lot"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Lots that were awarded to the economic operator that can be grouped in the same contract."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Procurement Project Lot" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Procurement Project Lot" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Procurement Project Lot" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  TenderResult
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Tender Contract. Tender Result" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A result of the bid opening in the tendering process."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Tender Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Tender Result" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Tender Result" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Tender Result" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]+
+# ===== Copyright Notice =====
+
+# OASIS takes no position regarding the validity or scope of any 
+# intellectual property or other rights that might be claimed to pertain 
+# to the implementation or use of the technology described in this 
+# document or the extent to which any license under such rights 
+# might or might not be available; neither does it represent that it has 
+# made any effort to identify any such rights. Information on OASIS's 
+# procedures with respect to rights in OASIS specifications can be 
+# found at the OASIS website. Copies of claims of rights made 
+# available for publication and any assurances of licenses to be made 
+# available, or the result of an attempt made to obtain a general 
+# license or permission for the use of such proprietary rights by 
+# implementors or users of this specification, can be obtained from 
+# the OASIS Executive Director.
+# 
+# OASIS invites any interested party to bring to its attention any 
+# copyrights, patents or patent applications, or other proprietary 
+# rights which may cover technology that may be required to 
+# implement this specification. Please address the information to the 
+# OASIS Executive Director.
+# 
+# This document and translations of it may be copied and furnished to 
+# others, and derivative works that comment on or otherwise explain 
+# it or assist in its implementation may be prepared, copied, 
+# published and distributed, in whole or in part, without restriction of 
+# any kind, provided that the above copyright notice and this 
+# paragraph are included on all such copies and derivative works. 
+# However, this document itself may not be modified in any way, 
+# such as by removing the copyright notice or references to OASIS, 
+# except as needed for the purpose of developing OASIS 
+# specifications, in which case the procedures for copyrights defined 
+# in the OASIS Intellectual Property Rights document must be 
+# followed, or as required to translate it into languages other than 
+# English. 
+# 
+# The limited permissions granted above are perpetual and will not be 
+# revoked by OASIS or its successors or assigns. 
+# 
+# This document and the information contained herein is provided on 
+# an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, 
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY 
+# WARRANTY THAT THE USE OF THE INFORMATION HEREIN 
+# WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED 
+# WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A 
+# PARTICULAR PURPOSE.    

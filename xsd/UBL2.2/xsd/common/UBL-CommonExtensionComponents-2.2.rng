@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<!--
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
+  Module:            UBL-CommonExtensionComponents-2.2.xsd
+  Generated on:      2017-01-02 17:20(UTC)
+  Copyright (c) OASIS Open 2017. All Rights Reserved.
+-->
+<rng:grammar xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ns="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<!-- ===== Imports ===== -->
+  <rng:include href="UBL-UnqualifiedDataTypes-2.2.rng" ns="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"/>
+  <rng:include href="UBL-CommonBasicComponents-2.2.rng" ns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
+<!-- ===== Includes ===== -->
+<rng:include href="UBL-ExtensionContentDataType-2.2.rng"/>
+<!-- ===== Aggregate Element and Type Declarations ===== -->
+  <rng:start combine="choice"><rng:ref name="starting_UBLExtensions"/></rng:start><rng:define name="starting_UBLExtensions"><rng:element name="UBLExtensions"><rng:ref name="UBLExtensionsType"/>
+    <a:documentation>
+      
+        A container for all extensions present in the document.
+      
+    </a:documentation>
+  </rng:element></rng:define>
+  <rng:define name="UBLExtensionsType">
+    <a:documentation>
+      
+        A container for all extensions present in the document.
+      
+    </a:documentation>
+    
+      <rng:oneOrMore><rng:ref name="UBLExtension"/>
+        <a:documentation>
+          
+            A single extension for private use.
+          
+        </a:documentation>
+      </rng:oneOrMore>
+    
+  </rng:define>
+  <rng:start combine="choice"><rng:ref name="starting_UBLExtension"/></rng:start><rng:define name="starting_UBLExtension"><rng:element name="UBLExtension"><rng:ref name="UBLExtensionType"/>
+    <a:documentation>
+      
+        A single extension for private use.
+      
+    </a:documentation>
+  </rng:element></rng:define>
+  <rng:define name="UBLExtensionType">
+    <a:documentation>
+      
+        A single extension for private use.
+      
+    </a:documentation>
+    
+      <rng:optional><rng:ref name="ID"/>
+        <a:documentation>
+          
+            An identifier for the Extension assigned by the creator of the extension.
+          
+        </a:documentation>
+      </rng:optional>
+      <rng:optional><rng:ref name="Name"/>
+        <a:documentation>
+          
+            A name for the Extension assigned by the creator of the extension.
+          
+        </a:documentation>
+      </rng:optional>
+      <rng:optional><rng:ref name="ExtensionAgencyID"/>
+        <a:documentation>
+          
+            An agency that maintains one or more Extensions.
+          
+        </a:documentation>
+      </rng:optional>
+      <rng:optional><rng:ref name="ExtensionAgencyName"/>
+        <a:documentation>
+          
+            The name of the agency that maintains the Extension.
+          
+        </a:documentation>
+      </rng:optional>
+      <rng:optional><rng:ref name="ExtensionVersionID"/>
+        <a:documentation>
+          
+            The version of the Extension.
+          
+        </a:documentation>
+      </rng:optional>
+      <rng:optional><rng:ref name="ExtensionAgencyURI"/>
+        <a:documentation>
+          
+            A URI for the Agency that maintains the Extension.
+          
+        </a:documentation>
+      </rng:optional>
+      <rng:optional><rng:ref name="ExtensionURI"/>
+        <a:documentation>
+          
+            A URI for the Extension.
+          
+        </a:documentation>
+      </rng:optional>
+      <rng:optional><rng:ref name="ExtensionReasonCode"/>
+        <a:documentation>
+          
+            A code for reason the Extension is being included.
+          
+        </a:documentation>
+      </rng:optional>
+      <rng:optional><rng:ref name="ExtensionReason"/>
+        <a:documentation>
+          
+            A description of the reason for the Extension.
+          
+        </a:documentation>
+      </rng:optional>
+      <rng:ref name="ExtensionContent"/>
+        <a:documentation>
+          
+            The definition of the extension content.
+          
+        </a:documentation>
+      
+    
+  </rng:define>
+<!-- ===== Basic Element and Type Declarations ===== -->
+  <rng:start combine="choice"><rng:ref name="starting_ExtensionAgencyID"/></rng:start><rng:define name="starting_ExtensionAgencyID"><rng:element name="ExtensionAgencyID"><rng:ref name="ExtensionAgencyIDType"/></rng:element></rng:define>
+  <rng:start combine="choice"><rng:ref name="starting_ExtensionAgencyName"/></rng:start><rng:define name="starting_ExtensionAgencyName"><rng:element name="ExtensionAgencyName"><rng:ref name="ExtensionAgencyNameType"/></rng:element></rng:define>
+  <rng:start combine="choice"><rng:ref name="starting_ExtensionAgencyURI"/></rng:start><rng:define name="starting_ExtensionAgencyURI"><rng:element name="ExtensionAgencyURI"><rng:ref name="ExtensionAgencyURIType"/></rng:element></rng:define>
+  <rng:start combine="choice"><rng:ref name="starting_ExtensionContent"/></rng:start><rng:define name="starting_ExtensionContent"><rng:element name="ExtensionContent"><rng:ref name="ExtensionContentType"/></rng:element></rng:define>
+  <rng:start combine="choice"><rng:ref name="starting_ExtensionReason"/></rng:start><rng:define name="starting_ExtensionReason"><rng:element name="ExtensionReason"><rng:ref name="ExtensionReasonType"/></rng:element></rng:define>
+  <rng:start combine="choice"><rng:ref name="starting_ExtensionReasonCode"/></rng:start><rng:define name="starting_ExtensionReasonCode"><rng:element name="ExtensionReasonCode"><rng:ref name="ExtensionReasonCodeType"/></rng:element></rng:define>
+  <rng:start combine="choice"><rng:ref name="starting_ExtensionURI"/></rng:start><rng:define name="starting_ExtensionURI"><rng:element name="ExtensionURI"><rng:ref name="ExtensionURIType"/></rng:element></rng:define>
+  <rng:start combine="choice"><rng:ref name="starting_ExtensionVersionID"/></rng:start><rng:define name="starting_ExtensionVersionID"><rng:element name="ExtensionVersionID"><rng:ref name="ExtensionVersionIDType"/></rng:element></rng:define>
+  <rng:define name="ExtensionAgencyIDType">
+    
+      <rng:ref name="IdentifierType"/>
+    
+  </rng:define>
+  <rng:define name="ExtensionAgencyNameType">
+    
+      <rng:ref name="NameType"/>
+    
+  </rng:define>
+  <rng:define name="ExtensionAgencyURIType">
+    
+      <rng:ref name="IdentifierType"/>
+    
+  </rng:define>
+  <rng:define name="ExtensionReasonType">
+    
+      <rng:ref name="TextType"/>
+    
+  </rng:define>
+  <rng:define name="ExtensionReasonCodeType">
+    
+      <rng:ref name="CodeType"/>
+    
+  </rng:define>
+  <rng:define name="ExtensionURIType">
+    
+      <rng:ref name="IdentifierType"/>
+    
+  </rng:define>
+  <rng:define name="ExtensionVersionIDType">
+    
+      <rng:ref name="IdentifierType"/>
+    
+  </rng:define>
+</rng:grammar><!-- ===== Copyright Notice ===== -->
+<!--
+  OASIS takes no position regarding the validity or scope of any 
+  intellectual property or other rights that might be claimed to pertain 
+  to the implementation or use of the technology described in this 
+  document or the extent to which any license under such rights 
+  might or might not be available; neither does it represent that it has 
+  made any effort to identify any such rights. Information on OASIS's 
+  procedures with respect to rights in OASIS specifications can be 
+  found at the OASIS website. Copies of claims of rights made 
+  available for publication and any assurances of licenses to be made 
+  available, or the result of an attempt made to obtain a general 
+  license or permission for the use of such proprietary rights by 
+  implementors or users of this specification, can be obtained from 
+  the OASIS Executive Director.
+
+  OASIS invites any interested party to bring to its attention any 
+  copyrights, patents or patent applications, or other proprietary 
+  rights which may cover technology that may be required to 
+  implement this specification. Please address the information to the 
+  OASIS Executive Director.
+  
+  This document and translations of it may be copied and furnished to 
+  others, and derivative works that comment on or otherwise explain 
+  it or assist in its implementation may be prepared, copied, 
+  published and distributed, in whole or in part, without restriction of 
+  any kind, provided that the above copyright notice and this 
+  paragraph are included on all such copies and derivative works. 
+  However, this document itself may not be modified in any way, 
+  such as by removing the copyright notice or references to OASIS, 
+  except as needed for the purpose of developing OASIS 
+  specifications, in which case the procedures for copyrights defined 
+  in the OASIS Intellectual Property Rights document must be 
+  followed, or as required to translate it into languages other than 
+  English. 
+
+  The limited permissions granted above are perpetual and will not be 
+  revoked by OASIS or its successors or assigns. 
+
+  This document and the information contained herein is provided on 
+  an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, 
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY 
+  WARRANTY THAT THE USE OF THE INFORMATION HEREIN 
+  WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED 
+  WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A 
+  PARTICULAR PURPOSE.
+-->

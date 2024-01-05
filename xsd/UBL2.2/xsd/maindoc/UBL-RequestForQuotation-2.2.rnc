@@ -1,0 +1,1171 @@
+# Library:           OASIS Universal Business Language (UBL) 2.2 OS
+#                    http://docs.oasis-open.org/ubl/os-UBL-2.2/
+# Release Date:      09 July 2018
+# Module:            xsd/maindoc/UBL-RequestForQuotation-2.2.xsd
+# Generated on:      2018-07-08 20:04z
+# Copyright (c) OASIS Open 2018. All Rights Reserved.
+
+default namespace =
+  "urn:oasis:names:specification:ubl:schema:xsd:RequestForQuotation-2"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace cac =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+namespace cbc =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+namespace ccts = "urn:un:unece:uncefact:documentation:2"
+namespace ext =
+  "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace xsd = "http://www.w3.org/2001/XMLSchema"
+
+# ===== Imports =====
+include "UBL-CommonAggregateComponents-2.2.rnc" inherit = cac
+include "UBL-CommonBasicComponents-2.2.rnc" inherit = cbc
+include "UBL-CommonExtensionComponents-2.2.rnc" inherit = ext
+# ===== Element Declarations =====
+start |= starting_RequestForQuotation
+starting_RequestForQuotation =
+  element RequestForQuotation {
+    RequestForQuotationType
+    >> a:documentation [
+         "\x{a}" ~
+         "         This element MUST be conveyed as the root element in any instance document based on this Schema expression\x{a}" ~
+         "      "
+       ]
+  }
+# ===== Type Definitions =====
+
+# ===== Aggregate Business Information Entity Type Definitions =====
+[
+  a:documentation [
+    "\x{a}" ~
+    "         \x{a}" ~
+    "            "
+    ccts:Component [
+      "\x{a}" ~
+      "               "
+      ccts:ComponentType [ "ABIE" ]
+      "\x{a}" ~
+      "               "
+      ccts:DictionaryEntryName [ "Request For Quotation. Details" ]
+      "\x{a}" ~
+      "               "
+      ccts:Definition [
+        "A document used to request a Quotation for goods and services from a Seller."
+      ]
+      "\x{a}" ~
+      "               "
+      ccts:ObjectClass [ "Request For Quotation" ]
+      "\x{a}" ~
+      "               "
+      ccts:AlternativeBusinessTerms [ "Purchase Order" ]
+      "\x{a}" ~
+      "            "
+    ]
+    "\x{a}" ~
+    "         \x{a}" ~
+    "      "
+  ]
+]
+RequestForQuotationType =
+  UBLExtensions
+  >> a:documentation [
+       "\x{a}" ~
+       "               A container for all extensions present in the document.\x{a}" ~
+       "            "
+     ]?,
+  UBLVersionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. UBL Version Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies the earliest version of the UBL 2 schema for this document type that defines all of the elements that might be encountered in the current instance."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "UBL Version Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "2.0.5" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  CustomizationID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Customization Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies a user-defined customization of UBL for a specific use."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Customization Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "NES" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ProfileID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Profile Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies a user-defined profile of the customization of UBL being used."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Profile Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "BasicProcurementProcess" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ProfileExecutionID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Profile Execution Identifier. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Identifies an instance of executing a profile, to associate all transactions in a collaboration."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Profile Execution Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Examples [ "BPP-1001" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  ID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "An identifier for this document, assigned by the sender."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  CopyIndicator
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Copy_ Indicator. Indicator"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Indicates whether this document is a copy (true) or not (false)."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Copy" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Indicator" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Indicator" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Indicator. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  UUID
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. UUID. Identifier"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A universally unique identifier for an instance of this document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "UUID" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Identifier" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Identifier. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  IssueDate
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Issue Date. Date"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The date, assigned by the sender, on which this document was issued."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Issue Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Date. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  IssueTime
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Issue Time. Time"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The time, assigned by the sender, at which this document was issued."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Issue Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Time" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Time. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  SubmissionDueDate
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Submission Due Date. Date"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The due date for submission of the Quotation."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Submission Due Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Date" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Date. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  Note
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Note. Text"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "Free-form text pertinent to this document, conveying information that is not contained explicitly in other structures."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Note" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Text" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Text. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  PricingCurrencyCode
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Pricing_ Currency Code. Code"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The currency that the Seller should use to price the Quotation."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Pricing" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Currency Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Code" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataTypeQualifier [ "Currency" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Currency_ Code. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  LineCountNumeric
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "BBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Line Count. Numeric"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The number of Request For Quotation Lines in this document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Line Count" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Numeric" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DataType [ "Numeric. Type" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  RequestedValidityPeriod
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Requested Validity_ Period. Period"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The validity period requested for this Quotation."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Requested Validity" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Period" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Period" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  CatalogueDocumentReference
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Catalogue_ Document Reference. Document Reference"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The Catalogue on which this Request for Quotation is based."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Catalogue" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  AdditionalDocumentReference
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Additional_ Document Reference. Document Reference"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A reference to an additional document associated with this document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Additional" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Document Reference" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Document Reference" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  Signature
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Request For Quotation. Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "A signature applied to this document." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Signature" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Signature" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  OriginatorCustomerParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Originator_ Customer Party. Customer Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The originator." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Originator" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Customer Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Customer Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Customer Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  SellerSupplierParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Seller_ Supplier Party. Supplier Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The seller." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Seller" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Supplier Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Supplier Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Supplier Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ],
+  BuyerCustomerParty
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Buyer_ Customer Party. Customer Party"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "The buyer." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Buyer" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Customer Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Customer Party" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Customer Party" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  Delivery
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Request For Quotation. Delivery" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "A delivery associated with this document." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Delivery" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Delivery" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Delivery" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  DeliveryTerms
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Delivery Terms"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A set of delivery terms associated with this document."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Delivery Terms" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Delivery Terms" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Delivery Terms" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  DestinationCountry
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Destination_ Country. Country"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "The country of destination of potential orders (for customs purposes)."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..1" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTermQualifier [ "Destination" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Country" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Country" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Country" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]?,
+  Contract
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [ "Request For Quotation. Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [
+           "A contract associated with this Request for Quotation.."
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "0..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Contract" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Contract" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]*,
+  RequestForQuotationLine
+  >> a:documentation [
+       "\x{a}" ~
+       "               \x{a}" ~
+       "                  "
+       ccts:Component [
+         "\x{a}" ~
+         "                     "
+         ccts:ComponentType [ "ASBIE" ]
+         "\x{a}" ~
+         "                     "
+         ccts:DictionaryEntryName [
+           "Request For Quotation. Request For Quotation Line"
+         ]
+         "\x{a}" ~
+         "                     "
+         ccts:Definition [ "A line specifying a kind of item of sale." ]
+         "\x{a}" ~
+         "                     "
+         ccts:Cardinality [ "1..n" ]
+         "\x{a}" ~
+         "                     "
+         ccts:ObjectClass [ "Request For Quotation" ]
+         "\x{a}" ~
+         "                     "
+         ccts:PropertyTerm [ "Request For Quotation Line" ]
+         "\x{a}" ~
+         "                     "
+         ccts:AssociatedObjectClass [ "Request For Quotation Line" ]
+         "\x{a}" ~
+         "                     "
+         ccts:RepresentationTerm [ "Request For Quotation Line" ]
+         "\x{a}" ~
+         "                  "
+       ]
+       "\x{a}" ~
+       "               \x{a}" ~
+       "            "
+     ]+
+# ===== Copyright Notice =====
+
+# OASIS takes no position regarding the validity or scope of any 
+# intellectual property or other rights that might be claimed to pertain 
+# to the implementation or use of the technology described in this 
+# document or the extent to which any license under such rights 
+# might or might not be available; neither does it represent that it has 
+# made any effort to identify any such rights. Information on OASIS's 
+# procedures with respect to rights in OASIS specifications can be 
+# found at the OASIS website. Copies of claims of rights made 
+# available for publication and any assurances of licenses to be made 
+# available, or the result of an attempt made to obtain a general 
+# license or permission for the use of such proprietary rights by 
+# implementors or users of this specification, can be obtained from 
+# the OASIS Executive Director.
+# 
+# OASIS invites any interested party to bring to its attention any 
+# copyrights, patents or patent applications, or other proprietary 
+# rights which may cover technology that may be required to 
+# implement this specification. Please address the information to the 
+# OASIS Executive Director.
+# 
+# This document and translations of it may be copied and furnished to 
+# others, and derivative works that comment on or otherwise explain 
+# it or assist in its implementation may be prepared, copied, 
+# published and distributed, in whole or in part, without restriction of 
+# any kind, provided that the above copyright notice and this 
+# paragraph are included on all such copies and derivative works. 
+# However, this document itself may not be modified in any way, 
+# such as by removing the copyright notice or references to OASIS, 
+# except as needed for the purpose of developing OASIS 
+# specifications, in which case the procedures for copyrights defined 
+# in the OASIS Intellectual Property Rights document must be 
+# followed, or as required to translate it into languages other than 
+# English. 
+# 
+# The limited permissions granted above are perpetual and will not be 
+# revoked by OASIS or its successors or assigns. 
+# 
+# This document and the information contained herein is provided on 
+# an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, 
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY 
+# WARRANTY THAT THE USE OF THE INFORMATION HEREIN 
+# WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED 
+# WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A 
+# PARTICULAR PURPOSE.    

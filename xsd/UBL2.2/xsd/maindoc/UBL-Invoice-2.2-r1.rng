@@ -1,0 +1,5 @@
+Usage: RELAXNGConverter <schema filename/URL>
+
+converts a schema written in various schema language to
+the equivalent schema written in RELAX NG.
+

@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<!--
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
+  Module:            UBL-xmldsig11-schema-2.2.xsd
+  Generated on:      2016-06-24 19:50(UTC)
+ 
+  This is a copy of http://www.w3.org/TR/xmldsig-core1/xmldsig11-schema.xsd
+  changed only to include this header information.
+-->
+<!--
+#
+# Copyright ©[2011] World Wide Web Consortium 
+# (Massachusetts Institute of Technology,  
+#  European Research Consortium for Informatics and Mathematics, 
+#  Keio University). All Rights Reserved.  
+# This work is distributed under the W3C® Software License [1] in the
+# hope that it will be useful, but WITHOUT ANY WARRANTY; without even
+# the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+# PURPOSE. 
+# [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+#
+-->
+<rng:grammar xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:dsig11="http://www.w3.org/2009/xmldsig11#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.w3.org/2001/XMLSchema" ns="http://www.w3.org/2009/xmldsig11#" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+
+  <rng:start combine="choice"><rng:ref name="starting_ECKeyValue"/></rng:start><rng:define name="starting_ECKeyValue"><rng:element name="ECKeyValue"><rng:ref name="ECKeyValueType"/></rng:element></rng:define>
+  <rng:define name="ECKeyValueType">
+    
+      <rng:choice>
+        <rng:element name="ECParameters"><rng:ref name="ECParametersType"/></rng:element>
+        <rng:element name="NamedCurve"><rng:ref name="NamedCurveType"/></rng:element>
+      </rng:choice>
+      <rng:element name="PublicKey"><rng:ref name="ECPointType"/></rng:element>
+    
+    <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional>
+  </rng:define>
+
+  <rng:define name="NamedCurveType">
+    <rng:attribute name="URI"><rng:ref name="anyURI"/></rng:attribute>
+  </rng:define>
+  
+  <rng:define name="ECPointType">
+    <rng:ref name="CryptoBinary"/>
+  </rng:define>
+
+  <rng:define name="ECParametersType">
+    
+      <rng:element name="FieldID"><rng:ref name="FieldIDType"/></rng:element>
+      <rng:element name="Curve"><rng:ref name="CurveType"/></rng:element>
+      <rng:element name="Base"><rng:ref name="ECPointType"/></rng:element>
+      <rng:element name="Order"><rng:ref name="CryptoBinary"/></rng:element>
+      <rng:optional><rng:element name="CoFactor"><rng:ref name="integer"/></rng:element></rng:optional>
+      <rng:optional><rng:element name="ValidationData"><rng:ref name="ECValidationDataType"/></rng:element></rng:optional>
+    
+  </rng:define>
+  
+  <rng:define name="FieldIDType">
+    <rng:choice>
+      <rng:ref name="Prime"/>
+      <rng:ref name="TnB"/>
+      <rng:ref name="PnB"/>
+      <rng:ref name="GnB"/>
+      <rng:element><rng:anyName/><rng:text/></rng:element>
+    </rng:choice>
+  </rng:define>
+
+  <rng:define name="CurveType">
+    
+      <rng:element name="A"><rng:ref name="CryptoBinary"/></rng:element>
+      <rng:element name="B"><rng:ref name="CryptoBinary"/></rng:element>
+    
+  </rng:define>
+
+  <rng:define name="ECValidationDataType">
+    
+      <rng:element name="seed"><rng:ref name="CryptoBinary"/></rng:element>
+    
+    <rng:attribute name="hashAlgorithm"><rng:ref name="anyURI"/></rng:attribute>
+  </rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_Prime"/></rng:start><rng:define name="starting_Prime"><rng:element name="Prime"><rng:ref name="PrimeFieldParamsType"/></rng:element></rng:define>
+  <rng:define name="PrimeFieldParamsType">
+    
+      <rng:element name="P"><rng:ref name="CryptoBinary"/></rng:element>
+    
+  </rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_GnB"/></rng:start><rng:define name="starting_GnB"><rng:element name="GnB"><rng:ref name="CharTwoFieldParamsType"/></rng:element></rng:define>
+  <rng:define name="CharTwoFieldParamsType">
+    
+      <rng:element name="M"><rng:ref name="positiveInteger"/></rng:element>
+    
+  </rng:define>
+  
+  <rng:start combine="choice"><rng:ref name="starting_TnB"/></rng:start><rng:define name="starting_TnB"><rng:element name="TnB"><rng:ref name="TnBFieldParamsType"/></rng:element></rng:define>
+  <rng:define name="TnBFieldParamsType">
+    
+      <rng:ref name="CharTwoFieldParamsType"/>
+        
+          <rng:element name="K"><rng:ref name="positiveInteger"/></rng:element>
+        
+      
+    
+  </rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_PnB"/></rng:start><rng:define name="starting_PnB"><rng:element name="PnB"><rng:ref name="PnBFieldParamsType"/></rng:element></rng:define>
+  <rng:define name="PnBFieldParamsType">
+    
+      <rng:ref name="CharTwoFieldParamsType"/>
+        
+          <rng:element name="K1"><rng:ref name="positiveInteger"/></rng:element>
+          <rng:element name="K2"><rng:ref name="positiveInteger"/></rng:element>
+          <rng:element name="K3"><rng:ref name="positiveInteger"/></rng:element>
+        
+      
+    
+  </rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_DEREncodedKeyValue"/></rng:start><rng:define name="starting_DEREncodedKeyValue"><rng:element name="DEREncodedKeyValue"><rng:ref name="DEREncodedKeyValueType"/></rng:element></rng:define>
+  <rng:define name="DEREncodedKeyValueType">
+    
+      <rng:ref name="base64Binary"/>
+        <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional>
+      
+    
+  </rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_KeyInfoReference"/></rng:start><rng:define name="starting_KeyInfoReference"><rng:element name="KeyInfoReference"><rng:ref name="KeyInfoReferenceType"/></rng:element></rng:define> 
+  <rng:define name="KeyInfoReferenceType">
+    <rng:attribute name="URI"><rng:ref name="anyURI"/></rng:attribute>
+    <rng:optional><rng:attribute name="Id"><rng:ref name="ID"/></rng:attribute></rng:optional>
+  </rng:define>
+
+  <rng:start combine="choice"><rng:ref name="starting_X509Digest"/></rng:start><rng:define name="starting_X509Digest"><rng:element name="X509Digest"><rng:ref name="X509DigestType"/></rng:element></rng:define>
+  <rng:define name="X509DigestType">
+    
+      <rng:ref name="base64Binary"/>
+        <rng:attribute name="Algorithm"><rng:ref name="anyURI"/></rng:attribute>
+      
+    
+  </rng:define>
+
+</rng:grammar>

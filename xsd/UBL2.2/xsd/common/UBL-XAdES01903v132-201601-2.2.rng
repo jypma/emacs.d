@@ -1,0 +1,537 @@
+<?xml version="1.0"?>
+<!--
+  Library:           OASIS Universal Business Language (UBL) 2.2 OS
+                     http://docs.oasis-open.org/ubl/os-UBL-2.2/
+  Release Date:      09 July 2018
+  Module:            UBL-XAdES01903v132-201601-2.2.xsd
+  Generated on:      2016-06-24 19:50(UTC)
+
+  This is a copy of http://uri.etsi.org/01903/v1.3.2/XAdES01903v132-201601.xsd
+  modified only to change the importing URI for the W3C dsig schema.
+-->
+<rng:grammar xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns="http://uri.etsi.org/01903/v1.3.2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ns="http://uri.etsi.org/01903/v1.3.2#" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+	<rng:include href="UBL-xmldsig-core-schema-2.2.rng" ns="http://www.w3.org/2000/09/xmldsig#"/>
+	<!-- Start auxiliary types definitions: AnyType, ObjectIdentifierType, 
+EncapsulatedPKIDataType and containers for time-stamp tokens -->
+	<!-- Start AnyType -->
+	<rng:start combine="choice"><rng:ref name="starting_Any"/></rng:start><rng:define name="starting_Any"><rng:element name="Any"><rng:ref name="AnyType"/></rng:element></rng:define>
+	<rng:define name="AnyType">
+		
+			<rng:element><rng:anyName/><rng:text/></rng:element>
+		
+		<rng:attribute><rng:anyName/><rng:text/></rng:attribute>
+	</rng:define>
+	<!-- End AnyType -->
+	<!-- Start ObjectIdentifierType-->
+	<rng:start combine="choice"><rng:ref name="starting_ObjectIdentifier"/></rng:start><rng:define name="starting_ObjectIdentifier"><rng:element name="ObjectIdentifier"><rng:ref name="ObjectIdentifierType"/></rng:element></rng:define>
+	<rng:define name="ObjectIdentifierType">
+		
+			<rng:element name="Identifier"><rng:ref name="IdentifierType"/></rng:element>
+			<rng:optional><rng:element name="Description"><rng:data type="string"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="DocumentationReferences"><rng:ref name="DocumentationReferencesType"/></rng:element></rng:optional>
+		
+	</rng:define>
+	<rng:define name="IdentifierType">
+		
+			<rng:data type="anyURI"/><rng:optional><rng:attribute name="Qualifier"><rng:ref name="QualifierType"/></rng:attribute></rng:optional>
+		
+	</rng:define>
+	<rng:define name="QualifierType">
+		<rng:choice>
+			<rng:value>OIDAsURI</rng:value>
+			<rng:value>OIDAsURN</rng:value>
+		</rng:choice>
+	</rng:define>
+	<rng:define name="DocumentationReferencesType">
+		
+			<rng:element name="DocumentationReference"><rng:data type="anyURI"/></rng:element>
+		
+	</rng:define>
+	<!-- End ObjectIdentifierType-->
+	<!-- Start EncapsulatedPKIDataType-->
+	<rng:start combine="choice"><rng:ref name="starting_EncapsulatedPKIData"/></rng:start><rng:define name="starting_EncapsulatedPKIData"><rng:element name="EncapsulatedPKIData"><rng:ref name="EncapsulatedPKIDataType"/></rng:element></rng:define>
+	<rng:define name="EncapsulatedPKIDataType">
+		
+			<rng:data type="base64Binary"/><rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional><rng:optional><rng:attribute name="Encoding"><rng:data type="anyURI"/></rng:attribute></rng:optional>
+		
+	</rng:define>
+	<!-- End EncapsulatedPKIDataType -->
+	<!-- Start time-stamp containers types -->
+	<!-- Start GenericTimeStampType -->
+	<rng:start combine="choice"><rng:ref name="starting_Include"/></rng:start><rng:define name="starting_Include"><rng:element name="Include"><rng:ref name="IncludeType"/></rng:element></rng:define>
+	<rng:define name="IncludeType">
+		<rng:attribute name="URI"><rng:data type="anyURI"/></rng:attribute>
+		<rng:optional><rng:attribute name="referencedData"><rng:data type="boolean"/></rng:attribute></rng:optional>
+	</rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_ReferenceInfo"/></rng:start><rng:define name="starting_ReferenceInfo"><rng:element name="ReferenceInfo"><rng:ref name="ReferenceInfoType"/></rng:element></rng:define>
+	<rng:define name="ReferenceInfoType">
+		
+			<rng:ref name="DigestMethod"/>
+			<rng:ref name="DigestValue"/>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+		<rng:optional><rng:attribute name="URI"><rng:data type="anyURI"/></rng:attribute></rng:optional>
+	</rng:define>
+	<rng:define name="GenericTimeStampType">
+		
+			<rng:optional><rng:choice>
+				<rng:zeroOrMore><rng:ref name="Include"/></rng:zeroOrMore>
+				<rng:oneOrMore><rng:ref name="ReferenceInfo"/></rng:oneOrMore>
+			</rng:choice></rng:optional>
+			<rng:optional><rng:ref name="CanonicalizationMethod"/></rng:optional>
+			<rng:oneOrMore><rng:choice>
+				<rng:element name="EncapsulatedTimeStamp"><rng:ref name="EncapsulatedPKIDataType"/></rng:element>
+				<rng:element name="XMLTimeStamp"><rng:ref name="AnyType"/></rng:element>
+			</rng:choice></rng:oneOrMore>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End GenericTimeStampType -->
+	<!-- Start XAdESTimeStampType -->
+	<rng:start combine="choice"><rng:ref name="starting_XAdESTimeStamp"/></rng:start><rng:define name="starting_XAdESTimeStamp"><rng:element name="XAdESTimeStamp"><rng:ref name="XAdESTimeStampType"/></rng:element></rng:define>
+	<rng:define name="XAdESTimeStampType">
+		
+			<rng:ref name="GenericTimeStampType"/>
+				
+					<rng:zeroOrMore><rng:ref name="Include"/></rng:zeroOrMore>
+					<rng:optional><rng:ref name="CanonicalizationMethod"/></rng:optional>
+					<rng:oneOrMore><rng:choice>
+						<rng:element name="EncapsulatedTimeStamp"><rng:ref name="EncapsulatedPKIDataType"/></rng:element>
+						<rng:element name="XMLTimeStamp"><rng:ref name="AnyType"/></rng:element>
+					</rng:choice></rng:oneOrMore>
+				
+				<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+			
+		
+	</rng:define>
+	<!-- End XAdESTimeStampType -->
+	<!-- Start OtherTimeStampType -->
+	<rng:start combine="choice"><rng:ref name="starting_OtherTimeStamp"/></rng:start><rng:define name="starting_OtherTimeStamp"><rng:element name="OtherTimeStamp"><rng:ref name="OtherTimeStampType"/></rng:element></rng:define>
+	<rng:define name="OtherTimeStampType">
+		
+			<rng:ref name="GenericTimeStampType"/>
+				
+					<rng:oneOrMore><rng:ref name="ReferenceInfo"/></rng:oneOrMore>
+					<rng:optional><rng:ref name="CanonicalizationMethod"/></rng:optional>
+					<rng:choice>
+						<rng:element name="EncapsulatedTimeStamp"><rng:ref name="EncapsulatedPKIDataType"/></rng:element>
+						<rng:element name="XMLTimeStamp"><rng:ref name="AnyType"/></rng:element>
+					</rng:choice>
+				
+				<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+			
+		
+	</rng:define>
+	<!-- End OtherTimeStampType -->
+	<!-- End time-stamp containers types -->
+	<!-- End auxiliary types definitions-->
+	<!-- Start container types -->
+	<!-- Start QualifyingProperties -->
+	<rng:start combine="choice"><rng:ref name="starting_QualifyingProperties"/></rng:start><rng:define name="starting_QualifyingProperties"><rng:element name="QualifyingProperties"><rng:ref name="QualifyingPropertiesType"/></rng:element></rng:define>
+	<rng:define name="QualifyingPropertiesType">
+		
+			<rng:optional><rng:ref name="SignedProperties"/></rng:optional>
+			<rng:optional><rng:ref name="UnsignedProperties"/></rng:optional>
+		
+		<rng:attribute name="Target"><rng:data type="anyURI"/></rng:attribute>
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End QualifyingProperties -->
+	<!-- Start SignedProperties-->
+	<rng:start combine="choice"><rng:ref name="starting_SignedProperties"/></rng:start><rng:define name="starting_SignedProperties"><rng:element name="SignedProperties"><rng:ref name="SignedPropertiesType"/></rng:element></rng:define>
+	<rng:define name="SignedPropertiesType">
+		
+			<rng:optional><rng:ref name="SignedSignatureProperties"/></rng:optional>
+			<rng:optional><rng:ref name="SignedDataObjectProperties"/></rng:optional>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End SignedProperties-->
+	<!-- Start UnsignedProperties-->
+	<rng:start combine="choice"><rng:ref name="starting_UnsignedProperties"/></rng:start><rng:define name="starting_UnsignedProperties"><rng:element name="UnsignedProperties"><rng:ref name="UnsignedPropertiesType"/></rng:element></rng:define>
+	<rng:define name="UnsignedPropertiesType">
+		
+			<rng:optional><rng:ref name="UnsignedSignatureProperties"/></rng:optional>
+			<rng:optional><rng:ref name="UnsignedDataObjectProperties"/></rng:optional>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End UnsignedProperties-->
+	<!-- Start SignedSignatureProperties-->
+	<!-- Definition changed: added new optional children for EN -->
+	<rng:start combine="choice"><rng:ref name="starting_SignedSignatureProperties"/></rng:start><rng:define name="starting_SignedSignatureProperties"><rng:element name="SignedSignatureProperties"><rng:ref name="SignedSignaturePropertiesType"/></rng:element></rng:define>
+	<rng:define name="SignedSignaturePropertiesType">
+		
+			<rng:optional><rng:ref name="SigningTime"/></rng:optional>
+			<rng:optional><rng:ref name="SigningCertificate"/></rng:optional>
+			<rng:optional><rng:ref name="SigningCertificateV2"/></rng:optional>
+			<rng:optional><rng:ref name="SignaturePolicyIdentifier"/></rng:optional>
+			<rng:optional><rng:ref name="SignatureProductionPlace"/></rng:optional>
+			<rng:optional><rng:ref name="SignatureProductionPlaceV2"/></rng:optional>
+			<rng:optional><rng:ref name="SignerRole"/></rng:optional>
+			<rng:optional><rng:ref name="SignerRoleV2"/></rng:optional>
+			<rng:zeroOrMore><rng:element><rng:anyName/><rng:text/></rng:element></rng:zeroOrMore>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End SignedSignatureProperties-->
+	<!-- Start SignedDataObjectProperties-->
+	<rng:start combine="choice"><rng:ref name="starting_SignedDataObjectProperties"/></rng:start><rng:define name="starting_SignedDataObjectProperties"><rng:element name="SignedDataObjectProperties"><rng:ref name="SignedDataObjectPropertiesType"/></rng:element></rng:define>
+	<rng:define name="SignedDataObjectPropertiesType">
+		
+			<rng:zeroOrMore><rng:ref name="DataObjectFormat"/></rng:zeroOrMore>
+			<rng:zeroOrMore><rng:ref name="CommitmentTypeIndication"/></rng:zeroOrMore>
+			<rng:zeroOrMore><rng:ref name="AllDataObjectsTimeStamp"/></rng:zeroOrMore>
+			<rng:zeroOrMore><rng:ref name="IndividualDataObjectsTimeStamp"/></rng:zeroOrMore>
+			<rng:zeroOrMore><rng:element><rng:anyName/><rng:text/></rng:element></rng:zeroOrMore>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End SignedDataObjectProperties-->
+	<!-- Start UnsignedSignatureProperties-->
+	<rng:start combine="choice"><rng:ref name="starting_UnsignedSignatureProperties"/></rng:start><rng:define name="starting_UnsignedSignatureProperties"><rng:element name="UnsignedSignatureProperties"><rng:ref name="UnsignedSignaturePropertiesType"/></rng:element></rng:define>
+	<rng:define name="UnsignedSignaturePropertiesType">
+		<rng:oneOrMore><rng:choice>
+			<rng:ref name="CounterSignature"/>
+			<rng:ref name="SignatureTimeStamp"/>
+			<rng:ref name="CompleteCertificateRefs"/>
+			<rng:ref name="CompleteRevocationRefs"/>
+			<rng:ref name="AttributeCertificateRefs"/>
+			<rng:ref name="AttributeRevocationRefs"/>
+			<rng:ref name="SigAndRefsTimeStamp"/>
+			<rng:ref name="RefsOnlyTimeStamp"/>
+			<rng:ref name="CertificateValues"/>
+			<rng:ref name="RevocationValues"/>
+			<rng:ref name="AttrAuthoritiesCertValues"/>
+			<rng:ref name="AttributeRevocationValues"/>
+			<rng:ref name="ArchiveTimeStamp"/>
+			<rng:element><rng:anyName/><rng:text/></rng:element>
+		</rng:choice></rng:oneOrMore>
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End UnsignedSignatureProperties-->
+	<!-- Start UnsignedDataObjectProperties-->
+	<rng:start combine="choice"><rng:ref name="starting_UnsignedDataObjectProperties"/></rng:start><rng:define name="starting_UnsignedDataObjectProperties"><rng:element name="UnsignedDataObjectProperties"><rng:ref name="UnsignedDataObjectPropertiesType"/></rng:element></rng:define>
+	<rng:define name="UnsignedDataObjectPropertiesType">
+		
+			<rng:oneOrMore><rng:element name="UnsignedDataObjectProperty"><rng:ref name="AnyType"/></rng:element></rng:oneOrMore>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End UnsignedDataObjectProperties-->
+	<!-- Start QualifyingPropertiesReference-->
+	<rng:start combine="choice"><rng:ref name="starting_QualifyingPropertiesReference"/></rng:start><rng:define name="starting_QualifyingPropertiesReference"><rng:element name="QualifyingPropertiesReference"><rng:ref name="QualifyingPropertiesReferenceType"/></rng:element></rng:define>
+	<rng:define name="QualifyingPropertiesReferenceType">
+		<rng:attribute name="URI"><rng:data type="anyURI"/></rng:attribute>
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End QualifyingPropertiesReference-->
+	<!-- End container types -->
+	<!-- Start SigningTime element -->
+	<rng:start combine="choice"><rng:ref name="starting_SigningTime"/></rng:start><rng:define name="starting_SigningTime"><rng:element name="SigningTime"><rng:data type="dateTime"/></rng:element></rng:define>
+	<!-- End SigningTime element -->
+	<!-- Start SigningCertificate -->
+	<rng:start combine="choice"><rng:ref name="starting_SigningCertificate"/></rng:start><rng:define name="starting_SigningCertificate"><rng:element name="SigningCertificate"><rng:ref name="CertIDListType"/></rng:element></rng:define>
+	<rng:define name="CertIDListType">
+		
+			<rng:oneOrMore><rng:element name="Cert"><rng:ref name="CertIDType"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<rng:define name="CertIDType">
+		
+			<rng:element name="CertDigest"><rng:ref name="DigestAlgAndValueType"/></rng:element>
+			<rng:element name="IssuerSerial"><rng:ref name="X509IssuerSerialType"/></rng:element>
+		
+		<rng:optional><rng:attribute name="URI"><rng:data type="anyURI"/></rng:attribute></rng:optional>
+	</rng:define>
+	<rng:define name="DigestAlgAndValueType">
+		
+			<rng:ref name="DigestMethod"/>
+			<rng:ref name="DigestValue"/>
+		
+	</rng:define>
+	<!-- End SigningCertificate -->
+	<!-- Start SigningCertificateV2 and CertIDListV2Type -->
+	<rng:start combine="choice"><rng:ref name="starting_SigningCertificateV2"/></rng:start><rng:define name="starting_SigningCertificateV2"><rng:element name="SigningCertificateV2"><rng:ref name="CertIDListV2Type"/></rng:element></rng:define>
+	<rng:define name="CertIDListV2Type">
+		
+			<rng:oneOrMore><rng:element name="Cert"><rng:ref name="CertIDTypeV2"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<rng:define name="CertIDTypeV2">
+		
+			<rng:element name="CertDigest"><rng:ref name="DigestAlgAndValueType"/></rng:element>
+			<rng:optional><rng:element name="IssuerSerialV2"><rng:data type="base64Binary"/></rng:element></rng:optional>
+		
+		<rng:optional><rng:attribute name="URI"><rng:data type="anyURI"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End SigningCertificateV2 and CertIDListV2Type -->
+	<!-- Start SignaturePolicyIdentifier -->
+	<rng:start combine="choice"><rng:ref name="starting_SignaturePolicyIdentifier"/></rng:start><rng:define name="starting_SignaturePolicyIdentifier"><rng:element name="SignaturePolicyIdentifier"><rng:ref name="SignaturePolicyIdentifierType"/></rng:element></rng:define>
+	<rng:define name="SignaturePolicyIdentifierType">
+		<rng:choice>
+			<rng:element name="SignaturePolicyId"><rng:ref name="SignaturePolicyIdType"/></rng:element>
+			<rng:element name="SignaturePolicyImplied"><rng:empty/></rng:element>
+		</rng:choice>
+	</rng:define>
+	<rng:define name="SignaturePolicyIdType">
+		
+			<rng:element name="SigPolicyId"><rng:ref name="ObjectIdentifierType"/></rng:element>
+			<rng:optional><rng:ref name="Transforms"/></rng:optional>
+			<rng:element name="SigPolicyHash"><rng:ref name="DigestAlgAndValueType"/></rng:element>
+			<rng:optional><rng:element name="SigPolicyQualifiers"><rng:ref name="SigPolicyQualifiersListType"/></rng:element></rng:optional>
+		
+	</rng:define>
+	<rng:define name="SigPolicyQualifiersListType">
+		
+			<rng:oneOrMore><rng:element name="SigPolicyQualifier"><rng:ref name="AnyType"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_SPURI"/></rng:start><rng:define name="starting_SPURI"><rng:element name="SPURI"><rng:data type="anyURI"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_SPUserNotice"/></rng:start><rng:define name="starting_SPUserNotice"><rng:element name="SPUserNotice"><rng:ref name="SPUserNoticeType"/></rng:element></rng:define>
+	<rng:define name="SPUserNoticeType">
+		
+			<rng:optional><rng:element name="NoticeRef"><rng:ref name="NoticeReferenceType"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="ExplicitText"><rng:data type="string"/></rng:element></rng:optional>
+		
+	</rng:define>
+	<rng:define name="NoticeReferenceType">
+		
+			<rng:element name="Organization"><rng:data type="string"/></rng:element>
+			<rng:element name="NoticeNumbers"><rng:ref name="IntegerListType"/></rng:element>
+		
+	</rng:define>
+	<rng:define name="IntegerListType">
+		
+			<rng:zeroOrMore><rng:element name="int"><rng:data type="integer"/></rng:element></rng:zeroOrMore>
+		
+	</rng:define>
+	<!-- End SignaturePolicyIdentifier -->
+	<!-- Start CounterSignature -->
+	<rng:start combine="choice"><rng:ref name="starting_CounterSignature"/></rng:start><rng:define name="starting_CounterSignature"><rng:element name="CounterSignature"><rng:ref name="CounterSignatureType"/></rng:element></rng:define>
+	<rng:define name="CounterSignatureType">
+		
+			<rng:ref name="Signature"/>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End CounterSignature -->
+	<!-- Start DataObjectFormat -->
+	<rng:start combine="choice"><rng:ref name="starting_DataObjectFormat"/></rng:start><rng:define name="starting_DataObjectFormat"><rng:element name="DataObjectFormat"><rng:ref name="DataObjectFormatType"/></rng:element></rng:define>
+	<rng:define name="DataObjectFormatType">
+		
+			<rng:optional><rng:element name="Description"><rng:data type="string"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="ObjectIdentifier"><rng:ref name="ObjectIdentifierType"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="MimeType"><rng:data type="string"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="Encoding"><rng:data type="anyURI"/></rng:element></rng:optional>
+		
+		<rng:attribute name="ObjectReference"><rng:data type="anyURI"/></rng:attribute>
+	</rng:define>
+	<!-- End DataObjectFormat -->
+	<!-- Start CommitmentTypeIndication -->
+	<rng:start combine="choice"><rng:ref name="starting_CommitmentTypeIndication"/></rng:start><rng:define name="starting_CommitmentTypeIndication"><rng:element name="CommitmentTypeIndication"><rng:ref name="CommitmentTypeIndicationType"/></rng:element></rng:define>
+	<rng:define name="CommitmentTypeIndicationType">
+		
+			<rng:element name="CommitmentTypeId"><rng:ref name="ObjectIdentifierType"/></rng:element>
+			<rng:choice>
+				<rng:oneOrMore><rng:element name="ObjectReference"><rng:data type="anyURI"/></rng:element></rng:oneOrMore>
+				<rng:element name="AllSignedDataObjects"><rng:empty/></rng:element>
+			</rng:choice>
+			<rng:optional><rng:element name="CommitmentTypeQualifiers"><rng:ref name="CommitmentTypeQualifiersListType"/></rng:element></rng:optional>
+		
+	</rng:define>
+	<rng:define name="CommitmentTypeQualifiersListType">
+		
+			<rng:zeroOrMore><rng:element name="CommitmentTypeQualifier"><rng:ref name="AnyType"/></rng:element></rng:zeroOrMore>
+		
+	</rng:define>
+	<!-- End CommitmentTypeIndication -->
+	<!-- Start SignatureProductionPlace -->
+	<rng:start combine="choice"><rng:ref name="starting_SignatureProductionPlace"/></rng:start><rng:define name="starting_SignatureProductionPlace"><rng:element name="SignatureProductionPlace"><rng:ref name="SignatureProductionPlaceType"/></rng:element></rng:define>
+	<rng:define name="SignatureProductionPlaceType">
+		
+			<rng:optional><rng:element name="City"><rng:data type="string"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="StateOrProvince"><rng:data type="string"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="PostalCode"><rng:data type="string"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="CountryName"><rng:data type="string"/></rng:element></rng:optional>
+		
+	</rng:define>
+	<!-- End SignatureProductionPlace -->
+	<!-- Start SignatureProductionPlaceV2 and SignatureProductionPlaceV2Type -->
+	<rng:start combine="choice"><rng:ref name="starting_SignatureProductionPlaceV2"/></rng:start><rng:define name="starting_SignatureProductionPlaceV2"><rng:element name="SignatureProductionPlaceV2"><rng:ref name="SignatureProductionPlaceV2Type"/></rng:element></rng:define>
+	<rng:define name="SignatureProductionPlaceV2Type">
+		
+			<rng:optional><rng:element name="City"><rng:data type="string"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="StreetAddress"><rng:data type="string"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="StateOrProvince"><rng:data type="string"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="PostalCode"><rng:data type="string"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="CountryName"><rng:data type="string"/></rng:element></rng:optional>
+		
+	</rng:define>
+	<!-- End SignatureProductionPlace -->
+	<!-- Start SignerRole -->
+	<rng:start combine="choice"><rng:ref name="starting_SignerRole"/></rng:start><rng:define name="starting_SignerRole"><rng:element name="SignerRole"><rng:ref name="SignerRoleType"/></rng:element></rng:define>
+	<rng:define name="SignerRoleType">
+		
+			<rng:optional><rng:element name="ClaimedRoles"><rng:ref name="ClaimedRolesListType"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="CertifiedRoles"><rng:ref name="CertifiedRolesListType"/></rng:element></rng:optional>
+		
+	</rng:define>
+	<rng:define name="ClaimedRolesListType">
+		
+			<rng:oneOrMore><rng:element name="ClaimedRole"><rng:ref name="AnyType"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<rng:define name="CertifiedRolesListType">
+		
+			<rng:oneOrMore><rng:element name="CertifiedRole"><rng:ref name="EncapsulatedPKIDataType"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<!-- End SignerRole -->
+	<!-- Start SignerRoleV2 and SignerRoleV2Type -->
+	<rng:start combine="choice"><rng:ref name="starting_SignerRoleV2"/></rng:start><rng:define name="starting_SignerRoleV2"><rng:element name="SignerRoleV2"><rng:ref name="SignerRoleV2Type"/></rng:element></rng:define>
+	<rng:define name="SignerRoleV2Type">
+		
+			<rng:optional><rng:ref name="ClaimedRoles"/></rng:optional>
+			<rng:optional><rng:ref name="CertifiedRolesV2"/></rng:optional>
+			<rng:optional><rng:ref name="SignedAssertions"/></rng:optional>
+		
+	</rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_ClaimedRoles"/></rng:start><rng:define name="starting_ClaimedRoles"><rng:element name="ClaimedRoles"><rng:ref name="ClaimedRolesListType"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_CertifiedRolesV2"/></rng:start><rng:define name="starting_CertifiedRolesV2"><rng:element name="CertifiedRolesV2"><rng:ref name="CertifiedRolesListTypeV2"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_SignedAssertions"/></rng:start><rng:define name="starting_SignedAssertions"><rng:element name="SignedAssertions"><rng:ref name="SignedAssertionsListType"/></rng:element></rng:define>
+	<rng:define name="CertifiedRolesListTypeV2">
+		
+			<rng:oneOrMore><rng:element name="CertifiedRole"><rng:ref name="CertifiedRoleTypeV2"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<rng:define name="CertifiedRoleTypeV2">
+		<rng:choice>
+			<rng:ref name="X509AttributeCertificate"/>
+			<rng:ref name="OtherAttributeCertificate"/>
+		</rng:choice>
+	</rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_X509AttributeCertificate"/></rng:start><rng:define name="starting_X509AttributeCertificate"><rng:element name="X509AttributeCertificate"><rng:ref name="EncapsulatedPKIDataType"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_OtherAttributeCertificate"/></rng:start><rng:define name="starting_OtherAttributeCertificate"><rng:element name="OtherAttributeCertificate"><rng:ref name="AnyType"/></rng:element></rng:define>
+	<rng:define name="SignedAssertionsListType">
+		
+			<rng:oneOrMore><rng:ref name="SignedAssertion"/></rng:oneOrMore>
+		
+	</rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_SignedAssertion"/></rng:start><rng:define name="starting_SignedAssertion"><rng:element name="SignedAssertion"><rng:ref name="AnyType"/></rng:element></rng:define>
+	<!-- End SignerRoleV2 and SignerRoleV2Type -->
+	<rng:start combine="choice"><rng:ref name="starting_AllDataObjectsTimeStamp"/></rng:start><rng:define name="starting_AllDataObjectsTimeStamp"><rng:element name="AllDataObjectsTimeStamp"><rng:ref name="XAdESTimeStampType"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_IndividualDataObjectsTimeStamp"/></rng:start><rng:define name="starting_IndividualDataObjectsTimeStamp"><rng:element name="IndividualDataObjectsTimeStamp"><rng:ref name="XAdESTimeStampType"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_SignatureTimeStamp"/></rng:start><rng:define name="starting_SignatureTimeStamp"><rng:element name="SignatureTimeStamp"><rng:ref name="XAdESTimeStampType"/></rng:element></rng:define>
+	<!-- Start CompleteCertificateRefs -->
+	<rng:start combine="choice"><rng:ref name="starting_CompleteCertificateRefs"/></rng:start><rng:define name="starting_CompleteCertificateRefs"><rng:element name="CompleteCertificateRefs"><rng:ref name="CompleteCertificateRefsType"/></rng:element></rng:define>
+	<rng:define name="CompleteCertificateRefsType">
+		
+			<rng:element name="CertRefs"><rng:ref name="CertIDListType"/></rng:element>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End CompleteCertificateRefs -->
+	<!-- Start CompleteRevocationRefs-->
+	<rng:start combine="choice"><rng:ref name="starting_CompleteRevocationRefs"/></rng:start><rng:define name="starting_CompleteRevocationRefs"><rng:element name="CompleteRevocationRefs"><rng:ref name="CompleteRevocationRefsType"/></rng:element></rng:define>
+	<rng:define name="CompleteRevocationRefsType">
+		
+			<rng:optional><rng:element name="CRLRefs"><rng:ref name="CRLRefsType"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="OCSPRefs"><rng:ref name="OCSPRefsType"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="OtherRefs"><rng:ref name="OtherCertStatusRefsType"/></rng:element></rng:optional>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<rng:define name="CRLRefsType">
+		
+			<rng:oneOrMore><rng:element name="CRLRef"><rng:ref name="CRLRefType"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<rng:define name="CRLRefType">
+		
+			<rng:element name="DigestAlgAndValue"><rng:ref name="DigestAlgAndValueType"/></rng:element>
+			<rng:optional><rng:element name="CRLIdentifier"><rng:ref name="CRLIdentifierType"/></rng:element></rng:optional>
+		
+	</rng:define>
+	<rng:define name="CRLIdentifierType">
+		
+			<rng:element name="Issuer"><rng:data type="string"/></rng:element>
+			<rng:element name="IssueTime"><rng:data type="dateTime"/></rng:element>
+			<rng:optional><rng:element name="Number"><rng:data type="integer"/></rng:element></rng:optional>
+		
+		<rng:optional><rng:attribute name="URI"><rng:data type="anyURI"/></rng:attribute></rng:optional>
+	</rng:define>
+	<rng:define name="OCSPRefsType">
+		
+			<rng:oneOrMore><rng:element name="OCSPRef"><rng:ref name="OCSPRefType"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<rng:define name="OCSPRefType">
+		
+			<rng:element name="OCSPIdentifier"><rng:ref name="OCSPIdentifierType"/></rng:element>
+			<rng:optional><rng:element name="DigestAlgAndValue"><rng:ref name="DigestAlgAndValueType"/></rng:element></rng:optional>
+		
+	</rng:define>
+	<rng:define name="ResponderIDType">
+		<rng:choice>
+			<rng:element name="ByName"><rng:data type="string"/></rng:element>
+			<rng:element name="ByKey"><rng:data type="base64Binary"/></rng:element>
+		</rng:choice>
+	</rng:define>
+	<rng:define name="OCSPIdentifierType">
+		
+			<rng:element name="ResponderID"><rng:ref name="ResponderIDType"/></rng:element>
+			<rng:element name="ProducedAt"><rng:data type="dateTime"/></rng:element>
+		
+		<rng:optional><rng:attribute name="URI"><rng:data type="anyURI"/></rng:attribute></rng:optional>
+	</rng:define>
+	<rng:define name="OtherCertStatusRefsType">
+		
+			<rng:oneOrMore><rng:element name="OtherRef"><rng:ref name="AnyType"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<!-- End CompleteRevocationRefs-->
+	<rng:start combine="choice"><rng:ref name="starting_AttributeCertificateRefs"/></rng:start><rng:define name="starting_AttributeCertificateRefs"><rng:element name="AttributeCertificateRefs"><rng:ref name="CompleteCertificateRefsType"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_AttributeRevocationRefs"/></rng:start><rng:define name="starting_AttributeRevocationRefs"><rng:element name="AttributeRevocationRefs"><rng:ref name="CompleteRevocationRefsType"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_SigAndRefsTimeStamp"/></rng:start><rng:define name="starting_SigAndRefsTimeStamp"><rng:element name="SigAndRefsTimeStamp"><rng:ref name="XAdESTimeStampType"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_RefsOnlyTimeStamp"/></rng:start><rng:define name="starting_RefsOnlyTimeStamp"><rng:element name="RefsOnlyTimeStamp"><rng:ref name="XAdESTimeStampType"/></rng:element></rng:define>
+	<!-- Start CertificateValues -->
+	<rng:start combine="choice"><rng:ref name="starting_CertificateValues"/></rng:start><rng:define name="starting_CertificateValues"><rng:element name="CertificateValues"><rng:ref name="CertificateValuesType"/></rng:element></rng:define>
+	<rng:define name="CertificateValuesType">
+		<rng:zeroOrMore><rng:choice>
+			<rng:element name="EncapsulatedX509Certificate"><rng:ref name="EncapsulatedPKIDataType"/></rng:element>
+			<rng:element name="OtherCertificate"><rng:ref name="AnyType"/></rng:element>
+		</rng:choice></rng:zeroOrMore>
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<!-- End CertificateValues -->
+	<!-- Start RevocationValues-->
+	<rng:start combine="choice"><rng:ref name="starting_RevocationValues"/></rng:start><rng:define name="starting_RevocationValues"><rng:element name="RevocationValues"><rng:ref name="RevocationValuesType"/></rng:element></rng:define>
+	<rng:define name="RevocationValuesType">
+		
+			<rng:optional><rng:element name="CRLValues"><rng:ref name="CRLValuesType"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="OCSPValues"><rng:ref name="OCSPValuesType"/></rng:element></rng:optional>
+			<rng:optional><rng:element name="OtherValues"><rng:ref name="OtherCertStatusValuesType"/></rng:element></rng:optional>
+		
+		<rng:optional><rng:attribute name="Id"><rng:data type="ID"/></rng:attribute></rng:optional>
+	</rng:define>
+	<rng:define name="CRLValuesType">
+		
+			<rng:oneOrMore><rng:element name="EncapsulatedCRLValue"><rng:ref name="EncapsulatedPKIDataType"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<rng:define name="OCSPValuesType">
+		
+			<rng:oneOrMore><rng:element name="EncapsulatedOCSPValue"><rng:ref name="EncapsulatedPKIDataType"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<rng:define name="OtherCertStatusValuesType">
+		
+			<rng:oneOrMore><rng:element name="OtherValue"><rng:ref name="AnyType"/></rng:element></rng:oneOrMore>
+		
+	</rng:define>
+	<!-- End RevocationValues-->
+	<rng:start combine="choice"><rng:ref name="starting_AttrAuthoritiesCertValues"/></rng:start><rng:define name="starting_AttrAuthoritiesCertValues"><rng:element name="AttrAuthoritiesCertValues"><rng:ref name="CertificateValuesType"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_AttributeRevocationValues"/></rng:start><rng:define name="starting_AttributeRevocationValues"><rng:element name="AttributeRevocationValues"><rng:ref name="RevocationValuesType"/></rng:element></rng:define>
+	<rng:start combine="choice"><rng:ref name="starting_ArchiveTimeStamp"/></rng:start><rng:define name="starting_ArchiveTimeStamp"><rng:element name="ArchiveTimeStamp"><rng:ref name="XAdESTimeStampType"/></rng:element></rng:define>
+</rng:grammar>
