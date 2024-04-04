@@ -364,6 +364,14 @@
 (use-package expand-region
   :bind ("C-=" . er/expand-region))
 
+
+(setq org-capture-templates '(("j" "Journal entry" plain (function org-journal-find-location)
+                               "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?"
+                               :jump-to-captured t :immediate-finish t)
+                              ("t" "Journal entry (with TODO link)" plain (function org-journal-find-location)
+                               "** TODO %^{Title}\nSee %a:\n%i%?"
+                               :jump-to-captured t :immediate-finish t)))
+
 (when (file-exists-p "~/.emacs.d/mu4e.el")
   ;; load mu4e (comes with installation of mu)
   (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
@@ -376,11 +384,12 @@
   ;; from mu4e-icalendar.el:
   (require 'mu4e-icalendar)
   (require 'gnus-icalendar)
-  (setq gnus-icalendar-org-capture-file "~/org/notes.org")
-  (setq gnus-icalendar-org-capture-headline '("Calendar"))
-  (gnus-icalendar-org-setup)
   (setq mu4e-view-use-gnus t)
   (mu4e-icalendar-setup)
+
+  (setq gnus-icalendar-org-capture-file "~/org/calendar-capture.org")
+  (setq gnus-icalendar-org-capture-headline '("Calendar"))
+  (gnus-icalendar-org-setup)
 
   ;; Restore keybindings that somehow aren't present by default in mu4e-gnus
   (require 'mu4e-view)
@@ -986,6 +995,12 @@ See `elfeed-play-with-mpv'."
 
   (flyspell-mode 1)
   (ws-butler-mode 1)
+
+  (defun shk-fix-inline-images ()
+    (when org-inline-image-overlays
+      (org-redisplay-inline-images)))
+
+  (add-hook 'org-babel-after-execute-hook 'shk-fix-inline-images)
 )
 
 (add-hook 'org-mode-hook 'my/org-mode-setup)
@@ -1671,13 +1686,6 @@ See `elfeed-play-with-mpv'."
     (org-narrow-to-subtree))
   (goto-char (point-max)))
 
-(setq org-capture-templates '(("j" "Journal entry" plain (function org-journal-find-location)
-                               "** %(format-time-string org-journal-time-format)%^{Title}\n%i%?"
-                               :jump-to-captured t :immediate-finish t)
-                              ("t" "Journal entry (with TODO link)" plain (function org-journal-find-location)
-                               "** TODO %^{Title}\nSee %a:\n%i%?"
-                               :jump-to-captured t :immediate-finish t)))
-
 (use-package org-journal
   :bind (
          ("C-c c" . org-capture)
@@ -1710,3 +1718,12 @@ See `elfeed-play-with-mpv'."
             )))
 
 (use-package kubernetes)
+
+(use-package org-caldav
+  :config
+  (setq org-caldav-inbox "~/org/calendar-inbox.org"
+        org-caldav-files `("~/org/calendar-capture.org")
+        org-icalendar-timezone "Europe/Copenhagen"))
+
+(when (file-exists-p "~/.emacs.d/caldav.el")
+  (load "~/.emacs.d/caldav.el"))
