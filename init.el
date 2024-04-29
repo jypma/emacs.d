@@ -1419,6 +1419,8 @@ See `elfeed-play-with-mpv'."
       (progn ;; 1280x720
         (setq org-image-actual-width (list (/ (x-display-pixel-width) 4))))))
   (org-display-inline-images t t)
+  (hide-lines-matching "#\\+ATTR_ORG")
+  (hide-lines-matching "#\\+ATTR_LATEX")
   (org-latex-preview '(16))
   (font-lock-flush)
   (font-lock-ensure)
@@ -1431,6 +1433,7 @@ See `elfeed-play-with-mpv'."
   (flyspell-mode 1)
   (text-scale-mode 0)
   (org-remove-inline-images)
+  (hide-lines-show-all)
   (font-lock-flush)
   (font-lock-ensure))
 
@@ -1727,3 +1730,7 @@ See `elfeed-play-with-mpv'."
 
 (when (file-exists-p "~/.emacs.d/caldav.el")
   (load "~/.emacs.d/caldav.el"))
+
+;; We want M-o to just switch windows
+(require 'sgml-mode)
+(define-key html-mode-map (kbd "M-o") nil)
