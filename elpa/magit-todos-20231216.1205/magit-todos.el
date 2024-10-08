@@ -1270,6 +1270,7 @@ argument, a list of match items.
 
 When SYNC is non-nil, match items are returned."
                   name-without-spaces)
+         (message "Scanning for heading %s" heading)
          (let* ((process-connection-type 'pipe)
                 (directory ,directory-form)
                 (extra-args (when ,extra-args-var

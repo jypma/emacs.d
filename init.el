@@ -116,6 +116,17 @@
 ;; "Command attempted to use minibuffer while in minibuffer" gets old fast.
 (setq enable-recursive-minibuffers t)
 
+(require 'mhtml-mode)
+;; Keep using M-o to switch windows, also in HTML mode
+(keymap-unset mhtml-mode-map "M-o b" 1)
+(keymap-unset mhtml-mode-map "M-o d" 1)
+(keymap-unset mhtml-mode-map "M-o i" 1)
+(keymap-unset mhtml-mode-map "M-o l" 1)
+(keymap-unset mhtml-mode-map "M-o o" 1)
+(keymap-unset mhtml-mode-map "M-o u" 1)
+(keymap-unset mhtml-mode-map "M-o M-o" 1)
+(keymap-unset mhtml-mode-map "M-o" 1)
+
 ;; icons for major modes
 (use-package all-the-icons
   :demand)
@@ -711,11 +722,15 @@ See `elfeed-play-with-mpv'."
 (font-lock-add-keywords 'java-mode
                         '(("yield" . font-lock-keyword-face)))
 (font-lock-add-keywords 'java-mode
+                        '(("var" . font-lock-keyword-face)))
+(font-lock-add-keywords 'java-mode
                         '(("sealed" . font-lock-keyword-face)))
 (font-lock-add-keywords 'java-mode
                         '(("record" . font-lock-keyword-face)) 1)
 (font-lock-add-keywords 'java-mode
                         '(("permits" . font-lock-keyword-face)))
+(font-lock-add-keywords 'java-mode
+                        '(("when" . font-lock-keyword-face)))
 
 (add-hook 'java-mode-hook
           (lambda ()
@@ -723,6 +738,7 @@ See `elfeed-play-with-mpv'."
             (setq adaptive-wrap-extra-indent 4)
             (c-set-offset 'arglist-intro '+)         ;; only 1 indent for multi-line args lists
             (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
+            ;;(c-set-offset 'arglist-cont-nonempty '0) ;; 0 fixes lambdas, but breaks normal arg lists.
             (c-set-offset 'arglist-close '0)         ;; Single closing paren on a line should line up
             (c-set-offset 'case-label '+)            ;; Indent before case labels
             (setq fill-column 130)                   ;; yes, looks worse on github, but, java.
@@ -894,6 +910,11 @@ See `elfeed-play-with-mpv'."
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((java . t)))
+
+;; use maxima with babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((maxima . t)))
 
 (require 'ox)
 (defun my/org-export-replacements (text backend info)
@@ -1347,7 +1368,7 @@ See `elfeed-play-with-mpv'."
 ;; Allow execute of plantuml from org
 (require 'ob-plantuml)
 (setq org-plantuml-jar-path "~/.emacs.d/plantuml.jar")
-(setq org-plantuml-exec-mode 'plantuml)
+(setq org-plantuml-exec-mode 'jar)
 
 ;; Allow images to be zoomed in and out
 (defun scale-image ()
@@ -1377,8 +1398,8 @@ See `elfeed-play-with-mpv'."
   ;; Toggle string capitalization style (camel, caps, snake, etc.)
   ("C-c C-i" . string-inflection-all-cycle))
 
-(use-package highlight-indent-guides
-  :hook ((prog-mode yaml-mode) . highlight-indent-guides-mode))
+;;(use-package highlight-indent-guides
+;;  :hook ((prog-mode yaml-mode) . highlight-indent-guides-mode))
 
 (use-package csv-mode
   :mode "\\.[Cc][Ss][Vv]\\'")
@@ -1734,3 +1755,5 @@ See `elfeed-play-with-mpv'."
 ;; We want M-o to just switch windows
 (require 'sgml-mode)
 (define-key html-mode-map (kbd "M-o") nil)
+
+;;(use-package mmm-mode)

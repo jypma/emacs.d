@@ -2109,7 +2109,11 @@ PARAMS - the data sent from WORKSPACE."
   (let* ((message (lsp--propertize message type))
          (choices (seq-map #'lsp:message-action-item-title actions?)))
     (if choices
-        (completing-read (concat message " ") (seq-into choices 'list) nil t)
+        (if (eq 1 (length choices))
+            (progn
+              (message "%s: Automatically performing %s" message (car choices))
+              (car choices))
+          (completing-read (concat message " ") (seq-into choices 'list) nil t))
       (lsp-log message))))
 
 (lsp-defun lsp--window-show-document ((&ShowDocumentParams :uri :selection?))
