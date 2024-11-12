@@ -4,7 +4,6 @@
 
 ;; Author: Vasilij Schneidermann <mail@vasilij.de>
 ;; Maintainer: Vasilij Schneidermann
-;; Version: 0.1.1
 ;; Keywords: data, lisp
 ;; Package-Requires: ((cl-lib "0.1"))
 ;;

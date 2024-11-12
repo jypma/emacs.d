@@ -5,6 +5,8 @@
 ;; Author: Kevin W. van Rooijen
 ;; Version  : 0.4.0
 ;; Keywords: tools
+;; Package-Version: 20231229.915
+;; Package-Revision: 7f8466063381
 ;; Package-Requires: ((emacs "24.3") (markdown-mode "2.4"))
 
 ;; This program is free software; you can redistribute it and/or modify

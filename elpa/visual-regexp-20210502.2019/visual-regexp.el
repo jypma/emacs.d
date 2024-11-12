@@ -4,7 +4,8 @@
 
 ;; Author: Marko Bencun <mbencun@gmail.com>
 ;; URL: https://github.com/benma/visual-regexp.el/
-;; Version: 1.1
+;; Package-Version: 20210502.2019
+;; Package-Revision: 48457d42a5e0
 ;; Package-Requires: ((cl-lib "0.2"))
 ;; Keywords: regexp, replace, visual, feedback
 

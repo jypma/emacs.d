@@ -3,7 +3,8 @@
 ;; Copyright (C) 2011-2023 Takaaki ISHIKAWA
 ;;
 ;; Author: Takaaki ISHIKAWA <takaxp at ieee dot org>
-;; Version: 2.8.22
+;; Package-Version: 20230826.1234
+;; Package-Revision: 941e7e6cb8a5
 ;; Package-Requires: ((emacs "25.2"))
 ;; Maintainer: Takaaki ISHIKAWA <takaxp at ieee dot org>
 ;; Twitter: @takaxp
@@ -850,6 +851,8 @@ Some number of BLANK-LINES will be shown below the header."
       (overlay-put org-tree-slide--header-overlay 'display
                    (concat (if org-tree-slide-title org-tree-slide-title
                              (buffer-name))
+                           "\n"
+                           org-tree-slide-date "  "
                            (when org-tree-slide-author
                              (concat org-tree-slide-author "  "))
                            (when org-tree-slide-email

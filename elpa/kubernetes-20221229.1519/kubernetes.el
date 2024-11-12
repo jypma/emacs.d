@@ -7,7 +7,8 @@
 ;;     Noorul Islam K M <noorul@noorul.com>
 ;;     Jonathan Jin <me@jonathanj.in>
 
-;; Version: 0.18.0
+;; Package-Version: 20221229.1519
+;; Package-Revision: 099004511670
 ;; Homepage: https://github.com/kubernetes-el/kubernetes-el
 ;; Package-Requires: ((dash "2.12.0") (magit-section "3.1.1") (magit-popup "2.13.0") (with-editor "3.0.4") (request "0.3.2") (s "1.12.0") (transient "0.3.0"))
 ;; Keywords: kubernetes

@@ -4,7 +4,8 @@
 
 ;; Author: Johan Dykstrom
 ;; Created: Jan 2006
-;; Version: 1.7.1
+;; Package-Version: 20230826.1331
+;; Package-Revision: 45d5e3ee918f
 ;; Keywords: tools
 ;; URL: https://github.com/dykstrom/log4j-mode
 ;; Package-Requires: ((emacs "25.1"))

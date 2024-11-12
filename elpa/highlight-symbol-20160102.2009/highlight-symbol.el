@@ -3,7 +3,8 @@
 ;; Copyright (C) 2007-2009, 2013-2016 Nikolaj Schumacher
 ;;
 ;; Author: Nikolaj Schumacher <bugs * nschum de>
-;; Version: 1.3
+;; Package-Version: 20160102.2009
+;; Package-Revision: 7a789c779648
 ;; Keywords: faces, matching
 ;; URL: http://nschum.de/src/emacs/highlight-symbol/
 ;; Compatibility: GNU Emacs 23.x, GNU Emacs 24.x, GNU Emacs 25.x

@@ -1,0 +1,844 @@
+This is org-caldav.info, produced by makeinfo version 6.8 from
+org-caldav.texi.
+
+INFO-DIR-SECTION Emacs
+START-INFO-DIR-ENTRY
+* Org-caldav: (org-caldav). Caldav sync for Emacs Orgmode.
+END-INFO-DIR-ENTRY
+
+
+File: org-caldav.info,  Node: Top,  Next: Prerequisites,  Up: (dir)
+
+org-caldav
+**********
+
+Caldav sync for Emacs Orgmode
+
+* Menu:
+
+* Prerequisites::
+* Basic setup::
+* Usage::
+* Advanced configuration::
+* Compatible CalDav servers::
+* Implementation details::
+* Tips, Tricks, and Troubleshooting: Tips Tricks and Troubleshooting.
+* Known Bugs::
+
+— The Detailed Node Listing —
+
+Basic setup
+
+* Minimal example::
+* Required configuration settings::
+
+Advanced configuration
+
+* Sync direction (one-way sync)::
+* Filtering entries::
+* Syncing deletions::
+* Storing authentication information in authinfo/netrc::
+* Syncing with more than one calendar::
+* Customizing the inbox::
+* Syncing TODOs between Org and CalDav::
+* Behavior of recurring TODO deadlines without a start time::
+
+Compatible CalDav servers
+
+* Syncing to Google Calendar::
+
+Implementation details
+
+* Org and the iCalendar format::
+* Conflict handling::
+* Repeating events and todos::
+* How syncing happens (a.k.a. David’s little CalDAV rant): How syncing happens (aka David's little CalDAV rant).
+
+Tips, Tricks, and Troubleshooting
+
+* Standalone import of ICS files::
+* Storage of sync information and sync from different computers::
+* Starting from scratch::
+* Timezone problems::
+* Troubleshooting::
+
+
+
+File: org-caldav.info,  Node: Prerequisites,  Next: Basic setup,  Prev: Top,  Up: Top
+
+1 Prerequisites
+***************
+
+   • Emacs >= 26.3
+   • Org >= 9.1
+   • *note Compatible CalDav server: Compatible CalDav servers.
+
+   *IMPORTANT*: Before using this code, please make sure you have
+backups of your precious Org files.  Also, it is recommended to create a
+new, empty calendar on your server for using this package.
+
+   *ALSO IMPORTANT*: When using this package, possibly all Org entries
+will get an UID property (see the docstring of ‘org-icalendar-store-UID’
+for further details).  If you don’t want this, then _do not use this
+package_; there is just no way around that.  It is the only reliable way
+to uniquely identify Org entries.
+
+
+File: org-caldav.info,  Node: Basic setup,  Next: Usage,  Prev: Prerequisites,  Up: Top
+
+2 Basic setup
+*************
+
+At a minimum, set ‘org-caldav-url’, ‘org-caldav-calendar-id’,
+‘org-caldav-inbox’, ‘org-caldav-files’, and ‘org-icalendar-timezone’
+(*note Required configuration settings::).
+
+* Menu:
+
+* Minimal example::
+* Required configuration settings::
+
+
+File: org-caldav.info,  Node: Minimal example,  Next: Required configuration settings,  Up: Basic setup
+
+2.1 Minimal example
+===================
+
+This example configures a single Org file ‘/path/to/inbox.org’ to sync
+with a single calendar (with ID ‘CALENDAR-ID’) located on a Nextcloud
+server at ‘NEXTCLOUD-SERVER-URL’.
+
+     (require 'org-caldav)
+
+     ;; URL of the caldav server
+     (setq org-caldav-url "https://NEXTCLOUD-SERVER-URL/remote.php/dav/calendars/USERID")
+
+     ;; calendar ID on server
+     (setq org-caldav-calendar-id "CALENDAR-ID")
+
+     ;; Org filename where new entries from calendar stored
+     (setq org-caldav-inbox "/path/to/inbox.org")
+
+     ;; Additional Org files to check for calendar events
+     (setq org-caldav-files nil)
+
+     ;; Usually a good idea to set the timezone manually
+     (setq org-icalendar-timezone "Europe/Berlin")
+
+
+File: org-caldav.info,  Node: Required configuration settings,  Prev: Minimal example,  Up: Basic setup
+
+2.2 Required configuration settings
+===================================
+
+   • Set ‘org-caldav-url’ to the base address of your CalDAV server:
+
+        • Owncloud/Nextcloud (9.x and above):
+          <https://OWNCLOUD-SERVER-URL/remote.php/dav/calendars/USERID>
+        • Google: Set to symbol ‘'google’.  See *note Syncing to Google
+          Calendar:: for additional required setup.
+
+   • Set ‘org-caldav-calendar-id’ to the calendar ID of your new
+     calendar:
+
+        • Own/NextCloud: Click on that little symbol next to the
+          calendar name and inspect the link of the calendar; the last
+          element of the shown path is the calendar-id.  This should
+          _usually_ be the same as the name of the calendar, but not
+          necessarily: Owncloud might replace certain characters (upper
+          to lowercase, for instance), or it might even be entirely
+          different if the calendar was created by another CalDAV
+          application.
+        • Google: Click on ’calendar settings’ and the id will be shown
+          next to "Calendar Address".  It is of the form
+          ‘ID@group.calendar.google.com’.  Do _not_ omit the domain!
+
+   • Set ‘org-caldav-inbox’ to an org filename where new entries from
+     the calendar should be stored.  Just to be safe, it’s a good idea
+     to use an empty, dedicated Org file for that.
+
+   • Set ‘org-caldav-files’ to the list of org files you would like to
+     sync.  The above ‘org-caldav-inbox’ will be automatically added, so
+     you don’t have to add it here.
+
+   • It is usually a good idea to manually set ‘org-icalendar-timezone’
+     to the timezone of your remote calendar.  It should be a simple
+     string like "Europe/Berlin".  If that doesn’t work and your events
+     are shifted by a few hours, try the setting "UTC" (the SOGo
+     calendar server seems to need this).
+
+
+File: org-caldav.info,  Node: Usage,  Next: Advanced configuration,  Prev: Basic setup,  Up: Top
+
+3 Usage
+*******
+
+First, create a calendar on the CalDav server, and configure which Org
+files to sync it with (see *note Basic setup::).
+
+   Then, do:
+
+   ‘M-x org-caldav-sync’
+
+   to sync between Org and CalDav.
+
+   You will be prompted to manually enter the username/password on each
+sync; see *note Storing authentication information: Storing
+authentication information in authinfo/netrc. on how to save the
+password and avoid manual entry.
+
+   If you have many calendar items, the first sync can easily take
+several minutes, especially if using a slow CalDav implementation like
+Google’s.  If you have to abort the initial sync for some reason, just
+start ‘org-caldav-sync’ again in the same Emacs session and you should
+get asked if you’d like to resume.  Likewise for any errors – especially
+when using Google Calendar, it is not unusual to get stuff like ’409’
+errors during the initial sync.  Just run ‘org-caldav-sync’ again until
+all events are uploaded.
+
+
+File: org-caldav.info,  Node: Advanced configuration,  Next: Compatible CalDav servers,  Prev: Usage,  Up: Top
+
+4 Advanced configuration
+************************
+
+Before reading this section, first consult the section on *note Basic
+setup:: (and in particular *note Required configuration settings::).
+
+   Additional, advanced configuration options are listed below in this
+section.
+
+   Note that org-caldav uses ox-icalendar.el
+(https://orgmode.org/manual/iCalendar-Export.html) to export from Org to
+iCalendar, so it’s worth checking the options there as well.  For
+example, use ‘org-icalendar-alarm-time’ to add a reminder to your
+entries.
+
+* Menu:
+
+* Sync direction (one-way sync)::
+* Filtering entries::
+* Syncing deletions::
+* Storing authentication information in authinfo/netrc::
+* Syncing with more than one calendar::
+* Customizing the inbox::
+* Syncing TODOs between Org and CalDav::
+* Behavior of recurring TODO deadlines without a start time::
+
+
+File: org-caldav.info,  Node: Sync direction (one-way sync),  Next: Filtering entries,  Up: Advanced configuration
+
+4.1 Sync direction (one-way sync)
+=================================
+
+By default, org-caldav does two-way syncing, that means it does not
+matter where and how you change an entry.  You can also move Org entries
+freely from one file to another, as long as they are all listed in
+‘org-caldav-files’.
+
+   To do one-way sync only, set ‘org-caldav-sync-direction’ to
+‘'org->cal’ or ‘'cal->org’, depending on which direction you’d like to
+have.  If you choose ‘'org->cal’, then ‘org-caldav-inbox’ won’t matter
+and can be ‘nil’.  Likewise, if you choose ‘'cal->org’, then
+‘org-caldav-files’ will be ignored and only the calendar will be
+imported into the inbox.
+
+   WARNING: It is NOT safe to switch the same calendar between 1-way and
+2-way sync modes.  Doing so may cause unexpected behavior, such as
+deleting all events in the calendar.
+
+
+File: org-caldav.info,  Node: Filtering entries,  Next: Syncing deletions,  Prev: Sync direction (one-way sync),  Up: Advanced configuration
+
+4.2 Filtering entries
+=====================
+
+There are several possibilities to choose which entries should be synced
+and which not:
+
+   • If you only want to sync manually marked entries, use
+     ‘org-caldav-select-tags’, which is directly mapped to
+     ‘org-export-select-tags’, so see its doc-string on how it works.
+
+   • If you want to exclude certain tags, use ‘org-caldav-exclude-tags’,
+     which is mapped to ‘org-icalendar-exclude’ tags.
+
+   • If you want more fine grained control, use
+     ‘org-caldav-skip-conditions’.  The syntax of the conditions is
+     described in the doc-string of ‘org-agenda-skip-if’.
+
+   • In case you just want to keep your remote calendar clean, set
+     ‘org-caldav-days-in-past’ to the number of days you want to keep in
+     the past on the remote calendar.  This does not affect your org
+     files, it works just as a filter for entries older than N days.
+
+   Note however that the normal ‘org-agenda-skip-function(-global)’ will
+*not* have any effect on the icalendar exporter (this used to be the
+case, but changed with the new exporters).
+
+
+File: org-caldav.info,  Node: Syncing deletions,  Next: Storing authentication information in authinfo/netrc,  Prev: Filtering entries,  Up: Advanced configuration
+
+4.3 Syncing deletions
+=====================
+
+If you delete entries in your Org files, the corresponding iCalendar
+entries will by default get deleted.  You can change that behavior with
+‘org-caldav-delete-calendar-entries’ to never delete, or to ask before
+deletion.
+
+   You must be careful to not simply remove previously synced files from
+‘org-caldav-files’, as org-caldav would view all the entries from those
+files as deleted and hence by default also delete them from the
+calendar.  However, org-caldav should be able to detect this situation
+and warn you with the message ’Previously synced file(s) are missing’,
+asking you whether to continue nonetheless.
+
+   If you delete events in your calendar, you will by default get asked
+if you’d like to delete the corresponding Org event.  You can change
+that behavior through ‘org-caldav-delete-org-entries’.
+
+   If you answer a deletion request with "no", the event should get
+re-synced to the calendar next time you call ‘org-caldav-sync’.
+
+
+File: org-caldav.info,  Node: Storing authentication information in authinfo/netrc,  Next: Syncing with more than one calendar,  Prev: Syncing deletions,  Up: Advanced configuration
+
+4.4 Storing authentication information in authinfo/netrc
+========================================================
+
+If you don’t want to enter your user/password every time, you can store
+it permanently in an authinfo file.  In Emacs, the auth-source package
+takes care of that, but the syntax for https authentication is a bit
+peculiar.  You have to use a line like the following
+
+     machine www.google.com:443 port https login username password secret
+
+   Note that you have to specify the port number in the URL and _also_
+specify ’https’ for the port.  This is not a bug.  For more information,
+see (info "auth"), especially section "Help for users".
+
+   Since you are storing your password in a file you should encrypt it
+using GnuPG.  Emacs will prompt you for a decryption key when it tries
+to read the file.
+
+
+File: org-caldav.info,  Node: Syncing with more than one calendar,  Next: Customizing the inbox,  Prev: Storing authentication information in authinfo/netrc,  Up: Advanced configuration
+
+4.5 Syncing with more than one calendar
+=======================================
+
+This can be done by setting the variable ‘org-caldav-calendars’.  It
+should be a list of plists (a ’plist’ is simply a list with alternating
+:key’s and values).  Through these plists, you can override the global
+values of variables like ‘org-caldav-calendar-id’, and calling
+‘org-caldav-sync’ will go through these plists in order.
+
+   Example:
+
+     (setq org-caldav-calendars
+       '((:calendar-id "work@whatever" :files ("~/org/work.org")
+          :inbox "~/org/fromwork.org")
+         (:calendar-id "stuff@mystuff"
+          :files ("~/org/sports.org" "~/org/play.org")
+          :skip-conditions (regexp "soccer")
+          :inbox "~/org/fromstuff.org")) )
+
+   This means that you have two calendars with IDs "work@whatever" and
+"stuff@mystuff".  Both will be accessed through the global value of
+org-caldav-url, since the key :url isn’t specified.  The calendar
+"work@whatever" will be synced with the file ’work.org’ and inbox
+’fromwork.org’, while "stuff@mystuff" with ’sports.org’ and ’play.org’,
+_unless_ there’s the string ’soccer’ in the heading, and and inbox is
+’fromstuff.org’.  See the doc-string of ‘org-caldav-calendars’ for more
+details on which keys you can use.
+
+
+File: org-caldav.info,  Node: Customizing the inbox,  Next: Syncing TODOs between Org and CalDav,  Prev: Syncing with more than one calendar,  Up: Advanced configuration
+
+4.6 Customizing the inbox
+=========================
+
+See the doc-string of ‘org-caldav-inbox’ if you want more flexibility in
+where new items should be put.  Instead of simply providing a file, you
+can also choose an existing entry or headline, or put the entry under a
+datetree.
+
+
+File: org-caldav.info,  Node: Syncing TODOs between Org and CalDav,  Next: Behavior of recurring TODO deadlines without a start time,  Prev: Customizing the inbox,  Up: Advanced configuration
+
+4.7 Syncing TODOs between Org and CalDav
+========================================
+
+This feature is relatively new and less well tested, so it is
+recommended to have backups before using it.  It has been tested on
+nextcloud and radicale.
+
+   To sync TODO’s between Org and the CalDav server, do:
+
+     (setq org-icalendar-include-todo 'all
+         org-caldav-sync-todo t)
+
+   The first instructs the Org exporter to include TODOs; the second
+tells org-caldav to import icalendar VTODOs as Org TODOs.
+
+   Other customizations to consider (see their documentation for more
+details):
+
+   • ‘org-caldav-todo-priority’ to control how priority levels map
+     between iCalendar and Org.
+   • ‘org-caldav-todo-percent-states’ to convert between
+     ‘org-todo-keywords’ and iCalendar’s percent-complete property.
+   • ‘org-caldav-todo-deadline-schedule-warning-days’ to auto-create
+     SCHEDULED timestamps when a DEADLINE is present (this might be
+     useful for users of the OpenTasks app).
+
+   If you find that some Org entries get an extra tag which equals their
+CATEGORY, this might be caused by the CATEGORY being exported to
+iCalendar, and then re-imported to Org as a tag.  In that case, do
+
+     (setq org-icalendar-categories '(local-tags))
+
+   to prevent the CATEGORY from being exported to iCalendar.  This
+problem only seems to affect some CalDav servers: in particular,
+NextCloud is affected, but Radicale does not seem to experience this
+problem.
+
+
+File: org-caldav.info,  Node: Behavior of recurring TODO deadlines without a start time,  Prev: Syncing TODOs between Org and CalDav,  Up: Advanced configuration
+
+4.8 Behavior of recurring TODO deadlines without a start time
+=============================================================
+
+Technically, the iCalendar spec
+(https://datatracker.ietf.org/doc/html/rfc5545#section-3.8.2.4) requires
+repeating events and todos (i.e.  having an ‘RRULE’ property) to have a
+starting time (‘DTSTART’ in iCalendar, equivalent to ‘SCHEDULED’ in Org
+TODOs).  This means that, a TODO with a repeating ‘DEADLINE’ but without
+a ‘SCHEDULED’ property, such as below, is not allowed by the iCalendar
+spec:
+
+     * TODO An example todo with a repeating deadline and no start time
+     DEADLINE: <2024-09-15 Sun +1w>
+
+   This is a clear shortcoming of the iCalendar spec, because it _does_
+allow tasks to have a standalone deadline without a starting time, but
+_doesn’t_ allow such tasks to repeat.
+
+   By default, ‘ox-icalendar’ follows the iCalendar spec, and when
+exporting a TODO with a repeating ‘DEADLINE’ but no ‘SCHEDULED’
+timestamp, will add a start time based on ‘org-deadline-warning-days’.
+On future syncs, this start time will be inserted into Org as a
+‘SCHEDULED’ timestamp.
+
+   However, in practice, many iCalendar implementations ignore this
+limitation, and allow Todos with ‘DEADLINE’ (‘DUE’) times to have
+repeaters (‘RRULE’), even if they are missing ‘SCHEDULED’ (‘DTSTART’)
+times.  If your CalDav server allows this, then you may set the variable
+‘org-icalendar-todo-unscheduled-start’ to ‘nil’.  This will prevent
+‘ox-icalendar’ from adding a start time to such TODOs, thus preventing
+the ‘SCHEDULED’ timestamp from being inserted on future syncs.
+
+   See *note Repeating events and todos:: for more details about how
+org-caldav handles repeating events and todos.
+
+
+File: org-caldav.info,  Node: Compatible CalDav servers,  Next: Implementation details,  Prev: Advanced configuration,  Up: Top
+
+5 Compatible CalDav servers
+***************************
+
+   • *Owncloud* and *Nextcloud*: Regularly tested.
+
+   • *Radicale* and *Baikal*: Works.  If you get problems with ’Digest’
+     authentication, switch back to ’Basic’ (make sure to use https,
+     though!).  If you get asked for password repeatedly, put it in
+     ‘.authinfo’ file (*note Storing authentication information: Storing
+     authentication information in authinfo/netrc.).
+
+   • *SOGo* and *Kolab*: Reported to be working
+     (<https://docs.kolab.org/client-configuration/emacs.html>)
+
+   • *Google Calendar*: Should work, but you need to register an
+     application with the Google Developer Console for OAuth2
+     authentication (see below), because Google explicitly forbids to
+     put client id/secrets into open source software (see
+     <https://developers.google.com/terms>, section 4b, paragraph 1).
+     Instead of doing that though, I’d rather suggest you choose another
+     service provider.
+
+* Menu:
+
+* Syncing to Google Calendar::
+
+
+File: org-caldav.info,  Node: Syncing to Google Calendar,  Up: Compatible CalDav servers
+
+5.1 Syncing to Google Calendar
+==============================
+
+NOTE: Using org-caldav with Google Calendar may be currently broken.
+See <https://github.com/dengste/org-caldav/issues/284>
+
+   The CalDAV endpoint for Google Calendar requires OAuth2
+authentication.  So first, you need to install the oauth2 library from
+GNU ELPA, and afterwards you need to acquire an application ID and
+secret from the Google Developer Console.  For details on how to do
+this, follow the Google documentation at
+
+   <https://developers.google.com/google-apps/calendar/caldav/v2/guide#creating_your_client_id>
+
+   Put the client ID and secret into ‘org-caldav-oauth2-client-id’ and
+‘org-caldav-oauth2-client-secret’, respectively.  Then set
+‘org-caldav-url’ to the symbol ‘'google’, and look up the
+‘org-caldav-calendar-id’ as described above.
+
+   On first connection, the oauth2 library should redirect you to the
+Google OAuth2 authentication site.  This requires a javascript enabled
+browser, so make sure that ‘browse-url-browser-function’ is set to
+something like ‘browse-url-firefox’ (the internal eww or w3m browsers
+will *not* work).  After authentication, you will be given a key that
+you have to paste into the Emacs prompt.  The oauth2 library will save
+this key in Emacs’ secure plist store, which is encrypted with GnuPG.
+If you have not yet used a secure plist store, you will be asked for its
+encryption passphrase.  In the future, you should only need to enter
+that passphrase again to connect with Google Calendar.
+
+   By default, plstore will *not* cache your entered password, so it
+will possibly ask you *many* times.  To activate caching, use
+
+     (setq plstore-cache-passphrase-for-symmetric-encryption t)
+
+
+File: org-caldav.info,  Node: Implementation details,  Next: Tips Tricks and Troubleshooting,  Prev: Compatible CalDav servers,  Up: Top
+
+6 Implementation details
+************************
+
+* Menu:
+
+* Org and the iCalendar format::
+* Conflict handling::
+* Repeating events and todos::
+* How syncing happens (a.k.a. David’s little CalDAV rant): How syncing happens (aka David's little CalDAV rant).
+
+
+File: org-caldav.info,  Node: Org and the iCalendar format,  Next: Conflict handling,  Up: Implementation details
+
+6.1 Org and the iCalendar format
+================================
+
+An Org entry can store much more information than an iCalendar entry, so
+there is no one-to-one correspondence between the two formats which
+makes syncing a bit difficult.
+
+   • Org to iCalendar
+
+   This package uses the org-icalendar package to do the export to the
+iCalendar format (.ics files).  By default, it uses the title of the Org
+entry as SUMMARY and puts the entry’s body into DESCRIPTION, snipping
+stuff like properties and timestamps (you can override that with
+properties of the same name, but IMO it makes stuff just more
+complicated).  The variable ‘org-icalendar-include-body’ denotes how
+many characters from the body should be included as DESCRIPTION (by
+default all characters are included).
+
+   • iCalendar to Org
+
+   If you create a new iCalendar entry in your calendar, you’ll get an
+Org entry with SUMMARY as heading, DESCRIPTION as body and the
+timestamp.  However, if you _change_ an existing entry in the calendar,
+things get more complicated and the variable
+‘org-caldav-sync-changes-to-org’ comes into play.  Its default is the
+symbol "title-and-timestamp", which means that only the entry’s heading
+is synced (with SUMMARY) and the timestamp gets updated, but _not_ the
+entry’s body with DESCRIPTION.  The simple reason is that you might
+loose data, since DESCRIPTION is rather limited in what it can store.
+Still, you can set the variable to the symbol "all", which will
+completely _replace_ an existing Org entry with the entry that gets
+generated from the calendar’s event.  You can also limit syncing to
+heading and/or timestamp only.
+
+   To be extra safe, org-caldav will by default backup entries it
+changes.  See the variable ‘org-caldav-backup-file’ for details.
+
+   • Org sexp entries
+
+   A special case are sexp entries like
+
+     %%(diary-anniversary  2 2 1969) Foo's birthday
+
+     * Regular meeting
+       <%%(diary-float t 4 2)>
+
+   As you can see, they can appear in two different ways: plain by
+themselves, or inside an Org entry.  If they are inside an Org entry,
+there’s a good chance they will be exported (see below) and have an ID
+property, so they can be found by org-caldav.  We can sync the title,
+but syncing the timestamp with the s-expression is just infeasible, so
+this will generate a sync error (which are _not_ critical; you’ll just
+see them at the end of the sync, just so that you’re aware that some
+stuff wasn’t synced properly).
+
+   However, sexp-entries are insanely flexible, and there are limits as
+to what the icalendar exporter will handle.  For example, this here
+
+     ** Regular event
+        <%%(memq (calendar-day-of-week date) '(1 3 5))>
+
+   will not be exported at all.
+
+   If the sexp entry is not inside an Org entry but stands by itself,
+they still will be exported, but they won’t get an ID (since IDs are
+properties linked to Org entries).  In practice, that means that you can
+delete and change them inside Org and this will be synced, but if you
+_change_ them in the _calendar_, this will _not_ get synced back.
+Org-caldav just cannot find those entries, so this will generate a
+one-time sync error instead (again: those are not critical, just FYI).
+If you don’t want those entries to be exported at all, just set
+‘org-icalendar-include-sexps’ to nil.
+
+
+File: org-caldav.info,  Node: Conflict handling,  Next: Repeating events and todos,  Prev: Org and the iCalendar format,  Up: Implementation details
+
+6.2 Conflict handling
+=====================
+
+Now that’s an easy one: Org always wins.  That means, if you change an
+entry in Org _and_ in the calendar, the changes in the calendar will be
+lost.  I might implement proper conflict handling some day, but don’t
+hold your breath (patches are welcome, of course).
+
+
+File: org-caldav.info,  Node: Repeating events and todos,  Next: How syncing happens (aka David's little CalDAV rant),  Prev: Conflict handling,  Up: Implementation details
+
+6.3 Repeating events and todos
+==============================
+
+Org-caldav has basic support for repeating events and todos.  In
+particular, simple Org timestamp repeaters such as ‘+3d’ or ‘+1m’ can be
+succesfully sync’d bidirectionally.
+
+   However, complex iCalender recurrences, such as "repeat on the 2nd
+Tuesday of each month until X date", are not supported.
+
+   For Org TODOs with both ‘SCHEDULED’ and ‘DEADLINE’ timestamps, each
+of the timestamps must have the same repeater, otherwise the behavior is
+undefined.
+
+   Furthermore, the behavior of Org TODOs with a repeating ‘DEADLINE’
+timestamp, but no ‘SCHEDULED’ timestamp, has some subtleties; see the
+configuration section: *note Behavior of recurring TODO deadlines
+without a start time::.
+
+
+File: org-caldav.info,  Node: How syncing happens (aka David's little CalDAV rant),  Prev: Repeating events and todos,  Up: Implementation details
+
+6.4 How syncing happens (a.k.a. David’s little CalDAV rant)
+===========================================================
+
+(This is probably not interesting, so you can skip this.)
+
+   CalDAV is a mess.
+
+   First off, it is based on WebDAV, which has its own fair share of
+problems.  The main design flaw of CalDAV however, is that UID and
+resource name (the "filename", if you want) are two different things.  I
+know that there are reasons for that (not everything has a UID, like
+timezones, and you can put several events in one resource), but this is
+typical over-engineering to allow some marginal use cases pretty much no
+one needs.  Another problem is that you have to do additional
+round-trips to get Etag and sequence number, which makes CalDAV pretty
+slow.
+
+   Org-caldav takes the easy route: it assumes that every resource
+contains one event, and that UID and resource name are identical.  In
+fact, Google’s CalDAV interface even enforces the latter.  And while
+Owncloud does not enforce it, at least it just does it if you create
+items in its web interface.
+
+   However, the CalDAV standard does not demand this, so I guess there
+are servers out there with which org-caldav does not work.  Patches
+welcome.
+
+   Now, all this would be bad enough if it weren’t for the sloppy server
+implementations which make implementing a CalDAV client a living hell
+and led to several rewrites of the code.  Especially Google, the 500
+pound gorilla in the room, doesn’t really care much for CalDAV.  I guess
+they really like their own shiny REST-based calendar API better, and I
+can’t blame them for that.
+
+
+File: org-caldav.info,  Node: Tips Tricks and Troubleshooting,  Next: Known Bugs,  Prev: Implementation details,  Up: Top
+
+7 Tips, Tricks, and Troubleshooting
+***********************************
+
+* Menu:
+
+* Standalone import of ICS files::
+* Storage of sync information and sync from different computers::
+* Starting from scratch::
+* Timezone problems::
+* Troubleshooting::
+
+
+File: org-caldav.info,  Node: Standalone import of ICS files,  Next: Storage of sync information and sync from different computers,  Up: Tips Tricks and Troubleshooting
+
+7.1 Standalone import of ICS files
+==================================
+
+org-caldav can also be used for standalone import of ICS files to Org.
+
+   In particular, see ‘org-caldav-import-ics-buffer-to-org’ to import
+iCalendar entries (e.g.  from e-mail attachments) directly to your
+‘org-caldav-inbox’.
+
+   Also, see ‘org-caldav-convert-ics-to-datetree’ to convert an
+iCalendar file into an Org datetree in a separate buffer (use
+‘org-caldav-datetree-treetype’ to control the style of datetree).
+
+
+File: org-caldav.info,  Node: Storage of sync information and sync from different computers,  Next: Starting from scratch,  Prev: Standalone import of ICS files,  Up: Tips Tricks and Troubleshooting
+
+7.2 Storage of sync information and sync from different computers
+=================================================================
+
+The current sync state is stored in a file ‘org-caldav-SOMEID.el’ in the
+‘/.emacs.d directory. You can change the location through the variable
+~org-caldav-save-directory’.  SOMEID directly depends on the calendar id
+(it’s a snipped MD5).
+
+   If you sync your Org files across different machines and want to use
+org-caldav on all of them, don’t forget to sync the org sync state, too.
+Probably your best bet is to set ‘org-caldav-save-directory’ to the path
+you have your Org files in, so that it gets copied alongside with them.
+
+
+File: org-caldav.info,  Node: Starting from scratch,  Next: Timezone problems,  Prev: Storage of sync information and sync from different computers,  Up: Tips Tricks and Troubleshooting
+
+7.3 Starting from scratch
+=========================
+
+If your sync state somehow gets broken, you can make a clean slate by
+doing
+
+     C-u M-x org-caldav-delete-everything
+
+   The function has to be called with a prefix so that you don’t call it
+by accident.  This will delete everything in the calendar along with the
+current sync state.  You can then call ‘org-caldav-sync’ afterwards and
+it will completely put all Org events into the now empty calendar.
+Needless to say, don’t do that if you have new events in your calendar
+which are not synced yet...
+
+   Deleting many events can be slow, though; in that case, just delete
+the calendar and re-create it, delete the sync state file in ~/.emacs.d
+and restart Emacs.
+
+
+File: org-caldav.info,  Node: Timezone problems,  Next: Troubleshooting,  Prev: Starting from scratch,  Up: Tips Tricks and Troubleshooting
+
+7.4 Timezone problems
+=====================
+
+Timezone handling is plain horrible, and it seems every CalDAV server
+does it slightly differently, also using non-standard headers like
+X-WR-TIMEZONE.  If you see items being shifted by a few hours, make
+really really sure you have properly set ‘org-icalendar-timezone’, and
+that your calendar is configured to use the same one.
+
+   If it still does not work, you can try setting
+‘org-icalendar-timezone’ to the string "UTC". This will put all events
+using UTC times and the server should transpose the time to the timezone
+you have set in your calendar preferences.  For some servers (like SOGo)
+this might work better than setting a "real" timezone.
+
+
+File: org-caldav.info,  Node: Troubleshooting,  Prev: Timezone problems,  Up: Tips Tricks and Troubleshooting
+
+7.5 Troubleshooting
+===================
+
+If org-caldav reports a problem with the given URL, please triple-check
+that the URL is correct.  It must point to a valid calendar on your
+CalDAV server.
+
+   If the error is that the URL does not seem to accept DAV requests,
+you can additionally check with ’curl’ by doing
+
+     curl -D - -X OPTIONS --basic -u mylogin:mypassword URL
+
+   The output of this command must contain a ’DAV’ header like this:
+
+     DAV: 1, 3, extended-mkcol, access-control, ... etc. ...
+
+   By default, org-caldav will put all kinds of debug output into the
+buffer ‘*org-caldav-debug*’.  Look there if you’re getting sync errors
+or if something plain doesn’t work.  If you’re using an authinfo file
+and authentication doesn’t work, set auth-info-debug to t and look in
+the ‘*Messages*’ buffer.  When you report a bug, please try to post the
+relevant portion of the ‘*org-caldav-debug*’ buffer since it might be
+helpful to see what’s going wrong.  If Emacs throws an error, do
+
+     M-x toggle-debug-on-error
+
+   and try to replicate the error to get a backtrace.
+
+   You can also turn on excessive debugging by setting the variable
+‘org-caldav-debug-level’ to 2.  This will also output the _contents_ of
+the events into the debug buffer.  If you send such a buffer in a bug
+report, please make very sure you have removed personal information from
+those events.
+
+
+File: org-caldav.info,  Node: Known Bugs,  Prev: Tips Tricks and Troubleshooting,  Up: Top
+
+8 Known Bugs
+************
+
+   • Syncing is currently pretty slow since everything is done
+     synchronously.
+
+   • Pretty much everything besides SUMMARY, DESCRIPTION, LOCATION and
+     time is ignored in iCalendar.
+
+
+
+Tag Table:
+Node: Top204
+Node: Prerequisites1477
+Node: Basic setup2231
+Node: Minimal example2612
+Node: Required configuration settings3492
+Node: Usage5523
+Node: Advanced configuration6611
+Node: Sync direction (one-way sync)7577
+Node: Filtering entries8568
+Node: Syncing deletions9843
+Node: Storing authentication information in authinfo/netrc11026
+Node: Syncing with more than one calendar12035
+Node: Customizing the inbox13541
+Node: Syncing TODOs between Org and CalDav13999
+Node: Behavior of recurring TODO deadlines without a start time15678
+Node: Compatible CalDav servers17624
+Node: Syncing to Google Calendar18798
+Node: Implementation details20630
+Node: Org and the iCalendar format21032
+Node: Conflict handling24497
+Node: Repeating events and todos24963
+Node: How syncing happens (aka David's little CalDAV rant)25917
+Node: Tips Tricks and Troubleshooting27679
+Node: Standalone import of ICS files28056
+Node: Storage of sync information and sync from different computers28738
+Node: Starting from scratch29620
+Node: Timezone problems30538
+Node: Troubleshooting31388
+Node: Known Bugs32918
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

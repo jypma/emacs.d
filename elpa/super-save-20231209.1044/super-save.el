@@ -5,7 +5,8 @@
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/super-save
 ;; Keywords: convenience
-;; Version: 0.4.0
+;; Package-Version: 20231209.1044
+;; Package-Revision: 0298076ea20e
 ;; Package-Requires: ((emacs "25.1"))
 
 ;; This file is NOT part of GNU Emacs.

@@ -7,7 +7,8 @@
 ;; Author: Takafumi Arakaki <aka.tkf at gmail.com>
 ;; URL: https://github.com/tkf/emacs-request
 ;; Package-Requires: ((emacs "24.4"))
-;; Version: 0.3.3
+;; Package-Version: 20230127.417
+;; Package-Revision: 01e338c335c0
 
 ;; This file is NOT part of GNU Emacs.
 

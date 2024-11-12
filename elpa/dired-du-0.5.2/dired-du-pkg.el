@@ -1,2 +1,2 @@
-;; Generated package description from dired-du.el
-(define-package "dired-du" "0.5.2" "Dired with recursive directory sizes" '((emacs "24.4") (cl-lib "0.5")) :url "http://elpa.gnu.org/packages/dired-du.html" :keywords '("files" "unix" "convenience"))
+;; Generated package description from dired-du.el  -*- no-byte-compile: t -*-
+(define-package "dired-du" "0.5.2" "Dired with recursive directory sizes" '((emacs "24.4") (cl-lib "0.5")) :commit "c586a6bc255cec88e1027e70319030cb63ecdc4a" :url "https://elpa.gnu.org/packages/dired-du.html" :authors '(("Tino Calancha" . "tino.calancha@gmail.com")) :maintainer '("Tino Calancha" . "tino.calancha@gmail.com") :keywords '("files" "unix" "convenience"))

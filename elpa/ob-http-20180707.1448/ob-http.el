@@ -4,7 +4,8 @@
 
 ;; Author: ZHOU Feng <zf.pascal@gmail.com>
 ;; URL: http://github.com/zweifisch/ob-http
-;; Version: 0.0.1
+;; Package-Version: 20180707.1448
+;; Package-Revision: b1428ea2a63b
 ;; Package-Requires: ((s "1.9.0") (cl-lib "0.5"))
 
 ;; This program is free software; you can redistribute it and/or modify

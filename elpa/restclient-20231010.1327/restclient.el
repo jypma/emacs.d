@@ -5,6 +5,8 @@
 ;; Author: Pavel Kurnosov <pashky@gmail.com>
 ;; Maintainer: Pavel Kurnosov <pashky@gmail.com>
 ;; Created: 01 Apr 2012
+;; Package-Version: 20231010.1327
+;; Package-Revision: e2a2b13482d7
 ;; Keywords: http
 
 ;; This file is not part of GNU Emacs.

@@ -3,7 +3,8 @@
 ;; Copyright © 2014-2018 Alex Kost <alezost@gmail.com>
 
 ;; Author: Alex Kost <alezost@gmail.com>
-;; Version: 1.2.1
+;; Package-Version: 20210108.1141
+;; Package-Revision: ab62fcefc3c7
 ;; URL: https://github.com/alezost/bui.el
 ;; Keywords: tools
 ;; Package-Requires: ((emacs "24.3") (dash "2.11.0"))

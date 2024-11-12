@@ -11,7 +11,8 @@
 ;;
 ;; Created: February 13, 2018
 ;; Modified: December 15, 2018
-;; Version: 2.1.0
+;; Package-Version: 20231212.1324
+;; Package-Revision: 6b6b97b7bac3
 ;; Keywords: unix convenience
 ;; Package-Requires: ((emacs "25.1") (s "1.13.0") (compat "29.1.4.2"))
 ;;

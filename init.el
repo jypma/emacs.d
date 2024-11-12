@@ -221,6 +221,16 @@
 ;; See https://github.com/magit/ghub/issues/81, this is needed for github integration
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
+;; Auto-set git column to 72 for M-q
+;; (use-package git-commit
+;;   :demand
+;;   :hook (git-commit-setup . git-commit-turn-on-flyspell)
+;;   :preface
+;;   (defun me/git-commit-set-fill-column ()
+;;     (setq-local comment-auto-fill-only-comments nil)
+;;     (setq fill-column 72))
+;;   :config
+;;   (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column))
 
 (use-package magit
   :commands (magit-status)
@@ -792,17 +802,6 @@ See `elfeed-play-with-mpv'."
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
-;; Auto-set git column to 72 for M-q
-(use-package git-commit
-  :demand
-  :hook (git-commit-setup . git-commit-turn-on-flyspell)
-  :preface
-  (defun me/git-commit-set-fill-column ()
-    (setq-local comment-auto-fill-only-comments nil)
-    (setq fill-column 72))
-  :config
-  (advice-add 'git-commit-turn-on-auto-fill :before #'me/git-commit-set-fill-column))
-
 (global-hl-line-mode 1)
 
 ;; run bash for ansi-term
@@ -1213,7 +1212,9 @@ See `elfeed-play-with-mpv'."
   :hook ((scala-mode java-mode c-mode c++-mode yaml-mode markdown-mode org-mode) . adaptive-wrap-prefix-mode))
 
 (use-package ws-butler
-  :hook ((yaml-mode conf-mode prog-mode protobuf-mode markdown-mode nxml-mode sgml-mode) . ws-butler-mode))
+  :hook ((yaml-mode conf-mode prog-mode protobuf-mode markdown-mode nxml-mode sgml-mode) . ws-butler-mode)
+  :init
+  (ws-butler-global-mode))
 
 (use-package dockerfile-mode
   :mode "\\Dockerfile\\'")
@@ -1756,4 +1757,18 @@ See `elfeed-play-with-mpv'."
 (require 'sgml-mode)
 (define-key html-mode-map (kbd "M-o") nil)
 
-;;(use-package mmm-mode)
+;; We use mmm-mode for Java multiline strings
+;; https://emacs.stackexchange.com/questions/63680/java-15-text-blocks-in-cc-mode
+(use-package mmm-mode
+  :config
+  (setq mmm-global-mode 'maybe)
+  (mmm-add-classes
+ '((java-text-block
+    :submode fundamental-mode
+    :front ".+\"\"\"$"
+    :back ".*\"\"\".*"
+    :face mmm-code-submode-face
+    )))
+(mmm-add-mode-ext-class 'java-mode "\\.java$" 'java-text-block))
+
+(use-package jsonian)

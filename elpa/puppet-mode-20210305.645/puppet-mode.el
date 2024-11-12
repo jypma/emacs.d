@@ -14,7 +14,8 @@
 ;;     Tim Meusel <tim@bastelfreak.de>
 ;; URL: https://github.com/voxpupuli/puppet-mode
 ;; Keywords: languages
-;; Version: 0.4
+;; Package-Version: 20210305.645
+;; Package-Revision: ab25cf379236
 ;; Package-Requires: ((emacs "24.1") (pkg-info "0.4"))
 
 ;; This file is not part of GNU Emacs.

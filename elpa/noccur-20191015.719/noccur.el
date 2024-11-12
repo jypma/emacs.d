@@ -4,7 +4,8 @@
 
 ;; Author: Nicolas Petton <petton.nicolas@gmail.com>
 ;; Keywords: convenience
-;; Version: 0.2
+;; Package-Version: 20191015.719
+;; Package-Revision: fa91647a305e
 ;; Package: noccur
 ;; Package-Requires: ()
 

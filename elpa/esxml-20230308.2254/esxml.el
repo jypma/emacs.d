@@ -5,7 +5,8 @@
 ;; Maintainer: Vanya Izaksonas-Smith
 ;; URL: https://github.com/tali713/esxml
 ;; Created: 15th August 2012
-;; Version: 0.3.7
+;; Package-Version: 20230308.2254
+;; Package-Revision: 225693096a58
 ;; Keywords: tools, lisp, comm
 ;; Description: A library for easily generating XML/XHTML in elisp
 ;;
