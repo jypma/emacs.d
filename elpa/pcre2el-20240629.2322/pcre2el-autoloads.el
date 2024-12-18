@@ -193,13 +193,15 @@ or call the function `rxt-global-mode'.")
 (custom-autoload 'rxt-global-mode "pcre2el" nil)
 (autoload 'rxt-global-mode "pcre2el" "\
 Toggle Rxt mode in all buffers.
-With prefix ARG, enable Rxt-Global mode if ARG is positive; otherwise, disable it.
+With prefix ARG, enable Rxt-Global mode if ARG is positive; otherwise,
+disable it.
 
 If called from Lisp, toggle the mode if ARG is `toggle'.
 Enable the mode if ARG is nil, omitted, or is a positive number.
 Disable the mode if ARG is a negative number.
 
-Rxt mode is enabled in all buffers where `turn-on-rxt-mode' would do it.
+Rxt mode is enabled in all buffers where `turn-on-rxt-mode' would do
+it.
 
 See `rxt-mode' for more information on Rxt mode.
 

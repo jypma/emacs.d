@@ -42,3 +42,5 @@ eln-cache/
 elpa/pdf-tools*/build/server/
 /forge-*.sqlite
 /caldav.el
+history
+projects

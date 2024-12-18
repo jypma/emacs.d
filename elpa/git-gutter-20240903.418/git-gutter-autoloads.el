@@ -42,13 +42,15 @@ or call the function `global-git-gutter-mode'.")
 (custom-autoload 'global-git-gutter-mode "git-gutter" nil)
 (autoload 'global-git-gutter-mode "git-gutter" "\
 Toggle Git-Gutter mode in all buffers.
-With prefix ARG, enable Global Git-Gutter mode if ARG is positive; otherwise, disable it.
+With prefix ARG, enable Global Git-Gutter mode if ARG is positive;
+otherwise, disable it.
 
 If called from Lisp, toggle the mode if ARG is `toggle'.
 Enable the mode if ARG is nil, omitted, or is a positive number.
 Disable the mode if ARG is a negative number.
 
-Git-Gutter mode is enabled in all buffers where `git-gutter--turn-on' would do it.
+Git-Gutter mode is enabled in all buffers where `git-gutter--turn-on'
+would do it.
 
 See `git-gutter-mode' for more information on Git-Gutter mode.
 

@@ -13,7 +13,7 @@
  '(ensime-implicit-highlight ((t (:underline "dim gray"))))
  '(eyebrowse-mode-line-active ((t (:inherit mode-line-emphasis :underline t))))
  '(fixed-pitch ((t (:height 0.84 :family "Iosevka"))))
- '(flymake-error ((t (:foreground "#8b0000" :box (:line-width 1 :color "#450000" :style released-button) :underline (:color "#5F0000" :style wave) :weight bold))))
+ '(flymake-error ((t (:box (:line-width 1 :color "#450000" :style released-button) :background "#330000" :underline (:color "#5F0000" :style wave) :weight bold))))
  '(font-lock-comment-face ((t (:foreground "#888888" :slant italic))))
  '(font-lock-constant-face ((((class color) (min-colors 89)) (:foreground "#96CBFE"))))
  '(font-lock-doc-face ((t (:inherit font-lock-string-face :foreground "#FFF150"))))

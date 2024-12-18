@@ -51,13 +51,15 @@ or call the function `yas-global-mode'.")
 (custom-autoload 'yas-global-mode "yasnippet" nil)
 (autoload 'yas-global-mode "yasnippet" "\
 Toggle Yas minor mode in all buffers.
-With prefix ARG, enable Yas-Global mode if ARG is positive; otherwise, disable it.
+With prefix ARG, enable Yas-Global mode if ARG is positive; otherwise,
+disable it.
 
 If called from Lisp, toggle the mode if ARG is `toggle'.
 Enable the mode if ARG is nil, omitted, or is a positive number.
 Disable the mode if ARG is a negative number.
 
-Yas minor mode is enabled in all buffers where `yas-minor-mode-on' would do it.
+Yas minor mode is enabled in all buffers where `yas-minor-mode-on'
+would do it.
 
 See `yas-minor-mode' for more information on Yas minor mode.
 
