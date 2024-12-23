@@ -1,8 +1,8 @@
 ;;; Basic setup
 
-(setq custom-file "~/tmp/emacsconf/custom.el")
+(setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-(add-to-list 'load-path "~/tmp/emacsconf/lisp/")
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
 (require 'package)
 
