@@ -1,0 +1,412 @@
+!SESSION 2024-12-18 09:37:44.054 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=21.0.5
+java.vendor=Arch Linux
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -jar /home/jan/.emacs.d/share/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar
+Command-line arguments:  -data /home/jan/.emacs.d/eglot-java-eclipse-jdt-cache/534725d1b213001b46aa647b8a02b5d6 -jar /home/jan/.emacs.d/share/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar -data /home/jan/.emacs.d/eglot-java-eclipse-jdt-cache/adcb5276ad6f74f4af9df2a38b450673
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:44.967
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.069
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.088
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.090
+!MESSAGE Initializing Java Language Server 1.42.0.202411281516
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.090
+!MESSAGE Started org.eclipse.m2e.core 0ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.538
+!MESSAGE ProjectRegistryRefreshJob finished 447ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.553
+!MESSAGE Started org.eclipse.buildship.core 15ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.862
+!MESSAGE Setting java.home /usr/lib/jvm/default as default global VM
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.867
+!MESSAGE Default VM Install changed from  1734511065579-/usr/lib/jvm/java-21-openjdk to 1734511065861-/usr/lib/jvm/default
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.875
+!MESSAGE JVM Runtimes changed, saving new configuration
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.889
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.889
+!MESSAGE Non-Static Commands: [java.project.import, java.project.changeImportedProjects, java.navigate.openTypeHierarchy, java.project.resolveStackTraceLocation, java.edit.handlePasteEvent, java.edit.stringFormatting, java.project.getSettings, java.project.resolveWorkspaceSymbol, java.project.upgradeGradle, java.project.createModuleInfo, java.vm.getAllInstalls, java.edit.organizeImports, java.project.refreshDiagnostics, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.updateSettings, java.project.getAll, java.reloadBundles, java.project.isTestFile, java.project.resolveText, java.project.getClasspaths, java.navigate.resolveTypeHierarchy, java.edit.smartSemicolonDetection, java.project.updateSourceAttachment, java.project.updateClassPaths, java.decompile, java.protobuf.generateSources, java.project.resolveSourceAttachment, java.project.updateJdk, java.project.addToSourcePath, java.completion.onDidSelect]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.896
+!MESSAGE RepositoryRegistryUpdateJob finished 0ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.906
+!MESSAGE Workspace initialized in 11ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.915
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.916
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.923
+!MESSAGE Try to create an invisible project for the workspace /tmp/.eglot-java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.923
+!MESSAGE Creating the Java project .eglot-java_649deb67
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.930
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.930
+!MESSAGE >> registerWatchers'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.933
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.954
+!MESSAGE Finished creating the Java project .eglot-java_649deb67
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:45.956
+!MESSAGE Successfully created a workspace invisible project .eglot-java_649deb67
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:46.640
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:46.972
+!MESSAGE >> Updating classpath for project .eglot-java_649deb67
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:47.123
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:47.803
+!MESSAGE begin problem for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:47.805
+!MESSAGE 8 problems reported for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 09:37:47.808
+!MESSAGE Validated 1. Took 35 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:47:52.521
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:47:52.708
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:47:52.786
+!MESSAGE Clearing problems for /.%23org.apache.pekko.http.javadsl.testkit.JUnitRouteTest.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:47:53.198
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.testkit.JUnitRouteTest.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:47:53.198
+!MESSAGE 100 problems reported for /org.apache.pekko.http.javadsl.testkit.JUnitRouteTest.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:47:53.200
+!MESSAGE Validated 1. Took 42 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:57:18.177
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:57:18.381
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:57:18.425
+!MESSAGE Clearing problems for /.%23org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:57:18.841
+!MESSAGE begin problem for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:57:18.841
+!MESSAGE 8 problems reported for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:57:18.900
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:57:18.901
+!MESSAGE 100 problems reported for /org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 10:57:18.904
+!MESSAGE Validated 2. Took 72 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:00:11.962
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:00:12.175
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:00:12.321
+!MESSAGE Clearing problems for /.%23org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:00:12.662
+!MESSAGE begin problem for /org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:00:12.662
+!MESSAGE 100 problems reported for /org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:00:12.691
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.testkit.JUnitRouteTest.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:00:12.691
+!MESSAGE 100 problems reported for /org.apache.pekko.http.javadsl.testkit.JUnitRouteTest.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:00:12.692
+!MESSAGE Validated 2. Took 67 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:01:00.491
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:01:00.686
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:01:00.786
+!MESSAGE Clearing problems for /.%23org.apache.pekko.stream.Materializer.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:01:01.144
+!MESSAGE begin problem for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:01:01.144
+!MESSAGE 8 problems reported for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:01:01.179
+!MESSAGE begin problem for /org.apache.pekko.stream.Materializer.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:01:01.179
+!MESSAGE 100 problems reported for /org.apache.pekko.stream.Materializer.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:01:01.237
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:01:01.237
+!MESSAGE 100 problems reported for /org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-18 11:01:01.238
+!MESSAGE Validated 3. Took 101 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:03.364
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:03.519
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:03.647
+!MESSAGE Clearing problems for /.%23org.apache.pekko.http.javadsl.model.HttpResponse.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:04.003
+!MESSAGE begin problem for /org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:04.003
+!MESSAGE 100 problems reported for /org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:04.008
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.model.HttpResponse.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:04.008
+!MESSAGE 12 problems reported for /org.apache.pekko.http.javadsl.model.HttpResponse.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:04.009
+!MESSAGE Validated 2. Took 39 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.036
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.286
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.313
+!MESSAGE Clearing problems for /.%23org.apache.pekko.http.javadsl.server.directives.RouteDirectives.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.741
+!MESSAGE begin problem for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.742
+!MESSAGE 8 problems reported for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.770
+!MESSAGE begin problem for /org.apache.pekko.stream.Materializer.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.770
+!MESSAGE 100 problems reported for /org.apache.pekko.stream.Materializer.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.814
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.814
+!MESSAGE 100 problems reported for /org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.890
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.server.directives.RouteDirectives.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.890
+!MESSAGE 100 problems reported for /org.apache.pekko.http.javadsl.server.directives.RouteDirectives.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:11:20.891
+!MESSAGE Validated 4. Took 155 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:30:58.635
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:30:58.859
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:30:58.911
+!MESSAGE Clearing problems for /.%23io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:30:59.348
+!MESSAGE begin problem for /io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:30:59.348
+!MESSAGE 100 problems reported for /io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:30:59.387
+!MESSAGE begin problem for /org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:30:59.388
+!MESSAGE 100 problems reported for /org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:30:59.394
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.model.HttpResponse.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:30:59.394
+!MESSAGE 12 problems reported for /org.apache.pekko.http.javadsl.model.HttpResponse.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:30:59.394
+!MESSAGE Validated 3. Took 85 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:01.755
+!MESSAGE Reconciled 1. Took 2 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:01.962
+!MESSAGE Clearing problems for /.%23io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:01.964
+!MESSAGE Clearing problems for /.%23io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:02.211
+!MESSAGE begin problem for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:02.212
+!MESSAGE 8 problems reported for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:02.242
+!MESSAGE begin problem for /org.apache.pekko.stream.Materializer.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:02.242
+!MESSAGE 100 problems reported for /org.apache.pekko.stream.Materializer.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:02.274
+!MESSAGE begin problem for /io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:02.275
+!MESSAGE 100 problems reported for /io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:02.319
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:02.319
+!MESSAGE 100 problems reported for /org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:02.320
+!MESSAGE Validated 4. Took 114 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:02.979
+!MESSAGE Reconciled 1. Took 4 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:03.458
+!MESSAGE begin problem for /io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:03.458
+!MESSAGE 100 problems reported for /io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:03.483
+!MESSAGE begin problem for /org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:03.484
+!MESSAGE 100 problems reported for /org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:03.488
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.model.HttpResponse.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:03.488
+!MESSAGE 12 problems reported for /org.apache.pekko.http.javadsl.model.HttpResponse.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:03.489
+!MESSAGE Validated 3. Took 60 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:10.358
+!MESSAGE begin problem for /io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:31:10.358
+!MESSAGE 100 problems reported for /io.vavr.concurrent.Future.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:36.237
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:36.490
+!MESSAGE Reconciled 1. Took 1 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:36.683
+!MESSAGE Clearing problems for /.%23org.apache.pekko.http.javadsl.marshalling.Marshaller.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:36.945
+!MESSAGE begin problem for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:36.945
+!MESSAGE 8 problems reported for /org.junit.jupiter.api.Test.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:36.974
+!MESSAGE begin problem for /org.apache.pekko.stream.Materializer.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:36.974
+!MESSAGE 100 problems reported for /org.apache.pekko.stream.Materializer.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:37.032
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.marshalling.Marshaller.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:37.032
+!MESSAGE 100 problems reported for /org.apache.pekko.http.javadsl.marshalling.Marshaller.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:37.076
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:37.076
+!MESSAGE 100 problems reported for /org.apache.pekko.http.javadsl.testkit.TestRouteResult.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 08:49:37.077
+!MESSAGE Validated 4. Took 137 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 09:35:55.827
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 09:35:55.828
+!MESSAGE Clearing problems for /.%23com.fasterxml.jackson.core.JsonProcessingException.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 09:35:55.997
+!MESSAGE Reconciled 1. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 09:35:56.455
+!MESSAGE begin problem for /com.fasterxml.jackson.core.JsonProcessingException.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 09:35:56.455
+!MESSAGE 21 problems reported for /com.fasterxml.jackson.core.JsonProcessingException.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 09:35:56.494
+!MESSAGE begin problem for /org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 09:35:56.494
+!MESSAGE 100 problems reported for /org.junit.jupiter.api.Assertions.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 09:35:56.501
+!MESSAGE begin problem for /org.apache.pekko.http.javadsl.model.HttpResponse.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 09:35:56.502
+!MESSAGE 12 problems reported for /org.apache.pekko.http.javadsl.model.HttpResponse.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2024-12-19 09:35:56.503
+!MESSAGE Validated 3. Took 56 ms
