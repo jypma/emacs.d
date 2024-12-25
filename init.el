@@ -666,58 +666,6 @@
   :config
   (add-hook 'java-mode-hook 'eglot-java-mode)
   (add-hook 'java-ts-mode-hook 'eglot-java-mode))
-;;;; LSP
-;; (use-package company
-;;   :defer t
-;;   :config
-;;   (setq company-minimum-prefix-length 0)
-;;   ;; Don't use company mode in eshell (since tramp gets really slow)
-;;   (setq company-global-modes '(not eshell-mode))
-
-;;   ;; Don't autocomplete numbers
-;;   (setq company-dabbrev-char-regexp "[A-z:-]")
-;;   (setq company-dabbrev-ignore-case nil)
-;;   (setq company-dabbrev-downcase nil)
-
-;;   (dolist (mode '(emacs-lisp-mode-hook
-;;                   java-mode-hook
-;;                   scala-mode-hook)) (add-hook mode #'company-mode))
-           
-;;   ;;(define-key company-active-map (kbd "TAB") #'company-complete-selection)
-;;   (define-key company-active-map (kbd "SPC") nil)
-
-;;   :bind ("C-<tab>" . 'company-complete))
-
-;; (use-package lsp-mode
-;;   :commands (lsp)
-;;   :init (setq ;;lsp-eldoc-render-all nil
-;;          lsp-keymap-prefix "C-c l"
-;;          ;;lsp-highlight-symbol-at-point nil
-;;          ;;lsp-prefer-flymake nil    ;; for metals, https://scalameta.org/metals/docs/editors/emacs.html
-;;          lsp-inhibit-message t)
-;;   )
-
-;; (use-package lsp-ui
-;;   :after lsp-mode
-;;   :config
-;;   ;;(setq lsp-ui-sideline-update-mode 'point)
-;;   :bind (
-;;          :map lsp-ui-mode-map
-;;               ("C-c C-SPC" . lsp-execute-code-action)
-;;               )
-;;    )
-
-
-;; (defun my/lsp-java-setup ()
-;;   ;; disable lsp-format-region, maybe it will make ws-butler work better?
-;;   (setq lsp-enable-indentation nil)
-  
-;;   (lsp))
-;; (use-package lsp-java
-;;   :config
-;;   (add-hook 'java-mode-hook #'my/lsp-java-setup)
-;;   (add-hook 'java-ts-mode-hook #'my/lsp-java-setup))
-
 ;;;; Scala
 (use-package scala-mode
   :mode "\\.s\\(cala\\|bt\\)$"
@@ -729,17 +677,17 @@
             (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\|trait\\|abstract class\\).*$")
             (visual-line-mode)
             ;; disable lsp-format-region, since it doesn't work with metals.
-            (setq lsp-enable-indentation nil)
+;;            (setq lsp-enable-indentation nil)
             (setq indent-region-function nil)
-            (lsp)
+;;            (lsp)
             ))
   (add-to-list 'hs-special-modes-alist
              '(scala-mode "{" "}" "/[*/]"
                nil
                nil))
   (define-key scala-mode-map (kbd "<backtab>") 'hs-toggle-hiding))
-(use-package lsp-metals
-  :after lsp-mode)
+;;(use-package lsp-metals
+;;  :after lsp-mode)
 
 ;;;; Git
 (use-package magit
