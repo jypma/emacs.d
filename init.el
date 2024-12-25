@@ -669,25 +669,21 @@
 ;;;; Scala
 (use-package scala-mode
   :mode "\\.s\\(cala\\|bt\\)$"
-  :pin melpa
   :config
   (add-hook 'scala-mode-hook
           (lambda ()
             (setq adaptive-wrap-extra-indent 2)
             (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\|trait\\|abstract class\\).*$")
             (visual-line-mode)
-            ;; disable lsp-format-region, since it doesn't work with metals.
-;;            (setq lsp-enable-indentation nil)
             (setq indent-region-function nil)
-;;            (lsp)
+            (setq prettify-symbols-alist scala-prettify-symbols-alist)
+            (prettify-symbols-mode)
             ))
   (add-to-list 'hs-special-modes-alist
              '(scala-mode "{" "}" "/[*/]"
                nil
                nil))
   (define-key scala-mode-map (kbd "<backtab>") 'hs-toggle-hiding))
-;;(use-package lsp-metals
-;;  :after lsp-mode)
 
 ;;;; Git
 (use-package magit

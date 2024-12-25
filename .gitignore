@@ -44,3 +44,4 @@ elpa/pdf-tools*/build/server/
 /caldav.el
 history
 projects
+eglot-java-eclipse-jdt-cache
