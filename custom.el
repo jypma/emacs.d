@@ -96,5 +96,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(bold ((t (:foreground "#FFFFFF" :weight bold))))
  '(flymake-error ((t (:box (:line-width (1 . 1) :color "#450000" :style released-button) :underline (:color "#5F0000" :style wave :position nil) :weight bold))))
  '(org-tag ((t (:background "dark khaki" :foreground "black" :box (:line-width (2 . 2) :color "DarkGoldenrod3" :style released-button) :weight bold)))))

@@ -162,6 +162,12 @@
   (setq tab-width 2))
 (add-hook 'conf-mode-hook 'my/conf-mode-setup)
 
+;; Auto-save files when switching away from emacs
+(add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
+
+;; Auto-revert files and show new contents
+(global-auto-revert-mode)
+
 ;;; Duplicate current line feature
 
 ;; ============================================================================
@@ -257,12 +263,11 @@
 (require 'eglot)
 (global-set-key (kbd "C-<tab>") #'completion-at-point)
 (define-key eglot-mode-map (kbd "C-c C-SPC") #'eglot-code-actions)
-(setq-default eglot-workspace-configuration
-              '(:java (:format
-                       (:settings
-                        (:url "/home/jan/eclipse-format-jan.xml")
-                        :enabled t))
-))
+;; (setq-default eglot-workspace-configuration
+;;               '(:java (:format
+;;                        (:settings
+;;                         (:url "/home/jan/.emacs.d/eclipse-format-jan.xml")
+;;                         :enabled t))))
 
 ;;; Elisp-specific customization
 (add-hook 'emacs-lisp-mode-hook
@@ -335,8 +340,14 @@
   (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)
   (setq tab-width 4)
+  (eglot-java-mode)
   (electric-indent-mode)
+  (eglot-inlay-hints-mode -1)
   ;; (outline-minor-mode) ;; doesn't work nicely with tree-sitter-mode
+  (setq prettify-symbols-alist '(("<=" . ?≤)
+                                 ("->" . ?→)
+                                 (">=" . ?≥)))
+  (prettify-symbols-mode)
   )
 
 (add-hook 'java-mode-hook 'my/java-mode-setup)
@@ -664,25 +675,44 @@
 ;;;; EGlot packages
 (use-package eglot-java
   :config
-  (add-hook 'java-mode-hook 'eglot-java-mode)
-  (add-hook 'java-ts-mode-hook 'eglot-java-mode))
+  (defun custom-eglot-java-init-opts (server eglot-java-eclipse-jdt)
+    "Custom options that will be merged with any default settings."
+    '(:settings
+      (:java
+       (:format
+        (:insertSpaces t
+         :tabSize 4
+         :settings
+         (:url "/home/jan/.emacs.d/eclipse-format-jan.xml")
+         :enabled t)))))
+  (setq eglot-java-user-init-opts-fn 'custom-eglot-java-init-opts))
 ;;;; Scala
+(defun my/scala-mode-setup()
+  (setq adaptive-wrap-extra-indent 2)
+  (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\|trait\\|abstract class\\).*$")
+  (visual-line-mode)
+  (setq indent-region-function nil)
+  (setq prettify-symbols-alist (append scala-mode-pretty-arrows-alist
+                                       '(("<=" . ?≤)
+                                         (">=" . ?≥)
+                                         ("<:" . ?⋖)
+                                         (">:" . ?⋗)
+                                         (">>" . ?≫)
+                                         (">>>" . ?⋙)
+                                         ("<<" . ?≪)
+                                         ("<<<" . ?⋘))))
+  (prettify-symbols-mode)
+  (eglot-ensure)
+  (electric-indent-mode))
+
 (use-package scala-mode
   :mode "\\.s\\(cala\\|bt\\)$"
   :config
-  (add-hook 'scala-mode-hook
-          (lambda ()
-            (setq adaptive-wrap-extra-indent 2)
-            (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\|trait\\|abstract class\\).*$")
-            (visual-line-mode)
-            (setq indent-region-function nil)
-            (setq prettify-symbols-alist scala-prettify-symbols-alist)
-            (prettify-symbols-mode)
-            ))
+  (add-hook 'scala-mode-hook 'my/scala-mode-setup)
   (add-to-list 'hs-special-modes-alist
-             '(scala-mode "{" "}" "/[*/]"
-               nil
-               nil))
+               '(scala-mode "{" "}" "/[*/]"
+                            nil
+                            nil))
   (define-key scala-mode-map (kbd "<backtab>") 'hs-toggle-hiding))
 
 ;;;; Git
