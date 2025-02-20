@@ -45,6 +45,9 @@
 
 ;;; Customization of built-in features
 
+;; We don't need the tool bar
+(tool-bar-mode -1)
+
 ;; confirm with y instead of yes
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -922,6 +925,130 @@
         ("<f6>" . org-tree-slide-mode))
   :custom
   (org-image-actual-width nil))
+
+;;;; Elfeed
+
+(defun android-check-p ()
+  "Returns whether we're currently running in Termux on Android."
+  (or
+   (string-match-p (regexp-quote "Android") (shell-command-to-string "uname -o"))
+   (string-match-p (regexp-quote "lineageOS") (shell-command-to-string "uname -a"))))
+
+(use-package elfeed
+  :bind ("C-x w" . elfeed)
+  :config
+  (setq elfeed-feeds
+        '("https://www.youtube.com/feeds/videos.xml?channel_id=UCM8XE_Gv3Ui5s4F-5TW16jg"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCyDZai57BfE_N0SaBkKQyXg"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCxkMDXQ5qzYOgXPRnOBrp1w"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCL-0gAth4u6Wp-9_98XU3nA"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCgFvT6pUq9HLOvKBYERzXSQ"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCdXHgsCiql_78oT5ydXWvzA"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCF3cDM_hQMtIEJvEW1BZugg"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCEwoFdqY09VwZFESGZ8Qp4A"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC1O0jDlG51N3jGf6_9t-9mw"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC873OURVczg_utAk8dXx_Uw"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCivA7_KLKWo43tFcCkFvydw"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCqp2_p4YjtaTKiHuNZv0mAQ"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCiczXOhGpvoQGhOL16EZiTg"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCb8Rde3uRL1ohROUVg46h1A"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCCXhs2CtrCQAHRe702_wuIA"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCmHvGf00GDuPYG9DZqQKd9A"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC5I2hjZYiW9gZPVkvzM8_Cw"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC6mIxFTvXkWQVEHPsEdflzQ"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCl2mFZoRqjw_ELax4Yisf6w"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ0-OtVpF0wOKEqT2Z1HEtA"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCtM5z2gkrGRuWd0JQMx76qA"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UChWv6Pn_zP0rI6lgGt3MyfA"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCcs0ZkP_as4PpHDhFcmCHyA"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC2DjFE7Xf11URZqWBigcVOQ"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCQak2_fXZ_9yXI5vB_Kd54g"
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCshiNtfJ7Dj3nlh41a6M-kg" ;; Music is Win
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCu7_D0o48KbfhpEohoP7YSQ" ;; Andreas Spiess
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCAYKj_peyESIMDp5LtHlH2A" ;; Unfa
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCdcemy56JtVTrsFIOoqvV8g" ;; ANDREW HUANG
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCS-SFei6NFRuGN8CKtAsYrA" ;; toms 0ad
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCqeg5vkTkH-DYxmOO9FJOHA" ;; Ardour
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCkqe4BYsllmcxo2dsF-rFQw" ;; Bruce Williams Photography
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCr-cm90DwFJC0W3f9jBs5jA" ;; EEVBlog channel 2
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCJquYOG5EL82sKTfH9aMA9Q" ;; Rick Beato
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC_Oa7Ph3v94om5OyxY1nPKg" ;; Paul Davids
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCqepSCHTyWj4BzHxEEUNvlg" ;; Jens Larsen
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCV5vCi3jPJdURZwAOO_FNfQ" ;; Thought Emporium
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCGhzS1GbX-yxyBrUJtnUMoA" ;; DIY guitar pedals
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCtpB66XKjAtFZfZyzmC-_Cg" ;; Hexi Base
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC-GiI_5U-WkPIKqsq056wvg" ;; Brandon Acker
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCEQXp_fcqwPcqrzNtWJ1w9w" ;; Logos by Nick
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCyRhIGDUKdIOw07Pd8pHxCw" ;; Shut up and sit down
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCsaGKqPZnGp_7N80hcHySGQ" ;; Tasting history
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCRwIF4NhKQf6tQpnYDcSC5A" ;; MusicTheoryForGuitar
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC1_uAIS3r8Vu6JjXWvastJg" ;; Mathologer
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC42d7zFnWU0dYVk_M0JED6w" ;; Kevin Darrah
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCm9K6rby98W8JigLoZOh6FQ" ;; Lock picking lowyer
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCp1orOGJwZvjLAvckyxC4Nw" ;; Bosnian Bill
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCwlnFJ4_SlJbVNQ0iye8CqQ" ;; Lucas Brar guitar
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCnkp4xDOwqqJD7sSM3xdUiQ" ;; Adam Neely
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCnjQCcLxBqelGn0sForpAqA" ;; Jonny May
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCu1yiKjTRetsoZ-OSeOMmzg" ;; JAZZ TUTORIAL (Julian Bradley)
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ" ;; System Crafters
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA" ;; Veritasium
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCRS4DvO9X7qaqVYUW2_dwOw" ;; Rock the JVM
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCeP0-mA85a1UM05qFMub7Ow" ;; Peter Bence
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCl9OJE9OpXui-gRsnWjSrlA" ;; Photonicinduction
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCvigl2g67gl18hJgFex-3zg" ;; Bad Normals
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCTUtqcDkzw7bisadh6AOx5w" ;; 12 Tone Videos
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UUP7H8NPvamkD9mL5sIXnnFQ" ;; CodingKaiju
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCz2iUx-Imr6HgDC3zAFpjOw" ;; David Bennett Piano
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC8Ob-HnnmhlgSv5Vs_i32TQ" ;; Ralph S Bacon
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCchBatdUMZoMfJ3rIzgV84g" ;; VivaLaDirtLeague
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC6gJtkKLq7MTkm0SJRpYBWg" ;;  DECODED
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCsWRAAMs_Cn78_kRLSpkb6w" ;; Fesz Electronics
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCQwyP4Yd0-O49e05kMUJgQQ" ;; Andress Spiess  HB9BLA
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UCuWKHSHTHMV_nVSeNH4gYAg" ;; Omri Cohen
+          "https://www.youtube.com/feeds/videos.xml?channel_id=UC4PIiYewI1YGyiZvgNlJNrA" ;; Charles Cornell
+
+          "http://planet.emacsen.org/atom.xml"))
+
+  (defun elfeed-play-with-mpv ()
+    "Play entry link with mpv."
+    (interactive)
+    (let ((entry (if (eq major-mode 'elfeed-show-mode) elfeed-show-entry (elfeed-search-selected :single)))
+          (quality-arg "")
+          (quality-val (completing-read "Max height resolution (0 for unlimited): " '("0" "480" "720") nil nil)))
+      (setq quality-val (string-to-number quality-val))
+      (message "Opening %s with height≤%s with mpv..." (elfeed-entry-link entry) quality-val)
+      (when (< 0 quality-val)
+        (setq quality-arg (format "--ytdl-format=[height<=?%s]" quality-val)))
+      (start-process "elfeed-mpv" nil "~/bin/mpv" quality-arg (elfeed-entry-link entry))))
+
+  (defvar elfeed-mpv-patterns
+    '("youtu\\.?be")
+    "List of regexp to match against elfeed entry link to know
+whether to use mpv to visit the link.")
+
+  (defun elfeed-visit-or-play-with-mpv ()
+    "Play in mpv if entry link matches `elfeed-mpv-patterns', visit otherwise.
+See `elfeed-play-with-mpv'."
+    (interactive)
+    (let ((entry (if (eq major-mode 'elfeed-show-mode) elfeed-show-entry (elfeed-search-selected :single)))
+          (patterns elfeed-mpv-patterns))
+      (while (and patterns (not (string-match (car elfeed-mpv-patterns) (elfeed-entry-link entry))))
+        (setq patterns (cdr patterns)))
+      (if patterns
+          (if (android-check-p)
+              (android-browse-url (elfeed-entry-link entry))
+            (elfeed-play-with-mpv))
+        (if (eq major-mode 'elfeed-search-mode)
+            (elfeed-search-browse-url)
+          (elfeed-show-visit)))))
+
+  (define-key elfeed-search-mode-map (kbd "RET") 'elfeed-visit-or-play-with-mpv))
+
+;; On android, open urls with android intents
+(when (android-check-p)
+  (advice-add 'browse-url-default-browser :override
+              (lambda (url &rest args)
+                (android-browse-url url))))
 
 ;;;; Others
 (use-package hl-todo)

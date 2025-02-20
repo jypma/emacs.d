@@ -77,7 +77,7 @@
  '(org-tree-slide-heading-level-3 '(outline-3 bold))
  '(org-tree-slide-heading-level-4 '(outline-4 bold))
  '(package-selected-packages
-   '(plantuml-mode org-tree-slide markdown-mode eglot-java ligatures ligature yasnippet lsp-metals scala-mode yaml-mode dired-rainbow dired-collapse dired-du rainbow-delimiters edit-indirect adaptive-wrap visual-regexp git-gutter rainbow-mode lsp-mode org-appear org-superstar htmlize org-journal mu4e-alert hl-todo magit-todos git-timemachine forge magit lsp-ui ws-butler expand-region dashboard orderless vertico marginalia consult which-key lsp-java company))
+   '(elfeed plantuml-mode org-tree-slide markdown-mode eglot-java ligatures ligature yasnippet lsp-metals scala-mode yaml-mode dired-rainbow dired-collapse dired-du rainbow-delimiters edit-indirect adaptive-wrap visual-regexp git-gutter rainbow-mode lsp-mode org-appear org-superstar htmlize org-journal mu4e-alert hl-todo magit-todos git-timemachine forge magit lsp-ui ws-butler expand-region dashboard orderless vertico marginalia consult which-key lsp-java company))
  '(prettify-symbols-unprettify-at-point 'right-edge)
  '(project-vc-ignores '("target" "target-ide"))
  '(safe-local-variable-values
