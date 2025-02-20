@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: org-babel-scala
+# key: #sc
+# --
+#+BEGIN_SRC scala
+$0
+#+END_SRC

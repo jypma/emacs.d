@@ -209,6 +209,10 @@
 
 (global-set-key (kbd "C-c d") 'my/duplicate-line)
 
+;;; Color picker
+(require 'colorpicker)
+(global-set-key (kbd "C-x c") 'colorpicker)
+
 ;;; Activate hide-lines feature (from lisp/hide-lines.el)
 (require 'hide-lines)
 (autoload 'hide-lines "hide-lines" "Hide lines based on a regexp" t)
@@ -263,11 +267,33 @@
 (require 'eglot)
 (global-set-key (kbd "C-<tab>") #'completion-at-point)
 (define-key eglot-mode-map (kbd "C-c C-SPC") #'eglot-code-actions)
+
+;; Allow Java indentation to work
+(add-hook 'java-mode-hook (lambda ()
+                            (remove-hook 'eglot-connect-hook #'eglot-signal-didChangeConfiguration t)))
+
+(add-to-list 'eglot-server-programs
+             '(java-mode . ("jdtls" :initializationOptions
+                            (:settings
+                             (:java
+                              (:format
+                               (:enabled "true"
+                                         :settings
+                                         (:url "/home/jan/.emacs.d/eclipse-format-jan.xml"))))))))
+
 ;; (setq-default eglot-workspace-configuration
 ;;               '(:java (:format
 ;;                        (:settings
 ;;                         (:url "/home/jan/.emacs.d/eclipse-format-jan.xml")
-;;                         :enabled t))))
+;;                         :enabled t))
+;;                       :metals (:defaultBspToBuildTool t)))
+
+;;; HTML customization
+;; Insert closing tags
+(require 'sgml-mode)
+
+;; Switch window
+(define-key html-mode-map (kbd "M-o") nil)
 
 ;;; Elisp-specific customization
 (add-hook 'emacs-lisp-mode-hook
@@ -340,14 +366,15 @@
   (setq c-basic-offset 4)
   (setq indent-tabs-mode nil)
   (setq tab-width 4)
-  (eglot-java-mode)
+  (eglot-ensure)
   (electric-indent-mode)
-  (eglot-inlay-hints-mode -1)
+  ;; (eglot-inlay-hints-mode -1) ;; eglot just re-enables this once connected
   ;; (outline-minor-mode) ;; doesn't work nicely with tree-sitter-mode
   (setq prettify-symbols-alist '(("<=" . ?≤)
                                  ("->" . ?→)
                                  (">=" . ?≥)))
   (prettify-symbols-mode)
+  (message "Java mode is set up.")
   )
 
 (add-hook 'java-mode-hook 'my/java-mode-setup)
@@ -409,6 +436,8 @@
 
 ;; Don't indent org documents
 (setq org-startup-indented nil)
+;; Don't indent when pressing enter after heading
+(setq org-adapt-indentation nil)
 
 (require 'ox)
 (defun my/org-export-replacements (text backend info)
@@ -462,6 +491,9 @@
 
   ;; https://orgmode.org/list/87pn8huuq2.fsf@iki.fi/t/
   (electric-indent-local-mode -1)
+  ;; Don't indent
+  ;; https://orgmode.org/worg/org-faq.html#indentation
+  (electric-indent-mode nil)
 
   ;; Shorten some text
   (setq prettify-symbols-alist
@@ -673,19 +705,19 @@
                                   (variable-pitch-mode)
                                   (flyspell-mode))))
 ;;;; EGlot packages
-(use-package eglot-java
-  :config
-  (defun custom-eglot-java-init-opts (server eglot-java-eclipse-jdt)
-    "Custom options that will be merged with any default settings."
-    '(:settings
-      (:java
-       (:format
-        (:insertSpaces t
-         :tabSize 4
-         :settings
-         (:url "/home/jan/.emacs.d/eclipse-format-jan.xml")
-         :enabled t)))))
-  (setq eglot-java-user-init-opts-fn 'custom-eglot-java-init-opts))
+;; (use-package eglot-java
+;;   :config
+;;   (defun custom-eglot-java-init-opts (server eglot-java-eclipse-jdt)
+;;     "Custom options that will be merged with any default settings."
+;;     '(:settings
+;;       (:java
+;;        (:format
+;;         (:insertSpaces t
+;;          :tabSize 4
+;;          :settings
+;;          (:url "/home/jan/.emacs.d/eclipse-format-jan.xml")
+;;          :enabled t)))))
+;;   (setq eglot-java-user-init-opts-fn 'custom-eglot-java-init-opts))
 ;;;; Scala
 (defun my/scala-mode-setup()
   (setq adaptive-wrap-extra-indent 2)
@@ -787,6 +819,28 @@
 (use-package org-appear
   :hook (org-mode . org-appear-mode))
 
+;;;; PlantUML
+(use-package plantuml-mode
+  :mode "\\.\\(plantuml\\|pum\\|plu\\)\\'"
+  :config
+  ;; plantuml is in standard arch repositories
+  (setq plantuml-default-exec-mode 'jar)
+  (setq plantuml-executable-path "plantuml")
+  (setq plantuml-jar-path "~/.emacs.d/plantuml.jar")
+
+  ;; Enable plantuml-mode for PlantUML files
+  (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
+
+  ;; Allow plantuml in org files
+  (add-to-list
+   'org-src-lang-modes '("plantuml" . plantuml)))
+
+;; Allow execute of plantuml from org
+(require 'ob-plantuml)
+(setq org-plantuml-jar-path "~/.emacs.d/plantuml.jar")
+(setq org-plantuml-exec-mode 'jar)
+
+
 ;;;; Dired
 ;; show usage in dired: C-x M-r, toggle display with C-x C-h
 (use-package dired-du
@@ -819,6 +873,55 @@
   (dired-rainbow-define partition "#e3342f" ("dmg" "iso" "bin" "nrg" "qcow" "toast" "vcd" "vmdk" "bak"))
   (dired-rainbow-define vc "#0074d9" ("git" "gitignore" "gitattributes" "gitmodules"))
   (dired-rainbow-define-chmod executable-unix "#38c172" "-.*x.*"))
+
+;;;; Org treeslide
+(defun my/presentation-setup ()
+  (shell-command "dunstctl set-paused true")
+  (flyspell-mode 0)
+  (menu-bar-mode 0)
+  (if (> (x-display-pixel-width) 2600)
+      (progn ;; HIDPI
+        (setq text-scale-mode-amount 3)
+        (setq org-format-latex-options (plist-put org-format-latex-options :scale 3.0))
+        (text-scale-mode 1))
+    (if (>= (x-display-pixel-width) 1920)
+        (progn ;; 1920x1080
+          (setq text-scale-mode-amount 1.5)
+          (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+          (text-scale-mode 1))
+          (setq org-image-actual-width (list (/ (x-display-pixel-width) 3)))
+      (progn ;; 1280x720
+        (setq org-image-actual-width (list (/ (x-display-pixel-width) 4))))))
+  (org-display-inline-images t t)
+  (hide-lines-matching "#\\+ATTR_ORG")
+  (hide-lines-matching "#\\+ATTR_LATEX")
+  (org-latex-preview '(16))
+  (font-lock-flush)
+  (font-lock-ensure)
+  (my/individual-visibility-source-blocks))
+
+(defun my/presentation-end ()
+  (shell-command "dunstctl set-paused false")
+  (menu-bar-mode 1)
+  (org-latex-preview '(64))
+  (flyspell-mode 1)
+  (text-scale-mode 0)
+  (org-remove-inline-images)
+  (hide-lines-show-all)
+  (font-lock-flush)
+  (font-lock-ensure))
+
+(use-package org-tree-slide
+  ;; Load immediately, since it messes with org-mode faces
+  :demand
+  :hook
+  ((org-tree-slide-play . my/presentation-setup)
+   (org-tree-slide-stop . my/presentation-end))
+  :bind
+  (:map org-mode-map
+        ("<f6>" . org-tree-slide-mode))
+  :custom
+  (org-image-actual-width nil))
 
 ;;;; Others
 (use-package hl-todo)

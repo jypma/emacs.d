@@ -8,6 +8,7 @@
  '(custom-safe-themes
    '("50a808e6ffedc0abfad25e11a6208c158df1dc68f1d3cd9d0624afa1ef546838" "3b71d9d8571b0199bf420371f38248cbc5dc934e55f3f32cce9ecb04b97ed881" "85fd51046e93893b286e413c897852e7a6fcbb0ce9e5ba04e87db3a12da075db" "b878c14a064b9dc4624dbb3c8eda465eed89b538d713a8e9c9eb2ee05227a134" default))
  '(git-gutter:update-interval 1)
+ '(indent-tabs-mode nil)
  '(js-indent-level 2)
  '(lsp-java-completion-favorite-static-members
    ["org.junit.Assert.*" "org.junit.Assume.*" "org.junit.jupiter.api.Assertions.*" "org.junit.jupiter.api.Assumptions.*" "org.junit.jupiter.api.DynamicContainer.*" "org.junit.jupiter.api.DynamicTest.*" "org.mockito.Mockito.*" "org.mockito.ArgumentMatchers.*" "org.mockito.Answers.*" "org.assertj.core.api.Assertions.*"])
@@ -76,7 +77,7 @@
  '(org-tree-slide-heading-level-3 '(outline-3 bold))
  '(org-tree-slide-heading-level-4 '(outline-4 bold))
  '(package-selected-packages
-   '(markdown-mode eglot-java ligatures ligature yasnippet lsp-metals scala-mode yaml-mode dired-rainbow dired-collapse dired-du rainbow-delimiters edit-indirect adaptive-wrap visual-regexp git-gutter rainbow-mode lsp-mode org-appear org-superstar htmlize org-journal mu4e-alert hl-todo magit-todos git-timemachine forge magit lsp-ui ws-butler expand-region dashboard orderless vertico marginalia consult which-key lsp-java company))
+   '(plantuml-mode org-tree-slide markdown-mode eglot-java ligatures ligature yasnippet lsp-metals scala-mode yaml-mode dired-rainbow dired-collapse dired-du rainbow-delimiters edit-indirect adaptive-wrap visual-regexp git-gutter rainbow-mode lsp-mode org-appear org-superstar htmlize org-journal mu4e-alert hl-todo magit-todos git-timemachine forge magit lsp-ui ws-butler expand-region dashboard orderless vertico marginalia consult which-key lsp-java company))
  '(prettify-symbols-unprettify-at-point 'right-edge)
  '(project-vc-ignores '("target" "target-ide"))
  '(safe-local-variable-values

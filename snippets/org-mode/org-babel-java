@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: org-babel-java
+# key: #j
+# --
+#+BEGIN_SRC java
+$0
+#+END_SRC
