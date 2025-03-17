@@ -10,7 +10,7 @@
     (pcre2el   "1.8")
     (s         "1.12.0")
     (transient "0.2.0"))
-  :url "https://github.com/alphapapa/magit-todos"
+  :url "http://github.com/alphapapa/magit-todos"
   :commit "bd27c57eada0fda1cc0a813db04731a9bcc51b7b"
   :revdesc "bd27c57eada0"
   :keywords '("magit" "vc")

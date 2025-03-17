@@ -72,7 +72,7 @@
 (save-place-mode 1)
 
 ;; Ctrl-x k always kills current buffer
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
 
 ;; Don't save duplicates if the head of kill ring is the same
 (setq kill-do-not-save-duplicates t)
@@ -271,26 +271,6 @@
 (global-set-key (kbd "C-<tab>") #'completion-at-point)
 (define-key eglot-mode-map (kbd "C-c C-SPC") #'eglot-code-actions)
 
-;; Allow Java indentation to work
-(add-hook 'java-mode-hook (lambda ()
-                            (remove-hook 'eglot-connect-hook #'eglot-signal-didChangeConfiguration t)))
-
-(add-to-list 'eglot-server-programs
-             '(java-mode . ("jdtls" :initializationOptions
-                            (:settings
-                             (:java
-                              (:format
-                               (:enabled "true"
-                                         :settings
-                                         (:url "/home/jan/.emacs.d/eclipse-format-jan.xml"))))))))
-
-;; (setq-default eglot-workspace-configuration
-;;               '(:java (:format
-;;                        (:settings
-;;                         (:url "/home/jan/.emacs.d/eclipse-format-jan.xml")
-;;                         :enabled t))
-;;                       :metals (:defaultBspToBuildTool t)))
-
 ;;; HTML customization
 ;; Insert closing tags
 (require 'sgml-mode)
@@ -331,6 +311,51 @@
 (define-key sgml-mode-map (kbd "<backtab>") 'hs-toggle-hiding)
 
 ;;; Java-specific customization
+
+;; Allow Java indentation to work
+(add-hook 'java-mode-hook (lambda ()
+                            (remove-hook 'eglot-connect-hook #'eglot-signal-didChangeConfiguration t)))
+
+;; Support jdt:// responses from JDTLS server in eglot
+;; see: https://www.reddit.com/r/emacs/comments/1ibkh2h/programming_java_in_emacs_using_eglot/
+(defun ak/jdt-file-name-handler (operation &rest args)
+  "Support Eclipse jdtls `jdt://' uri scheme."
+  (let* ((uri (car args))
+         (cache-dir "/tmp/.eglot")
+         (source-file
+          (expand-file-name
+           (file-name-concat
+            cache-dir
+            (save-match-data
+              (when (string-match "jdt://contents/\\(.*?\\)/\\(.*\\)\.class\\?" uri)
+                (format "%s.java" (replace-regexp-in-string "/" "." (match-string 2 uri) t t))))))))
+    (unless (file-readable-p source-file)
+      (let ((content (jsonrpc-request (eglot-current-server) :java/classFileContents (list :uri uri)))
+            (metadata-file (format "%s.%s.metadata"
+                                   (file-name-directory source-file)
+                                   (file-name-base source-file))))
+        (unless (file-directory-p cache-dir) (make-directory cache-dir t))
+        (with-temp-file source-file (insert content))
+        (with-temp-file metadata-file (insert uri))))
+    source-file))
+(add-to-list 'file-name-handler-alist '("\\`jdt://" . ak/jdt-file-name-handler))
+
+(add-to-list 'eglot-server-programs
+             '((java-mode java-ts-mode) . ("jdtls" :initializationOptions
+                                           (:extendedClientCapabilities (:classFileContentsSupport t)
+                                            :settings
+                                            (:java
+                                             (:format
+                                              (:enabled "true"
+                                                        :settings
+                                                        (:url "/home/jan/.emacs.d/eclipse-format-jan.xml"))))))))
+;; (setq-default eglot-workspace-configuration
+;;               '(:java (:format
+;;                        (:settings
+;;                         (:url "/home/jan/.emacs.d/eclipse-format-jan.xml")
+;;                         :enabled t))
+;;                       :metals (:defaultBspToBuildTool t)))
+
 ;; Only indent inline lambdas one level
 (defun my-java-indent-lambda (orig-fun &rest args)
   (let ((symbols (car args)))
@@ -370,7 +395,6 @@
   (setq indent-tabs-mode nil)
   (setq tab-width 4)
   (eglot-ensure)
-  (electric-indent-mode)
   ;; (eglot-inlay-hints-mode -1) ;; eglot just re-enables this once connected
   ;; (outline-minor-mode) ;; doesn't work nicely with tree-sitter-mode
   (setq prettify-symbols-alist '(("<=" . ?≤)
@@ -384,7 +408,7 @@
 (add-hook 'java-ts-mode-hook 'my/java-mode-setup)
 
 (setq major-mode-remap-alist
-      '((java-mode . java-ts-mode)))
+     '((java-mode . java-ts-mode)))
 
 ;;; Javascript-specific customization
 (require 'js)
@@ -1298,11 +1322,15 @@ See `elfeed-play-with-mpv'."
   ;; To edit code blacks in markdown
   :after markdown)
 
+(defun my/yaml-mode-setup ()
+  (setq fill-column 130)
+  )
 (use-package yaml-mode
   :bind
   (:map yaml-mode-map
         ("C-." . find-file-at-point))
   :hook ((yaml-mode . visual-line-mode)
+         (yaml-mode . my/yaml-mode-setup)
          (yaml-mode . whitespace-mode)))
 (use-package yasnippet
   :demand ;; doesn't work in org-mode otherwise
