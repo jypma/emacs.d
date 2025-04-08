@@ -401,6 +401,7 @@
                                  ("->" . ?→)
                                  (">=" . ?≥)))
   (prettify-symbols-mode)
+  (electric-indent-mode) ;; Somehow goes missing after eglos
   (message "Java mode is set up.")
   )
 
