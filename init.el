@@ -383,7 +383,9 @@
 
 (defun my/java-mode-setup ()
   (abbrev-mode 0)
+  (visual-line-mode)                       ;; soft-wrap lines on word boundaries
   (setq adaptive-wrap-extra-indent 4)
+  (adaptive-wrap-prefix-mode)              ;; indent soft-wrapped lines
   (c-set-offset 'arglist-intro '+)         ;; only 1 indent for multi-line args lists
   (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
   ;;(c-set-offset 'arglist-cont-nonempty '0) ;; 0 fixes lambdas, but breaks normal arg lists.
