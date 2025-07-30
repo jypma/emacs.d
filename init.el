@@ -171,6 +171,9 @@
 ;; Auto-revert files and show new contents
 (global-auto-revert-mode)
 
+;; Nicer behavior of scrolling
+(setq scroll-margin 7)
+
 ;;; Duplicate current line feature
 
 ;; ============================================================================
