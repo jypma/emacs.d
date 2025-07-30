@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: org-babel-sql
+# key: #sql
+# --
+#+BEGIN_SRC sql
+SELECT $0
+#+END_SRC
