@@ -54,6 +54,7 @@
  '(org-babel-java-compiler "javac --enable-preview --release 17")
  '(org-babel-no-eval-on-ctrl-c-ctrl-c nil)
  '(org-beamer-theme "LightConsole")
+ '(org-blank-before-new-entry '((heading . auto) (plain-list-item)))
  '(org-catch-invisible-edits 'smart)
  '(org-confirm-babel-evaluate nil)
  '(org-cycle-hide-block-startup nil)
@@ -84,7 +85,16 @@
  '(org-tree-slide-heading-level-3 '(outline-3 bold))
  '(org-tree-slide-heading-level-4 '(outline-4 bold))
  '(package-selected-packages
-   '(elfeed plantuml-mode org-tree-slide markdown-mode eglot-java ligatures ligature yasnippet lsp-metals scala-mode yaml-mode dired-rainbow dired-collapse dired-du rainbow-delimiters edit-indirect adaptive-wrap visual-regexp git-gutter rainbow-mode lsp-mode org-appear org-superstar htmlize org-journal mu4e-alert hl-todo magit-todos git-timemachine forge magit lsp-ui ws-butler expand-region dashboard orderless vertico marginalia consult which-key lsp-java company))
+   '(adaptive-wrap company consult dashboard dired-collapse dired-du
+                   dired-rainbow edit-indirect eglot-java elfeed
+                   ellama expand-region forge git-gutter
+                   git-timemachine hl-todo htmlize ligature ligatures
+                   lsp-java lsp-metals lsp-mode lsp-ui magit
+                   magit-todos marginalia markdown-mode mu4e-alert
+                   orderless org-appear org-journal org-superstar
+                   org-tree-slide plantuml-mode rainbow-delimiters
+                   rainbow-mode scala-mode vertico visual-regexp
+                   which-key ws-butler yaml-mode yasnippet))
  '(prettify-symbols-unprettify-at-point 'right-edge)
  '(project-vc-ignores '("target" "target-ide"))
  '(safe-local-variable-values

@@ -283,13 +283,14 @@
 
 ;;; Elisp-specific customization
 (add-hook 'emacs-lisp-mode-hook
-	  (lambda()
+          (lambda()
             (setq c-basic-offset 4)
             (setq indent-tabs-mode nil)
             (setq tab-width 4)
-	    (setq outline-regexp "\\(;;[;]\\{1,8\\} \\|\\((use-package\\)\\)")
-	    (outline-minor-mode)
-	    ))
+            (setq outline-regexp "\\(;;[;]\\{1,8\\} \\|\\((use-package\\)\\)")
+            (outline-minor-mode)
+            (electric-indent-mode)
+            ))
 ;;; XML-specific customization
 
 ;; map some more files to nXML
@@ -1347,3 +1348,19 @@ See `elfeed-play-with-mpv'."
   (define-key yas-minor-mode-map (kbd "C-t") #'yas-expand))
 
 ;; This assumes you've installed the package via MELPA.
+
+(use-package ellama
+  :bind ("C-c e" . ellama)
+  :init
+  (require 'llm-ollama)
+  (setopt ellama-providera
+          (make-llm-ollama
+           :chat-model "qwen2.5:7b-instruct-q8_0"
+           :embedding-model "nomic-embed-text"
+           :default-chat-non-standard-params '(("num_ctx" . 8192))))
+  (setopt ellama-coding-provider
+          (make-llm-ollama
+           :chat-model "qwen2.5-coder:7b"
+           :embedding-model "nomic-embed-text"
+           :default-chat-non-standard-params '(("num_ctx" . 32768))))
+  )

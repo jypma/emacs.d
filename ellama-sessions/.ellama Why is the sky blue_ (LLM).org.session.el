@@ -1,0 +1,1 @@
+#s(ellama-session "ellama Why is the sky blue_ (LLM)" #s(llm-ollama nil nil (("num_ctx" . 8192)) "http" "localhost" 11434 "qwen2.5:7b-instruct-q8_0" "nomic-embed-text") "/home/jan/.emacs.d/ellama-sessions/ellama Why is the sky blue_ (LLM).org" #s(llm-chat-prompt nil nil (#s(llm-chat-prompt-interaction user "Why is the sky blue?" nil)) nil nil nil nil nil nil) nil nil)
