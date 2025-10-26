@@ -85,16 +85,14 @@
  '(org-tree-slide-heading-level-3 '(outline-3 bold))
  '(org-tree-slide-heading-level-4 '(outline-4 bold))
  '(package-selected-packages
-   '(adaptive-wrap company consult dashboard dired-collapse dired-du
-                   dired-rainbow edit-indirect eglot-java elfeed
-                   ellama expand-region forge git-gutter
-                   git-timemachine hl-todo htmlize ligature ligatures
-                   lsp-java lsp-metals lsp-mode lsp-ui magit
-                   magit-todos marginalia markdown-mode mu4e-alert
-                   orderless org-appear org-journal org-superstar
-                   org-tree-slide plantuml-mode rainbow-delimiters
-                   rainbow-mode scala-mode vertico visual-regexp
-                   which-key ws-butler yaml-mode yasnippet))
+   '(adaptive-wrap consult dashboard dired-collapse dired-du
+                   dired-rainbow edit-indirect elfeed expand-region
+                   forge git-gutter git-timemachine gptel htmlize
+                   magit-todos marginalia minuet mu4e-alert orderless
+                   org-appear org-journal org-modern org-tree-slide
+                   plantuml-mode rainbow-delimiters rainbow-mode
+                   scala-mode vertico visual-regexp ws-butler
+                   yaml-mode yasnippet))
  '(prettify-symbols-unprettify-at-point 'right-edge)
  '(project-vc-ignores '("target" "target-ide"))
  '(safe-local-variable-values
@@ -114,4 +112,6 @@
  ;; If there is more than one, they won't work right.
  '(bold ((t (:foreground "#FFFFFF" :weight bold))))
  '(flymake-error ((t (:box (:line-width (1 . 1) :color "#450000" :style released-button) :underline (:color "#5F0000" :style wave :position nil) :weight bold))))
- '(org-tag ((t (:background "dark khaki" :foreground "black" :box (:line-width (2 . 2) :color "DarkGoldenrod3" :style released-button) :weight bold)))))
+ '(org-modern-label ((t (:box (:line-width (-2 . -5) :color "#000000") :underline nil :weight regular :height 0.9 :width condensed))))
+ '(org-tag ((t (:background "dark khaki" :foreground "black" :box (:line-width (2 . 2) :color "DarkGoldenrod3" :style released-button) :weight bold))))
+ '(org-todo ((t (:foreground "#CCA649" :weight bold)))))

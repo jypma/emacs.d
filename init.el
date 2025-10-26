@@ -344,6 +344,10 @@
     source-file))
 (add-to-list 'file-name-handler-alist '("\\`jdt://" . ak/jdt-file-name-handler))
 
+;; Kinda works:
+;;(add-to-list 'eglot-server-programs
+;;             '((java-mode java-ts-mode) . ("/usr/share/java/java-language-server/lang_server_linux.sh")))
+
 (add-to-list 'eglot-server-programs
              '((java-mode java-ts-mode) . ("jdtls" :initializationOptions
                                            (:extendedClientCapabilities (:classFileContentsSupport t)
@@ -353,12 +357,6 @@
                                               (:enabled "true"
                                                         :settings
                                                         (:url "/home/jan/.emacs.d/eclipse-format-jan.xml"))))))))
-;; (setq-default eglot-workspace-configuration
-;;               '(:java (:format
-;;                        (:settings
-;;                         (:url "/home/jan/.emacs.d/eclipse-format-jan.xml")
-;;                         :enabled t))
-;;                       :metals (:defaultBspToBuildTool t)))
 
 ;; Only indent inline lambdas one level
 (defun my-java-indent-lambda (orig-fun &rest args)
@@ -391,8 +389,8 @@
   (setq adaptive-wrap-extra-indent 4)
   (adaptive-wrap-prefix-mode)              ;; indent soft-wrapped lines
   (c-set-offset 'arglist-intro '+)         ;; only 1 indent for multi-line args lists
-  (c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
-  ;;(c-set-offset 'arglist-cont-nonempty '0) ;; 0 fixes lambdas, but breaks normal arg lists.
+  ;;(c-set-offset 'arglist-cont-nonempty '+) ;; 0 fixes lambdas, but breaks normal arg lists.
+  (c-set-offset 'arglist-cont-nonempty '0) ;; 0 fixes lambdas, but breaks normal arg lists.
   (c-set-offset 'arglist-close '0)         ;; Single closing paren on a line should line up
   (c-set-offset 'case-label '+)            ;; Indent before case labels
   (setq fill-column 130)                   ;; yes, looks worse on github, but, java.
@@ -847,8 +845,14 @@
   ;; Used in org-mode export
   :commands (htmlize-buffer htmlize-region htmlize-file))
 
-(use-package org-superstar
-  :hook (org-mode . org-superstar-mode))
+;; (use-package org-superstar
+;;   :hook (org-mode . org-superstar-mode))
+
+(use-package org-modern
+  :hook (
+         (org-mode . org-modern-mode)
+         (org-agenda-finalize . org-modern-agenda)
+         ))
 
 (use-package org-appear
   :hook (org-mode . org-appear-mode))
@@ -1349,18 +1353,70 @@ See `elfeed-play-with-mpv'."
 
 ;; This assumes you've installed the package via MELPA.
 
-(use-package ellama
-  :bind ("C-c e" . ellama)
-  :init
-  (require 'llm-ollama)
-  (setopt ellama-providera
-          (make-llm-ollama
-           :chat-model "qwen2.5:7b-instruct-q8_0"
-           :embedding-model "nomic-embed-text"
-           :default-chat-non-standard-params '(("num_ctx" . 8192))))
-  (setopt ellama-coding-provider
-          (make-llm-ollama
-           :chat-model "qwen2.5-coder:7b"
-           :embedding-model "nomic-embed-text"
-           :default-chat-non-standard-params '(("num_ctx" . 32768))))
+;; (use-package ellama
+;;   :bind ("C-c e" . ellama)
+;;   :init
+;;   (require 'llm-ollama)
+;;   (setopt ellama-providera
+;;           (make-llm-ollama
+;;            :chat-model "qwen2.5:7b-instruct-q8_0"
+;;            :embedding-model "nomic-embed-text"
+;;            :default-chat-non-standard-params '(("num_ctx" . 8192))))
+;;   (setopt ellama-coding-provider
+;;           (make-llm-ollama
+;;            :chat-model "qwen2.5-coder:7b"
+;;            :embedding-model "nomic-embed-text"
+;;            :default-chat-non-standard-params '(("num_ctx" . 32768))))
+;;   )
+(use-package gptel
+  :config
+
+  ;; from https://github.com/karthink/gptel/issues/604
+  (defun cleanup-llm-rewrite-response (beg end)
+    "Remove Markdown-style code fences from the GPTel rewrite response."
+    (save-excursion
+      ;; Remove closing fence
+      (goto-char end)
+      (beginning-of-line)
+      (when (looking-at "^```$")
+        (delete-region (line-beginning-position) (line-end-position))
+        )
+
+      ;; Remove opening fence
+      (goto-char beg)
+      (when (looking-at "^```.*$")
+        (delete-region (line-beginning-position) (line-end-position))
+        (delete-char 1) ;; remove newline
+        )
+      )
+    )
+  (add-hook 'gptel-post-rewrite-functions #'cleanup-llm-rewrite-response)
+
+  (setopt
+   gtpel-model 'qwen2.5-coder:7b
+   gptel-backend (gptel-make-ollama "Ollama"
+                                    :host "localhost:11434"
+                                    :stream t
+                                    :models '(qwen2.5-coder:7b))
+   )
   )
+
+(use-package minuet
+    :config
+    (setq minuet-provider 'openai-fim-compatible)
+    (setq minuet-n-completions 1) ; recommended for Local LLM for resource saving
+    ;; I recommend beginning with a small context window size and incrementally
+    ;; expanding it, depending on your local computing power. A context window
+    ;; of 512, serves as an good starting point to estimate your computing
+    ;; power. Once you have a reliable estimate of your local computing power,
+    ;; you should adjust the context window to a larger value.
+    (setq minuet-context-window 512)
+    (plist-put minuet-openai-fim-compatible-options :end-point "http://localhost:11434/v1/completions")
+    ;; an arbitrary non-null environment variable as placeholder.
+    ;; For Windows users, TERM may not be present in environment variables.
+    ;; Consider using APPDATA instead.
+    (plist-put minuet-openai-fim-compatible-options :name "Ollama")
+    (plist-put minuet-openai-fim-compatible-options :api-key "TERM")
+    (plist-put minuet-openai-fim-compatible-options :model "qwen2.5-coder:7b")
+
+    (minuet-set-optional-options minuet-openai-fim-compatible-options :max_tokens 56))
