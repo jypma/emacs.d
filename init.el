@@ -344,9 +344,9 @@
     source-file))
 (add-to-list 'file-name-handler-alist '("\\`jdt://" . ak/jdt-file-name-handler))
 
-;; Kinda works:
-;;(add-to-list 'eglot-server-programs
-;;             '((java-mode java-ts-mode) . ("/usr/share/java/java-language-server/lang_server_linux.sh")))
+;; Actually has more generics errors than JDTLS:
+;; (add-to-list 'eglot-server-programs
+;;              '((java-mode java-ts-mode) . ("/usr/share/java/java-language-server/lang_server_linux.sh")))
 
 (add-to-list 'eglot-server-programs
              '((java-mode java-ts-mode) . ("jdtls" :initializationOptions
@@ -1420,3 +1420,6 @@ See `elfeed-play-with-mpv'."
     (plist-put minuet-openai-fim-compatible-options :model "qwen2.5-coder:7b")
 
     (minuet-set-optional-options minuet-openai-fim-compatible-options :max_tokens 56))
+(use-package sudo-edit
+  )
+(use-package latex-preview-pane)

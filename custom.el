@@ -11,6 +11,9 @@
      "85fd51046e93893b286e413c897852e7a6fcbb0ce9e5ba04e87db3a12da075db"
      "b878c14a064b9dc4624dbb3c8eda465eed89b538d713a8e9c9eb2ee05227a134"
      default))
+ '(doc-view-resolution 200)
+ '(ediff-floating-control-frame t)
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(eglot-java-eglot-server-programs-manual-updates t)
  '(git-gutter:update-interval 1)
  '(indent-tabs-mode nil)
@@ -88,11 +91,12 @@
    '(adaptive-wrap consult dashboard dired-collapse dired-du
                    dired-rainbow edit-indirect elfeed expand-region
                    forge git-gutter git-timemachine gptel htmlize
-                   magit-todos marginalia minuet mu4e-alert orderless
-                   org-appear org-journal org-modern org-tree-slide
-                   plantuml-mode rainbow-delimiters rainbow-mode
-                   scala-mode vertico visual-regexp ws-butler
-                   yaml-mode yasnippet))
+                   latex-preview-pane magit-todos marginalia minuet
+                   mu4e-alert orderless org-appear org-journal
+                   org-modern org-tree-slide plantuml-mode
+                   rainbow-delimiters rainbow-mode scala-mode
+                   sudo-edit vertico visual-regexp ws-butler yaml-mode
+                   yasnippet))
  '(prettify-symbols-unprettify-at-point 'right-edge)
  '(project-vc-ignores '("target" "target-ide"))
  '(safe-local-variable-values
