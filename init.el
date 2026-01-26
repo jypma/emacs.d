@@ -415,6 +415,82 @@
 (setq major-mode-remap-alist
      '((java-mode . java-ts-mode)))
 
+(defun my/test-name-for-buffer ()
+  "Returns the classname of the spec/test that would test the current buffer"
+  (cond
+   ((string-match "src/main/scala/\\(.*\\)/\\([^/]+\\)\\.scala" buffer-file-name)
+    (let* ((packageDir (match-string 1 buffer-file-name))
+           (name (match-string 2 buffer-file-name)))
+      (if (string-blank-p packageDir)
+          name
+        (concat (s-replace "/" "." packageDir) "." name "Spec"))))
+   ((string-match "src/main/java/\\(.*\\)/\\([^/]+\\)\\.java" buffer-file-name)
+    (let* ((packageDir (match-string 1 buffer-file-name))
+           (name (match-string 2 buffer-file-name)))
+      (if (string-blank-p packageDir)
+          name
+        (concat (s-replace "/" "." packageDir) "." name "Test"))))
+   ((string-match "src/test/\\(?:java\\|scala\\)/\\(.*\\)/\\([^/]+\\)\\.\\(?:java\\|scala\\)" buffer-file-name)
+    (let* ((packageDir (match-string 1 buffer-file-name))
+           (name (match-string 2 buffer-file-name)))
+      (if (string-blank-p packageDir)
+          name
+        (concat (s-replace "/" "." packageDir) "." name))))
+   ))
+
+(defun my/mvn-get-project-dir ()
+  "Returns the nearest parent directory containing pom.xml."
+  (locate-dominating-file "." "pom.xml"))
+
+(defun my/mvn-run-test ()
+  "Runs the test for the current *.java or *.scala file (or the file itself, if it is a test)."
+  (interactive)
+  (let (
+        (default-directory (my/mvn-get-project-dir))
+        (test-name (my/test-name-for-buffer)))
+    (if (string-suffix-p "ITCase" test-name)
+        (compile (format "mvnd compile test-compile failsafe:integration-test -Dit.test=%s" test-name))
+      (compile (format "mvn test -Dtest=%s" test-name))
+      )))
+
+(defun my/mvn-run-test-case ()
+  "Runs the test for the current *.java or *.scala file, but only the test case the cursor is on."
+  (interactive)
+  (let (
+        (default-directory (my/mvn-get-project-dir))
+        (test-name (my/test-name-for-buffer)))
+    (if (string-suffix-p "ITCase" test-name)
+        (compile (format "mvnd compile test-compile failsafe:integration-test -Dit.test=%s#%s" test-name (my/java-test-case-name)))
+      (compile (format "mvn test -Dtest=%s#%s" test-name (my/java-test-case-name)))
+      )))
+
+(defun my/java-test-case-name ()
+  "Returns the most likely name of the current test method."
+  (save-excursion
+    (if (re-search-backward "@Test\\s-*\n?\\s-*\\(public\\)?\\s-*void\\s-+\\([0-9a-zA-Z_]+\\)" nil t)
+        (match-string-no-properties 2)
+      nil)
+    )
+  )
+
+;;; Compile customization
+
+;; Helper for compilation. Close the compilation window if
+;; there was no error at all. (emacs wiki)
+(defun compilation-exit-autoclose (status code msg)
+  ;; If M-x compile exists with a 0
+  (when (and (eq status 'exit) (zerop code))
+    ;; then bury the *compilation* buffer, so that C-x b doesn't go there
+    (bury-buffer))
+    ;; and delete the *compilation* window
+    ;;(if (> 1 (length (window-list)))
+    ;;    (delete-window (get-buffer-window (get-buffer "*compilation*")))))
+
+  ;; Always return the anticipated result of compilation-exit-message-function
+  (cons code msg))
+;; Specify my function (maybe I should have done a lambda function)
+;;(setq compilation-exit-message-function 'compilation-exit-autoclose)
+
 ;;; Javascript-specific customization
 (require 'js)
 (define-key js-mode-map (kbd "<backtab>") 'hs-toggle-hiding)
@@ -833,6 +909,7 @@
                   yaml-mode-hook
                   conf-mode-hook
                   nxml-mode-hook
+                  java-ts-mode-hook
                   java-mode-hook))
     (add-hook mode #'git-gutter-mode)))
 ;;;; Org mode

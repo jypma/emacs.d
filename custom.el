@@ -4,6 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(adaptive-fill-mode t)
+ '(compilation-always-kill t)
+ '(compilation-auto-jump-to-first-error nil)
+ '(compilation-scroll-output 'first-error)
  '(custom-enabled-themes '(dark))
  '(custom-safe-themes
    '("50a808e6ffedc0abfad25e11a6208c158df1dc68f1d3cd9d0624afa1ef546838"
