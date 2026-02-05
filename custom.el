@@ -14,6 +14,7 @@
      "85fd51046e93893b286e413c897852e7a6fcbb0ce9e5ba04e87db3a12da075db"
      "b878c14a064b9dc4624dbb3c8eda465eed89b538d713a8e9c9eb2ee05227a134"
      default))
+ '(dired-auto-revert-buffer 'dired-directory-changed-p)
  '(doc-view-resolution 200)
  '(ediff-floating-control-frame t)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
@@ -21,6 +22,7 @@
  '(git-gutter:update-interval 1)
  '(indent-tabs-mode nil)
  '(js-indent-level 2)
+ '(kubed-yaml-setup-hook '(yaml-mode view-mode))
  '(lsp-java-completion-favorite-static-members
    ["org.junit.Assert.*" "org.junit.Assume.*"
     "org.junit.jupiter.api.Assertions.*"
@@ -94,8 +96,8 @@
    '(adaptive-wrap consult dashboard dired-collapse dired-du
                    dired-rainbow edit-indirect elfeed expand-region
                    forge git-gutter git-timemachine gptel htmlize
-                   latex-preview-pane magit-todos marginalia minuet
-                   mu4e-alert orderless org-appear org-journal
+                   kubed latex-preview-pane magit-todos marginalia
+                   minuet mu4e-alert orderless org-appear org-journal
                    org-modern org-tree-slide plantuml-mode
                    rainbow-delimiters rainbow-mode scala-mode
                    sudo-edit vertico visual-regexp ws-butler yaml-mode

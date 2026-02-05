@@ -268,6 +268,12 @@
     (call-process "xdg-open" nil 0 nil file)))
 (define-key dired-mode-map (kbd "C-c o") 'dired-open-file)
 
+;; Show byte offset of cursor
+(defun my/byte-offset-at-point ()
+  "Report the byte offset (0-indexed) in the file
+corresponding to the position of point."
+  (interactive)
+  (message "byte offset: %d" (1- (position-bytes (point)))))
 
 ;;; EGlot customization and completion
 (require 'eglot)
@@ -1162,6 +1168,10 @@ See `elfeed-play-with-mpv'."
               (lambda (url &rest args)
                 (android-browse-url url))))
 
+;;;; Kubed (kubernetes)
+(use-package kubed
+  :config
+  (keymap-global-set "C-c k" 'kubed-prefix-map))
 ;;;; Others
 (use-package hl-todo)
 (use-package dashboard
