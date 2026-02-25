@@ -92,16 +92,7 @@
  '(org-tree-slide-heading-level-2 '(outline-2 bold))
  '(org-tree-slide-heading-level-3 '(outline-3 bold))
  '(org-tree-slide-heading-level-4 '(outline-4 bold))
- '(package-selected-packages
-   '(adaptive-wrap consult dashboard dired-collapse dired-du
-                   dired-rainbow edit-indirect elfeed expand-region
-                   forge git-gutter git-timemachine gptel htmlize
-                   kubed latex-preview-pane magit-todos marginalia
-                   minuet mu4e-alert orderless org-appear org-journal
-                   org-modern org-tree-slide plantuml-mode
-                   rainbow-delimiters rainbow-mode scala-mode
-                   sudo-edit vertico visual-regexp ws-butler yaml-mode
-                   yasnippet))
+ '(package-selected-packages nil)
  '(prettify-symbols-unprettify-at-point 'right-edge)
  '(project-vc-ignores '("target" "target-ide"))
  '(safe-local-variable-values
