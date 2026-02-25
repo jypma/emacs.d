@@ -1254,7 +1254,7 @@ See `elfeed-play-with-mpv'."
          ("C-c h" . consult-history)
 ;;         ("C-c m" . consult-mode-command)
          ("C-c b" . consult-bookmark)
-         ("C-c k" . consult-kmacro)
+;;         ("C-c k" . consult-kmacro)
          ;; C-x bindings (ctl-x-map)
          ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
          ("C-x C-b" . consult-buffer)                ;; orig. switch-to-buffer

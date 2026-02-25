@@ -1759,7 +1759,7 @@ Interactively, use the current context.  With a prefix argument
          (kubed-tramp-assert-support)
          (let* ((default-directory (kubed-remote-file-name
                                     kubed-list-context kubed-list-namespace pod)))
-           (shell
+           (eshell
             (concat "*Kubed Shell "
                     (kubed-display-resource-short-description
                      "pods" pod kubed-list-context kubed-list-namespace)
