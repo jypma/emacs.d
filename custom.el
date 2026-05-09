@@ -56,6 +56,13 @@
      ("json" . js-json-mode)))
  '(markdown-fontify-code-blocks-natively t)
  '(nxml-slash-auto-complete-flag t)
+ '(ollama-buddy-default-model "qwen3-coder:30b")
+ '(ollama-buddy-tools-models
+   '("qwen3" "qwen3:32b" "qwen3:14b" "qwen3:8b" "qwen3-coder-next"
+     "qwen3-coder:480b" "deepseek-v3.1:671b" "gpt-oss:120b"
+     "gpt-oss:20b" "glm-4.7" "glm-4.7-flash" "llama3.1" "llama3.3"
+     "mistral" "mistral-nemo" "command-r+" "granite4"
+     "qwen3-coder:30b"))
  '(org-adapt-indentation ''headline-data)
  '(org-agenda-files '("~/Nextcloud/journal/20230425"))
  '(org-babel-java-command "java --enable-preview")

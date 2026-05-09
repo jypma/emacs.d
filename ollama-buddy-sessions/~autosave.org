@@ -1,0 +1,100 @@
+#+TITLE: Ollama Buddy Chat
+
+* Welcome to _OLLAMA BUDDY_
+
+#+begin_example
+┌───────────────────────────────────┐
+│  O L L A M A B U D D Y  [v2.7.3]  │
+└───────────────────────────────────┘
+#+end_example
+
+Auth: Ollama Cloud [?]
+
+- /Ask me anything!/       C-c C-c / C-c RET
+- /Cancel request/         C-c C-k
+- /Select model/           C-c m
+- /Main transient menu/    C-c O
+- /Browse prompt history/  M-p/n/r
+- /Manage models/          C-c M
+- /ollama-buddy Manual/    C-c ?
+
+* NO DEFAULT MODEL : Using best guess : adi0adi/ollama_stheno-8b_v3.1_q6k:latest
+
+* *qwen3-coder:30b* ⚒ >> PROMPT: Please summarize this file.
+
+* 
+
+
+** [qwen3-coder:30b: RESPONSE]
+
+I don't see any file attached to your message. Could you please share the file you'd like me to summarize? Once you provide it, I'll give you a clear, concise summary in plain prose.
+
+*** FINISHED
+
+* *qwen3-coder:30b* ⚒ >> PROMPT: Please summarize this file.
+
+- Attached: FtQLParser.java (21067 bytes)
+
+
+[Including 1 attached file(s) in context]
+
+** [qwen3-coder:30b: RESPONSE]
+
+This is a complex parser implementation for a domain-specific language (DSL) called *FtQL* (Feature Tree Query Language), likely used for querying and manipulating structured data, possibly in a geographic or spatial context. It's written in Java, using a custom parser combinator library (as suggested by the =Parser.ref=, =firstOf=, =andR=, etc.).
+
+Here's a breakdown of the key components and functionality:
+
+1.  *=FtQLParser= Class:*
+    -   This is the main class responsible for parsing FtQL expressions.
+    -   It holds a reference to a =Parser<...>= (likely a =Parser<FtQL<Object, FeatureType<Object>>>= or similar) which is lazily initialized using =Parser.ref= to handle recursive definitions.
+
+2.  *=Scope= Enum:*
+    -   Defines two parsing modes:
+        -   =FULL=: Enables parsing of link references (=linkRefParser=) and virtual features (=virtualFeature=).
+        -   =SIMPLE=: Likely intended for parsing expressions without these advanced features, perhaps for internal or restricted use.
+
+3.  *Core Parsing Logic (=mkParser=):*
+    -   *Base Expressions:* It starts by defining the simplest possible expressions:
+        -   *Literal Values:* Parses =float=, =keyword= (string), =boolean=, =instant=, =localDateTime=, =localDate=, =zonedDate=, =zonedDateTime=, =point=, =polygon= literals, and =id=, =now=.
+        -   *Parentheses:* Allows grouping with =inParens=.
+        -   *=when= Function:* A conditional expression.
+        -   *=!= Operator:* Logical negation.
+    -   *Recursive Expansion (=here=):* Uses =Parser.ref(here -> ...)= to define the parser recursively. This allows parsing nested expressions like =id().first().filter(...)= or =keyword("hello").match(...)=.
+    -   *Postfix Operations (=withPostfixes=):*
+        -   *ID Expressions (=ID=):* Enables =.first()=, =.distinct()=, =.count()=, =.history()=, =.maxBy(...)=, =.minBy(...)=, =.prefer(...)=, =.filter(...)=, =.sum()=, =.min()=, =.max()=, =.atStartOfDay()=, =.in(...)=, =.local()=, =.match(...)=, =.substring(...)=.
+        -   *Float Expressions (=FLOAT=):* Enables =.sum()=, =.min()=, =.max()=.
+        -   *Date/Time Expressions:* Enables =.date()=, =.atStartOfDay()=, =.in(...)=, =.local()=.
+        -   *=danish= and =keyword= Expressions:* Enables =.match(...)=, =.substring(...)=.
+        -   *General Aggregation:* Enables =.first()=, =.distinct()=, =.count()=, =.history()= on any expression.
+    -   *Operator Parsing (=compileOperators=):* This part is crucial. It uses a =ParsedOperatorExpr= class (not shown) to parse expressions with operators like =+=, =-=, =*=, =/=, etc., and then compiles them into a =FtQL<Object, FeatureType<Object>>= using a =ParsedBinaryOperation= (also not shown). This allows expressions like =float(1.0) + float(2.0)= to be parsed and compiled into a single =FtQL= object.
+
+4.  *Helper Methods:*
+    -   =inParens=: Parses expressions enclosed in parentheses.
+    -   =method0=, =method=, =function=: Helper methods for parsing function calls with different numbers of arguments, both with and without parentheses.
+
+5.  *Key Concepts:*
+    -   *=FtQL= Objects:* The core representation of parsed expressions. They are likely immutable and can be composed.
+    -   *=FeatureType=:* Represents the type of data being manipulated (e.g., =FLOAT=, =KEYWORD=, =ID=). It's used for type safety and ensuring operations are valid for the given type.
+    -   *=Historic= Wrapper:* The =Historic<...>= wrapper (not shown) likely wraps an =FtQL= expression and indicates that it should be evaluated in a historical context, potentially returning a sequence of values over time.
+
+*Example Usage (Based on Parser Logic):*
+
+-   =id()= - Returns the ID of the current entity.
+-   =keyword("hello")= - Returns the literal string "hello".
+-   =float(3.14)= - Returns the literal float 3.14.
+-   =id().first()= - Returns the first ID from a sequence (if applicable).
+-   =keyword("hello").match(/(h)ello/)= - Matches the keyword "hello" against a regex pattern, capturing the "h".
+-   =id().filter(boolean(true))= - Filters a sequence of IDs based on a boolean condition.
+-   =now()= - Returns the current timestamp.
+-   =instant("2023-01-01T12:00:00Z")= - Parses a timestamp.
+-   =localDate("2023-01-01")= - Parses a date.
+-   =point(10)= - Creates a point feature.
+-   =polygon(5)= - Creates a polygon feature.
+-   =id().history()= - Returns the history of IDs for the entity.
+-   =float(1.0) + float(2.0)= - Adds two floats (requires the =compileOperators= part to work).
+
+This parser is designed to be flexible and powerful, allowing complex queries and transformations on structured data, especially when dealing with features that have temporal or spatial characteristics. It leverages Java's type system and functional programming concepts (like =mapEach=) to ensure type safety and composability.
+
+*** FINISHED
+
+* *qwen3-coder:30b* ⚒ >> PROMPT: 

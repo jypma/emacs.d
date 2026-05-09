@@ -113,7 +113,7 @@
 (add-hook 'find-file-hook 'my/read-only-whitespace)
 
 ;; Use these project markers as project.el root
-(setq project-vc-extra-root-markers '(".project.el" ".projectile"))
+(setq project-vc-extra-root-markers '(".project.el" ".projectile" "build.sbt"))
 
 ;; Backup settings
 (setq backup-directory-alist `(("." . "~/.cache/emacs-backup")))
@@ -337,8 +337,12 @@ corresponding to the position of point."
            (file-name-concat
             cache-dir
             (save-match-data
-              (when (string-match "jdt://contents/\\(.*?\\)/\\(.*\\)\.class\\?" uri)
-                (format "%s.java" (replace-regexp-in-string "/" "." (match-string 2 uri) t t))))))))
+              (cond
+               ((string-match "jdt://contents/\\(.*?\\)/\\(.*\\)\.class\\?" uri)
+                (format "%s.java" (replace-regexp-in-string "/" "." (match-string 2 uri) t t)))
+               ((string-match "jdt://contents/\\(.*?\\)/\\(.*\\)\.java\\?.*" uri)
+                (format "%s.java" (replace-regexp-in-string "/" "." (match-string 2 uri) t t)))
+               ))))))
     (unless (file-readable-p source-file)
       (let ((content (jsonrpc-request (eglot-current-server) :java/classFileContents (list :uri uri)))
             (metadata-file (format "%s.%s.metadata"
@@ -838,6 +842,7 @@ corresponding to the position of point."
   (setq outline-regexp "[ \t]*\\(def\\|if\\|class\\|object\\|case\\|trait\\|abstract class\\).*$")
   (visual-line-mode)
   (setq indent-region-function nil)
+  (set-fill-column 130)
   (setq prettify-symbols-alist (append scala-mode-pretty-arrows-alist
                                        '(("<=" . ?≤)
                                          (">=" . ?≥)
@@ -1510,7 +1515,11 @@ See `elfeed-play-with-mpv'."
 
 ;;     (minuet-set-optional-options minuet-openai-fim-compatible-options :max_tokens 56))
 
-
+(use-package ollama-buddy
+  :ensure t
+  :bind
+  ("C-c o" . ollama-buddy-role-transient-menu)
+  ("C-c O" . ollama-buddy-transient-menu-wrapper))
 
 (use-package sudo-edit
   )

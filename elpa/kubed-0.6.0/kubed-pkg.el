@@ -1,0 +1,2 @@
+;; Generated package description from kubed.el  -*- mode: lisp-data; no-byte-compile: t; lexical-binding:t -*-
+(define-package "kubed" "0.6.0" "Kubernetes, Emacs, done!" '((emacs "29.1")) :commit "1162c245fae874aafd724bcdc24df4f52ef002a4" :authors '(("Eshel Yaron" . "me@eshelyaron.com")) :maintainer '("Eshel Yaron" . "~eshel/kubed-devel@lists.sr.ht") :keywords '("tools" "kubernetes" "containers") :url "https://eshelyaron.com/kubed.html")
