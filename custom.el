@@ -7,6 +7,7 @@
  '(compilation-always-kill t)
  '(compilation-auto-jump-to-first-error nil)
  '(compilation-scroll-output 'first-error)
+ '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-enabled-themes '(dark))
  '(custom-safe-themes
    '("50a808e6ffedc0abfad25e11a6208c158df1dc68f1d3cd9d0624afa1ef546838"
@@ -66,7 +67,7 @@
  '(org-adapt-indentation ''headline-data)
  '(org-agenda-files '("~/Nextcloud/journal/20230425"))
  '(org-babel-java-command "java --enable-preview")
- '(org-babel-java-compiler "javac --enable-preview --release 17")
+ '(org-babel-java-compiler "javac --enable-preview --release 25")
  '(org-babel-no-eval-on-ctrl-c-ctrl-c nil)
  '(org-beamer-theme "LightConsole")
  '(org-blank-before-new-entry '((heading . auto) (plain-list-item)))
@@ -104,6 +105,7 @@
  '(project-vc-ignores '("target" "target-ide"))
  '(safe-local-variable-values
    '((magit-todos-exclude-globs "elpa") (eval outline-hide-sublevels 1)))
+ '(tramp-histfile-override "/tmp/.tramp_history")
  '(whitespace-line-column 110)
  '(whitespace-style
    '(face trailing tabs lines-tail newline missing-newline-at-eof empty
@@ -119,6 +121,7 @@
  ;; If there is more than one, they won't work right.
  '(bold ((t (:foreground "#FFFFFF" :weight bold))))
  '(flymake-error ((t (:box (:line-width (1 . 1) :color "#450000" :style released-button) :underline (:color "#5F0000" :style wave :position nil) :weight bold))))
+ '(nxml-text ((t (:inherit monospace))))
  '(org-modern-label ((t (:box (:line-width (-2 . -5) :color "#000000") :underline nil :weight regular :height 0.9 :width condensed))))
  '(org-tag ((t (:background "dark khaki" :foreground "black" :box (:line-width (2 . 2) :color "DarkGoldenrod3" :style released-button) :weight bold))))
  '(org-todo ((t (:foreground "#CCA649" :weight bold)))))

@@ -275,10 +275,37 @@ corresponding to the position of point."
   (interactive)
   (message "byte offset: %d" (1- (position-bytes (point)))))
 
+;;; Protobuf
+(require 'protobuf-mode)
+
+(defconst my-protobuf-style
+  '((c-basic-offset . 4)
+    (indent-tabs-mode . nil)))
+
+(add-hook 'protobuf-mode-hook
+          (lambda () (c-add-style "my-style" my-protobuf-style t)))
+
+(add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode))
+
 ;;; EGlot customization and completion
 (require 'eglot)
 (global-set-key (kbd "C-<tab>") #'completion-at-point)
 (define-key eglot-mode-map (kbd "C-c C-SPC") #'eglot-code-actions)
+
+(setq-default eglot-workspace-configuration
+              '(
+                :metals ( :autoImportBuild "all"
+                          :isHttpEnabled t
+                          :superMethodLensesEnabled t
+                          :showInferredType t
+                          :enableSemanticHighlighting t
+                          :inlayHints ( :inferredTypes (:enable t )
+                                        :implicitArguments (:enable t)
+                                        :implicitConversions (:enable t )
+                                        :typeParameters (:enable t )
+                                        :hintsInPatternMatch (:enable nil ))
+                          :bloopJvmProperties ["-Xmx4G"])
+                        ))
 
 ;;; HTML customization
 ;; Insert closing tags
@@ -865,6 +892,12 @@ corresponding to the position of point."
                             nil
                             nil))
   (define-key scala-mode-map (kbd "<backtab>") 'hs-toggle-hiding))
+
+(add-to-list 'eglot-server-programs `((scala-ts-mode scala-mode) . ("metals"
+                                                       "-Xmx4G"
+                                                       "-XX:+UseZGC"
+                                                       "-Dmetals.http=true"
+                                                       :initializationOptions (:isHttpEnabled t))))
 
 ;;;; Git
 (use-package magit
