@@ -10,7 +10,9 @@
  '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-enabled-themes '(dark))
  '(custom-safe-themes
-   '("50a808e6ffedc0abfad25e11a6208c158df1dc68f1d3cd9d0624afa1ef546838"
+   '("f49561c6723d35d88b898dded0a4247738eb562a161f997daf14008018c81659"
+     "ae96e7064628ed75da108076accb406772a24d94d2d477504dc704afa4c334bc"
+     "50a808e6ffedc0abfad25e11a6208c158df1dc68f1d3cd9d0624afa1ef546838"
      "3b71d9d8571b0199bf420371f38248cbc5dc934e55f3f32cce9ecb04b97ed881"
      "85fd51046e93893b286e413c897852e7a6fcbb0ce9e5ba04e87db3a12da075db"
      "b878c14a064b9dc4624dbb3c8eda465eed89b538d713a8e9c9eb2ee05227a134"

@@ -536,6 +536,12 @@ corresponding to the position of point."
   )
 (add-hook 'js-mode-hook 'my/js-setup)
 
+;;; C-specific customization
+(defun my/c-setup ()
+  (setq c-basic-offset 2)
+  )
+(add-hook 'c-mode-hook 'my/c-setup)
+(add-hook 'c++-mode-hook 'my/c-setup)
 ;;; Org mode customization
 (defun org-journal-find-location ()
   ;; Open today's journal, but specify a non-nil prefix argument in order to
@@ -1168,14 +1174,9 @@ corresponding to the position of point."
   (defun elfeed-play-with-mpv ()
     "Play entry link with mpv."
     (interactive)
-    (let ((entry (if (eq major-mode 'elfeed-show-mode) elfeed-show-entry (elfeed-search-selected :single)))
-          (quality-arg "")
-          (quality-val (completing-read "Max height resolution (0 for unlimited): " '("0" "480" "720") nil nil)))
-      (setq quality-val (string-to-number quality-val))
-      (message "Opening %s with height≤%s with mpv..." (elfeed-entry-link entry) quality-val)
-      (when (< 0 quality-val)
-        (setq quality-arg (format "--ytdl-format=[height<=?%s]" quality-val)))
-      (start-process "elfeed-mpv" nil "~/bin/mpv" quality-arg (elfeed-entry-link entry))))
+    (let ((entry (if (eq major-mode 'elfeed-show-mode) elfeed-show-entry (elfeed-search-selected :single))))
+      (message "Opening %s with mpv..." (elfeed-entry-link entry))
+      (start-process "elfeed-mpv" nil "~/bin/mpv" (elfeed-entry-link entry))))
 
   (defvar elfeed-mpv-patterns
     '("youtu\\.?be")
